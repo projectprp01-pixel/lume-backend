@@ -1,6 +1,6 @@
 {
   "name": "evolve-back-backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backend API for Evolve Back - Check-in, Guest Portal, and Hotel Dashboard",
   "main": "src/index.js",
   "type": "module",
