@@ -36,6 +36,11 @@ const corsOptions = {
       return callback(null, true);
     }
 
+    // Allow all Railway preview and production URLs
+    if (origin.includes('.up.railway.app')) {
+      return callback(null, true);
+    }
+
     // Allow all Lovable preview and production URLs
     if (origin.includes('.lovable.app') || origin.includes('.lovableproject.com')) {
       return callback(null, true);
