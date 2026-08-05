@@ -54,6 +54,22 @@ export const loginStaff = async (req, res) => {
   }
 };
 
+export const getCurrentStaff = async (req, res) => {
+  const staff = req.staff;
+  res.status(200).json({
+    success: true,
+    staff: {
+      _id: staff._id,
+      firstName: staff.firstName,
+      lastName: staff.lastName,
+      email: staff.email,
+      role: staff.role,
+      permissions: staff.permissions,
+      propertyId: staff.propertyId,
+    },
+  });
+};
+
 export const resetStaffPassword = async (req, res) => {
   try {
     const { id } = req.params;
