@@ -20,9 +20,18 @@ connectDB();
 const app = express();
 
 // Middleware
+// Log every incoming request before CORS runs, so we can see exactly what
+// origin/method/path reached the app even when the response never gets there.
+app.use((req, res, next) => {
+  console.log(`[REQ] ${req.method} ${req.originalUrl} | origin=${JSON.stringify(req.headers.origin)} | type=${typeof req.headers.origin}`);
+  next();
+});
+
 // CORS configuration - allows all Vercel URLs (*.vercel.app) for easier preview deployments
 const corsOptions = {
   origin: (origin, callback) => {
+    console.log(`[CORS] checking origin=${JSON.stringify(origin)} type=${typeof origin}`);
+
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
@@ -61,8 +70,8 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    console.log('CORS blocked origin:', origin, '| Allowed env vars:', GUEST_APP_URL, DASHBOARD_APP_URL);
-    callback(new Error('Not allowed by CORS'));
+    console.log('[CORS] BLOCKED origin:', JSON.stringify(origin), '| Allowed env vars:', GUEST_APP_URL, DASHBOARD_APP_URL);
+    callback(new Error(`Not allowed by CORS: ${origin}`));
   },
   credentials: true
 };
@@ -91,11 +100,12 @@ app.get('/health', (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
+  console.error(`[ERROR] ${req.method} ${req.originalUrl} | origin=${JSON.stringify(req.headers.origin)} | name=${err.name} | message=${err.message}`);
   console.error(err.stack);
   res.status(500).json({
     success: false,
     message: 'Something went wrong!',
-    error: NODE_ENV === 'development' ? err.message : undefined
+    error: err.message
   });
 });
 
