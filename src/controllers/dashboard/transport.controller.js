@@ -78,14 +78,18 @@ export const updateTransportSettings = async (req, res) => {
 
 export const getTransportBookings = async (req, res) => {
   try {
-    const { propertyId = 'default', checkInDate } = req.query;
+    const { propertyId = 'default', checkInDate, includePast } = req.query;
 
-    // Only show bookings where the guest's stay hasn't ended yet
     const filter = {
       propertyId,
       status: 'confirmed',
-      checkOutDate: { $gte: new Date() }
     };
+
+    // By default, only show bookings where the guest's stay hasn't ended yet.
+    // Pass includePast=true to also see bookings for guests who have already checked out.
+    if (includePast !== 'true') {
+      filter.checkOutDate = { $gte: new Date() };
+    }
 
     if (checkInDate) {
       const start = new Date(checkInDate);
