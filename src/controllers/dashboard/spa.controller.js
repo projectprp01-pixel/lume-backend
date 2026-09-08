@@ -5,6 +5,20 @@ import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.j
 
 // ==================== SPA HUB ====================
 
+// findByIdAndUpdate doesn't run subdocument 'save' middleware, so keep each treatment's
+// legacy isActive boolean (still read by the guest app) in sync with the new status enum
+// whenever a facility update includes a categories array.
+function syncTreatmentIsActive(update) {
+  if (!Array.isArray(update.categories)) return update;
+  update.categories = update.categories.map((cat) => ({
+    ...cat,
+    treatments: Array.isArray(cat.treatments)
+      ? cat.treatments.map((t) => ({ ...t, isActive: (t.status ?? 'active') === 'active' }))
+      : cat.treatments,
+  }));
+  return update;
+}
+
 /**
  * Get all spa facilities
  */
@@ -67,6 +81,7 @@ export const updateSpaFacility = async (req, res) => {
       update.listingImage = update.coverImage;
       delete update.coverImage;
     }
+    syncTreatmentIsActive(update);
 
     const facility = await SpaFacility.findByIdAndUpdate(id, update, {
       new: true,
@@ -153,7 +168,10 @@ export const uploadSpaImage = async (req, res) => {
 export const getSpaBookings = async (req, res) => {
   try {
     const { propertyId, date, status } = req.query;
-    const filter = { paymentStatus: 'paid' };
+    // Previously hardcoded to paymentStatus: 'paid', which silently hid every manually-added
+    // or payment-pending booking from the dashboard. Show everything except cancelled/refunded
+    // by default; the dashboard's own paymentStatus pill/filter handles Completed vs Pending.
+    const filter = { paymentStatus: { $nin: ['refunded'] } };
     if (propertyId) filter.propertyId = propertyId;
     if (status) filter.status = status;
     if (date) {
@@ -177,12 +195,58 @@ export const getSpaBookings = async (req, res) => {
 export const createManualSpaBooking = async (req, res) => {
   try {
     const bookingId = `SPA-${Date.now()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-    const { mainStayBookingId, ...rest } = req.body;
-    const booking = await SpaBooking.create({ ...rest, bookingId, mainBookingId: mainStayBookingId || undefined });
+    const { mainStayBookingId, paymentStatus, ...rest } = req.body;
+    const booking = await SpaBooking.create({
+      ...rest,
+      bookingId,
+      mainBookingId: mainStayBookingId || undefined,
+      source: 'staff',
+      // Staff can mark a manual booking as already paid (e.g. collected at the desk);
+      // otherwise it defaults to the schema's 'pending'.
+      paymentStatus: paymentStatus === 'paid' ? 'paid' : undefined,
+    });
     res.status(201).json({ success: true, message: 'Spa booking created', data: booking });
   } catch (error) {
     console.error('Create spa booking error:', error);
     res.status(500).json({ success: false, message: 'Failed to create spa booking', error: error.message });
+  }
+};
+
+/**
+ * Set spa booking payment status (dashboard payment pill / revert-to-pending flow)
+ */
+export const updateSpaBookingPayment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+    if (!['paid', 'pending'].includes(paymentStatus)) {
+      return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+    }
+    const booking = await SpaBooking.findByIdAndUpdate(id, { paymentStatus }, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Spa booking not found' });
+    res.status(200).json({ success: true, data: booking });
+  } catch (error) {
+    console.error('Update spa booking payment error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update payment status', error: error.message });
+  }
+};
+
+/**
+ * Assign a room to a spa booking
+ */
+export const assignSpaBookingRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { room } = req.body;
+    if (!room || !String(room).trim()) {
+      return res.status(400).json({ success: false, message: 'room is required' });
+    }
+    const booking = await SpaBooking.findByIdAndUpdate(id, { room: String(room).trim() }, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Spa booking not found' });
+    res.status(200).json({ success: true, data: booking });
+  } catch (error) {
+    console.error('Assign spa booking room error:', error);
+    res.status(500).json({ success: false, message: 'Failed to assign room', error: error.message });
   }
 };
 

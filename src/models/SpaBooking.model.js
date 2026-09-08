@@ -23,6 +23,8 @@ const spaBookingSchema = new mongoose.Schema({
   },
   specialRequests: { type: String },
   adminNotes: { type: String },
+  addons: [{ name: String, price: Number }],
+  source: { type: String, enum: ['app', 'staff'], default: 'app' },
   paymentStatus: {
     type: String,
     enum: ['pending', 'processing', 'paid', 'failed', 'refunded'],

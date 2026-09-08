@@ -72,6 +72,8 @@ import {
   getSpaBookings,
   createManualSpaBooking,
   updateSpaBookingStatus,
+  updateSpaBookingPayment,
+  assignSpaBookingRoom,
   uploadSpaImage,
 } from '../controllers/dashboard/spa.controller.js';
 
@@ -168,6 +170,8 @@ router.delete('/spa/:id', deleteSpaFacility);
 router.get('/spa/bookings', getSpaBookings);
 router.post('/spa/bookings', createManualSpaBooking);
 router.put('/spa/bookings/:id/status', updateSpaBookingStatus);
+router.put('/spa/bookings/:id/payment', updateSpaBookingPayment);
+router.put('/spa/bookings/:id/room', assignSpaBookingRoom);
 
 // ==================== ANALYTICS ====================
 router.get('/analytics', getAnalytics);
