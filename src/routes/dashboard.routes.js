@@ -96,6 +96,17 @@ import {
   createManualTransportBooking,
   getTransportUnseenCount,
   markTransportBookingsSeen,
+  uploadTransportImage,
+  addTransportVehicle,
+  updateTransportVehicle,
+  deleteTransportVehicle,
+  updateTransportOffering,
+  updateTransportOfferingBlockDates,
+  getTransportHubBookings,
+  createTransportHubBooking,
+  setTransportHubBookingPayment,
+  assignTransportHubBookingRoom,
+  cancelTransportHubBooking,
 } from '../controllers/dashboard/transport.controller.js';
 
 // ==================== PROPERTY SETTINGS ====================
@@ -189,6 +200,19 @@ router.put('/transport/bookings/mark-seen', markTransportBookingsSeen);
 router.get('/transport/bookings', getTransportBookings);
 router.post('/transport/bookings/manual', createManualTransportBooking);
 router.put('/transport/bookings/:id/cancel', cancelTransportBooking);
+
+// ---- Transport Hub: fleet, offerings, hub bookings (additive) ----
+router.post('/transport/hub/upload-image', upload.single('image'), uploadTransportImage);
+router.post('/transport/hub/vehicles', addTransportVehicle);
+router.put('/transport/hub/vehicles/:vehicleId', updateTransportVehicle);
+router.delete('/transport/hub/vehicles/:vehicleId', deleteTransportVehicle);
+router.put('/transport/hub/offerings/:slot', updateTransportOffering);
+router.put('/transport/hub/offerings/:slot/block-dates', updateTransportOfferingBlockDates);
+router.get('/transport/hub/bookings', getTransportHubBookings);
+router.post('/transport/hub/bookings', createTransportHubBooking);
+router.put('/transport/hub/bookings/:id/payment', setTransportHubBookingPayment);
+router.put('/transport/hub/bookings/:id/room', assignTransportHubBookingRoom);
+router.put('/transport/hub/bookings/:id/cancel', cancelTransportHubBooking);
 
 // ==================== PROPERTY SETTINGS ====================
 router.get('/property-settings', getPropertySettings);
