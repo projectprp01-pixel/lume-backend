@@ -1,4 +1,4 @@
-# Evolve Back Backend API REPO
+# Evolve Back Backend API repo
 
 Backend API for managing Guest App (unified pre-stay and in-stay) and Hotel Dashboard applications.
 
