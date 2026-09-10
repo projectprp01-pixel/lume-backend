@@ -11,10 +11,12 @@ const experienceBookingSchema = new mongoose.Schema({
     ref: 'Experience',
     required: true
   },
+  // Optional: the guest-facing Razorpay flow always resolves one, but Experience Hub
+  // (dashboard) manual bookings store guestName/guestPhone directly instead — same pattern as
+  // SpaBooking.model.js / TransportBooking.model.js.
   guestId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Guest',
-    required: true
+    ref: 'Guest'
   },
   // Main booking reference (hotel stay)
   mainBookingId: {
@@ -77,6 +79,10 @@ const experienceBookingSchema = new mongoose.Schema({
   guestEmail: String,
   guestPhone: String,
   specialRequests: String,
+  // Experience Hub (dashboard) additions — mirrors SpaBooking/TransportBooking.
+  room: { type: String, default: '' },
+  source: { type: String, enum: ['app', 'staff'], default: 'app' },
+  addons: { type: [{ name: String, price: Number }], default: [] },
   // Confirmation
   confirmationSent: {
     type: Boolean,

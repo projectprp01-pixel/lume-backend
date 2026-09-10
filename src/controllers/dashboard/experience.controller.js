@@ -1,7 +1,9 @@
 import Booking from '../../models/Booking.model.js';
 import Experience from '../../models/Experience.model.js';
 import ExperienceBooking from '../../models/ExperienceBooking.model.js';
-import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
+import ExperienceDiscount from '../../models/ExperienceDiscount.model.js';
+import { uploadToR2 } from '../../utils/r2Upload.js';
+import { remuxForFaststart } from '../../utils/videoProcessing.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 
 // ==================== EXPERIENCE HUB ====================
@@ -41,9 +43,10 @@ export const getExperienceBookings = async (req, res) => {
   try {
     const { date, propertyId, status } = req.query;
 
-    const filter = {
-      bookingStatus: { $in: ['confirmed', 'completed', 'no-show'] },
-    };
+    // Previously hardcoded to bookingStatus in ['confirmed','completed','no-show'], which
+    // silently hid cancelled bookings from the dashboard. The Experience Hub table shows
+    // cancelled bookings inline (greyed out), same as Spa Hub — see getSpaBookings.
+    const filter = {};
 
     if (date) {
       const targetDate = new Date(date);
@@ -89,7 +92,22 @@ export const getExperienceBookings = async (req, res) => {
  */
 export const createManualBooking = async (req, res) => {
   try {
-    const { experienceId, date, timeSlot, numberOfGuests, guestName, guestEmail, guestPhone, adminNotes, mainStayBookingId } = req.body;
+    const {
+      bookingId: refInput,
+      experienceId,
+      date,
+      timeSlot,
+      numberOfGuests,
+      guestName,
+      guestEmail,
+      guestPhone,
+      adminNotes,
+      mainStayBookingId,
+      room,
+      addons,
+      price, // optional override — staff can type "Complimentary"/a custom amount in the Add Booking modal
+      paymentStatus,
+    } = req.body;
 
     const experience = await Experience.findById(experienceId);
     if (!experience) {
@@ -99,13 +117,25 @@ export const createManualBooking = async (req, res) => {
       });
     }
 
-    // Generate booking ID
-    const bookingId = `MANUAL-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
+    // Staff can type/edit their own booking ref (Experience Hub's "Add Booking" modal);
+    // fall back to a generated one if left blank, same as before.
+    const bookingId = refInput && String(refInput).trim()
+      ? String(refInput).trim()
+      : `MANUAL-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
 
-    // Calculate pricing
-    const slot = experience.timeSlots.find(s => s.time === timeSlot);
-    const unitPrice = experience.pricing.basePrice + (experience.pricing.basePrice * ((slot?.priceModifier || 0) / 100));
-    const totalAmount = unitPrice * numberOfGuests;
+    // Calculate pricing — an explicit price override (from the dashboard form) wins over the
+    // experience's own stored pricing, same pattern as Transport Hub's createTransportHubBooking.
+    let unitPrice;
+    let totalAmount;
+    if (price !== undefined && price !== null && String(price).trim() !== '') {
+      const parsed = parseFloat(String(price).replace(/[^0-9.]/g, ''));
+      unitPrice = Number.isNaN(parsed) ? 0 : parsed;
+      totalAmount = unitPrice;
+    } else {
+      const slot = experience.timeSlots.find(s => s.time === timeSlot);
+      unitPrice = experience.pricing.basePrice + (experience.pricing.basePrice * ((slot?.priceModifier || 0) / 100));
+      totalAmount = unitPrice * (numberOfGuests || 1);
+    }
 
     // Resolve guestId from mainStayBookingId if provided
     let resolvedGuestId;
@@ -120,18 +150,23 @@ export const createManualBooking = async (req, res) => {
       experienceName: experience.title,
       date: new Date(date),
       timeSlot,
-      numberOfGuests,
+      numberOfGuests: numberOfGuests || 1,
       unitPrice,
       totalAmount,
       currency: experience.pricing.currency,
       guestName,
       guestEmail,
       guestPhone,
-      paymentStatus: 'paid', // Manual bookings are marked as paid
+      // Manual bookings default to Payment Pending — staff mark it Completed once they've
+      // collected payment, same as the prototype's Add Booking modal.
+      paymentStatus: paymentStatus === 'paid' ? 'paid' : 'pending',
       bookingStatus: 'confirmed',
       adminNotes,
       mainStayBookingId: mainStayBookingId || undefined,
       guestId: resolvedGuestId || undefined,
+      room: room || '',
+      source: 'staff',
+      addons: Array.isArray(addons) ? addons : [],
     });
 
     res.status(201).json({
@@ -146,6 +181,112 @@ export const createManualBooking = async (req, res) => {
       message: 'Failed to create manual booking',
       error: error.message
     });
+  }
+};
+
+/**
+ * Set experience booking payment status (dashboard payment pill flow)
+ */
+export const setExperienceBookingPayment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+    if (!['paid', 'pending'].includes(paymentStatus)) {
+      return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+    }
+    const booking = await ExperienceBooking.findByIdAndUpdate(id, { paymentStatus }, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Experience booking not found' });
+    res.status(200).json({ success: true, data: booking });
+  } catch (error) {
+    console.error('Set experience booking payment error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update payment status', error: error.message });
+  }
+};
+
+/**
+ * Assign a room to an experience booking
+ */
+export const assignExperienceBookingRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { room } = req.body;
+    if (!room || !String(room).trim()) {
+      return res.status(400).json({ success: false, message: 'room is required' });
+    }
+    const booking = await ExperienceBooking.findByIdAndUpdate(id, { room: String(room).trim() }, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Experience booking not found' });
+    res.status(200).json({ success: true, data: booking });
+  } catch (error) {
+    console.error('Assign experience booking room error:', error);
+    res.status(500).json({ success: false, message: 'Failed to assign room', error: error.message });
+  }
+};
+
+/**
+ * Set blocked date ranges on an experience
+ */
+export const updateExperienceBlockDates = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { blockedRanges } = req.body;
+    if (!Array.isArray(blockedRanges)) {
+      return res.status(400).json({ success: false, message: 'blockedRanges must be an array' });
+    }
+    const experience = await Experience.findByIdAndUpdate(id, { blockedRanges }, { new: true, runValidators: true });
+    if (!experience) return res.status(404).json({ success: false, message: 'Experience not found' });
+    res.status(200).json({ success: true, data: experience });
+  } catch (error) {
+    console.error('Update experience block dates error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update block dates', error: error.message });
+  }
+};
+
+// ==================== DISCOUNTS & PROMOTIONS ====================
+
+export const getExperienceDiscounts = async (req, res) => {
+  try {
+    const { propertyId } = req.query;
+    const filter = {};
+    if (propertyId) filter.propertyId = propertyId;
+    const discounts = await ExperienceDiscount.find(filter).sort({ createdAt: -1 });
+    res.status(200).json({ success: true, count: discounts.length, data: discounts });
+  } catch (error) {
+    console.error('Get experience discounts error:', error);
+    res.status(500).json({ success: false, message: 'Failed to retrieve discounts', error: error.message });
+  }
+};
+
+export const createExperienceDiscount = async (req, res) => {
+  try {
+    const discount = await ExperienceDiscount.create(req.body);
+    res.status(201).json({ success: true, message: 'Discount created', data: discount });
+  } catch (error) {
+    console.error('Create experience discount error:', error);
+    res.status(500).json({ success: false, message: 'Failed to create discount', error: error.message });
+  }
+};
+
+export const updateExperienceDiscount = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const discount = await ExperienceDiscount.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+    if (!discount) return res.status(404).json({ success: false, message: 'Discount not found' });
+    res.status(200).json({ success: true, message: 'Discount updated', data: discount });
+  } catch (error) {
+    console.error('Update experience discount error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update discount', error: error.message });
+  }
+};
+
+export const deleteExperienceDiscount = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const discount = await ExperienceDiscount.findByIdAndDelete(id);
+    if (!discount) return res.status(404).json({ success: false, message: 'Discount not found' });
+    res.status(200).json({ success: true, message: 'Discount deleted' });
+  } catch (error) {
+    console.error('Delete experience discount error:', error);
+    res.status(500).json({ success: false, message: 'Failed to delete discount', error: error.message });
   }
 };
 
@@ -292,7 +433,7 @@ export const deleteExperience = async (req, res) => {
 };
 
 /**
- * Upload experience image to Cloudinary
+ * Upload experience image to R2
  */
 export const uploadExperienceImage = async (req, res) => {
   try {
@@ -302,7 +443,7 @@ export const uploadExperienceImage = async (req, res) => {
         message: 'No image file provided'
       });
     }
-    const imageUrl = await uploadToCloudinary(req.file.buffer, 'experiences');
+    const imageUrl = await uploadToR2(req.file.buffer, 'experiences/images', req.file.mimetype);
     res.status(200).json({
       success: true,
       data: { imageUrl }
@@ -312,6 +453,35 @@ export const uploadExperienceImage = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to upload experience image',
+      error: error.message
+    });
+  }
+};
+
+/**
+ * Upload experience video to R2 — remuxed for faststart first so it plays instantly and seeks
+ * cleanly in the guest app, without staff needing to know that's a thing. See videoProcessing.js
+ * for why this step exists.
+ */
+export const uploadExperienceVideo = async (req, res) => {
+  try {
+    if (!req.file || !req.file.buffer) {
+      return res.status(400).json({
+        success: false,
+        message: 'No video file provided'
+      });
+    }
+    const processed = await remuxForFaststart(req.file.buffer);
+    const videoUrl = await uploadToR2(processed, 'experiences/videos', 'video/mp4', 'mp4');
+    res.status(200).json({
+      success: true,
+      data: { videoUrl }
+    });
+  } catch (error) {
+    console.error('Upload experience video error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to upload experience video',
       error: error.message
     });
   }

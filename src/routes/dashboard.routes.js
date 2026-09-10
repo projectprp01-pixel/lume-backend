@@ -1,5 +1,6 @@
 import express from 'express';
 import upload from '../middleware/upload.js';
+import uploadVideo from '../middleware/uploadVideo.js';
 import { authenticate, requireRole } from '../middleware/auth.js';
 import { resetStaffPassword } from '../controllers/auth.controller.js';
 
@@ -21,6 +22,14 @@ import {
   updateExperience,
   deleteExperience,
   uploadExperienceImage,
+  uploadExperienceVideo,
+  setExperienceBookingPayment,
+  assignExperienceBookingRoom,
+  updateExperienceBlockDates,
+  getExperienceDiscounts,
+  createExperienceDiscount,
+  updateExperienceDiscount,
+  deleteExperienceDiscount,
 } from '../controllers/dashboard/experience.controller.js';
 
 // ==================== GUEST MANAGEMENT ====================
@@ -131,12 +140,20 @@ router.put('/checkin/:checkInId/review', reviewCheckIn);
 
 // ==================== EXPERIENCE HUB ====================
 router.get('/experiences', getAllExperiences);
+router.get('/experiences/discounts', getExperienceDiscounts);
+router.post('/experiences/discounts', createExperienceDiscount);
+router.put('/experiences/discounts/:id', updateExperienceDiscount);
+router.delete('/experiences/discounts/:id', deleteExperienceDiscount);
 router.get('/experiences/bookings', getExperienceBookings);
 router.post('/experiences/bookings/manual', createManualBooking);
 router.put('/experiences/bookings/:bookingId/cancel', cancelExperienceBooking);
+router.put('/experiences/bookings/:id/payment', setExperienceBookingPayment);
+router.put('/experiences/bookings/:id/room', assignExperienceBookingRoom);
 router.post('/experiences/upload-image', upload.single('image'), uploadExperienceImage);
+router.post('/experiences/upload-video', uploadVideo.single('video'), uploadExperienceVideo);
 router.post('/experiences', createExperience);
 router.put('/experiences/:id', updateExperience);
+router.put('/experiences/:id/block-dates', updateExperienceBlockDates);
 router.delete('/experiences/:id', deleteExperience);
 
 // ==================== GUEST MANAGEMENT ====================

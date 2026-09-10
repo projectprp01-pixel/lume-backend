@@ -35,6 +35,16 @@ export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
 export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
 export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
+// Cloudflare R2 (S3-compatible) — used for video uploads (Cloudinary bills video storage/bandwidth
+// far more heavily than images, see the Experience Hub video-hosting discussion). R2_PUBLIC_URL is
+// whatever serves the bucket's objects publicly — the bucket's r2.dev subdomain (with public access
+// enabled) or a custom domain attached to the bucket. No trailing slash.
+export const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
+export const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
+export const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
+export const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME;
+export const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL;
+
 export const LSQ_API_HOST = process.env.LSQ_API_HOST || 'https://api.leadsquared.com';
 export const LSQ_ACTIVITY_TYPE_ID = parseInt(process.env.LSQ_ACTIVITY_TYPE_ID) || 277;
 export const LSQ_ACCESS_KEY = process.env.LSQ_ACCESS_KEY;

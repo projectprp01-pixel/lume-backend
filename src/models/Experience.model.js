@@ -20,6 +20,18 @@ const timeSlotSchema = new mongoose.Schema({
   priceModifier: {
     type: Number,
     default: 0 // percentage modifier for this slot
+  },
+  // Which days this slot runs on — property-dashboard's Weekday (Mon-Fri) / Weekend (Sat-Sun)
+  // split under the Experience Hub's Time Slots editor.
+  dayType: {
+    type: String,
+    enum: ['weekday', 'weekend'],
+    default: 'weekday'
+  },
+  // Staff can hide a slot from guests without deleting it (property-dashboard's per-slot toggle).
+  active: {
+    type: Boolean,
+    default: true
   }
 });
 
@@ -36,16 +48,23 @@ const experienceSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  // Free-form now (was a fixed enum) — the Experience Hub dashboard lets staff add their own
+  // categories on the fly (see property-dashboard's "+ Add Category"), so this can't be a closed
+  // list. Existing enum values above are preserved as the common defaults elsewhere still expect.
   category: {
     type: String,
-    enum: ['adventure', 'wellness', 'cultural', 'culinary', 'nature', 'spa', 'Wellness', 'Experience', 'Experiences', 'Dining', 'Adventure', 'Nature', 'Cultural', 'General', 'Vaidyashala', 'Transfers'],
     required: true
   },
   imageUrl: {
     type: String,
     default: ''
   },
-  images: [String], // Additional images
+  // Each entry is either a legacy bare URL string (pre-caption documents) or an object carrying
+  // { image, title, description } — for videos, also { url: <playable link>, image: <thumbnail> }.
+  // Mixed (not a subdocument schema) so old string entries keep loading instead of getting cast
+  // into empty subdocuments — property-dashboard's toMediaItem() normalizes either shape on read.
+  images: [mongoose.Schema.Types.Mixed],
+  videos: [mongoose.Schema.Types.Mixed],
   duration: {
     value: Number,
     unit: {
@@ -98,7 +117,9 @@ const experienceSchema = new mongoose.Schema({
     value: Number,
     unit: {
       type: String,
-      enum: ['hours', 'days']
+      // 'minutes' added for the Experience Hub dashboard's Cutoff Timing field, which is always
+      // expressed in minutes (see property-dashboard's dashboardAPI.experiences adapter).
+      enum: ['minutes', 'hours', 'days']
     }
   },
   cancellationPolicy: String,
@@ -133,6 +154,9 @@ const experienceSchema = new mongoose.Schema({
   guestCanChooseGroupSize: { type: Boolean, default: true },
   capacityUnit: { type: String, default: '' },
   blackoutDates: [Date],
+  // Date-range blocking used by the Experience Hub dashboard (distinct from the single-date
+  // blackoutDates above, which predates it and is left untouched for whatever still reads it).
+  blockedRanges: [{ start: String, end: String }],
   slotsPerSession: { type: Number, default: 1 },
   bookingsPerDay: { type: Number, default: 10 },
   pricingLabel: { type: String, default: '' },
