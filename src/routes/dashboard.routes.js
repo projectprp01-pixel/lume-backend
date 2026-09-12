@@ -58,10 +58,39 @@ import {
   updateRestaurant,
   deleteRestaurant,
   uploadDiningImage,
+  uploadDiningMenuFile,
+  updateRestaurantBlockDates,
   getDiningReservations,
   cancelDiningReservation,
   createManualDiningReservation,
+  updateDiningReservationPayment,
+  assignDiningReservationRoom,
 } from '../controllers/dashboard/restaurant.controller.js';
+
+// ==================== F&B IN-ROOM ORDERING ====================
+import {
+  getFbCategories,
+  createFbCategory,
+  updateFbCategory,
+  deleteFbCategory,
+  uploadFbCategoryImage,
+  getFbSubcategories,
+  createFbSubcategory,
+  updateFbSubcategory,
+  deleteFbSubcategory,
+  getFbDishes,
+  createFbDish,
+  updateFbDish,
+  deleteFbDish,
+  uploadFbDishImage,
+  bulkImportFbDishes,
+} from '../controllers/dashboard/fbMenu.controller.js';
+import {
+  getFbOrders,
+  updateFbOrderStage,
+  getFbOrderingSettings,
+  updateFbOrderingSettings,
+} from '../controllers/dashboard/fbOrders.controller.js';
 
 // ==================== APP BANNERS ====================
 import {
@@ -174,13 +203,41 @@ router.delete('/staff/:id', requireRole('Admin'), deleteStaff);
 
 // ==================== RESTAURANT/DINING HUB ====================
 router.post('/restaurants/upload-image', upload.single('image'), uploadDiningImage);
+router.post('/restaurants/upload-menu', upload.single('file'), uploadDiningMenuFile);
 router.get('/restaurants/reservations', getDiningReservations);
 router.post('/restaurants/reservations', createManualDiningReservation);
 router.put('/restaurants/reservations/:id/cancel', cancelDiningReservation);
+router.put('/restaurants/reservations/:id/payment', updateDiningReservationPayment);
+router.put('/restaurants/reservations/:id/room', assignDiningReservationRoom);
 router.get('/restaurants', getAllRestaurants);
 router.post('/restaurants', createRestaurant);
 router.put('/restaurants/:id', updateRestaurant);
+router.put('/restaurants/:id/block-dates', updateRestaurantBlockDates);
 router.delete('/restaurants/:id', deleteRestaurant);
+
+// ==================== F&B IN-ROOM ORDERING ====================
+router.get('/fb-menu/categories', getFbCategories);
+router.post('/fb-menu/categories', createFbCategory);
+router.post('/fb-menu/categories/upload-image', upload.single('image'), uploadFbCategoryImage);
+router.put('/fb-menu/categories/:id', updateFbCategory);
+router.delete('/fb-menu/categories/:id', deleteFbCategory);
+
+router.get('/fb-menu/subcategories', getFbSubcategories);
+router.post('/fb-menu/subcategories', createFbSubcategory);
+router.put('/fb-menu/subcategories/:id', updateFbSubcategory);
+router.delete('/fb-menu/subcategories/:id', deleteFbSubcategory);
+
+router.get('/fb-menu/dishes', getFbDishes);
+router.post('/fb-menu/dishes', createFbDish);
+router.post('/fb-menu/dishes/upload-image', upload.single('image'), uploadFbDishImage);
+router.post('/fb-menu/dishes/bulk-import', bulkImportFbDishes);
+router.put('/fb-menu/dishes/:id', updateFbDish);
+router.delete('/fb-menu/dishes/:id', deleteFbDish);
+
+router.get('/fb-orders', getFbOrders);
+router.put('/fb-orders/:id/stage', updateFbOrderStage);
+router.get('/fb-ordering-settings', getFbOrderingSettings);
+router.put('/fb-ordering-settings', updateFbOrderingSettings);
 
 // ==================== APP BANNERS ====================
 router.get('/banners', getAllBanners);

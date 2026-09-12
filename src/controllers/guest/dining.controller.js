@@ -80,7 +80,7 @@ export const getDiningAvailability = async (req, res) => {
  */
 export const createDiningReservation = async (req, res) => {
   try {
-    const { facilityId, guestId, bookingId, mainStayBookingId, date, numberOfGuests, propertyId = 'default' } = req.body;
+    const { facilityId, guestId, bookingId, mainStayBookingId, date, numberOfGuests, propertyId = 'default', addonNames } = req.body;
 
     if (!facilityId || !date || !numberOfGuests) {
       return res.status(400).json({ success: false, message: 'facilityId, date, and numberOfGuests are required' });
@@ -123,6 +123,13 @@ export const createDiningReservation = async (req, res) => {
       mainStayBooking = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).lean().catch(() => null);
     }
 
+    // Validate each selected addon against the facility's configured list and snapshot its
+    // price at booking time (prices can change on the facility after a guest books).
+    const selectedAddons = Array.isArray(addonNames)
+      ? (facility.addons || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price }))
+      : [];
+    const amount = (facility.price || 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
+
     const reservation = await DiningReservation.create({
       facilityId,
       facilityName: facility.name,
@@ -136,8 +143,10 @@ export const createDiningReservation = async (req, res) => {
       numberOfGuests,
       propertyId,
       status: 'pending',
-      amount: facility.price,
+      amount,
       paymentStatus: 'pending',
+      source: 'app',
+      addons: selectedAddons,
     });
 
     res.status(201).json({
@@ -146,7 +155,7 @@ export const createDiningReservation = async (req, res) => {
         _id: reservation._id,
         facilityName: facility.name,
         date: reservation.date,
-        amount: facility.price,
+        amount,
       },
     });
   } catch (error) {

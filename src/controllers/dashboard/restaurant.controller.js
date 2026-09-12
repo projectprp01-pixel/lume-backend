@@ -1,6 +1,6 @@
 import DiningReservation from '../../models/DiningReservation.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
-import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
+import { uploadToR2 } from '../../utils/r2Upload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 
 // ==================== RESTAURANT/DINING HUB ====================
@@ -107,18 +107,53 @@ export const deleteRestaurant = async (req, res) => {
 };
 
 /**
- * Upload dining facility image to Cloudinary
+ * Upload a dining facility image (hero or gallery photo) to Cloudflare R2
  */
 export const uploadDiningImage = async (req, res) => {
   try {
     if (!req.file || !req.file.buffer) {
       return res.status(400).json({ success: false, message: 'No image file provided' });
     }
-    const imageUrl = await uploadToCloudinary(req.file.buffer, 'dining');
+    const imageUrl = await uploadToR2(req.file.buffer, 'dining', req.file.mimetype);
     res.status(200).json({ success: true, data: { imageUrl } });
   } catch (error) {
     console.error('Upload dining image error:', error);
     res.status(500).json({ success: false, message: 'Failed to upload image', error: error.message });
+  }
+};
+
+/**
+ * Upload a dining facility menu file (image or PDF) to Cloudflare R2
+ */
+export const uploadDiningMenuFile = async (req, res) => {
+  try {
+    if (!req.file || !req.file.buffer) {
+      return res.status(400).json({ success: false, message: 'No file provided' });
+    }
+    const fileUrl = await uploadToR2(req.file.buffer, 'dining/menus', req.file.mimetype);
+    res.status(200).json({ success: true, data: { fileUrl } });
+  } catch (error) {
+    console.error('Upload dining menu file error:', error);
+    res.status(500).json({ success: false, message: 'Failed to upload file', error: error.message });
+  }
+};
+
+/**
+ * Set blocked date ranges on a dining facility
+ */
+export const updateRestaurantBlockDates = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { blockedRanges } = req.body;
+    if (!Array.isArray(blockedRanges)) {
+      return res.status(400).json({ success: false, message: 'blockedRanges must be an array' });
+    }
+    const restaurant = await Restaurant.findByIdAndUpdate(id, { blockedRanges }, { new: true, runValidators: true });
+    if (!restaurant) return res.status(404).json({ success: false, message: 'Facility not found' });
+    res.status(200).json({ success: true, data: restaurant });
+  } catch (error) {
+    console.error('Update restaurant block dates error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update block dates', error: error.message });
   }
 };
 
@@ -179,7 +214,7 @@ export const cancelDiningReservation = async (req, res) => {
  */
 export const createManualDiningReservation = async (req, res) => {
   try {
-    const { facilityId, facilityName, facilityType, guestName, date, numberOfGuests, propertyId, roomNumber, mainStayBookingId } = req.body;
+    const { facilityId, facilityName, facilityType, guestName, date, numberOfGuests, propertyId, roomNumber, mainStayBookingId, paymentStatus, addons, reservationRef } = req.body;
 
     if (!facilityId || !guestName || !date || !numberOfGuests) {
       return res.status(400).json({ success: false, message: 'facilityId, guestName, date, and numberOfGuests are required' });
@@ -209,19 +244,65 @@ export const createManualDiningReservation = async (req, res) => {
       facilityId,
       facilityName,
       facilityType,
+      reservationRef: reservationRef || undefined,
       guestName,
       date,
       numberOfGuests,
       propertyId: propertyId || 'default',
       roomNumber: roomNumber || '',
       status: 'confirmed',
-      paymentStatus: 'paid', // Staff-created reservations are pre-confirmed
+      paymentStatus: paymentStatus === 'paid' ? 'paid' : 'pending',
       mainStayBookingId: mainStayBookingId || undefined,
+      amount: req.body.price ?? req.body.amount,
+      source: 'staff',
+      addons: Array.isArray(addons) ? addons : undefined,
     });
 
     res.status(201).json({ success: true, data: reservation });
   } catch (error) {
     console.error('Create manual dining reservation error:', error);
     res.status(500).json({ success: false, message: 'Failed to create reservation', error: error.message });
+  }
+};
+
+/**
+ * Update a dining reservation's payment status (dashboard)
+ */
+export const updateDiningReservationPayment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+    if (!['paid', 'pending'].includes(paymentStatus)) {
+      return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+    }
+    const reservation = await DiningReservation.findByIdAndUpdate(id, { paymentStatus }, { new: true, runValidators: true });
+    if (!reservation) return res.status(404).json({ success: false, message: 'Reservation not found' });
+    res.status(200).json({ success: true, data: reservation });
+  } catch (error) {
+    console.error('Update dining reservation payment error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update payment status', error: error.message });
+  }
+};
+
+/**
+ * Assign a room to a dining reservation (dashboard)
+ */
+export const assignDiningReservationRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { room } = req.body;
+    if (!room || !String(room).trim()) {
+      return res.status(400).json({ success: false, message: 'room is required' });
+    }
+    const reservation = await DiningReservation.findByIdAndUpdate(
+      id,
+      { roomNumber: String(room).trim() },
+      { new: true, runValidators: true }
+    );
+    if (!reservation) return res.status(404).json({ success: false, message: 'Reservation not found' });
+    res.status(200).json({ success: true, data: reservation });
+  } catch (error) {
+    console.error('Assign dining reservation room error:', error);
+    res.status(500).json({ success: false, message: 'Failed to assign room', error: error.message });
   }
 };

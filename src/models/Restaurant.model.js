@@ -101,6 +101,12 @@ const restaurantSchema = new mongoose.Schema({
   pricingLabel: { type: String },
   tablesPerNight: { type: Number },
   blockedDates: [String],
+  // Date-range blocking used by the F&B Listings dashboard (distinct from the single-date
+  // blockedDates above) — see Experience.model.js's blockedRanges for the same precedent.
+  blockedRanges: [{ start: String, end: String }],
+  availableDays: { type: [String], default: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+  addons: [{ name: String, price: Number, description: String }],
+  menus: [{ label: String, fileUrl: String }],
 }, {
   timestamps: true
 });

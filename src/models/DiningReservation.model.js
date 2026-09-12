@@ -7,6 +7,9 @@ const diningReservationSchema = new mongoose.Schema({
   guestId:        { type: mongoose.Schema.Types.ObjectId, ref: 'Guest' },
   bookingId:      { type: mongoose.Schema.Types.ObjectId, ref: 'Booking' },
   mainStayBookingId: { type: String },
+  // Staff-editable display ref shown in the dashboard reservations table — distinct from
+  // `bookingId` above (the ObjectId ref to the guest's actual stay Booking).
+  reservationRef: { type: String },
   guestName:      { type: String, required: true },
   roomNumber:     { type: String, default: '' },
   date:           { type: String, required: true }, // "YYYY-MM-DD"
@@ -24,6 +27,10 @@ const diningReservationSchema = new mongoose.Schema({
     default: 'pending',
   },
   paidAt: { type: Date },
+  source: { type: String, enum: ['app', 'staff'], default: 'staff' },
+  // Packages a guest (or staff, on their behalf) added at checkout — a snapshot, not a live ref,
+  // since the facility's own addon prices can change after a reservation is made.
+  addons: [{ name: String, price: Number }],
 }, { timestamps: true });
 
 diningReservationSchema.index({ facilityId: 1 });
