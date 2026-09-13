@@ -100,6 +100,13 @@ const restaurantSchema = new mongoose.Schema({
   price: { type: Number },
   pricingLabel: { type: String },
   tablesPerNight: { type: Number },
+  // General operating hours shown to guests — distinct from `slots` below, the actual bookable
+  // reservation windows within those hours.
+  openTime: { type: String, default: '19:00' },
+  closeTime: { type: String, default: '22:00' },
+  // Explicit bookable reservation slots for intimate/bookable facilities — each an explicit
+  // start/end window (e.g. "6:00 am to 8:00 am").
+  slots: [{ name: String, startTime: String, endTime: String, capacity: String, active: { type: Boolean, default: true } }],
   blockedDates: [String],
   // Date-range blocking used by the F&B Listings dashboard (distinct from the single-date
   // blockedDates above) — see Experience.model.js's blockedRanges for the same precedent.
