@@ -151,6 +151,9 @@ import {
 import {
   getPropertySettings,
   updatePropertySettings,
+  getGuestAppSettings,
+  updateGuestAppSettings,
+  uploadPropertySettingsImage,
 } from '../controllers/dashboard/propertySettings.controller.js';
 
 // ==================== GUEST NOTIFICATIONS ====================
@@ -291,6 +294,9 @@ router.put('/transport/hub/bookings/:id/cancel', cancelTransportHubBooking);
 // ==================== PROPERTY SETTINGS ====================
 router.get('/property-settings', getPropertySettings);
 router.put('/property-settings', updatePropertySettings);
+router.post('/property-settings/upload-image', upload.single('image'), uploadPropertySettingsImage);
+router.get('/property-settings/guest-app', getGuestAppSettings);
+router.put('/property-settings/guest-app', updateGuestAppSettings);
 
 // ==================== GUEST NOTIFICATIONS ====================
 router.post('/notifications', createGuestNotification);
