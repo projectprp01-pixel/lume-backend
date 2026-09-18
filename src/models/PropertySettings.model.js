@@ -13,10 +13,32 @@ const directoryEntrySchema = new mongoose.Schema({
   style: { type: String, enum: ['normal', 'urgent', 'whatsapp'], default: 'normal' },
 }, { _id: false });
 
+const ruleSchema = new mongoose.Schema({
+  heading: { type: String, default: '' },
+  body: { type: String, default: '' },
+}, { _id: false });
+
+const facilitySchema = new mongoose.Schema({
+  name: { type: String, default: '' },
+  timing: { type: String, default: '' },
+  days: { type: String, default: '' },
+  photo: { type: String, default: '' },
+}, { _id: false });
+
 const propertySettingsSchema = new mongoose.Schema({
   propertyId: { type: String, default: 'default', unique: true },
+  heroImage: { type: String, default: '' },
+  propertyName: { type: String, default: '' },
   checkInTime: { type: String, default: '14:00' },   // "HH:MM" 24-hour
   checkOutTime: { type: String, default: '11:00' },
+  // About the Property page — freeform story paragraphs and an expandable rules list, both edited
+  // and saved as whole lists from the dashboard's Property Settings > About the Property tab, same
+  // convention as wifi/directory below.
+  story: { type: [String], default: [] },
+  rules: { type: [ruleSchema], default: [] },
+  // Facilities list shown on the guest app's Facilities page — edited and saved as a whole list
+  // from the dashboard's Property Settings > Facilities tab, same convention as wifi/directory.
+  facilities: { type: [facilitySchema], default: [] },
   infantCategory: {
     enabled: { type: Boolean, default: true },
     ageMin:  { type: Number, default: 0 },
