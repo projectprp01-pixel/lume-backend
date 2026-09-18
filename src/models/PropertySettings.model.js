@@ -31,6 +31,10 @@ const propertySettingsSchema = new mongoose.Schema({
   propertyName: { type: String, default: '' },
   checkInTime: { type: String, default: '14:00' },   // "HH:MM" 24-hour
   checkOutTime: { type: String, default: '11:00' },
+  // Directions page — Google Maps link and a freeform multi-line address (guests and the Comms
+  // Hub's pre-stay email card both render it one line per newline).
+  mapsLink: { type: String, default: '' },
+  address: { type: String, default: '' },
   // About the Property page — freeform story paragraphs and an expandable rules list, both edited
   // and saved as whole lists from the dashboard's Property Settings > About the Property tab, same
   // convention as wifi/directory below.
@@ -66,6 +70,11 @@ const propertySettingsSchema = new mongoose.Schema({
   // rigid sub-schema, per docs/backend-integration.md §4.7: this is content/config the dashboard
   // always reads and writes as a whole document, not transactional data queried piecemeal.
   guestApp: { type: mongoose.Schema.Types.Mixed, default: {} },
+  // Comms Hub — pre/in/post-stay Email & WhatsApp templates (each stage/channel keyed to a list of
+  // templates; some emails carry a rich "personalised web app" card instead of plain body text).
+  // Same flexible-blob convention as guestApp above, plus the "From" name shown on outgoing email.
+  commsFromName: { type: String, default: '' },
+  comms: { type: mongoose.Schema.Types.Mixed, default: {} },
 }, { timestamps: true });
 
 export default mongoose.model('PropertySettings', propertySettingsSchema);

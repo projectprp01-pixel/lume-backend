@@ -156,6 +156,9 @@ import {
   uploadPropertySettingsImage,
 } from '../controllers/dashboard/propertySettings.controller.js';
 
+// ==================== COMMS HUB ====================
+import { sendCommsTestEmail } from '../controllers/dashboard/comms.controller.js';
+
 // ==================== GUEST NOTIFICATIONS ====================
 import { createGuestNotification } from '../controllers/dashboard/notification.controller.js';
 
@@ -297,6 +300,9 @@ router.put('/property-settings', updatePropertySettings);
 router.post('/property-settings/upload-image', upload.single('image'), uploadPropertySettingsImage);
 router.get('/property-settings/guest-app', getGuestAppSettings);
 router.put('/property-settings/guest-app', updateGuestAppSettings);
+
+// ==================== COMMS HUB ====================
+router.post('/comms/send-test', sendCommsTestEmail);
 
 // ==================== GUEST NOTIFICATIONS ====================
 router.post('/notifications', createGuestNotification);

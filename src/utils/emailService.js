@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import { RESEND_API_KEY } from '../config/env.js';
 
 const NOTIFY_TO = ['info@evolveback.com'];
-const FROM = 'info@evolveback.com';
+const FROM = 'info@lume-cxm.com';
 const FOOTER = '\n---\nThis is an automated message. Please do not reply.';
 
 async function sendNotificationEmail({ to, subject, text }) {
