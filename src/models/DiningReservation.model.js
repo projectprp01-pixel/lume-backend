@@ -5,10 +5,14 @@ const diningReservationSchema = new mongoose.Schema({
   facilityName:   { type: String, required: true },
   facilityType:   { type: String, enum: ['restaurant', 'intimate_dining'], required: true },
   guestId:        { type: mongoose.Schema.Types.ObjectId, ref: 'Guest' },
+  // Legacy ObjectId ref to the stay's Booking._id — only the guest-facing flow still writes
+  // this. Dashboard-created reservations use mainStayBookingId instead (Booking.bookingId, the
+  // same string used across every hub for this guest).
   bookingId:      { type: mongoose.Schema.Types.ObjectId, ref: 'Booking' },
   mainStayBookingId: { type: String },
-  // Staff-editable display ref shown in the dashboard reservations table — distinct from
-  // `bookingId` above (the ObjectId ref to the guest's actual stay Booking).
+  // This RESERVATION's own staff-editable display ref, needed because one guest stay can have
+  // several dining reservations that must stay individually identifiable — distinct from both
+  // ID fields above.
   reservationRef: { type: String },
   guestName:      { type: String, required: true },
   roomNumber:     { type: String, default: '' },
@@ -37,6 +41,7 @@ diningReservationSchema.index({ facilityId: 1 });
 diningReservationSchema.index({ date: 1 });
 diningReservationSchema.index({ status: 1 });
 diningReservationSchema.index({ propertyId: 1 });
+diningReservationSchema.index({ mainStayBookingId: 1 });
 
 const DiningReservation = mongoose.model('DiningReservation', diningReservationSchema);
 

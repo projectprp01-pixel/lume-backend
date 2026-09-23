@@ -32,6 +32,10 @@ const transportBookingSchema = new mongoose.Schema({
   // ---- Transport Hub (dashboard) ----
   hubBooking: { type: Boolean, default: false }, // true = created via the Transport Hub, not the legacy guest flow
   ref: { type: String }, // display code, e.g. "EB-2026-78432"
+  // The guest's actual hotel stay — Booking.bookingId (String), not the ObjectId `bookingId`
+  // field above (that one belongs to the legacy guest-facing flow and refs Booking._id).
+  // Required for Transport Hub bookings — see createTransportHubBooking.
+  mainStayBookingId: { type: String },
   offeringSlot: { type: Number }, // 1-3; slot 4 (custom) never has a booking record
   vehicleId: { type: mongoose.Schema.Types.ObjectId },
   vehicleName: { type: String, default: '' }, // snapshot at booking time
@@ -43,6 +47,7 @@ const transportBookingSchema = new mongoose.Schema({
 transportBookingSchema.index({ propertyId: 1 });
 transportBookingSchema.index({ guestId: 1 });
 transportBookingSchema.index({ checkOutDate: 1 });
+transportBookingSchema.index({ mainStayBookingId: 1 });
 
 const TransportBooking = mongoose.model('TransportBooking', transportBookingSchema);
 

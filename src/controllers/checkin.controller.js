@@ -1,7 +1,7 @@
 import CheckIn from '../models/CheckIn.model.js';
 import Booking from '../models/Booking.model.js';
 import Guest from '../models/Guest.model.js';
-import { uploadToCloudinary } from '../utils/cloudinaryUpload.js';
+import { uploadToR2 } from '../utils/r2Upload.js';
 import { sendCheckInSubmittedEmail, toISTDate } from '../utils/emailService.js';
 
 /**
@@ -187,10 +187,11 @@ export const uploadGuestID = async (req, res) => {
     const idFront = req.files.idFront[0];
     const idBack = req.files.idBack ? req.files.idBack[0] : null;
 
-    // Upload to Cloudinary in parallel
+    // Upload to Cloudflare R2 in parallel — guest IDs are PDFs (or images), so the content type
+    // must ride along with the buffer rather than being inferred, unlike the image-only routes.
     const [idFrontUrl, idBackUrl] = await Promise.all([
-      uploadToCloudinary(idFront.buffer, `checkin-ids/${checkInId}`),
-      idBack ? uploadToCloudinary(idBack.buffer, `checkin-ids/${checkInId}`) : Promise.resolve(null),
+      uploadToR2(idFront.buffer, `checkin-ids/${checkInId}`, idFront.mimetype),
+      idBack ? uploadToR2(idBack.buffer, `checkin-ids/${checkInId}`, idBack.mimetype) : Promise.resolve(null),
     ]);
 
     // Find check-in and update

@@ -31,6 +31,12 @@ const propertySettingsSchema = new mongoose.Schema({
   propertyName: { type: String, default: '' },
   checkInTime: { type: String, default: '14:00' },   // "HH:MM" 24-hour
   checkOutTime: { type: String, default: '11:00' },
+  // Check-in Hub's "Check-in Instructions" card — shown to guests on the Online Check-in screen,
+  // above the per-guest name/ID upload fields (see App Flow (3).pdf Step 6).
+  checkInInstructions: {
+    type: String,
+    default: 'Please submit the documents of all guests. Progress will be saved.\n\nForeign nationals: Passport\nIndian citizens: PAN or Aadhaar',
+  },
   // Directions page — Google Maps link and a freeform multi-line address (guests and the Comms
   // Hub's pre-stay email card both render it one line per newline).
   mapsLink: { type: String, default: '' },

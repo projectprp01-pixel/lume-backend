@@ -3,6 +3,7 @@ import upload from '../middleware/upload.js';
 import uploadVideo from '../middleware/uploadVideo.js';
 import { authenticate, requireRole } from '../middleware/auth.js';
 import { resetStaffPassword } from '../controllers/auth.controller.js';
+import { lookupMainStayBooking, getStayActivity } from '../controllers/dashboard/mainStay.controller.js';
 
 // ==================== CHECK-IN HUB ====================
 import {
@@ -10,6 +11,8 @@ import {
   getAllBookings,
   getSubmittedCheckIns,
   reviewCheckIn,
+  reviewGuestDocument,
+  assignCheckInRoom,
 } from '../controllers/dashboard/checkin.controller.js';
 
 // ==================== EXPERIENCE HUB ====================
@@ -167,11 +170,20 @@ const router = express.Router();
 // All dashboard routes require a valid JWT
 router.use(authenticate);
 
+// ==================== SHARED: STAY LOOKUP ====================
+// Used by every hub's "Add Booking" dialog to verify/preview a staff-entered Booking ID
+// before creating a Spa/Transport/Experience/Dining booking linked to it.
+router.get('/bookings/lookup', lookupMainStayBooking);
+// "Everything about this guest's stay, one fetch" — see getStayActivity's doc comment.
+router.get('/bookings/:bookingId/activity', getStayActivity);
+
 // ==================== CHECK-IN HUB ====================
 router.get('/checkin/arrivals', getDailyArrivals);
 router.get('/checkin/bookings', getAllBookings); // Get all bookings (not filtered by date)
 router.get('/checkin/submitted', getSubmittedCheckIns);
 router.put('/checkin/:checkInId/review', reviewCheckIn);
+router.put('/checkin/:checkInId/guest/:guestNumber/review', reviewGuestDocument);
+router.put('/checkin/bookings/:bookingId/room', assignCheckInRoom);
 
 // ==================== EXPERIENCE HUB ====================
 router.get('/experiences', getAllExperiences);

@@ -4,6 +4,7 @@ import TransportBooking from '../../models/TransportBooking.model.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 import { toISTDate } from '../../utils/emailService.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
+import { resolveMainStayBooking } from '../../utils/mainStay.js';
 
 // ==================== TRANSPORT HUB ====================
 
@@ -333,16 +334,25 @@ export const getTransportHubBookings = async (req, res) => {
 
 export const createTransportHubBooking = async (req, res) => {
   try {
-    const { propertyId = 'default', guestName, offeringSlot, vehicleId, vehicleName, date, price, paymentStatus } = req.body;
+    const { propertyId = 'default', mainStayBookingId, offeringSlot, vehicleId, vehicleName, date, price, paymentStatus } = req.body;
 
-    if (!guestName || !offeringSlot || price == null) {
-      return res.status(400).json({ success: false, message: 'guestName, offeringSlot, and price are required' });
+    if (!offeringSlot || price == null) {
+      return res.status(400).json({ success: false, message: 'offeringSlot and price are required' });
     }
+
+    // Link to the guest's real stay — see docs/backend-integration.md's "coherent booking
+    // system" note. guestName/room are derived from it, not free-typed, so this hub can't drift
+    // from what Check-in Hub/Guest Management show for the same guest.
+    const { booking: mainStay, error } = await resolveMainStayBooking(mainStayBookingId);
+    if (error) return res.status(error.status).json({ success: false, message: error.message });
 
     const checkInDate = date ? new Date(date) : new Date();
 
     const transportBooking = await TransportBooking.create({
-      guestName,
+      guestId: mainStay.guestId,
+      mainStayBookingId: mainStay.bookingId,
+      guestName: mainStay.primaryGuestName,
+      room: mainStay.roomNumber || '',
       checkInDate,
       amount: Number(price),
       status: 'confirmed',

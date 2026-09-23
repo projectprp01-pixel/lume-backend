@@ -2,6 +2,7 @@ import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
+import { resolveMainStayBooking } from '../../utils/mainStay.js';
 
 // ==================== SPA HUB ====================
 
@@ -194,12 +195,22 @@ export const getSpaBookings = async (req, res) => {
  */
 export const createManualSpaBooking = async (req, res) => {
   try {
+    const { mainStayBookingId, paymentStatus, guestName, room, ...rest } = req.body;
+
+    // Every hub booking must link back to the guest's real stay — see docs/backend-integration.md's
+    // "coherent booking system" note. guestName/room come from that stay, not the free-typed form,
+    // so they can't drift from what Check-in Hub/Guest Management show for the same guest.
+    const { booking: mainStay, error } = await resolveMainStayBooking(mainStayBookingId);
+    if (error) return res.status(error.status).json({ success: false, message: error.message });
+
     const bookingId = `SPA-${Date.now()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-    const { mainStayBookingId, paymentStatus, ...rest } = req.body;
     const booking = await SpaBooking.create({
       ...rest,
       bookingId,
-      mainBookingId: mainStayBookingId || undefined,
+      mainStayBookingId: mainStay.bookingId,
+      guestId: mainStay.guestId,
+      guestName: mainStay.primaryGuestName,
+      room: mainStay.roomNumber || '',
       source: 'staff',
       // Staff can mark a manual booking as already paid (e.g. collected at the desk);
       // otherwise it defaults to the schema's 'pending'.

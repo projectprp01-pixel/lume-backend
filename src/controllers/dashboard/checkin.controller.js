@@ -1,6 +1,7 @@
 import Booking from '../../models/Booking.model.js';
 import CheckIn from '../../models/CheckIn.model.js';
 import Notification from '../../models/Notification.model.js';
+import { propagateRoomToLinkedBookings } from '../../utils/mainStay.js';
 
 // ==================== CHECK-IN HUB ====================
 
@@ -96,15 +97,17 @@ export const getAllBookings = async (req, res) => {
 };
 
 /**
- * Get submitted check-ins for review
+ * Get submitted check-ins for review. `all=true` drops the status filter entirely (used by the
+ * Check-in Hub dashboard table, which needs every CheckIn — including ones still at 'initiated' —
+ * to merge against the full arrivals list); without it, behaves as before (submitted-and-beyond only).
  */
 export const getSubmittedCheckIns = async (req, res) => {
   try {
-    const { propertyId, approvalStatus } = req.query;
+    const { propertyId, approvalStatus, all } = req.query;
 
-    const filter = {
-      status: { $in: ['pending-review', 'documents-uploaded', 'approved', 'rejected'] }
-    };
+    const filter = all === 'true'
+      ? {}
+      : { status: { $in: ['pending-review', 'documents-uploaded', 'approved', 'rejected'] } };
 
     if (approvalStatus) {
       filter.approvalStatus = approvalStatus;
@@ -204,6 +207,137 @@ export const reviewCheckIn = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to review check-in',
+      error: error.message
+    });
+  }
+};
+
+/**
+ * Approve or reject one guest's ID within a check-in — per-guest granularity, since a family
+ * booking can have some guests approved, some still pending, and one rejected all at once (the
+ * dashboard's per-booking Check-in Status is derived from this, never set directly). The
+ * guestDocuments subdocument already carries verified/rejectionReason per guest; reviewCheckIn
+ * above only ever wrote the whole check-in's top-level approvalStatus, which can't represent that.
+ */
+export const reviewGuestDocument = async (req, res) => {
+  try {
+    const { checkInId, guestNumber } = req.params;
+    const { verified, rejectionReason, staffId } = req.body;
+
+    const checkIn = await CheckIn.findById(checkInId);
+    if (!checkIn) {
+      return res.status(404).json({
+        success: false,
+        message: 'Check-in not found'
+      });
+    }
+
+    const doc = checkIn.guestDocuments.find((d) => d.guestNumber === parseInt(guestNumber));
+    if (!doc) {
+      return res.status(404).json({
+        success: false,
+        message: 'No uploaded document found for that guest'
+      });
+    }
+
+    doc.verified = !!verified;
+    doc.rejectionReason = verified ? undefined : (rejectionReason || 'Please resubmit your documents.');
+    doc.verifiedAt = new Date();
+    if (staffId && /^[a-f\d]{24}$/i.test(staffId)) {
+      doc.verifiedBy = staffId;
+    }
+
+    // The check-in's own status is derived from every guest's state, same rule the dashboard
+    // itself uses: any guest rejected reads as rejected regardless of how many others are
+    // approved; only every guest submitted AND approved reads as approved.
+    const allDocs = checkIn.guestDocuments;
+    const anyRejected = allDocs.some((d) => !!d.rejectionReason);
+    const allApproved = allDocs.length === checkIn.totalGuests && allDocs.every((d) => d.verified);
+    checkIn.approvalStatus = anyRejected ? 'rejected' : allApproved ? 'approved' : 'pending';
+    if (anyRejected) {
+      checkIn.status = 'rejected';
+    } else if (allApproved) {
+      checkIn.status = 'approved';
+      checkIn.completedAt = new Date();
+    } else {
+      checkIn.status = 'documents-uploaded';
+    }
+
+    await checkIn.save();
+
+    await Booking.findOneAndUpdate(
+      { bookingId: checkIn.bookingId },
+      { checkInStatus: anyRejected ? 'rejected' : allApproved ? 'approved' : 'submitted' }
+    );
+
+    if (!verified) {
+      await Notification.create({
+        guestId: checkIn.guestId,
+        title: 'Check-in Action Required',
+        message: `Your ID was not approved. Reason: ${doc.rejectionReason}`,
+        type: 'warning',
+        relatedId: checkIn._id.toString(),
+        relatedType: 'check-in'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Guest ${guestNumber} ${verified ? 'approved' : 'rejected'} successfully`,
+      data: checkIn
+    });
+  } catch (error) {
+    console.error('Review guest document error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to review guest document',
+      error: error.message
+    });
+  }
+};
+
+/**
+ * Assign a room number to one room within a (possibly multi-room) booking. Booking.roomType and
+ * Booking.roomNumber are single comma-joined strings, not a per-room array (there is no per-room
+ * subdocument in the schema) — this reads/writes that convention at a given index so multi-room
+ * bookings can be resolved room-by-room, matching the assign-room pattern already used by the
+ * Spa/Transport/Experiences booking routes.
+ */
+export const assignCheckInRoom = async (req, res) => {
+  try {
+    const { bookingId } = req.params;
+    const { roomIndex, number } = req.body;
+
+    const booking = await Booking.findOne({ bookingId });
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+
+    const types = (booking.roomType || '').split(',').map((s) => s.trim()).filter(Boolean);
+    const numbers = (booking.roomNumber || '').split(',').map((s) => s.trim());
+    while (numbers.length < types.length) numbers.push('');
+    numbers[roomIndex] = number;
+
+    booking.roomNumber = numbers.slice(0, types.length).join(', ');
+    await booking.save();
+
+    // Room reassignment shouldn't leave Spa/Transport/Experience/Dining bookings pointing at a
+    // stale room — see docs/backend-integration.md's "coherent booking system" note.
+    await propagateRoomToLinkedBookings(booking.bookingId, booking.roomNumber);
+
+    res.status(200).json({
+      success: true,
+      message: 'Room assigned successfully',
+      data: booking
+    });
+  } catch (error) {
+    console.error('Assign check-in room error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to assign room',
       error: error.message
     });
   }

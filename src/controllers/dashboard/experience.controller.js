@@ -1,10 +1,11 @@
-import Booking from '../../models/Booking.model.js';
 import Experience from '../../models/Experience.model.js';
 import ExperienceBooking from '../../models/ExperienceBooking.model.js';
 import ExperienceDiscount from '../../models/ExperienceDiscount.model.js';
+import Guest from '../../models/Guest.model.js';
 import { uploadToR2 } from '../../utils/r2Upload.js';
 import { remuxForFaststart } from '../../utils/videoProcessing.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
+import { resolveMainStayBooking } from '../../utils/mainStay.js';
 
 // ==================== EXPERIENCE HUB ====================
 
@@ -98,12 +99,8 @@ export const createManualBooking = async (req, res) => {
       date,
       timeSlot,
       numberOfGuests,
-      guestName,
-      guestEmail,
-      guestPhone,
       adminNotes,
       mainStayBookingId,
-      room,
       addons,
       price, // optional override — staff can type "Complimentary"/a custom amount in the Add Booking modal
       paymentStatus,
@@ -116,6 +113,13 @@ export const createManualBooking = async (req, res) => {
         message: 'Experience not found'
       });
     }
+
+    // Link to the guest's real stay — see docs/backend-integration.md's "coherent booking
+    // system" note. guestName/room/contact info are derived from it, not free-typed, so this hub
+    // can't drift from what Check-in Hub/Guest Management show for the same guest.
+    const { booking: mainStay, error: mainStayError } = await resolveMainStayBooking(mainStayBookingId);
+    if (mainStayError) return res.status(mainStayError.status).json({ success: false, message: mainStayError.message });
+    const guest = mainStay.guestId ? await Guest.findById(mainStay.guestId).lean() : null;
 
     // Staff can type/edit their own booking ref (Experience Hub's "Add Booking" modal);
     // fall back to a generated one if left blank, same as before.
@@ -137,13 +141,6 @@ export const createManualBooking = async (req, res) => {
       totalAmount = unitPrice * (numberOfGuests || 1);
     }
 
-    // Resolve guestId from mainStayBookingId if provided
-    let resolvedGuestId;
-    if (mainStayBookingId) {
-      const mainBooking = await Booking.findOne({ bookingId: mainStayBookingId }).lean();
-      if (mainBooking) resolvedGuestId = mainBooking.guestId;
-    }
-
     const booking = await ExperienceBooking.create({
       bookingId,
       experienceId,
@@ -154,17 +151,17 @@ export const createManualBooking = async (req, res) => {
       unitPrice,
       totalAmount,
       currency: experience.pricing.currency,
-      guestName,
-      guestEmail,
-      guestPhone,
+      guestName: mainStay.primaryGuestName,
+      guestEmail: guest?.email,
+      guestPhone: guest?.mobileNumber,
       // Manual bookings default to Payment Pending — staff mark it Completed once they've
       // collected payment, same as the prototype's Add Booking modal.
       paymentStatus: paymentStatus === 'paid' ? 'paid' : 'pending',
       bookingStatus: 'confirmed',
       adminNotes,
-      mainStayBookingId: mainStayBookingId || undefined,
-      guestId: resolvedGuestId || undefined,
-      room: room || '',
+      mainStayBookingId: mainStay.bookingId,
+      guestId: mainStay.guestId,
+      room: mainStay.roomNumber || '',
       source: 'staff',
       addons: Array.isArray(addons) ? addons : [],
     });

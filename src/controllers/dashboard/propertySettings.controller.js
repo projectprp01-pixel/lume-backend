@@ -44,7 +44,7 @@ export const getPropertySettings = async (req, res) => {
 export const updatePropertySettings = async (req, res) => {
   try {
     const { propertyId = 'default' } = req.query;
-    const allowed = ['checkInTime', 'checkOutTime', 'infantCategory', 'childCategory', 'notificationEmails', 'galleryCategories', 'wifi', 'directory', 'heroImage', 'propertyName', 'story', 'rules', 'facilities', 'mapsLink', 'address', 'commsFromName', 'comms'];
+    const allowed = ['checkInTime', 'checkOutTime', 'checkInInstructions', 'infantCategory', 'childCategory', 'notificationEmails', 'galleryCategories', 'wifi', 'directory', 'heroImage', 'propertyName', 'story', 'rules', 'facilities', 'mapsLink', 'address', 'commsFromName', 'comms'];
     const updates = {};
     for (const key of allowed) {
       if (req.body[key] !== undefined) updates[key] = req.body[key];

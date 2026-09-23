@@ -1,0 +1,155 @@
+{
+  "_note": "Dry-run preview only — not yet written to MongoDB. Generated to demonstrate the mainStayBookingId linkage added in the coherent-booking-system fix. Each record below links to one of the existing Check-in Hub seed stays (scripts/seed-checkin-hub.js) via mainStayBookingId, and guestName/room are copied verbatim from that stay — exactly what createManualSpaBooking / createTransportHubBooking / createManualBooking / createManualDiningReservation now do server-side instead of trusting free-typed form fields.",
+  "propertyId": "default",
+  "propertyName": "Evolve Back Resort Coorg",
+
+  "stays": [
+    {
+      "bookingId": "CKN-ROHIT-SHARMA",
+      "primaryGuestName": "Rohit Sharma",
+      "roomType": "Cottage",
+      "roomNumber": "Cottage 112",
+      "note": "Room already assigned — every linked booking below shows the same room."
+    },
+    {
+      "bookingId": "CKN-DIVYA-REDDY",
+      "primaryGuestName": "Divya Reddy",
+      "roomType": "Cottage",
+      "roomNumber": null,
+      "note": "Room NOT assigned yet — the linked Spa booking's room is correctly blank, not guessed, and will backfill automatically once Check-in Hub assigns one (assignCheckInRoom's propagateRoomToLinkedBookings)."
+    },
+    {
+      "bookingId": "CKN-IYER-FAMILY",
+      "primaryGuestName": "The Iyer Family",
+      "roomType": "Pool Villa, Coffee Cottage",
+      "roomNumber": "Pool Villa 1, ",
+      "note": "Multi-room booking — Booking.roomNumber is a raw comma-joined string, and that exact string flows through unchanged, including the trailing comma. Pre-existing rough edge, not something this fix introduced or hid."
+    },
+    {
+      "bookingId": "CKN-NEHA-KAPOOR",
+      "primaryGuestName": "Neha Kapoor",
+      "roomType": "Villa",
+      "roomNumber": "Villa 4",
+      "note": "Single room, straightforward case."
+    }
+  ],
+
+  "spaBookings": [
+    {
+      "bookingId": "SPA-1758812400-A1B2",
+      "mainStayBookingId": "CKN-ROHIT-SHARMA",
+      "guestId": "<Rohit Sharma's Guest._id, resolved server-side from the stay>",
+      "guestName": "Rohit Sharma",
+      "room": "Cottage 112",
+      "treatmentId": "<real SpaBooking treatment ObjectId>",
+      "treatmentName": "Deep Tissue Massage",
+      "categoryName": "Massages",
+      "numberOfGuests": 1,
+      "date": "2026-09-25",
+      "timeSlot": "16:00",
+      "price": 3500,
+      "propertyId": "default",
+      "status": "Upcoming",
+      "paymentStatus": "pending",
+      "source": "staff"
+    },
+    {
+      "bookingId": "SPA-1758812401-C3D4",
+      "mainStayBookingId": "CKN-DIVYA-REDDY",
+      "guestId": "<Divya Reddy's Guest._id>",
+      "guestName": "Divya Reddy",
+      "room": "",
+      "treatmentId": "<real SpaBooking treatment ObjectId>",
+      "treatmentName": "Aromatherapy",
+      "categoryName": "Wellness",
+      "numberOfGuests": 1,
+      "date": "2026-09-24",
+      "timeSlot": "11:00",
+      "price": 2800,
+      "propertyId": "default",
+      "status": "Upcoming",
+      "paymentStatus": "pending",
+      "source": "staff"
+    }
+  ],
+
+  "transportBookings": [
+    {
+      "guestId": "<Rohit Sharma's Guest._id>",
+      "mainStayBookingId": "CKN-ROHIT-SHARMA",
+      "guestName": "Rohit Sharma",
+      "room": "Cottage 112",
+      "checkInDate": "2026-09-23",
+      "amount": 1800,
+      "status": "confirmed",
+      "propertyId": "default",
+      "paymentStatus": "pending",
+      "hubBooking": true,
+      "ref": "EB-2026-40217",
+      "offeringSlot": 1,
+      "vehicleId": "<real Vehicle ObjectId>",
+      "vehicleName": "Sedan",
+      "source": "staff"
+    },
+    {
+      "guestId": "<Iyer Family's Guest._id>",
+      "mainStayBookingId": "CKN-IYER-FAMILY",
+      "guestName": "The Iyer Family",
+      "room": "Pool Villa 1, ",
+      "checkInDate": "2026-09-23",
+      "amount": 2400,
+      "status": "confirmed",
+      "propertyId": "default",
+      "paymentStatus": "paid",
+      "hubBooking": true,
+      "ref": "EB-2026-40218",
+      "offeringSlot": 2,
+      "vehicleId": "<real Vehicle ObjectId>",
+      "vehicleName": "SUV",
+      "source": "staff"
+    }
+  ],
+
+  "experienceBookings": [
+    {
+      "bookingId": "MANUAL-1758812402-E5F6",
+      "mainStayBookingId": "CKN-IYER-FAMILY",
+      "guestId": "<Iyer Family's Guest._id>",
+      "experienceId": "<real Experience ObjectId>",
+      "experienceName": "Coffee Plantation Walk",
+      "guestName": "The Iyer Family",
+      "guestEmail": "seed.iyer.family@example.com",
+      "guestPhone": "9800000000",
+      "room": "Pool Villa 1, ",
+      "date": "2026-09-24",
+      "timeSlot": "07:30",
+      "numberOfGuests": 4,
+      "unitPrice": 500,
+      "totalAmount": 2000,
+      "currency": "INR",
+      "paymentStatus": "pending",
+      "bookingStatus": "confirmed",
+      "source": "staff"
+    }
+  ],
+
+  "diningReservations": [
+    {
+      "facilityId": "<real Restaurant ObjectId, facilityType=intimate_dining>",
+      "facilityName": "Intimate Dining by the Lake",
+      "facilityType": "intimate_dining",
+      "reservationRef": "300082614311",
+      "guestId": "<Neha Kapoor's Guest._id>",
+      "mainStayBookingId": "CKN-NEHA-KAPOOR",
+      "guestName": "Neha Kapoor",
+      "roomNumber": "Villa 4",
+      "date": "2026-09-24",
+      "numberOfGuests": 2,
+      "status": "confirmed",
+      "propertyId": "default",
+      "amount": 4500,
+      "paymentStatus": "pending",
+      "source": "staff"
+    }
+  ]
+}

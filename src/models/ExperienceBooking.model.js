@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const experienceBookingSchema = new mongoose.Schema({
+  // This EXPERIENCE BOOKING's own unique reference, needed because one guest stay can have
+  // several experience bookings that must stay individually cancelable/trackable. NOT the
+  // guest's stay — that's mainStayBookingId below, which is the same value across every hub for
+  // one guest (Booking.bookingId / CheckIn.bookingId).
   bookingId: {
     type: String,
     required: true,
@@ -18,7 +22,9 @@ const experienceBookingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Guest'
   },
-  // Main booking reference (hotel stay)
+  // Legacy ObjectId ref to the stay's Booking._id — only the guest-facing Razorpay flow
+  // (controllers/experience.controller.js) still writes this. Dashboard-created bookings use
+  // mainStayBookingId below instead (Booking.bookingId, the same string used everywhere else).
   mainBookingId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Booking'
@@ -102,6 +108,7 @@ experienceBookingSchema.index({ guestId: 1 });
 experienceBookingSchema.index({ date: 1 });
 experienceBookingSchema.index({ paymentStatus: 1 });
 experienceBookingSchema.index({ bookingStatus: 1 });
+experienceBookingSchema.index({ mainStayBookingId: 1 });
 
 const ExperienceBooking = mongoose.model('ExperienceBooking', experienceBookingSchema);
 

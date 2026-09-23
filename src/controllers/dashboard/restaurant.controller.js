@@ -2,6 +2,7 @@ import DiningReservation from '../../models/DiningReservation.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
 import { uploadToR2 } from '../../utils/r2Upload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
+import { resolveMainStayBooking } from '../../utils/mainStay.js';
 
 // ==================== RESTAURANT/DINING HUB ====================
 
@@ -214,11 +215,17 @@ export const cancelDiningReservation = async (req, res) => {
  */
 export const createManualDiningReservation = async (req, res) => {
   try {
-    const { facilityId, facilityName, facilityType, guestName, date, numberOfGuests, propertyId, roomNumber, mainStayBookingId, paymentStatus, addons, reservationRef } = req.body;
+    const { facilityId, facilityName, facilityType, date, numberOfGuests, propertyId, mainStayBookingId, paymentStatus, addons, reservationRef } = req.body;
 
-    if (!facilityId || !guestName || !date || !numberOfGuests) {
-      return res.status(400).json({ success: false, message: 'facilityId, guestName, date, and numberOfGuests are required' });
+    if (!facilityId || !date || !numberOfGuests) {
+      return res.status(400).json({ success: false, message: 'facilityId, date, and numberOfGuests are required' });
     }
+
+    // Link to the guest's real stay — see docs/backend-integration.md's "coherent booking
+    // system" note. guestName/roomNumber are derived from it, not free-typed, so this hub can't
+    // drift from what Check-in Hub/Guest Management show for the same guest.
+    const { booking: mainStay, error: mainStayError } = await resolveMainStayBooking(mainStayBookingId);
+    if (mainStayError) return res.status(mainStayError.status).json({ success: false, message: mainStayError.message });
 
     // Capacity check for intimate dining
     if (facilityType === 'intimate_dining') {
@@ -245,14 +252,15 @@ export const createManualDiningReservation = async (req, res) => {
       facilityName,
       facilityType,
       reservationRef: reservationRef || undefined,
-      guestName,
+      guestId: mainStay.guestId,
+      guestName: mainStay.primaryGuestName,
       date,
       numberOfGuests,
       propertyId: propertyId || 'default',
-      roomNumber: roomNumber || '',
+      roomNumber: mainStay.roomNumber || '',
       status: 'confirmed',
       paymentStatus: paymentStatus === 'paid' ? 'paid' : 'pending',
-      mainStayBookingId: mainStayBookingId || undefined,
+      mainStayBookingId: mainStay.bookingId,
       amount: req.body.price ?? req.body.amount,
       source: 'staff',
       addons: Array.isArray(addons) ? addons : undefined,
