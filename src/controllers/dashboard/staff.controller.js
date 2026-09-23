@@ -1,33 +1,28 @@
 import Staff from '../../models/Staff.model.js';
+import StaffActivityLog from '../../models/StaffActivityLog.model.js';
 import { sendNewStaffAddedEmail } from '../../utils/emailService.js';
+import { canManageTier, describeStaffTier, logStaffAction } from '../../utils/staffLog.js';
 
 // ==================== STAFF MANAGEMENT ====================
-
-// Role → permissions + department mapping (used in addStaff and updateStaff)
-const ROLE_CONFIG = {
-  'Admin':              { department: 'management',    canApproveCheckIns: true,  canManageExperiences: true,  canManageBookings: true,  canManageGuests: true,  canViewAnalytics: true,  canManageStaff: true  },
-  'Front Desk':         { department: 'front-desk',    canApproveCheckIns: true,  canManageExperiences: true,  canManageBookings: true,  canManageGuests: true,  canViewAnalytics: false, canManageStaff: false },
-  'Restaurant Manager': { department: 'food-beverage', canApproveCheckIns: false, canManageExperiences: false, canManageBookings: true,  canManageGuests: false, canViewAnalytics: false, canManageStaff: false },
-  'Spa Manager':        { department: 'spa',           canApproveCheckIns: false, canManageExperiences: false, canManageBookings: true,  canManageGuests: false, canViewAnalytics: false, canManageStaff: false },
-  'Trainee':            { department: 'management',    canApproveCheckIns: false, canManageExperiences: false, canManageBookings: false, canManageGuests: false, canViewAnalytics: false, canManageStaff: false },
-};
+// See Staff Management PRD (App Flow doc): three tiers (Admin/GM/Staff), fully custom
+// departments/roles, "who can manage whom" enforced here (route-level requireTier only
+// gates who can reach these endpoints at all — the finer-grained per-target checks
+// below are data-dependent and can't live in middleware).
 
 /**
- * Get all staff
+ * Get all staff for a property. Admin/GM accounts are cross-property by design (Staff
+ * Management PRD: Admin/GM aren't scoped to a department), so they're always included
+ * alongside whichever property's Staff rows were requested.
  */
 export const getAllStaff = async (req, res) => {
   try {
-    const { role, department, propertyId, isActive } = req.query;
+    const { propertyId, isActive } = req.query;
 
     const filter = {};
-
-    if (role) filter.role = role;
-    if (department) filter.department = department;
-    // Admins are cross-property — always include them alongside the requested property
-    if (propertyId) filter.$or = [{ propertyId }, { role: 'Admin' }];
+    if (propertyId) filter.$or = [{ propertyId }, { tier: { $in: ['Admin', 'GM'] } }];
     if (isActive !== undefined) filter.isActive = isActive === 'true';
 
-    const staff = await Staff.find(filter).sort({ createdAt: -1 });
+    const staff = await Staff.find(filter).sort({ createdAt: 1 });
 
     res.status(200).json({
       success: true,
@@ -45,23 +40,40 @@ export const getAllStaff = async (req, res) => {
 };
 
 /**
- * Add new staff
+ * Add new staff. Route already requires the caller be Admin or GM
+ * (requireTier('Admin','GM')); this enforces the finer "who can manage whom" rule —
+ * a GM can stand up another GM or any department staff, but never an Admin.
  */
 export const addStaff = async (req, res) => {
   try {
-    const config = ROLE_CONFIG[req.body.role] || {};
-    const { department, ...permissions } = config;
-    const staffData = {
-      propertyId: 'default',
-      ...req.body,
-      department: department || req.body.department || 'management',
-      permissions,
-    };
-    const staff = await Staff.create(staffData);
+    const { firstName, lastName, email, password, phone, tier, department, role, propertyId, propertyName } = req.body;
+    const targetTier = tier === 'Admin' || tier === 'GM' ? tier : 'Staff';
+
+    if (!canManageTier(req.staff.tier, targetTier)) {
+      return res.status(403).json({ success: false, message: `A ${req.staff.tier} cannot create a ${targetTier} account.` });
+    }
+    if (targetTier === 'Staff' && (!department || !role)) {
+      return res.status(400).json({ success: false, message: 'Department and role are required for a Staff account.' });
+    }
+
+    const staff = await Staff.create({
+      firstName,
+      lastName,
+      email,
+      password,
+      phone,
+      tier: targetTier,
+      department: targetTier === 'Staff' ? department : undefined,
+      role: targetTier === 'Staff' ? role : undefined,
+      propertyId: propertyId || req.staff.propertyId || 'default',
+      propertyName,
+    });
+
+    await logStaffAction(staff.propertyId, req.staff, `Added new staff member — ${staff.firstName} ${staff.lastName}, ${describeStaffTier(staff)}.`);
 
     sendNewStaffAddedEmail({
       newStaffName: `${staff.firstName} ${staff.lastName}`,
-      role: staff.role,
+      role: describeStaffTier(staff),
       addedAt: new Date(),
       addedByName: `${req.staff.firstName} ${req.staff.lastName}`,
       propertyName: staff.propertyName || 'Evolve Back',
@@ -84,36 +96,55 @@ export const addStaff = async (req, res) => {
 };
 
 /**
- * Update staff
+ * Update staff. Checked against both the target's CURRENT tier (can the viewer touch
+ * this row at all) and, if the update changes tier, the NEW tier too (a GM can't
+ * promote someone to Admin any more than they could have created one directly).
  */
 export const updateStaff = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const { password: _pw, ...safeBody } = req.body;
-    const updates = { ...safeBody };
-    if (updates.role && ROLE_CONFIG[updates.role]) {
-      const { department, ...permissions } = ROLE_CONFIG[updates.role];
-      updates.department = department;
-      updates.permissions = permissions;
+    const target = await Staff.findById(id);
+    if (!target) {
+      return res.status(404).json({ success: false, message: 'Staff not found' });
+    }
+    if (!canManageTier(req.staff.tier, target.tier)) {
+      return res.status(403).json({ success: false, message: `A ${req.staff.tier} cannot edit this account.` });
     }
 
-    const staff = await Staff.findByIdAndUpdate(id, updates, {
-      new: true,
-      runValidators: true
+    const { password: _pw, tier, department, role, isActive, ...rest } = req.body;
+    const nextTier = tier === 'Admin' || tier === 'GM' || tier === 'Staff' ? tier : target.tier;
+    if (!canManageTier(req.staff.tier, nextTier)) {
+      return res.status(403).json({ success: false, message: `A ${req.staff.tier} cannot grant a ${nextTier} account.` });
+    }
+    const nextDepartment = nextTier === 'Staff' ? (department ?? target.department) : undefined;
+    const nextRole = nextTier === 'Staff' ? (role ?? target.role) : undefined;
+    if (nextTier === 'Staff' && (!nextDepartment || !nextRole)) {
+      return res.status(400).json({ success: false, message: 'Department and role are required for a Staff account.' });
+    }
+
+    // Deliberate, not silent: a property can never be left with zero Active Admins or
+    // zero Active GMs (Staff Management PRD's Open Questions flags this explicitly).
+    if (isActive === false && target.isActive && target.tier !== 'Staff') {
+      const activeCount = await Staff.countDocuments({ tier: target.tier, isActive: true });
+      if (activeCount <= 1) {
+        return res.status(400).json({ success: false, message: `Can't deactivate the last remaining ${target.tier} account.` });
+      }
+    }
+
+    Object.assign(target, rest, {
+      tier: nextTier,
+      department: nextDepartment,
+      role: nextRole,
+      ...(isActive !== undefined ? { isActive } : {}),
     });
+    await target.save();
 
-    if (!staff) {
-      return res.status(404).json({
-        success: false,
-        message: 'Staff not found'
-      });
-    }
+    await logStaffAction(target.propertyId, req.staff, `Edited staff member — ${target.firstName} ${target.lastName}, now ${describeStaffTier(target)}.`);
 
     res.status(200).json({
       success: true,
       message: 'Staff updated successfully',
-      data: staff
+      data: target
     });
   } catch (error) {
     console.error('Update staff error:', error);
@@ -126,16 +157,47 @@ export const updateStaff = async (req, res) => {
 };
 
 /**
- * Delete staff member
+ * Delete (remove) a staff member. Same "who can manage whom" + last-remaining-tier
+ * guard as updateStaff's deactivate path.
  */
 export const deleteStaff = async (req, res) => {
   try {
     const { id } = req.params;
-    const staff = await Staff.findByIdAndDelete(id);
-    if (!staff) return res.status(404).json({ success: false, message: 'Staff not found' });
+    const target = await Staff.findById(id);
+    if (!target) return res.status(404).json({ success: false, message: 'Staff not found' });
+    if (!canManageTier(req.staff.tier, target.tier)) {
+      return res.status(403).json({ success: false, message: `A ${req.staff.tier} cannot remove this account.` });
+    }
+    if (target.isActive && target.tier !== 'Staff') {
+      const activeCount = await Staff.countDocuments({ tier: target.tier, isActive: true });
+      if (activeCount <= 1) {
+        return res.status(400).json({ success: false, message: `Can't remove the last remaining ${target.tier} account.` });
+      }
+    }
+
+    await Staff.findByIdAndDelete(id);
+    await logStaffAction(target.propertyId, req.staff, `Removed staff member — ${target.firstName} ${target.lastName}, ${describeStaffTier(target)}.`);
     res.status(200).json({ success: true, message: 'Staff member removed' });
   } catch (error) {
     console.error('Delete staff error:', error);
     res.status(500).json({ success: false, message: 'Failed to delete staff', error: error.message });
+  }
+};
+
+/**
+ * Staff Log — append-only, Admin-only (route requires requireTier('Admin'); GM is
+ * deliberately excluded, per Staff Management PRD Step 5).
+ */
+export const getStaffLog = async (req, res) => {
+  try {
+    const { propertyId } = req.query;
+    const filter = {};
+    if (propertyId) filter.propertyId = propertyId;
+
+    const log = await StaffActivityLog.find(filter).sort({ createdAt: -1 }).limit(200);
+    res.status(200).json({ success: true, count: log.length, data: log });
+  } catch (error) {
+    console.error('Get staff log error:', error);
+    res.status(500).json({ success: false, message: 'Failed to retrieve staff log', error: error.message });
   }
 };

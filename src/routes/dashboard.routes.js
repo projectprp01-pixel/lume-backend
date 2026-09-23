@@ -1,7 +1,7 @@
 import express from 'express';
 import upload from '../middleware/upload.js';
 import uploadVideo from '../middleware/uploadVideo.js';
-import { authenticate, requireRole } from '../middleware/auth.js';
+import { authenticate, requireTier } from '../middleware/auth.js';
 import { resetStaffPassword } from '../controllers/auth.controller.js';
 import { lookupMainStayBooking, getStayActivity } from '../controllers/dashboard/mainStay.controller.js';
 
@@ -52,7 +52,15 @@ import {
   addStaff,
   updateStaff,
   deleteStaff,
+  getStaffLog,
 } from '../controllers/dashboard/staff.controller.js';
+import {
+  getAllDepartments,
+  createDepartment,
+  updateDepartment,
+  toggleDepartmentAccess,
+  getMyAccess,
+} from '../controllers/dashboard/department.controller.js';
 
 // ==================== RESTAURANT/DINING HUB ====================
 import {
@@ -213,11 +221,27 @@ router.put('/guests/:guestId', updateGuest);
 router.delete('/guests/:guestId', deleteGuest);
 
 // ==================== STAFF MANAGEMENT ====================
-router.get('/staff', getAllStaff);
-router.post('/staff', requireRole('Admin'), addStaff);
-router.put('/staff/:id/password', requireRole('Admin'), resetStaffPassword);
-router.put('/staff/:id', requireRole('Admin'), updateStaff);
-router.delete('/staff/:id', requireRole('Admin'), deleteStaff);
+// Staff Management itself is only accessible to Admin and GM — no other role can
+// open this page at all, regardless of department (Staff Management PRD). Route-level
+// requireTier gates who can reach these endpoints; canManageTier() in the controller
+// enforces the finer "who can manage whom" rule per row. Staff Log is stricter still —
+// Admin only, GM included in the lockout (PRD Step 5).
+router.get('/staff', requireTier('Admin', 'GM'), getAllStaff);
+router.post('/staff', requireTier('Admin', 'GM'), addStaff);
+router.put('/staff/:id/password', requireTier('Admin', 'GM'), resetStaffPassword);
+router.put('/staff/:id', requireTier('Admin', 'GM'), updateStaff);
+router.delete('/staff/:id', requireTier('Admin', 'GM'), deleteStaff);
+router.get('/staff/log', requireTier('Admin'), getStaffLog);
+// Any authenticated staff member — not gated to Admin/GM — since this only ever
+// returns the caller's OWN department/role slice of the matrix, not the roster or the
+// full matrix (see getMyAccess's doc comment).
+router.get('/staff/me/access', getMyAccess);
+
+// ==================== DEPARTMENTS & ROLES ====================
+router.get('/departments', requireTier('Admin', 'GM'), getAllDepartments);
+router.post('/departments', requireTier('Admin', 'GM'), createDepartment);
+router.put('/departments/:id', requireTier('Admin', 'GM'), updateDepartment);
+router.put('/departments/:id/access', requireTier('Admin', 'GM'), toggleDepartmentAccess);
 
 // ==================== RESTAURANT/DINING HUB ====================
 router.post('/restaurants/upload-image', upload.single('image'), uploadDiningImage);

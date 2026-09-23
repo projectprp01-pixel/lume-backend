@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import Staff from '../models/Staff.model.js';
 import { JWT_SECRET } from '../config/env.js';
+import { logStaffAction } from '../utils/staffLog.js';
 
 export const loginStaff = async (req, res) => {
   try {
@@ -43,8 +44,10 @@ export const loginStaff = async (req, res) => {
         firstName: staff.firstName,
         lastName: staff.lastName,
         email: staff.email,
+        tier: staff.tier,
+        department: staff.department,
         role: staff.role,
-        permissions: staff.permissions,
+        isFounding: staff.isFounding,
         propertyId: staff.propertyId,
       },
     });
@@ -63,8 +66,10 @@ export const getCurrentStaff = async (req, res) => {
       firstName: staff.firstName,
       lastName: staff.lastName,
       email: staff.email,
+      tier: staff.tier,
+      department: staff.department,
       role: staff.role,
-      permissions: staff.permissions,
+      isFounding: staff.isFounding,
       propertyId: staff.propertyId,
     },
   });
@@ -86,6 +91,8 @@ export const resetStaffPassword = async (req, res) => {
 
     targetStaff.password = newPassword;
     await targetStaff.save();
+
+    await logStaffAction(targetStaff.propertyId, req.staff, `Reset login password — ${targetStaff.firstName} ${targetStaff.lastName}.`);
 
     res.status(200).json({ success: true, message: 'Password updated successfully' });
   } catch (error) {

@@ -27,3 +27,15 @@ export const requireRole = (...roles) => (req, res, next) => {
   }
   next();
 };
+
+// Gate on the account-level tier (Admin/GM/Staff), not the free-form department role —
+// used for Staff Management itself, which the PRD hard-gates to specific tiers
+// regardless of department (see Staff Management PRD, "Staff Management's Own Access").
+// Finer-grained "who can manage whom" (Admin vs GM vs the target account's own tier)
+// is data-dependent and enforced in the controller, not here.
+export const requireTier = (...tiers) => (req, res, next) => {
+  if (!tiers.includes(req.staff?.tier)) {
+    return res.status(403).json({ success: false, message: 'Insufficient permissions' });
+  }
+  next();
+};
