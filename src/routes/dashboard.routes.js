@@ -59,6 +59,7 @@ import {
   createDepartment,
   updateDepartment,
   toggleDepartmentAccess,
+  deleteDepartment,
   getMyAccess,
 } from '../controllers/dashboard/department.controller.js';
 
@@ -132,7 +133,10 @@ import { getAnalytics } from '../controllers/dashboard/analytics.controller.js';
 // ==================== SERVICE REQUESTS ====================
 import {
   getAllRequests,
-  updateRequestStatus,
+  getRequestDepartments,
+  acceptRequest,
+  completeRequest,
+  rerouteRequest,
   addRequestReply,
 } from '../controllers/dashboard/serviceRequest.controller.js';
 
@@ -242,6 +246,7 @@ router.get('/departments', requireTier('Admin', 'GM'), getAllDepartments);
 router.post('/departments', requireTier('Admin', 'GM'), createDepartment);
 router.put('/departments/:id', requireTier('Admin', 'GM'), updateDepartment);
 router.put('/departments/:id/access', requireTier('Admin', 'GM'), toggleDepartmentAccess);
+router.delete('/departments/:id', requireTier('Admin', 'GM'), deleteDepartment);
 
 // ==================== RESTAURANT/DINING HUB ====================
 router.post('/restaurants/upload-image', upload.single('image'), uploadDiningImage);
@@ -304,8 +309,13 @@ router.put('/spa/bookings/:id/room', assignSpaBookingRoom);
 router.get('/analytics', getAnalytics);
 
 // ==================== SERVICE REQUESTS ====================
+// Visibility and every action are enforced per-request from the JWT identity (see
+// utils/requestAccess.js) — there is deliberately no free-form "set status" endpoint.
 router.get('/requests', getAllRequests);
-router.put('/requests/:id/status', updateRequestStatus);
+router.get('/requests/departments', getRequestDepartments);
+router.put('/requests/:id/accept', acceptRequest);
+router.put('/requests/:id/complete', completeRequest);
+router.put('/requests/:id/department', rerouteRequest);
 router.post('/requests/:id/reply', addRequestReply);
 
 // ==================== TRANSPORT HUB ====================

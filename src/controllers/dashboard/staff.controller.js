@@ -1,3 +1,4 @@
+import Department from '../../models/Department.model.js';
 import Staff from '../../models/Staff.model.js';
 import StaffActivityLog from '../../models/StaffActivityLog.model.js';
 import { sendNewStaffAddedEmail } from '../../utils/emailService.js';
@@ -40,6 +41,18 @@ export const getAllStaff = async (req, res) => {
 };
 
 /**
+ * A Staff account must sit in a department and role that actually exist for its
+ * property — departments can be removed, so a stale name from the client is rejected
+ * here instead of creating an orphaned account. Returns an error message, or null.
+ */
+async function departmentRoleError(propertyId, department, role) {
+  const dept = await Department.findOne({ propertyId, name: department }).lean();
+  if (!dept) return `Department "${department}" doesn't exist.`;
+  if (!dept.roles.includes(role)) return `"${role}" is not a role in ${department}.`;
+  return null;
+}
+
+/**
  * Add new staff. Route already requires the caller be Admin or GM
  * (requireTier('Admin','GM')); this enforces the finer "who can manage whom" rule —
  * a GM can stand up another GM or any department staff, but never an Admin.
@@ -54,6 +67,10 @@ export const addStaff = async (req, res) => {
     }
     if (targetTier === 'Staff' && (!department || !role)) {
       return res.status(400).json({ success: false, message: 'Department and role are required for a Staff account.' });
+    }
+    if (targetTier === 'Staff') {
+      const problem = await departmentRoleError(propertyId || req.staff.propertyId || 'default', department, role);
+      if (problem) return res.status(400).json({ success: false, message: problem });
     }
 
     const staff = await Staff.create({
@@ -120,6 +137,10 @@ export const updateStaff = async (req, res) => {
     const nextRole = nextTier === 'Staff' ? (role ?? target.role) : undefined;
     if (nextTier === 'Staff' && (!nextDepartment || !nextRole)) {
       return res.status(400).json({ success: false, message: 'Department and role are required for a Staff account.' });
+    }
+    if (nextTier === 'Staff' && (nextDepartment !== target.department || nextRole !== target.role)) {
+      const problem = await departmentRoleError(target.propertyId, nextDepartment, nextRole);
+      if (problem) return res.status(400).json({ success: false, message: problem });
     }
 
     // Deliberate, not silent: a property can never be left with zero Active Admins or

@@ -2,6 +2,7 @@ import Booking from '../../models/Booking.model.js';
 import Guest from '../../models/Guest.model.js';
 import ServiceRequest from '../../models/ServiceRequest.model.js';
 import { sendWriteToUsEmail } from '../../utils/emailService.js';
+import { routeRequest } from '../../ai/classifyRequest.js';
 
 /**
  * Create a guest request (Write to Us)
@@ -18,15 +19,22 @@ export const createGuestRequest = async (req, res) => {
     const guest = await Guest.findById(guestId);
     const booking = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).lean();
 
+    const propertyId = booking?.propertyId || 'default';
+    // Department comes from the live Staff Management list via the AI layer; with no AI
+    // suggestion it falls back to the first department (see src/ai/classifyRequest.js).
+    const { department, routing } = await routeRequest(propertyId, content.trim());
+
     const request = await ServiceRequest.create({
       item: content.trim(),
       category: 'Guest Services',
-      department: 'Concierge',
+      department,
+      routing,
       source: 'App',
       guestId,
       guestName: guest ? guest.fullName : '',
       roomNumber: guest ? (guest.roomNumber || '') : '',
-      propertyId: booking?.propertyId || 'default',
+      bookingId: booking?.bookingId || '',
+      propertyId,
       status: 'Pending'
     });
 

@@ -27,6 +27,25 @@ const serviceRequestSchema = new mongoose.Schema({
   actionables: [{ type: String }],
   notes: { type: String, default: '' },
   assignee: { type: String, default: '' },
+  // Who accepted the ticket, snapshotted at accept time. Completion is atomic to this
+  // person (or their department's manager) — see utils/requestAccess.js. `department`
+  // is null when a GM/Admin accepted it (they belong to no department).
+  acceptedBy: {
+    staffId: { type: mongoose.Schema.Types.ObjectId, ref: 'Staff', default: null },
+    name: { type: String, default: '' },
+    department: { type: String, default: null },
+    acceptedAt: { type: Date, default: null },
+  },
+  // Main-stay Booking ID the guest was on when they submitted (shown in the Requests Hub).
+  bookingId: { type: String, default: '' },
+  // How `department` was chosen: the AI layer, the first-department fallback, or a
+  // manual re-route by staff. See src/ai/classifyRequest.js.
+  routing: {
+    source: { type: String, enum: ['ai', 'fallback', 'manual'], default: 'fallback' },
+    confidencePct: { type: Number, default: null },
+    reason: { type: String, default: '' },
+    routedBy: { type: String, default: '' },
+  },
   eta: { type: String, default: 'TBD' },
   slaDue: { type: Date },
   completedAt: { type: Date, default: null },
