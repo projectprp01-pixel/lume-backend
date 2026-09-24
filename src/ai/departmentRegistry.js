@@ -46,12 +46,20 @@ export async function syncDepartmentRegistry(propertyId) {
 }
 
 /**
- * The parsed registry for a property. Self-heals: a property that has departments but no
- * registry doc yet (created before this existed) is built on first read.
+ * The parsed registry for a property, reconciled against Staff Management on every read
+ * (one cheap indexed query — negligible next to the LLM call it feeds), so a department
+ * that was created without going through a sync hook can never be missing from routing.
+ * The registry doc is only rewritten when it has actually drifted.
  */
 export async function getDepartmentRegistry(propertyId) {
-  const doc = await DepartmentRegistry.findOne({ propertyId }).lean();
-  if (doc && doc.departments?.length) return parseDepartmentRegistry(doc);
+  const [doc, departments] = await Promise.all([
+    DepartmentRegistry.findOne({ propertyId }).lean(),
+    Department.find({ propertyId }).sort({ createdAt: 1, _id: 1 }).select('name').lean(),
+  ]);
+  const live = parseDepartmentRegistry({ departments: departments.map((d) => d.name) });
+  const stored = parseDepartmentRegistry(doc);
+  const same = stored.departments.length === live.departments.length && stored.departments.every((d, i) => d === live.departments[i]);
+  if (same) return stored;
   return syncDepartmentRegistry(propertyId);
 }
 
