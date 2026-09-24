@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import Staff from '../models/Staff.model.js';
 import { JWT_SECRET } from '../config/env.js';
-import { logStaffAction } from '../utils/staffLog.js';
+import { canManageTier, logStaffAction } from '../utils/staffLog.js';
 
 export const loginStaff = async (req, res) => {
   try {
@@ -11,21 +11,23 @@ export const loginStaff = async (req, res) => {
     }
 
     const staff = await Staff.findOne({ email: email.toLowerCase().trim() }).select('+password');
+    // Specific reasons on purpose (product decision: tell staff what went wrong). `code` lets the
+    // UI react without string-matching the message.
     if (!staff) {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+      return res.status(401).json({ success: false, code: 'EMAIL_NOT_FOUND', message: 'No account found with this email address.' });
     }
 
     if (!staff.isActive) {
-      return res.status(403).json({ success: false, message: 'Account is deactivated' });
+      return res.status(403).json({ success: false, code: 'ACCOUNT_DEACTIVATED', message: 'This account has been deactivated. Contact your administrator.' });
     }
 
     if (!staff.password) {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+      return res.status(401).json({ success: false, code: 'NO_PASSWORD_SET', message: 'No password is set for this account. Ask an administrator to set one.' });
     }
 
     const isMatch = await staff.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+      return res.status(401).json({ success: false, code: 'WRONG_PASSWORD', message: 'Incorrect password. Please try again.' });
     }
 
     staff.lastLogin = new Date();
@@ -87,6 +89,10 @@ export const resetStaffPassword = async (req, res) => {
     const targetStaff = await Staff.findById(id);
     if (!targetStaff) {
       return res.status(404).json({ success: false, message: 'Staff not found' });
+    }
+
+    if (!canManageTier(req.staff.tier, targetStaff.tier)) {
+      return res.status(403).json({ success: false, message: `A ${req.staff.tier} cannot reset this account's password.` });
     }
 
     targetStaff.password = newPassword;
