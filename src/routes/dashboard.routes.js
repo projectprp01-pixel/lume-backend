@@ -104,6 +104,18 @@ import {
   updateFbOrderingSettings,
 } from '../controllers/dashboard/fbOrders.controller.js';
 
+// ==================== CHECKOUT & FEEDBACK ====================
+import {
+  getCheckoutBookings,
+  approveCheckout,
+  updateCheckoutTime,
+} from '../controllers/dashboard/checkout.controller.js';
+import {
+  getFeedback,
+  getFeedbackSettings,
+  updateFeedbackSettings,
+} from '../controllers/dashboard/feedback.controller.js';
+
 // ==================== APP BANNERS ====================
 import {
   getAllBanners,
@@ -285,6 +297,14 @@ router.get('/fb-orders', getFbOrders);
 router.put('/fb-orders/:id/stage', updateFbOrderStage);
 router.get('/fb-ordering-settings', getFbOrderingSettings);
 router.put('/fb-ordering-settings', updateFbOrderingSettings);
+
+// ==================== CHECKOUT & FEEDBACK ====================
+router.get('/checkout/bookings', getCheckoutBookings);
+router.put('/checkout/bookings/:bookingId/approve', approveCheckout);
+router.put('/checkout/bookings/:bookingId/checkout-time', updateCheckoutTime);
+router.get('/feedback', getFeedback);
+router.get('/feedback/settings', getFeedbackSettings);
+router.put('/feedback/settings', updateFeedbackSettings);
 
 // ==================== APP BANNERS ====================
 router.get('/banners', getAllBanners);
