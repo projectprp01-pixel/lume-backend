@@ -3,7 +3,7 @@ import Booking from '../../models/Booking.model.js';
 import Guest from '../../models/Guest.model.js';
 import Notification from '../../models/Notification.model.js';
 import ServiceRequest from '../../models/ServiceRequest.model.js';
-import { OPENAI_API_KEY } from '../../config/env.js';
+import { OPENAI_API_KEY, AI_CONCIERGE_NAME, AI_PROPERTY_DESCRIPTION } from '../../config/env.js';
 
 const getOpenAI = () => new OpenAI({ apiKey: OPENAI_API_KEY });
 
@@ -17,7 +17,7 @@ export const chatWithConcierge = async (req, res) => {
       return res.status(400).json({ success: false, message: 'message and guestId are required' });
     }
 
-    const systemPrompt = `You are Eva, an AI concierge for Lume Resort, a luxury property in Coorg, India. Be warm, helpful, and professional in a luxury hospitality tone.
+    const systemPrompt = `You are ${AI_CONCIERGE_NAME}, an AI concierge for ${AI_PROPERTY_DESCRIPTION}. Be warm, helpful, and professional in a luxury hospitality tone.
 
 When a guest makes a service request (room service, housekeeping, maintenance, extra amenities, transport, dietary needs, special arrangements, etc.), respond helpfully AND append a JSON block at the very end of your response wrapped in <REQUEST> tags like this:
 

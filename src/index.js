@@ -1,5 +1,5 @@
 // Load environment variables FIRST (before any other imports)
-import { NODE_ENV, PORT, GUEST_APP_URL, DASHBOARD_APP_URL } from './config/env.js';
+import { NODE_ENV, PORT, GUEST_APP_URL, DASHBOARD_APP_URL, CORS_ALLOWED_ORIGINS } from './config/env.js';
 
 import express from 'express';
 import cors from 'cors';
@@ -27,50 +27,23 @@ app.use((req, res, next) => {
   next();
 });
 
-// CORS configuration - allows all Vercel URLs (*.vercel.app) for easier preview deployments
+// CORS: only this instance's own origins. Localhost is allowed outside production for dev.
+const allowedOrigins = [GUEST_APP_URL, DASHBOARD_APP_URL, ...CORS_ALLOWED_ORIGINS]
+  .filter(Boolean)
+  .map((o) => o.replace(/\/+$/, ''));
+
 const corsOptions = {
   origin: (origin, callback) => {
-    console.log(`[CORS] checking origin=${JSON.stringify(origin)} type=${typeof origin}`);
-
-    // Allow requests with no origin (like mobile apps or curl requests)
+    // Allow requests with no origin (server-to-server, curl, the dashboard's session proxy)
     if (!origin) return callback(null, true);
-    
-    // Allow localhost in development
-    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-      return callback(null, true);
-    }
-    
-    // Allow all Vercel preview and production URLs
-    if (origin.includes('.vercel.app')) {
+
+    if (NODE_ENV !== 'production' && (origin.includes('localhost') || origin.includes('127.0.0.1'))) {
       return callback(null, true);
     }
 
-    // Allow all Railway preview and production URLs
-    if (origin.includes('.up.railway.app')) {
-      return callback(null, true);
-    }
+    if (allowedOrigins.includes(origin)) return callback(null, true);
 
-    // Allow all Lovable preview and production URLs
-    if (origin.includes('.lovable.app') || origin.includes('.lovableproject.com')) {
-      return callback(null, true);
-    }
-
-    // Allow all evolveback.com subdomains
-    if (origin.includes('evolveback.com')) {
-      return callback(null, true);
-    }
-
-    // Allow specific configured URLs
-    const allowedOrigins = [
-      GUEST_APP_URL,
-      DASHBOARD_APP_URL
-    ].filter(Boolean);
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    console.log('[CORS] BLOCKED origin:', JSON.stringify(origin), '| Allowed env vars:', GUEST_APP_URL, DASHBOARD_APP_URL);
+    console.log('[CORS] BLOCKED origin:', JSON.stringify(origin), '| Allowed:', allowedOrigins.join(', '));
     callback(new Error(`Not allowed by CORS: ${origin}`));
   },
   credentials: true

@@ -248,7 +248,7 @@ async function earliestDay(propertyId) {
 
 export const getAnalyticsOverview = async (req, res) => {
   try {
-    const { propertyId = 'default', range, compare } = req.query;
+    const { propertyId = 'default', range } = req.query;
     let { from, to } = req.query;
 
     if (!isYmd(to)) return res.status(400).json({ success: false, message: 'to must be yyyy-mm-dd' });
@@ -261,22 +261,13 @@ export const getAnalyticsOverview = async (req, res) => {
     if (daysBetween(from, to) > MAX_DAYS) from = shiftDay(to, -(MAX_DAYS - 1));
 
     const days = daysBetween(from, to);
-    // "Compare" is the immediately preceding window of the same length; meaningless for All time.
-    const wantsPrev = compare === '1' && range !== 'all';
-    const prevTo = shiftDay(from, -1);
-    const prevFrom = shiftDay(from, -days);
-
-    const [current, previous] = await Promise.all([
-      computeWindow(req.staff, propertyId, from, to),
-      wantsPrev ? computeWindow(req.staff, propertyId, prevFrom, prevTo) : null,
-    ]);
+    const current = await computeWindow(req.staff, propertyId, from, to);
 
     res.status(200).json({
       success: true,
       data: {
-        range: { from, to, days, prevFrom: wantsPrev ? prevFrom : null, prevTo: wantsPrev ? prevTo : null },
+        range: { from, to, days },
         current,
-        previous,
       },
     });
   } catch (error) {

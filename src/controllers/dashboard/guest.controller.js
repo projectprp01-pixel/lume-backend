@@ -8,7 +8,7 @@ import ServiceRequest from '../../models/ServiceRequest.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
 import TransportBooking from '../../models/TransportBooking.model.js';
 import { pushGuestActivity } from '../../services/leadsquaredService.js';
-import { PROPERTY_APP_URLS, GUEST_APP_URL } from '../../config/env.js';
+import { GUEST_APP_URL, PROPERTY_NAME } from '../../config/env.js';
 
 // ==================== GUEST MANAGEMENT ====================
 
@@ -180,7 +180,7 @@ export const addGuest = async (req, res) => {
 
     // Generate guest app URL — property-specific subdomains
     const propertyId = req.body.propertyId || 'default';
-    const guestAppUrl = PROPERTY_APP_URLS[propertyId] || PROPERTY_APP_URLS['default'];
+    const guestAppUrl = GUEST_APP_URL;
     const guestLink = `${guestAppUrl}?token=${guest.bookingToken}`;
 
     // Log check-in link to console
@@ -253,7 +253,7 @@ export const bulkImportGuests = async (req, res) => {
             guestId: guest._id,
             primaryGuestName: guest.fullName,
             propertyId: 'default',
-            propertyName: propertyName || 'Default Property',
+            propertyName: propertyName || PROPERTY_NAME,
             numberOfGuests: guest.numberOfGuests || 1,
             arrivalDate: new Date(arrivalDate),
             checkoutDate: new Date(checkoutDate),

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LSQ_API_HOST, LSQ_ACTIVITY_TYPE_ID, LSQ_ACCESS_KEY, LSQ_SECRET_KEY, PROPERTY_APP_URLS } from '../config/env.js';
+import { LSQ_API_HOST, LSQ_ACTIVITY_TYPE_ID, LSQ_ACCESS_KEY, LSQ_SECRET_KEY, LSQ_PROPERTY_NAME, GUEST_APP_URL } from '../config/env.js';
 
 const LSQ_HOST = LSQ_API_HOST;
 const ACTIVITY_EVENT = LSQ_ACTIVITY_TYPE_ID;
@@ -60,14 +60,8 @@ export async function pushGuestActivity(guest, booking) {
 
   // mx_Custom_2 is a dropdown in LSQ — values must match exactly.
   // Update these strings once the LSQ team confirms the exact dropdown labels.
-  const LSQ_PROPERTY_NAME = {
-    'default': 'Evolve Back Resort Coorg',
-    'kabini':  'Evolve Back Resort Kabini',
-    'hampi':   'Evolve Back Resort Hampi',
-  };
-
   const propertyId = booking?.propertyId || guest.propertyId || 'default';
-  const guestAppUrl = PROPERTY_APP_URLS[propertyId] || PROPERTY_APP_URLS['default'];
+  const guestAppUrl = GUEST_APP_URL;
   const lumeUrl = guest.bookingToken ? `${guestAppUrl}?token=${guest.bookingToken}` : '';
 
   const fields = [
@@ -76,8 +70,7 @@ export async function pushGuestActivity(guest, booking) {
     { SchemaName: 'mx_Custom_17', Value: guest.email || '' },
   ];
 
-  const lsqPropertyName = LSQ_PROPERTY_NAME[propertyId];
-  if (lsqPropertyName) fields.push({ SchemaName: 'mx_Custom_2', Value: lsqPropertyName });
+  if (LSQ_PROPERTY_NAME) fields.push({ SchemaName: 'mx_Custom_2', Value: LSQ_PROPERTY_NAME });
   if (booking?.bookingId)     fields.push({ SchemaName: 'mx_Custom_3',  Value: booking.bookingId });
   if (booking?.roomType)      fields.push({ SchemaName: 'mx_Custom_4',  Value: booking.roomType });
   if (booking?.arrivalDate)   fields.push({ SchemaName: 'mx_Custom_5',  Value: new Date(booking.arrivalDate).toISOString().split('T')[0] });

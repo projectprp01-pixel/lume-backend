@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
-import { RESEND_API_KEY } from '../../config/env.js';
-
-const FROM = 'info@lume-cxm.com';
+import { RESEND_API_KEY, EMAIL_FROM as FROM } from '../../config/env.js';
 
 /**
  * Sends a real, fully-rendered Comms Hub email template to a staff-supplied test address via
