@@ -22,6 +22,24 @@ const propertyFilter = (propertyId) =>
     ? [{ propertyId: 'default' }, { propertyId: { $exists: false } }, { propertyId: null }]
     : [{ propertyId }];
 
+/**
+ * The tickets a staff member may see. Department staff/managers are pinned to their own
+ * department and property — the query params can't widen it. Only GM/Admin see every
+ * department (and may narrow). Shared with the Home summary so its counts can never disagree
+ * with what the Requests Hub shows this same viewer.
+ */
+export function requestScopeFilter(staff, { department, propertyId } = {}) {
+  const filter = {};
+  if (isGlobalViewer(staff)) {
+    if (department) filter.department = department;
+    if (propertyId) filter.$or = propertyFilter(propertyId);
+  } else {
+    filter.department = staff.department || '__none__';
+    filter.$or = propertyFilter(staff.propertyId);
+  }
+  return filter;
+}
+
 const POPULATE_GUEST = ['guestId', 'fullName email mobileNumber'];
 const IN_PROGRESS = ['Assigned', 'In-progress'];
 
@@ -65,20 +83,9 @@ export const getRequestDepartments = async (req, res) => {
 export const getAllRequests = async (req, res) => {
   try {
     const { status, department, propertyId } = req.query;
-    const staff = req.staff;
-    const filter = {};
+    const filter = requestScopeFilter(req.staff, { department, propertyId });
 
     if (status && status !== 'all') filter.status = status;
-
-    // Department staff/managers are pinned to their own department and property — the
-    // query params can't widen it. Only GM/Admin see every department (and may narrow).
-    if (isGlobalViewer(staff)) {
-      if (department) filter.department = department;
-      if (propertyId) filter.$or = propertyFilter(propertyId);
-    } else {
-      filter.department = staff.department || '__none__';
-      filter.$or = propertyFilter(staff.propertyId);
-    }
 
     const requests = await ServiceRequest.find(filter)
       .populate(...POPULATE_GUEST)

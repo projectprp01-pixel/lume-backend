@@ -116,6 +116,9 @@ import {
   updateFeedbackSettings,
 } from '../controllers/dashboard/feedback.controller.js';
 
+// ==================== HOME ====================
+import { getHomeSummary } from '../controllers/dashboard/home.controller.js';
+
 // ==================== APP BANNERS ====================
 import {
   getAllBanners,
@@ -141,6 +144,7 @@ import {
 
 // ==================== ANALYTICS ====================
 import { getAnalytics } from '../controllers/dashboard/analytics.controller.js';
+import { getAnalyticsOverview } from '../controllers/dashboard/analyticsOverview.controller.js';
 
 // ==================== SERVICE REQUESTS ====================
 import {
@@ -193,6 +197,10 @@ const router = express.Router();
 
 // All dashboard routes require a valid JWT
 router.use(authenticate);
+
+// ==================== HOME ====================
+// Aggregation only — read fresh from the hubs on every call, nothing stored.
+router.get('/home/summary', getHomeSummary);
 
 // ==================== SHARED: STAY LOOKUP ====================
 // Used by every hub's "Add Booking" dialog to verify/preview a staff-entered Booking ID
@@ -327,6 +335,8 @@ router.put('/spa/bookings/:id/room', assignSpaBookingRoom);
 
 // ==================== ANALYTICS ====================
 router.get('/analytics', getAnalytics);
+// Analytics PRD overview: cards + every detail chart from one read-only aggregation.
+router.get('/analytics/overview', getAnalyticsOverview);
 
 // ==================== SERVICE REQUESTS ====================
 // Visibility and every action are enforced per-request from the JWT identity (see

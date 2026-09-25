@@ -14,7 +14,7 @@ import FbOrder from '../../models/FbOrder.model.js';
 
 const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
 
-function parseLocalDate(date) {
+export function parseLocalDate(date) {
   if (typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
     const [y, m, d] = date.split('-').map(Number);
     return new Date(y, m - 1, d);
@@ -22,7 +22,7 @@ function parseLocalDate(date) {
   return date ? new Date(date) : new Date();
 }
 
-function dayRange(date) {
+export function dayRange(date) {
   const start = new Date(date);
   start.setHours(0, 0, 0, 0);
   const end = new Date(date);
@@ -53,7 +53,7 @@ function fbOrderTotal(o) {
   return Math.round(items + (o.packagingCharge || 0));
 }
 
-async function buildFolios(bookings) {
+export async function buildFolios(bookings) {
   const stayIds = bookings.map((b) => b.bookingId);
   const objectIds = bookings.map((b) => b._id);
   const idByObjectId = Object.fromEntries(bookings.map((b) => [String(b._id), b.bookingId]));
