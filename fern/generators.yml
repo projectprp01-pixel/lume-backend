@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/generators-yml.json
+# The API definition for the docs' "API Reference". The spec is referenced in place (not copied) so it
+# cannot drift from the file `npm run generate:openapi` writes.
+api:
+  specs:
+    - openapi: ../openapi.yaml

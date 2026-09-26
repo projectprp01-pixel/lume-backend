@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
+# Fern docs for the Lume backend API. Source of truth for the API reference is the repo's
+# openapi.yaml (generated from collection/lume-api.postman_collection.json — see generators.yml).
+# Publish with `fern generate --docs` (requires a Fern login) — not run as part of setup.
+
+instances:
+  # Proposed slug: "lume-cxm" (matches lume-cxm.com). The slug is global across Fern, so it may already
+  # be taken — `fern generate --docs` will say so; change it here if so.
+  - url: https://lume-cxm.docs.buildwithfern.com
+    # Optional, once DNS for lume-cxm.com is under your control and the plan allows custom domains:
+    # custom-domain: docs.lume-cxm.com
+
+title: Lume | Documentation
+
+navigation:
+  - page: Welcome
+    path: pages/welcome.mdx
+  - api: API Reference
+
+colors:
+  accentPrimary: '#ffffff'
+  background: '#000000'
