@@ -6,7 +6,7 @@
 instances:
   # Proposed slug: "lume-cxm" (matches lume-cxm.com). The slug is global across Fern, so it may already
   # be taken — `fern generate --docs` will say so; change it here if so.
-  - url: https://lume-cxm.docs.buildwithfern.com
+  - url: lume-cxm.docs.buildwithfern.com
     # Optional, once DNS for lume-cxm.com is under your control and the plan allows custom domains:
     # custom-domain: docs.lume-cxm.com
 
