@@ -3,7 +3,8 @@ import Experience from '../models/Experience.model.js';
 import Guest from '../models/Guest.model.js';
 import Booking from '../models/Booking.model.js';
 import Notification from '../models/Notification.model.js';
-import { createWithHubRef, resolveStayIdForRef } from '../utils/hubRef.js';
+import { createWithHubRef } from '../utils/hubRef.js';
+import { resolveGuestStayId } from '../utils/mainStay.js';
 
 /**
  * Create a new experience booking
@@ -87,7 +88,10 @@ export const createBooking = async (req, res) => {
     const totalAmount = unitPrice * numberOfGuests;
 
     // Reference is generated as <stayId>-EXP-<n> (see utils/hubRef.js), from the guest's stay.
-    const stayId = await resolveStayIdForRef({ guestId });
+    // TODO: this legacy path still does NOT store mainStayBookingId (so these bookings are missing from Stay
+    // Activity and the Checkout folio) — same gap already fixed for guest Transport/Experience/Spa/Dining.
+    // Fix: add `mainStayBookingId: stayId` to the data below. Deferred deliberately; see README 'Known gaps'.
+    const stayId = await resolveGuestStayId({ guestId });
 
     // Create booking
     const booking = await createWithHubRef({

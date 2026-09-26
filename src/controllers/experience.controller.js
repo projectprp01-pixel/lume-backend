@@ -4,7 +4,8 @@ import Notification from '../models/Notification.model.js';
 import Guest from '../models/Guest.model.js';
 import Booking from '../models/Booking.model.js';
 import { sendGuestBookingEmail, toISTDate } from '../utils/emailService.js';
-import { createWithHubRef, resolveStayIdForRef } from '../utils/hubRef.js';
+import { createWithHubRef } from '../utils/hubRef.js';
+import { resolveGuestStayId } from '../utils/mainStay.js';
 
 /**
  * Get all experiences with optional filters
@@ -260,8 +261,9 @@ export const createExperienceBookingGuest = async (req, res) => {
       return res.status(400).json({ success: false, message: 'This time slot is full.' });
     }
 
-    // Reference is generated as <stayId>-EXP-<n> (see utils/hubRef.js).
-    const stayId = await resolveStayIdForRef({ mainStayBookingId, guestId });
+    // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
+    // It drives both the stored mainStayBookingId and the <stayId>-EXP-<n> reference (see utils/hubRef.js).
+    const stayId = await resolveGuestStayId({ guestId, claimedStayId: mainStayBookingId });
     const unitPrice = price ?? experience.pricing.basePrice;
     const qty = numberOfGuests || 1;
     const isFree = unitPrice * qty === 0;
@@ -282,7 +284,7 @@ export const createExperienceBookingGuest = async (req, res) => {
         unitPrice,
         totalAmount: unitPrice * qty,
         mainBookingId: mainBookingId || null,
-        mainStayBookingId: mainStayBookingId || null,
+        mainStayBookingId: stayId,
         propertyId: propertyId || experience.propertyId,
         specialRequests: specialRequests || null,
         bookingStatus: isFree ? 'confirmed' : 'pending',

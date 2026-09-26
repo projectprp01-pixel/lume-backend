@@ -2,7 +2,7 @@ import Booking from '../../models/Booking.model.js';
 import DiningReservation from '../../models/DiningReservation.model.js';
 import Guest from '../../models/Guest.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
-import { createWithHubRef, resolveStayIdForRef } from '../../utils/hubRef.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 /**
  * Get restaurants for guest app
@@ -81,7 +81,7 @@ export const getDiningAvailability = async (req, res) => {
  */
 export const createDiningReservation = async (req, res) => {
   try {
-    const { facilityId, guestId, bookingId, mainStayBookingId, date, numberOfGuests, propertyId = 'default', addonNames } = req.body;
+    const { facilityId, guestId, bookingId, date, numberOfGuests, propertyId = 'default', addonNames } = req.body;
 
     if (!facilityId || !date || !numberOfGuests) {
       return res.status(400).json({ success: false, message: 'facilityId, date, and numberOfGuests are required' });
@@ -131,8 +131,9 @@ export const createDiningReservation = async (req, res) => {
       : [];
     const amount = (facility.price || 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
 
-    // Reference is generated as <stayId>-DIN-<n> (see utils/hubRef.js).
-    const stayId = await resolveStayIdForRef({ mainStayBookingId: mainStayBookingId || mainStayBooking?.bookingId, guestId });
+    // Derived from the stay loaded above (never from a client-sent mainStayBookingId); it drives both the
+    // stored mainStayBookingId and the <stayId>-DIN-<n> reference (see utils/hubRef.js).
+    const stayId = mainStayBooking?.bookingId ?? null;
     const reservation = await createWithHubRef({
       Model: DiningReservation, field: 'reservationRef', kind: 'din',
       stayId,
@@ -142,7 +143,7 @@ export const createDiningReservation = async (req, res) => {
         facilityType: facility.facilityType,
         guestId: guestId || undefined,
         bookingId: bookingId || undefined,
-        mainStayBookingId: mainStayBookingId || undefined,
+        mainStayBookingId: stayId ?? undefined,
         guestName,
         roomNumber,
         date,

@@ -1,5 +1,3 @@
-import Booking from '../models/Booking.model.js';
-
 /**
  * The ONE place hub-document references are defined.
  *
@@ -18,15 +16,6 @@ export const makeLineRef = (stayId, kind, n) => `${stayId}-${HUB_KIND[kind]}-${n
 
 const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const MAX_ATTEMPTS = 5;
-
-/** The stay a hub booking belongs to: the one it names, else the guest's most recent stay. */
-export async function resolveStayIdForRef({ mainStayBookingId, guestId } = {}) {
-  const named = String(mainStayBookingId ?? '').trim();
-  if (named) return named;
-  if (!guestId) return null;
-  const stay = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).select('bookingId').lean().catch(() => null);
-  return stay?.bookingId ?? null;
-}
 
 // Next free counter for this stay + kind: highest existing "<stayId>-<KIND>-<n>" in `field`, plus one.
 async function nextSequence(Model, field, stayId, kind) {

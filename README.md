@@ -284,3 +284,13 @@ For detailed setup instructions, see:
 ## License
 
 Proprietary - Evolve Back Resorts
+
+## Known gaps / TODO
+
+- **Legacy `/api/bookings/create` does not set `mainStayBookingId`.** Bookings made through it are missing
+  from Stay Activity and the Checkout folio, which match on that field. This is the third round of
+  the same fix (transport, then guest Experience/Spa/Dining, now this one). Deferred on purpose; fix is one line in `src/controllers/booking.controller.js`
+  (`mainStayBookingId: stayId`, from `resolveGuestStayId`). It may also be simplest to retire this router
+  if no client uses it — `POST /api/experiences/bookings` supersedes it.
+- Existing transport bookings that predate the mainStayBookingId fix can be repaired with
+  `node scripts/backfill-transport-main-stay.js` (dry run) then `--apply`.

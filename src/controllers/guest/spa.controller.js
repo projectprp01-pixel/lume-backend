@@ -1,6 +1,7 @@
 import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
-import { createWithHubRef, resolveStayIdForRef } from '../../utils/hubRef.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
+import { resolveGuestStayId } from '../../utils/mainStay.js';
 
 /**
  * Get spa facilities for guest portal
@@ -94,11 +95,12 @@ export const createSpaBooking = async (req, res) => {
       }
     }
 
-    // Reference is generated as <stayId>-SPA-<n> (see utils/hubRef.js).
-    const stayId = await resolveStayIdForRef({ mainStayBookingId: req.body.mainStayBookingId, guestId: req.body.guestId });
+    // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
+    // It drives both the stored mainStayBookingId and the <stayId>-SPA-<n> reference (see utils/hubRef.js).
+    const stayId = await resolveGuestStayId({ guestId: req.body.guestId, claimedStayId: req.body.mainStayBookingId });
     const booking = await createWithHubRef({
       Model: SpaBooking, field: 'bookingId', kind: 'spa', stayId,
-      data: { ...req.body, status: 'Pending', paymentStatus: 'pending' },
+      data: { ...req.body, mainStayBookingId: stayId ?? undefined, status: 'Pending', paymentStatus: 'pending' },
     });
 
     res.status(201).json({ success: true, data: booking });

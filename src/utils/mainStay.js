@@ -21,6 +21,24 @@ export async function resolveMainStayBooking(mainStayBookingId) {
 }
 
 /**
+ * The stay a GUEST-side booking belongs to, derived server-side so a client can never attach a booking
+ * to a stay it does not own. A `claimedStayId` sent by the client is honoured only if that stay really
+ * belongs to this guest (a guest can have several stays); otherwise — or if none was sent — the guest's
+ * most recent stay is used. Returns the human Booking ID (EB-…), or null when the guest has no stay
+ * (or no guestId was sent, in which case nothing can be derived and nothing is guessed).
+ */
+export async function resolveGuestStayId({ guestId, claimedStayId } = {}) {
+  if (!guestId) return null;
+  const claimed = String(claimedStayId ?? '').trim();
+  if (claimed) {
+    const owned = await Booking.findOne({ bookingId: claimed, guestId }).select('bookingId').lean().catch(() => null);
+    if (owned) return owned.bookingId;
+  }
+  const latest = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).select('bookingId').lean().catch(() => null);
+  return latest?.bookingId ?? null;
+}
+
+/**
  * Pushes a Booking's current room number to every active (not cancelled/completed) hub booking
  * linked to it via mainStayBookingId, so reassigning a room in Check-in Hub doesn't leave Spa/
  * Transport/Experience/Dining bookings pointing at a stale room. Called from assignCheckInRoom.
