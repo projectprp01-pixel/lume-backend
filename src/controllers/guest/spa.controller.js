@@ -1,5 +1,6 @@
 import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
+import { createWithHubRef, resolveStayIdForRef } from '../../utils/hubRef.js';
 
 /**
  * Get spa facilities for guest portal
@@ -93,8 +94,12 @@ export const createSpaBooking = async (req, res) => {
       }
     }
 
-    const bookingId = `SPA-${Date.now()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-    const booking = await SpaBooking.create({ ...req.body, bookingId, status: 'Pending', paymentStatus: 'pending' });
+    // Reference is generated as <stayId>-SPA-<n> (see utils/hubRef.js).
+    const stayId = await resolveStayIdForRef({ mainStayBookingId: req.body.mainStayBookingId, guestId: req.body.guestId });
+    const booking = await createWithHubRef({
+      Model: SpaBooking, field: 'bookingId', kind: 'spa', stayId,
+      data: { ...req.body, status: 'Pending', paymentStatus: 'pending' },
+    });
 
     res.status(201).json({ success: true, data: booking });
   } catch (error) {

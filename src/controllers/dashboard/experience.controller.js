@@ -6,6 +6,7 @@ import { uploadToR2 } from '../../utils/r2Upload.js';
 import { remuxForFaststart } from '../../utils/videoProcessing.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== EXPERIENCE HUB ====================
 
@@ -121,11 +122,9 @@ export const createManualBooking = async (req, res) => {
     if (mainStayError) return res.status(mainStayError.status).json({ success: false, message: mainStayError.message });
     const guest = mainStay.guestId ? await Guest.findById(mainStay.guestId).lean() : null;
 
-    // Staff can type/edit their own booking ref (Experience Hub's "Add Booking" modal);
-    // fall back to a generated one if left blank, same as before.
-    const bookingId = refInput && String(refInput).trim()
-      ? String(refInput).trim()
-      : `MANUAL-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
+    // Staff can type/edit their own booking ref (Experience Hub's "Add Booking" modal); if left
+    // blank one is generated as <stayId>-EXP-<n> (see utils/hubRef.js).
+    const typedRef = refInput && String(refInput).trim() ? String(refInput).trim() : null;
 
     // Calculate pricing — an explicit price override (from the dashboard form) wins over the
     // experience's own stored pricing, same pattern as Transport Hub's createTransportHubBooking.
@@ -141,8 +140,7 @@ export const createManualBooking = async (req, res) => {
       totalAmount = unitPrice * (numberOfGuests || 1);
     }
 
-    const booking = await ExperienceBooking.create({
-      bookingId,
+    const bookingData = {
       experienceId,
       experienceName: experience.title,
       date: new Date(date),
@@ -164,7 +162,10 @@ export const createManualBooking = async (req, res) => {
       room: mainStay.roomNumber || '',
       source: 'staff',
       addons: Array.isArray(addons) ? addons : [],
-    });
+    };
+    const booking = typedRef
+      ? await ExperienceBooking.create({ ...bookingData, bookingId: typedRef })
+      : await createWithHubRef({ Model: ExperienceBooking, field: 'bookingId', kind: 'exp', stayId: mainStay.bookingId, data: bookingData });
 
     res.status(201).json({
       success: true,

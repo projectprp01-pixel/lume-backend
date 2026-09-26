@@ -19,8 +19,10 @@ export const makeStayId = (year, n) => `EB-${year}-${String(n).padStart(5, '0')}
  * cancelable, and the schemas keep them unique) — but it always starts with the stay ID, so the
  * stay is recognisable, and searchable, in every hub. e.g. EB-2026-10007-SPA-1
  */
-export const KIND = { exp: 'EXP', spa: 'SPA', trn: 'TRN', din: 'DIN' };
-export const makeLineRef = (stayId, kind, n) => `${stayId}-${KIND[kind]}-${n}`;
+// The format itself lives in src/utils/hubRef.js so the API and the seed can never disagree.
+import { HUB_KIND, makeLineRef } from '../../src/utils/hubRef.js';
+export const KIND = HUB_KIND;
+export { makeLineRef };
 
 // ---------------------------------------------------------------------------
 // Dates. Everything is anchored at LOCAL NOON so `toISOString().slice(0, 10)` (what the

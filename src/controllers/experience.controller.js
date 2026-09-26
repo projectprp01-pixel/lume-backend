@@ -4,6 +4,7 @@ import Notification from '../models/Notification.model.js';
 import Guest from '../models/Guest.model.js';
 import Booking from '../models/Booking.model.js';
 import { sendGuestBookingEmail, toISTDate } from '../utils/emailService.js';
+import { createWithHubRef, resolveStayIdForRef } from '../utils/hubRef.js';
 
 /**
  * Get all experiences with optional filters
@@ -259,30 +260,34 @@ export const createExperienceBookingGuest = async (req, res) => {
       return res.status(400).json({ success: false, message: 'This time slot is full.' });
     }
 
-    const bookingId = `EXP-${Date.now()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+    // Reference is generated as <stayId>-EXP-<n> (see utils/hubRef.js).
+    const stayId = await resolveStayIdForRef({ mainStayBookingId, guestId });
     const unitPrice = price ?? experience.pricing.basePrice;
     const qty = numberOfGuests || 1;
     const isFree = unitPrice * qty === 0;
 
-    const booking = await ExperienceBookingModel.create({
-      bookingId,
-      experienceId,
-      guestId: guestId || undefined,
-      experienceName: experience.title,
-      guestName,
-      guestEmail,
-      guestPhone,
-      date: new Date(date),
-      timeSlot,
-      numberOfGuests: qty,
-      unitPrice,
-      totalAmount: unitPrice * qty,
-      mainBookingId: mainBookingId || null,
-      mainStayBookingId: mainStayBookingId || null,
-      propertyId: propertyId || experience.propertyId,
-      specialRequests: specialRequests || null,
-      bookingStatus: isFree ? 'confirmed' : 'pending',
-      paymentStatus: isFree ? 'paid' : 'pending',
+    const booking = await createWithHubRef({
+      Model: ExperienceBookingModel, field: 'bookingId', kind: 'exp',
+      stayId,
+      data: {
+        experienceId,
+        guestId: guestId || undefined,
+        experienceName: experience.title,
+        guestName,
+        guestEmail,
+        guestPhone,
+        date: new Date(date),
+        timeSlot,
+        numberOfGuests: qty,
+        unitPrice,
+        totalAmount: unitPrice * qty,
+        mainBookingId: mainBookingId || null,
+        mainStayBookingId: mainStayBookingId || null,
+        propertyId: propertyId || experience.propertyId,
+        specialRequests: specialRequests || null,
+        bookingStatus: isFree ? 'confirmed' : 'pending',
+        paymentStatus: isFree ? 'paid' : 'pending',
+      },
     });
 
     if (guestId) {

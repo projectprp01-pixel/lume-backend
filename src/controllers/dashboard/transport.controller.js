@@ -4,6 +4,7 @@ import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.j
 import { toISTDate } from '../../utils/emailService.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
 import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== TRANSPORT HUB ====================
 
@@ -159,20 +160,24 @@ export const createManualTransportBooking = async (req, res) => {
     const checkOutDate = new Date(booking.checkoutDate);
     const nights = Math.max(1, Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)));
 
-    const transportBooking = await TransportBooking.create({
-      guestId: booking.guestId,
-      bookingId: booking._id,
-      mainStayBookingId: booking.bookingId,
-      guestName: booking.primaryGuestName,
-      roomNumber: booking.roomNumber || '',
-      checkInDate,
-      checkOutDate,
-      nights,
-      amount: Number(amount),
-      status: 'confirmed',
-      paymentStatus: 'paid',
-      propertyId: propertyId || booking.propertyId,
-      staffSeen: true,
+    const transportBooking = await createWithHubRef({
+      Model: TransportBooking, field: 'ref', kind: 'trn',
+      stayId: booking.bookingId,
+      data: {
+        guestId: booking.guestId,
+        bookingId: booking._id,
+        mainStayBookingId: booking.bookingId,
+        guestName: booking.primaryGuestName,
+        roomNumber: booking.roomNumber || '',
+        checkInDate,
+        checkOutDate,
+        nights,
+        amount: Number(amount),
+        status: 'confirmed',
+        paymentStatus: 'paid',
+        propertyId: propertyId || booking.propertyId,
+        staffSeen: true,
+      },
     });
 
     res.status(201).json({ success: true, data: transportBooking });
@@ -198,10 +203,6 @@ export const uploadTransportImage = async (req, res) => {
     res.status(500).json({ success: false, message: 'Failed to upload image', error: error.message });
   }
 };
-
-function generateTrnRef() {
-  return 'EB-2026-' + (78000 + Math.floor(Math.random() * 1999));
-}
 
 async function getOrCreateTransportSettings(propertyId) {
   let settings = await Transport.findOne({ propertyId });
@@ -347,23 +348,26 @@ export const createTransportHubBooking = async (req, res) => {
 
     const checkInDate = date ? new Date(date) : new Date();
 
-    const transportBooking = await TransportBooking.create({
-      guestId: mainStay.guestId,
-      mainStayBookingId: mainStay.bookingId,
-      guestName: mainStay.primaryGuestName,
-      room: mainStay.roomNumber || '',
-      checkInDate,
-      amount: Number(price),
-      status: 'confirmed',
-      paymentStatus: paymentStatus === 'Completed' ? 'paid' : 'pending',
-      propertyId,
-      staffSeen: true,
-      hubBooking: true,
-      ref: generateTrnRef(),
-      offeringSlot: Number(offeringSlot),
-      vehicleId,
-      vehicleName: vehicleName || '',
-      source: 'staff',
+    const transportBooking = await createWithHubRef({
+      Model: TransportBooking, field: 'ref', kind: 'trn',
+      stayId: mainStay.bookingId,
+      data: {
+        guestId: mainStay.guestId,
+        mainStayBookingId: mainStay.bookingId,
+        guestName: mainStay.primaryGuestName,
+        room: mainStay.roomNumber || '',
+        checkInDate,
+        amount: Number(price),
+        status: 'confirmed',
+        paymentStatus: paymentStatus === 'Completed' ? 'paid' : 'pending',
+        propertyId,
+        staffSeen: true,
+        hubBooking: true,
+        offeringSlot: Number(offeringSlot),
+        vehicleId,
+        vehicleName: vehicleName || '',
+        source: 'staff',
+      },
     });
 
     res.status(201).json({ success: true, data: transportBooking });

@@ -3,7 +3,7 @@ import Experience from '../models/Experience.model.js';
 import Guest from '../models/Guest.model.js';
 import Booking from '../models/Booking.model.js';
 import Notification from '../models/Notification.model.js';
-import { v4 as uuidv4 } from 'uuid';
+import { createWithHubRef, resolveStayIdForRef } from '../utils/hubRef.js';
 
 /**
  * Create a new experience booking
@@ -86,27 +86,30 @@ export const createBooking = async (req, res) => {
     const unitPrice = experience.pricing.basePrice + (experience.pricing.basePrice * (slot.priceModifier || 0) / 100);
     const totalAmount = unitPrice * numberOfGuests;
 
-    // Generate unique booking ID
-    const bookingId = `EXP-${Date.now()}-${uuidv4().substring(0, 8).toUpperCase()}`;
+    // Reference is generated as <stayId>-EXP-<n> (see utils/hubRef.js), from the guest's stay.
+    const stayId = await resolveStayIdForRef({ guestId });
 
     // Create booking
-    const booking = await ExperienceBooking.create({
-      bookingId,
-      experienceId,
-      experienceName: experience.title,
-      guestId,
-      date: new Date(date),
-      timeSlot,
-      numberOfGuests,
-      unitPrice,
-      totalAmount,
-      currency: experience.pricing.currency,
-      guestName: guest.fullName,
-      guestEmail: guest.email,
-      guestPhone: guest.mobileNumber,
-      specialRequests,
-      paymentStatus: 'pending',
-      bookingStatus: 'pending'
+    const booking = await createWithHubRef({
+      Model: ExperienceBooking, field: 'bookingId', kind: 'exp',
+      stayId,
+      data: {
+        experienceId,
+        experienceName: experience.title,
+        guestId,
+        date: new Date(date),
+        timeSlot,
+        numberOfGuests,
+        unitPrice,
+        totalAmount,
+        currency: experience.pricing.currency,
+        guestName: guest.fullName,
+        guestEmail: guest.email,
+        guestPhone: guest.mobileNumber,
+        specialRequests,
+        paymentStatus: 'pending',
+        bookingStatus: 'pending'
+      },
     });
 
     res.status(201).json({

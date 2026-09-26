@@ -3,6 +3,7 @@ import SpaBooking from '../../models/SpaBooking.model.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== SPA HUB ====================
 
@@ -203,18 +204,20 @@ export const createManualSpaBooking = async (req, res) => {
     const { booking: mainStay, error } = await resolveMainStayBooking(mainStayBookingId);
     if (error) return res.status(error.status).json({ success: false, message: error.message });
 
-    const bookingId = `SPA-${Date.now()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-    const booking = await SpaBooking.create({
-      ...rest,
-      bookingId,
-      mainStayBookingId: mainStay.bookingId,
-      guestId: mainStay.guestId,
-      guestName: mainStay.primaryGuestName,
-      room: mainStay.roomNumber || '',
-      source: 'staff',
-      // Staff can mark a manual booking as already paid (e.g. collected at the desk);
-      // otherwise it defaults to the schema's 'pending'.
-      paymentStatus: paymentStatus === 'paid' ? 'paid' : undefined,
+    const booking = await createWithHubRef({
+      Model: SpaBooking, field: 'bookingId', kind: 'spa',
+      stayId: mainStay.bookingId,
+      data: {
+        ...rest,
+        mainStayBookingId: mainStay.bookingId,
+        guestId: mainStay.guestId,
+        guestName: mainStay.primaryGuestName,
+        room: mainStay.roomNumber || '',
+        source: 'staff',
+        // Staff can mark a manual booking as already paid (e.g. collected at the desk);
+        // otherwise it defaults to the schema's 'pending'.
+        paymentStatus: paymentStatus === 'paid' ? 'paid' : undefined,
+      },
     });
     res.status(201).json({ success: true, message: 'Spa booking created', data: booking });
   } catch (error) {

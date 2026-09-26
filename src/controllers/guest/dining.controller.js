@@ -2,6 +2,7 @@ import Booking from '../../models/Booking.model.js';
 import DiningReservation from '../../models/DiningReservation.model.js';
 import Guest from '../../models/Guest.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
+import { createWithHubRef, resolveStayIdForRef } from '../../utils/hubRef.js';
 
 /**
  * Get restaurants for guest app
@@ -130,23 +131,29 @@ export const createDiningReservation = async (req, res) => {
       : [];
     const amount = (facility.price || 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
 
-    const reservation = await DiningReservation.create({
-      facilityId,
-      facilityName: facility.name,
-      facilityType: facility.facilityType,
-      guestId: guestId || undefined,
-      bookingId: bookingId || undefined,
-      mainStayBookingId: mainStayBookingId || undefined,
-      guestName,
-      roomNumber,
-      date,
-      numberOfGuests,
-      propertyId,
-      status: 'pending',
-      amount,
-      paymentStatus: 'pending',
-      source: 'app',
-      addons: selectedAddons,
+    // Reference is generated as <stayId>-DIN-<n> (see utils/hubRef.js).
+    const stayId = await resolveStayIdForRef({ mainStayBookingId: mainStayBookingId || mainStayBooking?.bookingId, guestId });
+    const reservation = await createWithHubRef({
+      Model: DiningReservation, field: 'reservationRef', kind: 'din',
+      stayId,
+      data: {
+        facilityId,
+        facilityName: facility.name,
+        facilityType: facility.facilityType,
+        guestId: guestId || undefined,
+        bookingId: bookingId || undefined,
+        mainStayBookingId: mainStayBookingId || undefined,
+        guestName,
+        roomNumber,
+        date,
+        numberOfGuests,
+        propertyId,
+        status: 'pending',
+        amount,
+        paymentStatus: 'pending',
+        source: 'app',
+        addons: selectedAddons,
+      },
     });
 
     res.status(201).json({

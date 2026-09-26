@@ -4,6 +4,7 @@ import Guest from '../../models/Guest.model.js';
 import Notification from '../../models/Notification.model.js';
 import Transport from '../../models/Transport.model.js';
 import TransportBooking from '../../models/TransportBooking.model.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 const TRANSPORT_DEFAULTS = {
   visible: true,
@@ -90,20 +91,24 @@ export const createTransportBooking = async (req, res) => {
 
     const guest = await Guest.findById(guestId);
 
-    const transportBooking = await TransportBooking.create({
-      guestId,
-      bookingId,
-      // Derived server-side from the stay we just loaded — never trusted from the client — so this
-      // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
-      mainStayBookingId: booking.bookingId,
-      guestName: guest ? guest.fullName : '',
-      roomNumber: booking.roomNumber || guest?.roomNumber || '',
-      checkInDate: booking.arrivalDate,
-      checkOutDate: booking.checkoutDate,
-      nights,
-      amount,
-      propertyId,
-      status: 'pending'
+    const transportBooking = await createWithHubRef({
+      Model: TransportBooking, field: 'ref', kind: 'trn',
+      stayId: booking.bookingId,
+      data: {
+        guestId,
+        bookingId,
+        // Derived server-side from the stay we just loaded — never trusted from the client — so this
+        // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
+        mainStayBookingId: booking.bookingId,
+        guestName: guest ? guest.fullName : '',
+        roomNumber: booking.roomNumber || guest?.roomNumber || '',
+        checkInDate: booking.arrivalDate,
+        checkOutDate: booking.checkoutDate,
+        nights,
+        amount,
+        propertyId,
+        status: 'pending'
+      },
     });
 
     if (guestId) {

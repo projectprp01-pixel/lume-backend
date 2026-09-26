@@ -3,6 +3,7 @@ import Restaurant from '../../models/Restaurant.model.js';
 import { uploadToR2 } from '../../utils/r2Upload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== RESTAURANT/DINING HUB ====================
 
@@ -247,11 +248,10 @@ export const createManualDiningReservation = async (req, res) => {
       }
     }
 
-    const reservation = await DiningReservation.create({
+    const reservationData = {
       facilityId,
       facilityName,
       facilityType,
-      reservationRef: reservationRef || undefined,
       guestId: mainStay.guestId,
       guestName: mainStay.primaryGuestName,
       date,
@@ -264,7 +264,11 @@ export const createManualDiningReservation = async (req, res) => {
       amount: req.body.price ?? req.body.amount,
       source: 'staff',
       addons: Array.isArray(addons) ? addons : undefined,
-    });
+    };
+    // A staff-typed ref is kept as-is; otherwise one is generated as <stayId>-DIN-<n> (see utils/hubRef.js).
+    const reservation = reservationRef && String(reservationRef).trim()
+      ? await DiningReservation.create({ ...reservationData, reservationRef: String(reservationRef).trim() })
+      : await createWithHubRef({ Model: DiningReservation, field: 'reservationRef', kind: 'din', stayId: mainStay.bookingId, data: reservationData });
 
     res.status(201).json({ success: true, data: reservation });
   } catch (error) {
