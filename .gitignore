@@ -15,3 +15,6 @@ scripts/seed/LAST_RUN_REPORT.md
 outputs/.postman/
 outputs/postman/
 outputs/LUME Backend API/
+# Postman recreates the same sync folders next to the tracked collection file
+collection/.postman/
+collection/postman/
