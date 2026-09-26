@@ -2,7 +2,7 @@
   "info": {
     "name": "LUME Backend API",
     "_postman_id": "6f4b9a1e-3c2d-4e8a-9b7f-1a2c3d4e5f60",
-    "description": "# LUME backend API — end-to-end runnable flow\n\nGenerated from the Express routes in `src/routes/*` and the controllers/models behind them (182 routes, 199 requests including error-path variants). Import, fill in the four **collection variables** below, then run the collection **top to bottom** (Collection Runner) against a **development** server and database.\n\n## Quick start\n1. Set collection variable **`baseUrl`** (default `http://localhost:3000`; the server's `PORT` defaults to 3000).\n2. Set **`staffEmail`** and **`staffPassword`** to an existing **Admin or GM** account on the dev DB (`npm run seed` creates demo accounts — see `scripts/seed/people.js`). No credentials are stored in this file.\n3. Run. Folder `01` logs in and stores the JWT in `authToken`; every later request authenticates through the collection-level Bearer auth.\n\n## Authentication\n* **Staff (dashboard):** stateless JWT. `POST /api/auth/login` (`{email, password}`) returns `{ token, staff }`. Send `Authorization: Bearer {{authToken}}` on **every `/api/dashboard/*`** route and `GET /api/auth/me`. The middleware re-loads the staff record on each call and returns `403` for inactive accounts. Tokens carry `{staffId, role, propertyId}`, signed HS256 with the server's `JWT_SECRET`, and **no expiry**. Some routes additionally require tier `Admin` / `GM` (`requireTier`) — noted per request.\n* **Guests (guest app):** **no authentication at all** on `/api/guests/*`, `/api/checkin/*`, `/api/experiences/*`, `/api/bookings/*`, `/api/payments/*`. The guest's identity is just the `guestId` (Mongo id) or the secret `bookingToken` in the check-in link. Those requests are marked \"public\" and override the collection auth with *No Auth*.\n* `POST /api/auth/login` is therefore the mandatory first call; **its Tests script** sets `authToken`, `staffId`, `staffTier` via `pm.collectionVariables`.\n\n## How the flow chains\nVariables are captured by each request's Tests script (`experienceId`, `guestId`, `guestToken`, `stayDocId`, `stayBookingId`, `checkInId`, `expBookingId`, …). Order: **auth → departments/staff → property settings → catalog (experiences, spa, dining, F&B, transport, banners) → guest/stay creation → guest check-in → staff check-in review → guest app discovery → guest bookings → payments → staff-side hub bookings → service requests → notifications → checkout & feedback → analytics → comms → cancellations → teardown.** Each request's description states its **Type** (READ/WRITE), **Auth**, and **Depends on**. Deliberate error-path requests are prefixed \"⚠ Error path\" and sit at the end of their folder.\n\n**One stay = one Booking ID.** `POST /dashboard/guests` creates the stay; its `bookingId` (`EB-<year>-9NNNN`, generated in a pre-request script so re-runs never collide) is `{{stayBookingId}}` and is used everywhere. Hub bookings link to it through `mainStayBookingId`.\n\n## 🚫 UNTESTED BY DESIGN — five external-service features\nThese requests are embedded in the collection so the API surface is documented, but they have **NOT been run or verified through this collection**, and nothing here should be read as evidence that they work. Each depends on a live external service or has a real-money / real-email side effect. Their saved example responses are hand-written from the controller code, not captured from real runs. All are **skipped by default** (`pm.execution.skipRequest()`, Postman ≥ 10.18) unless you set the variable shown; each request's description repeats this and names the service to verify against.\n\n| Switch (default `false`) | Verify manually against | Why it is untested | Requests |\n|---|---|---|---|\n| `enableUploads` | Cloudflare R2 / Cloudinary (+ ffmpeg for video) | uploads real files to storage; ID upload → submit → per-guest review depend on it | 13: Upload gallery image; Upload experience image; Upload experience video; Upload spa image; Upload dining image; Upload dining menu file; Upload category image; Upload dish image; Upload vehicle image; Upload banner image; Upload guest ID (front + optional back); Complete check-in (submit for review); Review one guest's ID |\n| `enableRazorpay` | Razorpay | live payment provider, real-money side effect, needs a real Checkout payment | 4: Create Razorpay order; Verify payment; Razorpay webhook; ⚠ Error path — Verify with a forged signature |\n| `enableAiChat` | OpenAI | paid API; can create requests/notifications | 1: AI concierge chat (may raise a request) |\n| `enableEmailSend` | Resend | sends a real email | 1: Send a test email |\n| `enableBulkImport` | LeadSquared / database | external CRM push per row; created ids not returned | 1: Bulk-import guests (CSV/XLSX rows) |\n\nEverything outside this table is intended to be run end to end. Two other gates exist but are **not** untested-by-design: `enableTeardown` (default **true**; set it to `false` to keep the data the run created) and `fbOrderId`, which you must set yourself before \"Advance order stage\" will run.\nA skipped request on older Postman versions will simply run and return the documented error.\n\n## Response envelope\nSuccess: `{ \"success\": true, \"data\": …, \"count\"?: n, \"message\"?: \"…\" }`. Failure: `{ \"success\": false, \"message\": \"…\" }`, plus `error` (the raw exception text) on 500s, plus `code` on the staff login errors. Malformed ObjectIds surface as `500` with a Mongoose `CastError` — there is no request-validation layer; validation errors also arrive as 500 (or 400 for experiences).\n\n## ⚠ Routes I was not fully confident how to classify (flagged, not guessed silently)\n* **`POST /api/payments/webhook`** — Razorpay-to-server callback; signature is over the *re-serialised* body with the API secret, so it is not reproducible from Postman. Classified WRITE / external.\n* **`POST /api/payments/create-order` & `/verify`** — need real Razorpay Checkout output; classified WRITE, gated by `enableRazorpay`.\n* **`POST /api/guests/auth`** — named \"auth\" but issues no token; it is an upsert-by-email that also bumps `totalVisits`. Classified WRITE.\n* **`POST /api/guests/chat`** — chat answer *and* conditional ServiceRequest/Notification creation (paid OpenAI call). Classified WRITE.\n* **`DELETE` on `/api/experiences/bookings/:id`, `/api/guests/spa/bookings/:id`, `/api/guests/transport/bookings/:id`, `/api/guests/dining/reservations/:id`** — soft-cancels, not deletes. Likewise `DELETE /dashboard/spa/:id` and `/dashboard/banners/:id` (soft, `isActive:false`). Classified WRITE.\n* **GETs that write (lazy-create defaults):** `GET /api/guests/transport`, `/dashboard/transport`, `/dashboard/property-settings`, `/dashboard/property-settings/guest-app`, `/dashboard/feedback/settings`, `/dashboard/fb-ordering-settings`. Classified READ (idempotent side effect).\n* **Legacy/overlapping:** the whole `/api/bookings/*` router (overlaps `POST /api/experiences/bookings`), `PUT /dashboard/guests/:guestId/review` (superseded by the per-guest check-in review) and `GET /dashboard/analytics` (superseded by `/analytics/overview`, and its check-in block likely no longer matches). I could not tell whether a client still calls them.\n* **No creator routes:** nothing in this API creates an `FbOrder` (in-room orders) or a guest `Feedback` review, so those hubs are read/advance-only here.\n* **`PUT /dashboard/restaurants/:id/block-dates`** writes `blockedRanges` but the guest availability checks read `blockedDates` — may not actually block anything.\n* **`GET /api/checkin/by-guest`** — implemented inline in the route file, not a controller. Classified READ.\n\n## Other things worth knowing (not classification, but you will hit them)\n* Guest-created Experience/Dining/Spa bookings only carry `mainStayBookingId` if the client sends it; Transport (guest and staff-manual) now derives it server-side from the stay.\n* Client-supplied prices are trusted in `POST /experiences/bookings` (`price`), `POST /guests/transport/book` (`amount`) and `POST /payments/create-order` (`amount`); `PUT /api/bookings/:id/payment` can mark any booking paid with no verification.\n* Fields written that are missing from the schema (silently dropped): `whatsappOptIn` on guest preferences.\n* Server-generated hub refs follow the seed's `<stay ID>-<KIND>-<n>` convention via the shared `src/utils/hubRef.js` (Spa `-SPA-`, Experience `-EXP-`, Transport `-TRN-`, Dining `-DIN-`). A guest with no stay on file gets a non-stay fallback ref (`<KIND>-<timestamp>-<rand>`). Data created by this collection is wiped by the next `npm run seed`.\n* The bare test IDs, emails (`@example.com`) and hostnames in the saved examples are illustrative; the JWT/token values shown are placeholders, not real credentials.\n",
+    "description": "# LUME backend API — end-to-end runnable flow\n\nGenerated from the Express routes in `src/routes/*` and the controllers/models behind them (182 routes, 200 requests including error-path variants). Import, fill in the four **collection variables** below, then run the collection **top to bottom** (Collection Runner) against a **development** server and database.\n\n## Quick start\n1. Set collection variable **`baseUrl`** (default `http://localhost:3000`; the server's `PORT` defaults to 3000).\n2. Set **`staffEmail`** and **`staffPassword`** to an existing **Admin or GM** account on the dev DB (`npm run seed` creates demo accounts — see `scripts/seed/people.js`). No credentials are stored in this file.\n3. Run. Folder `01` logs in and stores the JWT in `authToken`; every later request authenticates through the collection-level Bearer auth.\n\n## Authentication\n* **Staff (dashboard):** stateless JWT. `POST /api/auth/login` (`{email, password}`) returns `{ token, staff }`. Send `Authorization: Bearer {{authToken}}` on **every `/api/dashboard/*`** route and `GET /api/auth/me`. The middleware re-loads the staff record on each call and returns `403` for inactive accounts. Tokens carry `{staffId, role, propertyId}`, signed HS256 with the server's `JWT_SECRET`, and **no expiry**. Some routes additionally require tier `Admin` / `GM` (`requireTier`) — noted per request.\n* **Guests (guest app):** **no authentication at all** on `/api/guests/*`, `/api/checkin/*`, `/api/experiences/*`, `/api/bookings/*`, `/api/payments/*`. The guest's identity is just the `guestId` (Mongo id) or the secret `bookingToken` in the check-in link. Those requests are marked \"public\" and override the collection auth with *No Auth*.\n* `POST /api/auth/login` is therefore the mandatory first call; **its Tests script** sets `authToken`, `staffId`, `staffTier` via `pm.collectionVariables`.\n\n## How the flow chains\nVariables are captured by each request's Tests script (`experienceId`, `guestId`, `guestToken`, `stayDocId`, `stayBookingId`, `checkInId`, `expBookingId`, …). Order: **auth → departments/staff → property settings → catalog (experiences, spa, dining, F&B, transport, banners) → guest/stay creation → guest check-in → staff check-in review → guest app discovery → guest bookings → payments → staff-side hub bookings → service requests → notifications → checkout & feedback → analytics → comms → cancellations → teardown.** Each request's description states its **Type** (READ/WRITE), **Auth**, and **Depends on**. Deliberate error-path requests are prefixed \"⚠ Error path\" and sit at the end of their folder.\n\n**One stay = one Booking ID.** `POST /dashboard/guests` creates the stay; its `bookingId` (`EB-<year>-9NNNN`, generated in a pre-request script so re-runs never collide) is `{{stayBookingId}}` and is used everywhere. Hub bookings link to it through `mainStayBookingId`.\n\n## 🚫 UNTESTED BY DESIGN — five external-service features\nThese requests are embedded in the collection so the API surface is documented, but they have **NOT been run or verified through this collection**, and nothing here should be read as evidence that they work. Each depends on a live external service or has a real-money / real-email side effect. Their saved example responses are hand-written from the controller code, not captured from real runs. All are **skipped by default** (`pm.execution.skipRequest()`, Postman ≥ 10.18) unless you set the variable shown; each request's description repeats this and names the service to verify against.\n\n| Switch (default `false`) | Verify manually against | Why it is untested | Requests |\n|---|---|---|---|\n| `enableUploads` | Cloudflare R2 / Cloudinary (+ ffmpeg for video) | uploads real files to storage; ID upload → submit → per-guest review depend on it | 13: Upload gallery image; Upload experience image; Upload experience video; Upload spa image; Upload dining image; Upload dining menu file; Upload category image; Upload dish image; Upload vehicle image; Upload banner image; Upload guest ID (front + optional back); Complete check-in (submit for review); Review one guest's ID |\n| `enableRazorpay` | Razorpay | live payment provider, real-money side effect, needs a real Checkout payment | 4: Create Razorpay order; Verify payment; Razorpay webhook; ⚠ Error path — Verify with a forged signature |\n| `enableAiChat` | OpenAI | paid API; can create requests/notifications | 1: AI concierge chat (may raise a request) |\n| `enableEmailSend` | Resend | sends a real email | 1: Send a test email |\n| `enableBulkImport` | LeadSquared / database | external CRM push per row; created ids not returned | 1: Bulk-import guests (CSV/XLSX rows) |\n\nEverything outside this table is intended to be run end to end. Two other gates exist but are **not** untested-by-design: `enableTeardown` (default **true**; set it to `false` to keep the data the run created) and `fbOrderId`, which you must set yourself before \"Advance order stage\" will run.\nA skipped request on older Postman versions will simply run and return the documented error.\n\n## Response envelope\nSuccess: `{ \"success\": true, \"data\": …, \"count\"?: n, \"message\"?: \"…\" }`. Failure: `{ \"success\": false, \"message\": \"…\" }`, plus `error` (the raw exception text) on 500s, plus `code` on the staff login errors. Malformed ObjectIds surface as `500` with a Mongoose `CastError` — there is no request-validation layer; validation errors also arrive as 500 (or 400 for experiences).\n\n## ⚠ Routes I was not fully confident how to classify (flagged, not guessed silently)\n* **`POST /api/payments/webhook`** — Razorpay-to-server callback; signature is over the *re-serialised* body with the API secret, so it is not reproducible from Postman. Classified WRITE / external.\n* **`POST /api/payments/create-order` & `/verify`** — need real Razorpay Checkout output; classified WRITE, gated by `enableRazorpay`.\n* **`POST /api/guests/auth`** — named \"auth\" but issues no token; it is an upsert-by-email that also bumps `totalVisits`. Classified WRITE.\n* **`POST /api/guests/chat`** — chat answer *and* conditional ServiceRequest/Notification creation (paid OpenAI call). Classified WRITE.\n* **`DELETE` on `/api/experiences/bookings/:id`, `/api/guests/spa/bookings/:id`, `/api/guests/transport/bookings/:id`, `/api/guests/dining/reservations/:id`** — soft-cancels, not deletes. Likewise `DELETE /dashboard/spa/:id` and `/dashboard/banners/:id` (soft, `isActive:false`). Classified WRITE.\n* **GETs that write (lazy-create defaults):** `GET /api/guests/transport`, `/dashboard/transport`, `/dashboard/property-settings`, `/dashboard/property-settings/guest-app`, `/dashboard/feedback/settings`, `/dashboard/fb-ordering-settings`. Classified READ (idempotent side effect).\n* **Legacy/overlapping:** the whole `/api/bookings/*` router (overlaps `POST /api/experiences/bookings`), `PUT /dashboard/guests/:guestId/review` (superseded by the per-guest check-in review) and `GET /dashboard/analytics` (superseded by `/analytics/overview`, and its check-in block likely no longer matches). I could not tell whether a client still calls them.\n* **No creator routes:** nothing in this API creates an `FbOrder` (in-room orders) or a guest `Feedback` review, so those hubs are read/advance-only here.\n* **`PUT /dashboard/restaurants/:id/block-dates`** writes `blockedRanges` but the guest availability checks read `blockedDates` — may not actually block anything.\n* **`GET /api/checkin/by-guest`** — implemented inline in the route file, not a controller. Classified READ.\n\n## Other things worth knowing (not classification, but you will hit them)\n* Every hub booking (guest and staff, all four hubs) now derives `mainStayBookingId` server-side from the stay — a client-sent value is honoured only if it belongs to that guest. **TODO (deferred, tracked in the backend README \"Known gaps\"):** the legacy `POST /api/bookings/create` (folder 17) still does not set it, so bookings made through it are missing from Stay Activity and the Checkout folio.\n* Client-supplied prices are trusted in `POST /experiences/bookings` (`price`), `POST /guests/transport/book` (`amount`) and `POST /payments/create-order` (`amount`); `PUT /api/bookings/:id/payment` can mark any booking paid with no verification.\n* Fields written that are missing from the schema (silently dropped): `whatsappOptIn` on guest preferences.\n* Server-generated hub refs follow the seed's `<stay ID>-<KIND>-<n>` convention via the shared `src/utils/hubRef.js` (Spa `-SPA-`, Experience `-EXP-`, Transport `-TRN-`, Dining `-DIN-`). A guest with no stay on file gets a non-stay fallback ref (`<KIND>-<timestamp>-<rand>`). Data created by this collection is wiped by the next `npm run seed`.\n* The bare test IDs, emails (`@example.com`) and hostnames in the saved examples are illustrative; the JWT/token values shown are placeholders, not real credentials.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {
@@ -17484,7 +17484,7 @@
     },
     {
       "name": "15 · Guest App — Bookings (public)",
-      "description": "Guest-created bookings for Experiences, Spa, Transport and Dining. All start `pending` and unpaid; payment (16) confirms them. **No auth** — everything is keyed by `guestId`.\n\nDepends on: guest (11/14) + catalog (05–09) + discovery reads (14).\n\n**Booking-ID linkage:** Transport (`POST /guests/transport/book`) derives `mainStayBookingId` server-side from the stay it loads via `bookingId`, so it always appears in Stay Activity (18.7) and the Checkout folio (21). Experience/Dining/Spa still rely on the client sending `mainStayBookingId` (Spa spreads the raw body); the staff hubs (18) always derive it server-side.",
+      "description": "Guest-created bookings for Experiences, Spa, Transport and Dining. All start `pending` and unpaid; payment (16) confirms them. **No auth** — everything is keyed by `guestId`.\n\nDepends on: guest (11/14) + catalog (05–09) + discovery reads (14).\n\n**Booking-ID linkage:** every guest-created booking here (Experience, Spa, Transport, Dining) has its `mainStayBookingId` derived **server-side** from the guest's stay — a value the client sends is never trusted, and none of these requests send one. So they always appear in Stay Activity (18.7) and the Checkout folio (21), like the staff hubs (18).",
       "item": [
         {
           "name": "Book an experience",
@@ -17498,7 +17498,8 @@
                   "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));",
                   "const json = pm.response.json();",
                   "const pick = (p) => p.split('.').reduce((a, k) => (a == null ? a : a[k]), json);",
-                  "{ const val = pick('data._id'); if (val !== undefined && val !== null && val !== '') pm.collectionVariables.set('expBookingId', val); }"
+                  "{ const val = pick('data._id'); if (val !== undefined && val !== null && val !== '') pm.collectionVariables.set('expBookingId', val); }",
+                  "pm.test('Experience booking carries the stay Booking ID although the request did not send it', () => pm.expect(pm.response.json().data.mainStayBookingId).to.eql(pm.collectionVariables.get('stayBookingId')));"
                 ]
               }
             }
@@ -17529,7 +17530,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+              "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -17562,7 +17563,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17606,7 +17607,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17650,7 +17651,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17694,7 +17695,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17738,7 +17739,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17782,7 +17783,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"guestEmail\": \"{{guestEmail}}\",\n  \"guestPhone\": \"9876543210\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 2,\n  \"mainBookingId\": \"{{stayDocId}}\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Window-side seat\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -17947,7 +17948,8 @@
                   "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));",
                   "const json = pm.response.json();",
                   "const pick = (p) => p.split('.').reduce((a, k) => (a == null ? a : a[k]), json);",
-                  "{ const val = pick('data._id'); if (val !== undefined && val !== null && val !== '') pm.collectionVariables.set('spaBookingId', val); }"
+                  "{ const val = pick('data._id'); if (val !== undefined && val !== null && val !== '') pm.collectionVariables.set('spaBookingId', val); }",
+                  "pm.test('Spa booking carries the stay Booking ID although the request did not send it', () => pm.expect(pm.response.json().data.mainStayBookingId).to.eql(pm.collectionVariables.get('stayBookingId')));"
                 ]
               }
             }
@@ -17979,7 +17981,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
+              "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -18013,7 +18015,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
+                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18058,7 +18060,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
+                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18103,7 +18105,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
+                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18148,7 +18150,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
+                  "raw": "{\n  \"spaFacilityId\": \"{{spaFacilityId}}\",\n  \"treatmentId\": \"{{spaTreatmentId}}\",\n  \"treatmentName\": \"{{spaTreatmentName}}\",\n  \"categoryName\": \"Massages\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"numberOfGuests\": 1,\n  \"room\": \"Villa 4\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"10:15\",\n  \"duration\": 60,\n  \"price\": 4500,\n  \"propertyId\": \"{{propertyId}}\",\n  \"specialRequests\": \"Focus on shoulders\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18675,7 +18677,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+              "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -18709,7 +18711,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18754,7 +18756,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18799,7 +18801,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18844,7 +18846,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18889,7 +18891,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18934,7 +18936,7 @@
                 },
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"mainStayBookingId\": \"{{stayBookingId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
+                  "raw": "{\n  \"facilityId\": \"{{diningFacilityId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"bookingId\": \"{{stayDocId}}\",\n  \"date\": \"{{bookingDate}}\",\n  \"numberOfGuests\": 2,\n  \"propertyId\": \"{{propertyId}}\",\n  \"addonNames\": [\n    \"{{diningAddonName}}\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -18965,7 +18967,8 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
-                  "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));"
+                  "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));",
+                  "pm.test('Dining reservation carries the stay Booking ID although the request did not send it', () => { const r = pm.response.json().data.find((x) => x._id === pm.collectionVariables.get('diningReservationId')); pm.expect(r, 'reservation not listed').to.exist; pm.expect(r.mainStayBookingId).to.eql(pm.collectionVariables.get('stayBookingId')); });"
                 ]
               }
             }
@@ -19088,6 +19091,146 @@
               ],
               "cookie": [],
               "body": "{\n  \"success\": false,\n  \"message\": \"Request failed\",\n  \"error\": \"Cast to ObjectId failed for value \\\"not-an-id\\\" (type string)\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "⚠ Edge case — A client-supplied mainStayBookingId is ignored",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 201', () => pm.response.to.have.status(201));",
+                  "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));",
+                  "pm.test('Forged mainStayBookingId was replaced by the real stay of the guest', () => { const d = pm.response.json().data; pm.expect(d.mainStayBookingId).to.eql(pm.collectionVariables.get('stayBookingId')); pm.expect(d.mainStayBookingId).to.not.eql('EB-2026-00000'); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/experiences/bookings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "experiences",
+                "bookings"
+              ]
+            },
+            "description": "Sends a **forged** `mainStayBookingId` naming a stay that is not this guest's. The server ignores it and stores the guest's real stay. (Created bookings are removed with the guest in Teardown.)\n\n**Type:** WRITE (mutates state)\n**Auth:** none (public route — no token required)\n**Depends on:** \"Book an experience\" (same guest and experience)",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 1,\n  \"mainStayBookingId\": \"EB-2026-00000\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 – Stored against the real stay",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/experiences/bookings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "experiences",
+                    "bookings"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 1,\n  \"mainStayBookingId\": \"EB-2026-00000\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"665f1c2a9b3e4a0000000011\",\n    \"bookingId\": \"EB-2026-90001-EXP-1\",\n    \"experienceId\": \"665f1c2a9b3e4a0000000010\",\n    \"experienceName\": \"Sunset Coracle Ride\",\n    \"guestId\": \"665f1c2a9b3e4a0000000001\",\n    \"mainStayBookingId\": \"EB-2026-90001\",\n    \"date\": \"2026-09-27T00:00:00.000Z\",\n    \"timeSlot\": \"05:30 PM\",\n    \"numberOfGuests\": 1,\n    \"unitPrice\": 1800,\n    \"totalAmount\": 1800,\n    \"currency\": \"INR\",\n    \"paymentStatus\": \"pending\",\n    \"bookingStatus\": \"pending\",\n    \"guestName\": \"Aarav Mehta\",\n    \"guestEmail\": \"aarav.mehta@example.com\",\n    \"guestPhone\": \"9876543210\",\n    \"room\": \"Villa 3\",\n    \"source\": \"app\",\n    \"addons\": [],\n    \"createdAt\": \"2026-09-26T09:15:00.000Z\",\n    \"updatedAt\": \"2026-09-26T09:15:00.000Z\"\n  }\n}"
+            },
+            {
+              "name": "400 – Required fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/experiences/bookings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "experiences",
+                    "bookings"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"experienceId\": \"{{experienceId}}\",\n  \"guestId\": \"{{guestId}}\",\n  \"guestName\": \"Aarav Mehta\",\n  \"date\": \"{{bookingDate}}\",\n  \"timeSlot\": \"{{experienceSlotTime}}\",\n  \"numberOfGuests\": 1,\n  \"mainStayBookingId\": \"EB-2026-00000\",\n  \"price\": 1800,\n  \"propertyId\": \"{{propertyId}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"experienceId, guestName, date, and timeSlot are required\"\n}"
             }
           ]
         }
@@ -19991,7 +20134,7 @@
     },
     {
       "name": "17 · Legacy Experience Bookings (/api/bookings)",
-      "description": "An **older, experience-only booking API** (`booking.controller.js`) that overlaps with the guest flow in 15 (`POST /api/experiences/bookings`). It validates the guest/experience/slot/group size and computes price server-side, but does not set `mainStayBookingId`, and there is **no auth**.\n\n⚠ **Flag — I could not determine whether any client still uses this.** It is fully wired in `src/index.js`. Notably `PUT /:id/payment` lets any caller mark a booking `paid` with no Razorpay verification — verify before exposing publicly.\n\nDepends on: guest (11/14) + experience (05). Ends by cancelling its own booking so it does not disturb folders 18–21.",
+      "description": "An **older, experience-only booking API** (`booking.controller.js`) that overlaps with the guest flow in 15 (`POST /api/experiences/bookings`). It validates the guest/experience/slot/group size and computes price server-side, but does not set `mainStayBookingId`, and there is **no auth**. ⚠ **TODO (deferred):** because it omits `mainStayBookingId`, bookings created here are missing from Stay Activity and the Checkout folio — the same gap already fixed for every other guest booking path (README \"Known gaps\").\n\n⚠ **Flag — I could not determine whether any client still uses this.** It is fully wired in `src/index.js`. Notably `PUT /:id/payment` lets any caller mark a booking `paid` with no Razorpay verification — verify before exposing publicly.\n\nDepends on: guest (11/14) + experience (05). Ends by cancelling its own booking so it does not disturb folders 18–21.",
       "item": [
         {
           "name": "Create booking (legacy)",
@@ -25311,6 +25454,14 @@
                       "    pm.expect(t.mainStayBookingId).to.eql(stay);",
                       "  });",
                       "});",
+                      "[['expBookingId', 'experienceBookings', 'guest-created experience booking'], ['spaBookingId', 'spaBookings', 'guest-created spa booking'], ['diningReservationId', 'diningReservations', 'guest-created dining reservation']].forEach(([v, list, label]) => {",
+                      "  const id = pm.collectionVariables.get(v);",
+                      "  pm.test('Stay Activity lists the ' + label, () => {",
+                      "    const t = (activity[list] || []).find((x) => x._id === id);",
+                      "    pm.expect(t, label + ' (' + id + ') is missing from ' + list).to.exist;",
+                      "    pm.expect(t.mainStayBookingId).to.eql(stay);",
+                      "  });",
+                      "});",
                       "const refField = { spaBookings: ['bookingId', 'SPA'], experienceBookings: ['bookingId', 'EXP'], transportBookings: ['ref', 'TRN'], diningReservations: ['reservationRef', 'DIN'] };",
                       "Object.entries(refField).forEach(([list, [field, kind]]) => {",
                       "  pm.test('Every ' + list + ' ref is <stayId>-' + kind + '-<n>', () => {",
@@ -27872,8 +28023,8 @@
                   "pm.test('Response has success: true', () => pm.expect(pm.response.json().success).to.eql(true));",
                   "const row = (pm.response.json().data || []).find((r) => r.bookingId === pm.collectionVariables.get('stayBookingId'));",
                   "pm.test('Departures include this stay', () => pm.expect(row, 'stay not in departures').to.exist);",
-                  "[['transportBookingId', 'guest-created transport booking'], ['staffTransportBookingId', 'staff manual transport booking']].forEach(([v, label]) => {",
-                  "  pm.test('Checkout folio includes the ' + label, () => pm.expect(((row && row.folio) || []).map((l) => l._id)).to.include('trn:' + pm.collectionVariables.get(v)));",
+                  "[['transportBookingId', 'trn', 'guest-created transport booking'], ['staffTransportBookingId', 'trn', 'staff manual transport booking'], ['expBookingId', 'exp', 'guest-created experience booking'], ['spaBookingId', 'spa', 'guest-created spa booking'], ['diningReservationId', 'din', 'guest-created dining reservation']].forEach(([v, prefix, label]) => {",
+                  "  pm.test('Checkout folio includes the ' + label, () => pm.expect(((row && row.folio) || []).map((l) => l._id)).to.include(prefix + ':' + pm.collectionVariables.get(v)));",
                   "});"
                 ]
               }
