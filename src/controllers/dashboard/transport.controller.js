@@ -1,4 +1,3 @@
-import Booking from '../../models/Booking.model.js';
 import Transport from '../../models/Transport.model.js';
 import TransportBooking from '../../models/TransportBooking.model.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
@@ -152,10 +151,9 @@ export const createManualTransportBooking = async (req, res) => {
       return res.status(400).json({ success: false, message: 'mainStayBookingId and amount are required' });
     }
 
-    const booking = await Booking.findOne({ bookingId: mainStayBookingId.trim() }).lean();
-    if (!booking) {
-      return res.status(404).json({ success: false, message: 'Booking not found. Check the booking ID and try again.' });
-    }
+    // Same shared lookup every other hub uses, so this booking carries the stay's Booking ID.
+    const { booking, error } = await resolveMainStayBooking(mainStayBookingId);
+    if (error) return res.status(error.status).json({ success: false, message: error.message });
 
     const checkInDate = new Date(booking.arrivalDate);
     const checkOutDate = new Date(booking.checkoutDate);
@@ -164,6 +162,7 @@ export const createManualTransportBooking = async (req, res) => {
     const transportBooking = await TransportBooking.create({
       guestId: booking.guestId,
       bookingId: booking._id,
+      mainStayBookingId: booking.bookingId,
       guestName: booking.primaryGuestName,
       roomNumber: booking.roomNumber || '',
       checkInDate,

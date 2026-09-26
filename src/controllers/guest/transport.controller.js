@@ -93,6 +93,9 @@ export const createTransportBooking = async (req, res) => {
     const transportBooking = await TransportBooking.create({
       guestId,
       bookingId,
+      // Derived server-side from the stay we just loaded — never trusted from the client — so this
+      // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
+      mainStayBookingId: booking.bookingId,
       guestName: guest ? guest.fullName : '',
       roomNumber: booking.roomNumber || guest?.roomNumber || '',
       checkInDate: booking.arrivalDate,
