@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "seed": "node scripts/seed/index.js",
+    "generate:openapi": "node scripts/generate-openapi.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -34,7 +35,9 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "js-yaml": "^5.4.2",
+    "nodemon": "^3.0.2",
+    "postman-to-openapi": "^1.7.3"
   },
   "engines": {
     "node": "22.x"
