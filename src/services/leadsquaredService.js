@@ -82,7 +82,7 @@ export async function pushGuestActivity(guest, booking) {
   const payload = {
     RelatedProspectId: prospectId,
     ActivityEvent: ACTIVITY_EVENT,
-    ActivityNote: `Guest added to Lume WebApp — ${lsqPropertyName || booking?.propertyName || ''}`,
+    ActivityNote: `Guest added to Lume WebApp — ${LSQ_PROPERTY_NAME || booking?.propertyName || ''}`,
     Fields: fields,
   };
 
