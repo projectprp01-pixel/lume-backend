@@ -241,43 +241,26 @@ manually per client. `scripts/onboard-client.js` / `scripts/offboard-client.js` 
 that can be automated (local env files, the Mongo database); everything else below is a manual
 step on an external dashboard.
 
-### Usage
+### Onboarding — step by step
 
-```bash
-npm run onboard -- <slug> "<Display Name>"
-# e.g.
-npm run onboard -- leela "The Leela Palace Bengaluru"
-```
-
-`<slug>` becomes the Mongo database name and the dashboard's session-cookie prefix — lowercase
-letters, digits and hyphens only.
-
-This writes to `clients/<slug>/` at the repo root (gitignored, never commit it):
-
-- `backend.env` — copy to `backend/.env` locally, or paste into the backend's Railway Variables.
-- `property-dashboard.env.local` — copy to `property-dashboard/.env.local`, or paste into its
-  service's Variables.
-- `CHECKLIST.md` — what's left to do manually.
-
-### What it fills in for you
-- `PROPERTY_NAME` / `NEXT_PUBLIC_PROPERTY_NAME` — from the display name you pass in.
-- `MONGODB_URI` / `MONGODB_URI_DEV` — reuses the cluster host/credentials from your local
-  `backend/.env`, with the database name swapped to `<slug>` (prod) and `<slug>-dev` (dev).
-- `JWT_SECRET` — freshly generated, unique to this client.
-- `SESSION_COOKIE_NAME` — `<slug>_dash_token`, so two dashboards never collide.
-- `R2_ACCOUNT_ID` — reused from your local `.env` (same Cloudflare account, not a per-client secret).
-
-### What you still have to do (see the generated CHECKLIST.md)
-1. **Cloudflare R2** — create a new bucket (`lume-<slug>`), a scoped API token, and enable public
-   access; fill in `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL`.
-2. **Cloudinary** — new account/credentials for this client's image storage.
-3. **Resend** — verify the client's sending domain, create a scoped API key.
-4. **OpenAI** — a key for the AI concierge (keeps usage/billing separable per client).
-5. **Razorpay** — the client's own key id/secret.
-6. **LeadSquared** — optional, only if the client uses it.
-7. **Deploy** backend and property-dashboard as separate Railway/Vercel services, then go back
-   and fill in the URL-shaped variables that only exist after deploy (`GUEST_APP_URL`,
-   `DASHBOARD_APP_URL`, `CORS_ALLOWED_ORIGINS`, `BACKEND_URL`) and redeploy.
+1. **Back up your current `backend/.env`** before you do anything else, in case you overwrite it
+   later in this process:
+   ```bash
+   cp backend/.env backend/.env.bak
+   ```
+2. **Generate the scaffold**, from `backend/`:
+   ```bash
+   npm run onboard -- <slug> "<Display Name>"
+   # e.g.
+   npm run onboard -- leela "The Leela Palace Bengaluru"
+   ```
+   `<slug>` becomes the Mongo database name and the dashboard's session-cookie prefix — lowercase
+   letters, digits and hyphens only. This creates `clients/<slug>/` at the repo root (gitignored):
+   `backend.env`, `property-dashboard.env.local`, `CHECKLIST.md`. It auto-fills the property name,
+   a Mongo URI pointing at a new `<slug>` / `<slug>-dev` database on your existing cluster, a fresh
+   `JWT_SECRET`, a unique `SESSION_COOKIE_NAME`, and reuses your `R2_ACCOUNT_ID`. Everything else
+   is left blank for the steps below.
+3. **Open `clients/<slug>/CHECKLIST.md`** — it lists exactly what's left, matching steps 4–8 here.
 
 ## Deployment
 
