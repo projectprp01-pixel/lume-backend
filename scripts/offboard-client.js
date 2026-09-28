@@ -61,3 +61,40 @@ if (!dropDb) {
   console.log('\nDone. Pass --drop-db if the Mongo databases for this client also need to go.');
   process.exit(0);
 }
+
+// ---------------------------------------------------------------------------
+// 2. Optional: drop the <slug> / <slug>-dev databases on the shared cluster.
+//    Destructive + shared infrastructure, so: dry run by default, real drop only
+//    with --yes, and always list what's actually in each database first.
+// ---------------------------------------------------------------------------
+const { default: mongoose } = await import('mongoose');
+
+function parseEnvFile(filePath) {
+  if (!fs.existsSync(filePath)) return {};
+  const out = {};
+  for (const line of fs.readFileSync(filePath, 'utf8').split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq === -1) continue;
+    out[trimmed.slice(0, eq).trim()] = trimmed.slice(eq + 1).trim();
+  }
+  return out;
+}
+
+function buildMongoUri(sourceUri, dbName) {
+  if (!sourceUri) return '';
+  const m = sourceUri.match(/^(mongodb(?:\+srv)?):\/\/([^:]+):([^@]+)@([^/?]+)\/[^/?]*(\?.*)?$/);
+  if (!m) return '';
+  const [, scheme, user, pass, host, query] = m;
+  return `${scheme}://${user}:${pass}@${host}/${dbName}${query || ''}`;
+}
+
+const existingBackendEnv = parseEnvFile(path.join(BACKEND_DIR, '.env'));
+const sourceMongoUri = existingBackendEnv.MONGODB_URI_DEV || existingBackendEnv.MONGODB_URI || '';
+const clusterHost = sourceMongoUri.match(/@([^/?]+)/)?.[1];
+
+if (!sourceMongoUri) {
+  console.error('\nCould not read a Mongo URI from backend/.env locally — cannot reach the cluster to drop databases.');
+  process.exit(1);
+}
