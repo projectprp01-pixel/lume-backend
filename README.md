@@ -261,6 +261,17 @@ step on an external dashboard.
    `JWT_SECRET`, a unique `SESSION_COOKIE_NAME`, and reuses your `R2_ACCOUNT_ID`. Everything else
    is left blank for the steps below.
 3. **Open `clients/<slug>/CHECKLIST.md`** — it lists exactly what's left, matching steps 4–8 here.
+4. **Create the client's Cloudflare R2 bucket** (Cloudflare dashboard → R2):
+   - New bucket, suggested name `lume-<slug>`.
+   - New API token scoped to just that bucket (Object Read & Write) — don't reuse another
+     client's token.
+   - Enable public access (r2.dev subdomain, or a custom domain).
+   - Fill `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_PUBLIC_URL` into
+     `clients/<slug>/backend.env`.
+5. **Create the client's Cloudinary account/credentials** and fill `CLOUDINARY_CLOUD_NAME`,
+   `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
+6. **Verify the client's sending domain in Resend**, create a scoped API key, and fill
+   `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAILS`.
 
 ## Deployment
 
