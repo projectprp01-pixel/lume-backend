@@ -314,6 +314,14 @@ above you got before realizing the mistake.
    ```
    This is irreversible — only run `--yes` once you've read the dry-run output and confirmed
    there's nothing worth keeping.
+4. **If you completed step 4** (created an R2 bucket), delete `lume-<slug>` and its API token in
+   the Cloudflare dashboard yourself — the scripts never touch R2.
+5. **If you completed steps 5–8** (Cloudinary, Resend, OpenAI, Razorpay, LeadSquared), delete or
+   revoke whatever you created on each of those dashboards yourself — same reason.
+6. **If you completed step 10** (deployed to Railway/Vercel), delete those services too.
+
+If you catch the mistake right after step 2 of onboarding — before touching any external
+dashboard — then step 1 here is the whole undo.
 
 ## Deployment
 
