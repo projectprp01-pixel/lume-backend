@@ -18,3 +18,24 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(__dirname, '..', '..'); // backend/scripts -> backend -> repo root
+const BACKEND_DIR = path.join(REPO_ROOT, 'backend');
+
+const args = process.argv.slice(2);
+const rawSlug = args.find((a) => !a.startsWith('-'));
+const dropDb = args.includes('--drop-db');
+const confirmed = args.includes('--yes');
+
+if (!rawSlug || rawSlug === '--help' || rawSlug === '-h') {
+  console.error('Usage: node scripts/offboard-client.js <slug> [--drop-db] [--yes]');
+  console.error('Example: node scripts/offboard-client.js leela --drop-db --yes');
+  process.exit(1);
+}
+
+const slug = rawSlug.trim().toLowerCase();
+if (!/^[a-z0-9-]+$/.test(slug)) {
+  console.error(`Invalid slug "${rawSlug}" — expected the same lowercase/digits/hyphens slug you passed to onboard-client.js.`);
+  process.exit(1);
+}
