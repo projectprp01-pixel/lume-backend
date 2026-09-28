@@ -125,3 +125,22 @@ async function inspectAndMaybeDrop(dbName) {
     await conn.close();
   }
 }
+
+console.log(`\nConnecting to ${clusterHost} to inspect "${slug}" and "${slug}-dev"...`);
+try {
+  await inspectAndMaybeDrop(slug);
+  await inspectAndMaybeDrop(`${slug}-dev`);
+} catch (err) {
+  console.error(`\nFailed to inspect/drop databases: ${err.message}`);
+  console.error('(This can also mean the cluster user lacks drop permissions on these databases.)');
+  process.exit(1);
+}
+
+if (!confirmed) {
+  console.log(`\nDry run only — nothing was deleted. Re-run with --yes to actually drop these databases:`);
+  console.log(`  node scripts/offboard-client.js ${slug} --drop-db --yes`);
+} else {
+  console.log('\nDone.');
+}
+
+process.exit(0);
