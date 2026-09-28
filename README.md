@@ -283,6 +283,15 @@ step on an external dashboard.
    ```
    (Or, for a Railway/Vercel deploy instead of local: paste each file's contents into that
    service's Variables tab.)
+10. **Deploy** backend and property-dashboard as separate Railway/Vercel services.
+11. **Fill in the URL variables that only exist after step 10** — `GUEST_APP_URL`,
+    `DASHBOARD_APP_URL`, `CORS_ALLOWED_ORIGINS` (backend), `BACKEND_URL` (property-dashboard) —
+    then redeploy (property-dashboard inlines `NEXT_PUBLIC_*` at build time, so it needs a rebuild).
+
+### Offboarding — step by step
+
+Use this to undo a mistaken onboard. How far you need to go depends on how far through the steps
+above you got before realizing the mistake.
 
 ## Deployment
 
