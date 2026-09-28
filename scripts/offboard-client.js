@@ -39,3 +39,25 @@ if (!/^[a-z0-9-]+$/.test(slug)) {
   console.error(`Invalid slug "${rawSlug}" — expected the same lowercase/digits/hyphens slug you passed to onboard-client.js.`);
   process.exit(1);
 }
+
+// ---------------------------------------------------------------------------
+// 1. Remove the local scaffold — always safe, always done.
+// ---------------------------------------------------------------------------
+const scaffoldDir = path.join(REPO_ROOT, 'clients', slug);
+if (fs.existsSync(scaffoldDir)) {
+  const files = fs.readdirSync(scaffoldDir);
+  fs.rmSync(scaffoldDir, { recursive: true, force: true });
+  console.log(`Removed clients/${slug}/ (${files.join(', ')})`);
+} else {
+  console.log(`No clients/${slug}/ scaffold found — nothing to remove there.`);
+}
+
+console.log(
+  `\nNote: this does not touch backend/.env or property-dashboard/.env.local. If you already\n` +
+  `copied the ${slug} scaffold into either of those, edit/restore them by hand.`
+);
+
+if (!dropDb) {
+  console.log('\nDone. Pass --drop-db if the Mongo databases for this client also need to go.');
+  process.exit(0);
+}
