@@ -98,3 +98,28 @@ if (!sourceMongoUri) {
   console.error('\nCould not read a Mongo URI from backend/.env locally — cannot reach the cluster to drop databases.');
   process.exit(1);
 }
+
+async function inspectAndMaybeDrop(dbName) {
+  const uri = buildMongoUri(sourceMongoUri, dbName);
+  const conn = await mongoose.createConnection(uri).asPromise();
+  try {
+    const collections = await conn.db.listCollections().toArray();
+    if (collections.length === 0) {
+      console.log(`\n"${dbName}" on ${clusterHost}: does not exist or is already empty.`);
+      return;
+    }
+    console.log(`\n"${dbName}" on ${clusterHost}:`);
+    let total = 0;
+    for (const { name } of collections) {
+      const count = await conn.db.collection(name).countDocuments();
+      total += count;
+      console.log(`  - ${name}: ${count} document(s)`);
+    }
+    if (!confirmed) {
+      console.log(`  (dry run — ${total} document(s) total would be permanently deleted with --yes)`);
+      return;
+    }
+  } finally {
+    await conn.close();
+  }
+}
