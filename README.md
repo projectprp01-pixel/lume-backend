@@ -272,6 +272,17 @@ step on an external dashboard.
    `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
 6. **Verify the client's sending domain in Resend**, create a scoped API key, and fill
    `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAILS`.
+7. **Get an OpenAI API key** for this client's AI concierge and fill `OPENAI_API_KEY` (optionally
+   customize `AI_CONCIERGE_NAME` / `AI_PROPERTY_DESCRIPTION`).
+8. **Get the client's own Razorpay keys** and fill `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`. Fill
+   the `LSQ_*` LeadSquared vars too, only if this client uses LSQ — otherwise leave them blank.
+9. **Copy the scaffold into place** now that steps 4–8 are filled in:
+   ```bash
+   cp clients/leela/backend.env backend/.env
+   cp clients/leela/property-dashboard.env.local property-dashboard/.env.local
+   ```
+   (Or, for a Railway/Vercel deploy instead of local: paste each file's contents into that
+   service's Variables tab.)
 
 ## Deployment
 
