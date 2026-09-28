@@ -293,6 +293,28 @@ step on an external dashboard.
 Use this to undo a mistaken onboard. How far you need to go depends on how far through the steps
 above you got before realizing the mistake.
 
+1. **Delete the local scaffold** (always do this first):
+   ```bash
+   npm run offboard -- <slug>
+   ```
+   This deletes `clients/<slug>/` only. Safe and local — it does not touch `backend/.env`,
+   `property-dashboard/.env.local`, Mongo, or anything else.
+2. **If you got as far as step 9 above** (copied the scaffold into `backend/.env` /
+   `property-dashboard/.env.local`), restore them:
+   ```bash
+   cp backend/.env.bak backend/.env
+   ```
+   (There's no equivalent backup for `property-dashboard/.env.local` unless you made one the same
+   way — copy step 1 in Onboarding — so without a backup you'll need to re-fill it by hand.)
+3. **If a Mongo database actually got created** (i.e. something wrote to `<slug>` or
+   `<slug>-dev` — running `npm run seed` against it, or the backend serving real traffic), drop it:
+   ```bash
+   npm run offboard -- <slug> --drop-db          # dry run first — lists what's in each database
+   npm run offboard -- <slug> --drop-db --yes    # actually drops <slug> and <slug>-dev
+   ```
+   This is irreversible — only run `--yes` once you've read the dry-run output and confirmed
+   there's nothing worth keeping.
+
 ## Deployment
 
 ### Free Hosting Options
