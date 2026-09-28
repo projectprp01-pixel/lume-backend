@@ -237,10 +237,9 @@ active apps (`guest/` and `property/` in the monorepo are old and unused), and e
 their own MongoDB database and R2 bucket — not their own cluster. A new client's database is
 just a new database name on the existing Atlas cluster (Mongo creates it automatically on first
 write); no cluster provisioning needed. R2, on the other hand, is one bucket per client, created
-manually per client.
-
-`scripts/onboard-client.js` scaffolds the env files for a new client so you're not hand-copying
-`.env.example` and re-deriving the Mongo URI / JWT secret each time.
+manually per client. `scripts/onboard-client.js` / `scripts/offboard-client.js` automate the parts
+that can be automated (local env files, the Mongo database); everything else below is a manual
+step on an external dashboard.
 
 ### Usage
 
