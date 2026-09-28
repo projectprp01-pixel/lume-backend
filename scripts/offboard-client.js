@@ -119,6 +119,8 @@ async function inspectAndMaybeDrop(dbName) {
       console.log(`  (dry run — ${total} document(s) total would be permanently deleted with --yes)`);
       return;
     }
+    await conn.dropDatabase();
+    console.log(`  DROPPED "${dbName}" — ${total} document(s) permanently deleted.`);
   } finally {
     await conn.close();
   }
