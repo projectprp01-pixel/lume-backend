@@ -1,0 +1,203 @@
+#!/usr/bin/env node
+// Scaffolds env files for a new client instance across backend and property-dashboard
+// (the only two apps in active use — guest/ and property/ are old and unused).
+// Fills in what can be derived automatically (Mongo URIs on the existing cluster, a
+// fresh JWT secret, cookie name, property name) and leaves everything that requires
+// an external account (R2, Resend, OpenAI, Razorpay, Cloudinary, LeadSquared) blank
+// with a checklist of what to go create.
+//
+// Usage:
+//   node scripts/onboard-client.js <slug> "<Display Name>"
+//   npm run onboard -- <slug> "<Display Name>"
+//
+// Example:
+//   node scripts/onboard-client.js leela "The Leela Palace Bengaluru"
+
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(__dirname, '..', '..'); // backend/scripts -> backend -> repo root
+const BACKEND_DIR = path.join(REPO_ROOT, 'backend');
+
+const [, , rawSlug, ...nameParts] = process.argv;
+
+if (!rawSlug || rawSlug === '--help' || rawSlug === '-h') {
+  console.error('Usage: node scripts/onboard-client.js <slug> "<Display Name>"');
+  console.error('Example: node scripts/onboard-client.js leela "The Leela Palace Bengaluru"');
+  process.exit(1);
+}
+
+const slug = rawSlug.trim().toLowerCase();
+if (!/^[a-z0-9-]+$/.test(slug)) {
+  console.error(`Invalid slug "${rawSlug}" — use lowercase letters, digits and hyphens only (it becomes the Mongo database name and cookie prefix).`);
+  process.exit(1);
+}
+
+const displayName = (nameParts.join(' ') || slug).trim();
+
+// ---------------------------------------------------------------------------
+// Parse backend/.env (if present, gitignored, local-only) to reuse the existing
+// Mongo cluster host/credentials and R2 account id — never a client secret.
+// ---------------------------------------------------------------------------
+function parseEnvFile(filePath) {
+  if (!fs.existsSync(filePath)) return {};
+  const out = {};
+  for (const line of fs.readFileSync(filePath, 'utf8').split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq === -1) continue;
+    out[trimmed.slice(0, eq).trim()] = trimmed.slice(eq + 1).trim();
+  }
+  return out;
+}
+
+const existingBackendEnv = parseEnvFile(path.join(BACKEND_DIR, '.env'));
+
+function buildMongoUri(sourceUri, dbName) {
+  if (!sourceUri) return '';
+  const m = sourceUri.match(/^(mongodb(?:\+srv)?):\/\/([^:]+):([^@]+)@([^/?]+)\/[^/?]*(\?.*)?$/);
+  if (!m) return '';
+  const [, scheme, user, pass, host, query] = m;
+  return `${scheme}://${user}:${pass}@${host}/${dbName}${query || ''}`;
+}
+
+const sourceMongoUri = existingBackendEnv.MONGODB_URI_DEV || existingBackendEnv.MONGODB_URI || '';
+const mongoUriProd = buildMongoUri(sourceMongoUri, slug);
+const mongoUriDev = buildMongoUri(sourceMongoUri, `${slug}-dev`);
+const reusedClusterHost = sourceMongoUri.match(/@([^/?]+)/)?.[1] || null;
+
+const jwtSecret = crypto.randomBytes(48).toString('hex');
+const sessionCookieName = `${slug}_dash_token`;
+const suggestedBucketName = `lume-${slug}`;
+const r2AccountId = existingBackendEnv.R2_ACCOUNT_ID || '';
+
+// ---------------------------------------------------------------------------
+// Fill map per app — only keys listed here get overwritten; everything else in
+// the .env.example is carried through as-is (comments, defaults, blank required
+// fields the operator still has to supply).
+// ---------------------------------------------------------------------------
+const fillMaps = {
+  backend: {
+    PROPERTY_NAME: displayName,
+    MONGODB_URI: mongoUriProd,
+    MONGODB_URI_DEV: mongoUriDev,
+    JWT_SECRET: jwtSecret,
+    R2_ACCOUNT_ID: r2AccountId,
+  },
+  'property-dashboard': {
+    NEXT_PUBLIC_PROPERTY_NAME: displayName,
+    SESSION_COOKIE_NAME: sessionCookieName,
+  },
+};
+
+const appTargets = [
+  { key: 'backend', exampleFile: 'backend/.env.example', outFile: 'backend.env' },
+  { key: 'property-dashboard', exampleFile: 'property-dashboard/.env.example', outFile: 'property-dashboard.env.local' },
+];
+
+const outDir = path.join(REPO_ROOT, 'clients', slug);
+fs.mkdirSync(outDir, { recursive: true });
+
+const generatedFiles = [];
+const skipped = [];
+
+for (const target of appTargets) {
+  const examplePath = path.join(REPO_ROOT, target.exampleFile);
+  if (!fs.existsSync(examplePath)) {
+    skipped.push(target.exampleFile);
+    continue;
+  }
+  const fillMap = fillMaps[target.key] || {};
+  const lines = fs.readFileSync(examplePath, 'utf8').split(/\r?\n/);
+  const filled = lines.map((line) => {
+    const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (!m) return line;
+    const [, key] = m;
+    if (Object.prototype.hasOwnProperty.call(fillMap, key) && fillMap[key]) {
+      return `${key}=${fillMap[key]}`;
+    }
+    return line;
+  });
+  const header = [
+    `# Generated by scripts/onboard-client.js for client "${slug}" on ${new Date().toISOString().slice(0, 10)}.`,
+    '# Review every blank/placeholder before deploying — see CHECKLIST.md in this folder.',
+    '',
+  ].join('\n');
+  const outPath = path.join(outDir, target.outFile);
+  fs.writeFileSync(outPath, header + filled.join('\n') + '\n');
+  generatedFiles.push(target.outFile);
+}
+
+// ---------------------------------------------------------------------------
+// Checklist of everything that still needs a human + an external dashboard.
+// ---------------------------------------------------------------------------
+const checklist = `# Onboarding checklist — ${displayName} (${slug})
+
+Generated ${new Date().toISOString().slice(0, 10)}. Files in this folder are ready to copy into
+each app's env (or paste into Railway/Vercel Variables) once the blanks below are filled in.
+
+## Already filled in for you
+- **Property name** — "${displayName}" (backend \`PROPERTY_NAME\`, dashboard \`NEXT_PUBLIC_PROPERTY_NAME\`).
+- **MongoDB** — ${mongoUriProd ? `reused the existing cluster (\`${reusedClusterHost}\`), new database names \`${slug}\` (prod) and \`${slug}-dev\` (dev). No cluster creation needed — Mongo creates the database on first write.` : 'could not read backend/.env locally to clone the cluster host, so MONGODB_URI / MONGODB_URI_DEV were left blank. Fill with mongodb+srv://user:pass@<your-cluster-host>/' + slug + ' (and /' + slug + '-dev for dev).'}
+- **JWT_SECRET** — freshly generated, unique to this client.
+- **Session cookie name** — \`${sessionCookieName}\` (dashboard), guaranteed not to collide with other clients' cookies.
+${r2AccountId ? `- **R2_ACCOUNT_ID** — reused \`${r2AccountId}\` (same Cloudflare account, not a per-client secret).` : ''}
+
+## Still to do manually
+
+### 1. Cloudflare R2 (video storage)
+- Create a new bucket, suggested name: \`${suggestedBucketName}\`.
+- Create a scoped API token (Object Read & Write, restricted to just this bucket).
+- Enable public access (r2.dev subdomain, or attach a custom domain).
+- Fill in \`R2_ACCESS_KEY_ID\`, \`R2_SECRET_ACCESS_KEY\`, \`R2_BUCKET_NAME\`, \`R2_PUBLIC_URL\` in backend.env.
+
+### 2. Cloudinary (image storage)
+- Create/assign a Cloudinary account for this client.
+- Fill in \`CLOUDINARY_CLOUD_NAME\`, \`CLOUDINARY_API_KEY\`, \`CLOUDINARY_API_SECRET\`.
+
+### 3. Resend (email)
+- Verify this client's sending domain in Resend.
+- Create an API key scoped to that domain.
+- Fill in \`RESEND_API_KEY\`, \`EMAIL_FROM\`, \`NOTIFY_EMAILS\`.
+
+### 4. OpenAI (AI concierge)
+- Create or assign an API key for this client (own key keeps usage/billing separable per client).
+- Fill in \`OPENAI_API_KEY\`. Optionally customize \`AI_CONCIERGE_NAME\` / \`AI_PROPERTY_DESCRIPTION\`.
+
+### 5. Razorpay (payments)
+- Get this client's own \`RAZORPAY_KEY_ID\` / \`RAZORPAY_KEY_SECRET\`.
+
+### 6. LeadSquared (optional)
+- Only if this client uses LSQ. Otherwise leave blank.
+
+### 7. Deploy and wire up URLs
+- Deploy backend and property-dashboard as separate Railway/Vercel services.
+- Once each has a URL, go back and fill in the URL-shaped variables that can't be known
+  ahead of deploy: \`GUEST_APP_URL\`, \`DASHBOARD_APP_URL\`, \`CORS_ALLOWED_ORIGINS\` (backend),
+  \`BACKEND_URL\` (property-dashboard).
+- Redeploy after filling those in (property-dashboard inlines \`NEXT_PUBLIC_*\` at build time).
+
+## Copying into place
+- \`backend.env\` → \`backend/.env\` locally, or paste into the backend Railway service's Variables tab.
+- \`property-dashboard.env.local\` → \`property-dashboard/.env.local\`, or paste into its service's Variables.
+
+These files contain secrets once filled in — never commit them (the repo root's \`clients/\` folder
+is gitignored).
+`;
+
+fs.writeFileSync(path.join(outDir, 'CHECKLIST.md'), checklist);
+
+console.log(`\nGenerated client scaffold for "${displayName}" (${slug}) in clients/${slug}/`);
+for (const f of generatedFiles) console.log(`  - ${f}`);
+console.log('  - CHECKLIST.md');
+if (skipped.length) {
+  console.log(`\nSkipped (no .env.example found): ${skipped.join(', ')}`);
+}
+if (!mongoUriProd) {
+  console.log('\nNote: could not read backend/.env locally, so MongoDB URIs were left blank — see CHECKLIST.md.');
+}
+console.log('\nNext: open clients/' + slug + '/CHECKLIST.md and work through it before deploying.');

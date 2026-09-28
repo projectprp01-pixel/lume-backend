@@ -16,7 +16,38 @@ navigation:
   - page: Welcome
     path: pages/welcome.mdx
   - api: API Reference
+    layout:
+      - Health
+      - Staff Authentication
+      - Departments and Roles
+      - Staff Management
+      - Property Settings and Guest App CMS
+      - Experience Hub Catalog
+      - Spa Hub Facilities and Treatments
+      - Dining Hub Restaurants and Intimate Dining
+      - Food and Beverage Ordering
+      - Transport Hub Settings Fleet and Offerings
+      - App Banners
+      - Guest Management
+      - Guest Arrival
+      - Arrivals Hub
+      - Guest App Session and Discovery
+      - Guest App Bookings
+      - Payments Razorpay
+      - Legacy Experience Bookings
+      - Staff Bookings by Hub
+      - Service Requests
+      - Guest Notifications
+      - Checkout and Feedback
+      - Home Summary and Analytics
+      - Comms Hub
+      - Cancellations
+      - Teardown
 
 colors:
-  accentPrimary: '#ffffff'
-  background: '#000000'
+  accentPrimary:
+    dark: '#E8B04B'
+    light: '#93600F'
+  background:
+    dark: '#0B0D10'
+    light: '#FFFFFF'

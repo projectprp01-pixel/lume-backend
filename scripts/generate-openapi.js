@@ -39,6 +39,49 @@ const INPUT = path.join(root, 'collection', 'lume-api.postman_collection.json');
 const OUTPUT = path.join(root, 'openapi.yaml');
 const pkg = createRequire(import.meta.url)('../package.json');
 
+// The Postman collection's numbered folder names (e.g. "01 · Staff Authentication") are the source of
+// truth and stay as-is there — the numbering is load-bearing for running the collection in order and
+// is cross-referenced throughout the folder descriptions ("Depends on: Auth (01)"). But Fern's docs
+// site renders OpenAPI tag names through a title-caser that assumes the string is a raw identifier: a
+// tag starting with a digit run gets that run fused onto the next word AND lowercased (e.g.
+// "01 · Staff Authentication" renders as "01staff Authentication"), and it force-capitalizes a few
+// short words it mistakes for acronyms ("in" -> "IN"). There's no docs.yml/generators.yml setting to
+// disable this, so the OpenAPI tag (display name only — descriptions are untouched) gets a separate,
+// plain-word display name here instead.
+const DOCS_TAG_NAMES = {
+  '00 · Health': 'Health',
+  '01 · Staff Authentication': 'Staff Authentication',
+  '02 · Departments & Roles': 'Departments and Roles',
+  '03 · Staff Management': 'Staff Management',
+  '04 · Property Settings & Guest App CMS': 'Property Settings and Guest App CMS',
+  '05 · Experience Hub — Catalog': 'Experience Hub Catalog',
+  '06 · Spa Hub — Facilities & Treatments': 'Spa Hub Facilities and Treatments',
+  '07 · Dining Hub — Restaurants & Intimate Dining': 'Dining Hub Restaurants and Intimate Dining',
+  '08 · F&B In-Room Ordering — Menu & Settings': 'Food and Beverage Ordering',
+  '09 · Transport Hub — Settings, Fleet & Offerings': 'Transport Hub Settings Fleet and Offerings',
+  '10 · App Banners': 'App Banners',
+  '11 · Guest Management (creates the stay)': 'Guest Management',
+  '12 · Guest Check-in (public guest app)': 'Guest Arrival',
+  '13 · Check-in Hub (staff review)': 'Arrivals Hub',
+  '14 · Guest App — Session & Discovery (public)': 'Guest App Session and Discovery',
+  '15 · Guest App — Bookings (public)': 'Guest App Bookings',
+  '16 · Payments (Razorpay)': 'Payments Razorpay',
+  '17 · Legacy Experience Bookings (/api/bookings)': 'Legacy Experience Bookings',
+  '18 · Staff-side Bookings by Hub (Add Booking dialogs)': 'Staff Bookings by Hub',
+  '19 · Service Requests (Guest "Write to Us" → Staff Requests Hub)': 'Service Requests',
+  '20 · Guest Notifications': 'Guest Notifications',
+  '21 · Checkout & Feedback': 'Checkout and Feedback',
+  '22 · Home Summary & Analytics': 'Home Summary and Analytics',
+  '23 · Comms Hub': 'Comms Hub',
+  '24 · Cancellations': 'Cancellations',
+  '99 · Teardown (cleanup)': 'Teardown',
+};
+const docsTagName = (folderName) => {
+  const name = DOCS_TAG_NAMES[folderName];
+  if (!name) throw new Error(`No docs display name mapped for folder "${folderName}" — add one to DOCS_TAG_NAMES`);
+  return name;
+};
+
 const collection = JSON.parse(await fs.readFile(INPUT, 'utf8'));
 
 // ---- prepare: flatten to top-level folders, drop edge-case duplicates ----
@@ -69,7 +112,7 @@ prepared.item = collection.item.map((folder) => {
     byOperation.set(key, { req, examples: [...(req.response ?? [])] });
     kept.push(req);
   }
-  return { name: folder.name, description: folder.description, item: kept };
+  return { name: docsTagName(folder.name), description: folder.description, item: kept };
 });
 
 // ---- fold edge-case examples into the real operation they exercise ----
