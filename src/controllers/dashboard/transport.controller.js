@@ -377,6 +377,38 @@ export const createTransportHubBooking = async (req, res) => {
   }
 };
 
+// Edit a hub transport booking. The ref, guest and main-stay link are immutable.
+export const updateTransportHubBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { offeringSlot, vehicleId, vehicleName, date, price, paymentStatus } = req.body;
+    const update = {};
+    if (offeringSlot !== undefined) update.offeringSlot = Number(offeringSlot);
+    if (vehicleId !== undefined) update.vehicleId = vehicleId;
+    if (vehicleName !== undefined) update.vehicleName = vehicleName;
+    if (date !== undefined) {
+      if (Number.isNaN(new Date(date).getTime())) return res.status(400).json({ success: false, message: 'date is invalid' });
+      update.checkInDate = new Date(date);
+    }
+    if (price !== undefined) {
+      if (!(Number(price) >= 0)) return res.status(400).json({ success: false, message: 'price cannot be negative' });
+      update.amount = Number(price);
+    }
+    if (paymentStatus !== undefined) {
+      if (!['Completed', 'Pending', 'paid', 'pending'].includes(paymentStatus)) {
+        return res.status(400).json({ success: false, message: "paymentStatus must be 'Completed' or 'Pending'" });
+      }
+      update.paymentStatus = ['Completed', 'paid'].includes(paymentStatus) ? 'paid' : 'pending';
+    }
+    const booking = await TransportBooking.findByIdAndUpdate(id, update, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Booking not found' });
+    res.status(200).json({ success: true, data: booking });
+  } catch (error) {
+    console.error('Update transport hub booking error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update booking', error: error.message });
+  }
+};
+
 export const setTransportHubBookingPayment = async (req, res) => {
   try {
     const { id } = req.params;
