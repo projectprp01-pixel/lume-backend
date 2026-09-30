@@ -278,6 +278,72 @@ export const createManualDiningReservation = async (req, res) => {
 };
 
 /**
+ * Edit a dining reservation (staff-side). The reservation ref, guest and main-stay link are
+ * immutable — one stay keeps one Booking ID across every hub.
+ */
+export const updateDiningReservation = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { facilityId, facilityName, facilityType, date, numberOfGuests, price, paymentStatus, addons } = req.body;
+    const existing = await DiningReservation.findById(id);
+    if (!existing) return res.status(404).json({ success: false, message: 'Reservation not found' });
+
+    const update = {};
+    if (facilityId !== undefined) {
+      update.facilityId = facilityId;
+      if (facilityName !== undefined) update.facilityName = facilityName;
+      if (facilityType !== undefined) update.facilityType = facilityType;
+    }
+    if (date !== undefined) {
+      if (Number.isNaN(new Date(date).getTime())) return res.status(400).json({ success: false, message: 'date is invalid' });
+      update.date = date;
+    }
+    if (numberOfGuests !== undefined) {
+      if (!(Number(numberOfGuests) >= 1)) return res.status(400).json({ success: false, message: 'numberOfGuests must be at least 1' });
+      update.numberOfGuests = Number(numberOfGuests);
+    }
+    if (price !== undefined) {
+      if (!(Number(price) >= 0)) return res.status(400).json({ success: false, message: 'price cannot be negative' });
+      update.amount = Number(price);
+    }
+    if (paymentStatus !== undefined) {
+      if (!['paid', 'pending'].includes(paymentStatus)) {
+        return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+      }
+      update.paymentStatus = paymentStatus;
+    }
+    if (addons !== undefined) update.addons = Array.isArray(addons) ? addons : [];
+
+    // Re-run the capacity / blocked-date check if the slot moved for an intimate-dining table.
+    const nextFacilityId = update.facilityId ?? String(existing.facilityId);
+    const nextDate = update.date ?? existing.date;
+    const moved = String(nextFacilityId) !== String(existing.facilityId) || nextDate !== existing.date;
+    if (moved && (update.facilityType ?? existing.facilityType) === 'intimate_dining') {
+      const facility = await Restaurant.findById(nextFacilityId);
+      if (facility) {
+        if (facility.blockedDates && facility.blockedDates.includes(nextDate)) {
+          return res.status(400).json({ success: false, message: `${nextDate} is blocked for this facility` });
+        }
+        if (facility.tablesPerNight) {
+          const confirmedCount = await DiningReservation.countDocuments({
+            facilityId: nextFacilityId, date: nextDate, status: 'confirmed', _id: { $ne: existing._id },
+          });
+          if (confirmedCount >= facility.tablesPerNight) {
+            return res.status(400).json({ success: false, message: 'All tables are booked for this date' });
+          }
+        }
+      }
+    }
+
+    const reservation = await DiningReservation.findByIdAndUpdate(id, update, { new: true, runValidators: true });
+    res.status(200).json({ success: true, message: 'Reservation updated', data: reservation });
+  } catch (error) {
+    console.error('Update dining reservation error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update reservation', error: error.message });
+  }
+};
+
+/**
  * Update a dining reservation's payment status (dashboard)
  */
 export const updateDiningReservationPayment = async (req, res) => {

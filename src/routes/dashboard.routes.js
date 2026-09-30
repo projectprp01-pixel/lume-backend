@@ -76,6 +76,7 @@ import {
   getDiningReservations,
   cancelDiningReservation,
   createManualDiningReservation,
+  updateDiningReservation,
   updateDiningReservationPayment,
   assignDiningReservationRoom,
 } from '../controllers/dashboard/restaurant.controller.js';
@@ -277,6 +278,7 @@ router.post('/restaurants/upload-image', upload.single('image'), uploadDiningIma
 router.post('/restaurants/upload-menu', upload.single('file'), uploadDiningMenuFile);
 router.get('/restaurants/reservations', getDiningReservations);
 router.post('/restaurants/reservations', createManualDiningReservation);
+router.put('/restaurants/reservations/:id', updateDiningReservation);
 router.put('/restaurants/reservations/:id/cancel', cancelDiningReservation);
 router.put('/restaurants/reservations/:id/payment', updateDiningReservationPayment);
 router.put('/restaurants/reservations/:id/room', assignDiningReservationRoom);
