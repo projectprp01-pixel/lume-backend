@@ -367,9 +367,19 @@ export const updateGuest = async (req, res) => {
 
     // Update linked Booking fields if provided
     const bookingUpdate = {};
+    if (arrivalDate && checkoutDate && new Date(checkoutDate) < new Date(arrivalDate)) {
+      return res.status(400).json({ success: false, message: 'checkoutDate cannot be before arrivalDate' });
+    }
     if (arrivalDate) bookingUpdate.arrivalDate = new Date(arrivalDate);
     if (checkoutDate) bookingUpdate.checkoutDate = new Date(checkoutDate);
-    if (bookingId) bookingUpdate.bookingId = bookingId.trim();
+    // The stay's Booking ID is the key every hub booking (Spa/Transport/Experiences/Dining),
+    // check-in and folio line links to — changing it here would orphan them all.
+    if (bookingId) {
+      const current = await Booking.findOne({ guestId }).select('bookingId').lean();
+      if (current && current.bookingId !== bookingId.trim()) {
+        return res.status(400).json({ success: false, message: 'Booking ID cannot be changed once a stay exists' });
+      }
+    }
     if (roomType) bookingUpdate.roomType = roomType;
     if (guestUpdateData.fullName) bookingUpdate.primaryGuestName = guestUpdateData.fullName;
     if (propertyName) bookingUpdate.propertyName = propertyName;
