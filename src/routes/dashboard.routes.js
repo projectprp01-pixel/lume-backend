@@ -20,6 +20,7 @@ import {
   getAllExperiences,
   getExperienceBookings,
   createManualBooking,
+  updateExperienceBooking,
   cancelExperienceBooking,
   createExperience,
   updateExperience,
@@ -227,6 +228,7 @@ router.put('/experiences/discounts/:id', updateExperienceDiscount);
 router.delete('/experiences/discounts/:id', deleteExperienceDiscount);
 router.get('/experiences/bookings', getExperienceBookings);
 router.post('/experiences/bookings/manual', createManualBooking);
+router.put('/experiences/bookings/:id', updateExperienceBooking);
 router.put('/experiences/bookings/:bookingId/cancel', cancelExperienceBooking);
 router.put('/experiences/bookings/:id/payment', setExperienceBookingPayment);
 router.put('/experiences/bookings/:id/room', assignExperienceBookingRoom);

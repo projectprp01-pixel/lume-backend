@@ -183,6 +183,57 @@ export const createManualBooking = async (req, res) => {
 };
 
 /**
+ * Edit an experience booking (staff-side). The booking ref, guest and main-stay link are
+ * immutable — one stay keeps one Booking ID across every hub.
+ */
+export const updateExperienceBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { experienceId, date, timeSlot, numberOfGuests, price, paymentStatus, addons, adminNotes } = req.body;
+    const update = {};
+
+    if (experienceId !== undefined) {
+      const experience = await Experience.findById(experienceId);
+      if (!experience) return res.status(404).json({ success: false, message: 'Experience not found' });
+      update.experienceId = experienceId;
+      update.experienceName = experience.title;
+      if (experience.pricing?.currency) update.currency = experience.pricing.currency;
+    }
+    if (date !== undefined) {
+      if (Number.isNaN(new Date(date).getTime())) return res.status(400).json({ success: false, message: 'date is invalid' });
+      update.date = new Date(date);
+    }
+    if (timeSlot !== undefined) update.timeSlot = timeSlot;
+    if (numberOfGuests !== undefined) {
+      if (!(Number(numberOfGuests) >= 1)) return res.status(400).json({ success: false, message: 'numberOfGuests must be at least 1' });
+      update.numberOfGuests = Number(numberOfGuests);
+    }
+    if (price !== undefined && price !== null && String(price).trim() !== '') {
+      // Same convention as createManualBooking: an explicit price is the booking total.
+      const parsed = parseFloat(String(price).replace(/[^0-9.]/g, ''));
+      const amount = Number.isNaN(parsed) ? 0 : Math.max(0, parsed);
+      update.unitPrice = amount;
+      update.totalAmount = amount;
+    }
+    if (paymentStatus !== undefined) {
+      if (!['paid', 'pending'].includes(paymentStatus)) {
+        return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+      }
+      update.paymentStatus = paymentStatus;
+    }
+    if (addons !== undefined) update.addons = Array.isArray(addons) ? addons : [];
+    if (adminNotes !== undefined) update.adminNotes = adminNotes;
+
+    const booking = await ExperienceBooking.findByIdAndUpdate(id, update, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Experience booking not found' });
+    res.status(200).json({ success: true, message: 'Experience booking updated', data: booking });
+  } catch (error) {
+    console.error('Update experience booking error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update experience booking', error: error.message });
+  }
+};
+
+/**
  * Set experience booking payment status (dashboard payment pill flow)
  */
 export const setExperienceBookingPayment = async (req, res) => {
