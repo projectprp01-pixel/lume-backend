@@ -95,6 +95,9 @@ const restaurantSchema = new mongoose.Schema({
   mealTimes: [{ type: String, enum: ['breakfast', 'lunch', 'dinner'] }],
   bookingMode: { type: String, enum: ['reservations', 'info-only'], default: 'info-only' },
   maxGuests: { type: Number },
+  // ON: guests pick how many people are dining (price is per person). OFF: the booking is for the
+  // preset party the listing is priced for, so the guest app shows no guest-count control.
+  guestCanChooseGroupSize: { type: Boolean, default: false },
   whatsIncluded: [String],
   guestNote: { type: String },
   price: { type: Number },
