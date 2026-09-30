@@ -36,6 +36,11 @@ import {
   deleteExperienceDiscount,
 } from '../controllers/dashboard/experience.controller.js';
 
+// ==================== SPA / DINING DISCOUNTS ====================
+import { makeHubDiscountHandlers } from '../controllers/dashboard/hubDiscount.controller.js';
+const spaDiscounts = makeHubDiscountHandlers('spa');
+const diningDiscounts = makeHubDiscountHandlers('dining');
+
 // ==================== GUEST MANAGEMENT ====================
 import {
   getAllGuests,
@@ -276,6 +281,10 @@ router.delete('/departments/:id', requireTier('Admin', 'GM'), deleteDepartment);
 // ==================== RESTAURANT/DINING HUB ====================
 router.post('/restaurants/upload-image', upload.single('image'), uploadDiningImage);
 router.post('/restaurants/upload-menu', upload.single('file'), uploadDiningMenuFile);
+router.get('/restaurants/discounts', diningDiscounts.list);
+router.post('/restaurants/discounts', diningDiscounts.create);
+router.put('/restaurants/discounts/:id', diningDiscounts.update);
+router.delete('/restaurants/discounts/:id', diningDiscounts.remove);
 router.get('/restaurants/reservations', getDiningReservations);
 router.post('/restaurants/reservations', createManualDiningReservation);
 router.put('/restaurants/reservations/:id', updateDiningReservation);
@@ -329,6 +338,10 @@ router.delete('/banners/:id', deleteBanner);
 
 // ==================== SPA HUB ====================
 router.post('/spa/upload-image', upload.single('image'), uploadSpaImage);
+router.get('/spa/discounts', spaDiscounts.list);
+router.post('/spa/discounts', spaDiscounts.create);
+router.put('/spa/discounts/:id', spaDiscounts.update);
+router.delete('/spa/discounts/:id', spaDiscounts.remove);
 router.get('/spa', getAllSpaFacilities);
 router.post('/spa', createSpaFacility);
 router.put('/spa/:id', updateSpaFacility);
