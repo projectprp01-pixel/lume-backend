@@ -227,6 +227,48 @@ export const createManualSpaBooking = async (req, res) => {
 };
 
 /**
+ * Edit a spa booking (staff-side). The booking's own ref, guest and main-stay link are immutable —
+ * one stay keeps one Booking ID across every hub — so only the service details can change.
+ */
+export const updateSpaBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { treatmentId, treatmentName, categoryName, date, timeSlot, numberOfGuests, price, paymentStatus, specialRequests, adminNotes } = req.body;
+    const update = {};
+    if (treatmentId !== undefined) update.treatmentId = treatmentId;
+    if (treatmentName !== undefined) update.treatmentName = treatmentName;
+    if (categoryName !== undefined) update.categoryName = categoryName;
+    if (date !== undefined) {
+      if (Number.isNaN(new Date(date).getTime())) return res.status(400).json({ success: false, message: 'date is invalid' });
+      update.date = date;
+    }
+    if (timeSlot !== undefined) update.timeSlot = timeSlot;
+    if (numberOfGuests !== undefined) {
+      if (!(Number(numberOfGuests) >= 1)) return res.status(400).json({ success: false, message: 'numberOfGuests must be at least 1' });
+      update.numberOfGuests = Number(numberOfGuests);
+    }
+    if (price !== undefined) {
+      if (!(Number(price) >= 0)) return res.status(400).json({ success: false, message: 'price cannot be negative' });
+      update.price = Number(price);
+    }
+    if (paymentStatus !== undefined) {
+      if (!['paid', 'pending'].includes(paymentStatus)) {
+        return res.status(400).json({ success: false, message: "paymentStatus must be 'paid' or 'pending'" });
+      }
+      update.paymentStatus = paymentStatus;
+    }
+    if (specialRequests !== undefined) update.specialRequests = specialRequests;
+    if (adminNotes !== undefined) update.adminNotes = adminNotes;
+    const booking = await SpaBooking.findByIdAndUpdate(id, update, { new: true, runValidators: true });
+    if (!booking) return res.status(404).json({ success: false, message: 'Spa booking not found' });
+    res.status(200).json({ success: true, message: 'Spa booking updated', data: booking });
+  } catch (error) {
+    console.error('Update spa booking error:', error);
+    res.status(500).json({ success: false, message: 'Failed to update spa booking', error: error.message });
+  }
+};
+
+/**
  * Set spa booking payment status (dashboard payment pill / revert-to-pending flow)
  */
 export const updateSpaBookingPayment = async (req, res) => {

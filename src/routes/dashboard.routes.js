@@ -136,6 +136,7 @@ import {
   deleteSpaFacility,
   getSpaBookings,
   createManualSpaBooking,
+  updateSpaBooking,
   updateSpaBookingStatus,
   updateSpaBookingPayment,
   assignSpaBookingRoom,
@@ -329,6 +330,7 @@ router.put('/spa/:id', updateSpaFacility);
 router.delete('/spa/:id', deleteSpaFacility);
 router.get('/spa/bookings', getSpaBookings);
 router.post('/spa/bookings', createManualSpaBooking);
+router.put('/spa/bookings/:id', updateSpaBooking);
 router.put('/spa/bookings/:id/status', updateSpaBookingStatus);
 router.put('/spa/bookings/:id/payment', updateSpaBookingPayment);
 router.put('/spa/bookings/:id/room', assignSpaBookingRoom);
