@@ -187,6 +187,21 @@ export const uploadGuestID = async (req, res) => {
     const idFront = req.files.idFront[0];
     const idBack = req.files.idBack ? req.files.idBack[0] : null;
 
+    // Per-type size caps: images 10MB, PDFs 15MB. (multer's single fileSize limit
+    // is set to the larger 15MB; this splits it by type.)
+    const MAX_IMAGE = 10 * 1024 * 1024;
+    const MAX_PDF = 15 * 1024 * 1024;
+    const sizeError = (f) => {
+      if (!f) return null;
+      const isPdf = f.mimetype === 'application/pdf';
+      const max = isPdf ? MAX_PDF : MAX_IMAGE;
+      return f.size > max ? `${isPdf ? 'PDF files' : 'Images'} must be ${isPdf ? '15' : '10'}MB or smaller` : null;
+    };
+    const sizeErr = sizeError(idFront) || sizeError(idBack);
+    if (sizeErr) {
+      return res.status(400).json({ success: false, message: sizeErr });
+    }
+
     // Upload to Cloudflare R2 in parallel — guest IDs are PDFs (or images), so the content type
     // must ride along with the buffer rather than being inferred, unlike the image-only routes.
     const [idFrontUrl, idBackUrl] = await Promise.all([

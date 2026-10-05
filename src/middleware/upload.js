@@ -14,11 +14,13 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Configure multer
+// Configure multer. fileSize is the hard per-file ceiling; multer can't vary it
+// by type, so we set it to the largest allowed (15MB for PDFs) and enforce the
+// tighter per-type cap (images 10MB, PDFs 15MB) in the controllers.
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB max file size
+    fileSize: 15 * 1024 * 1024 // 15MB hard ceiling (PDF cap; images capped at 10MB in-controller)
   },
   fileFilter: fileFilter
 });
