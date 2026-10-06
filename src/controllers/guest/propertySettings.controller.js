@@ -17,6 +17,10 @@ export const getPropertySettings = async (req, res) => {
         story: settings?.story || [],
         rules: settings?.rules || [],
         facilities: settings?.facilities || [],
+        galleryCategories: settings?.galleryCategories || [],
+        gallery: settings?.gallery || [],
+        wifi: settings?.wifi || [],
+        directory: settings?.directory || [],
       }
     });
   } catch (error) {
