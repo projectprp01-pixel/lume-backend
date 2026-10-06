@@ -21,6 +21,8 @@ export const getPropertySettings = async (req, res) => {
         gallery: settings?.gallery || [],
         wifi: settings?.wifi || [],
         directory: settings?.directory || [],
+        // Requests price sheet configured in the dashboard Guest App builder
+        reqCategories: settings?.guestApp?.reqCategories || [],
       }
     });
   } catch (error) {
