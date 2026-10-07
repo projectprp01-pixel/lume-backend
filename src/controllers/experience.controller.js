@@ -6,6 +6,7 @@ import Booking from '../models/Booking.model.js';
 import { sendGuestBookingEmail, toISTDate } from '../utils/emailService.js';
 import { createWithHubRef } from '../utils/hubRef.js';
 import { resolveGuestStayId } from '../utils/mainStay.js';
+import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../utils/discounts.js';
 
 /**
  * Get all experiences with optional filters
@@ -179,7 +180,8 @@ export const getAvailableSlots = async (req, res) => {
     });
 
     // Calculate availability for each slot
-    const availableSlots = experience.timeSlots.map(slot => {
+    // Slots staff have hidden in the dashboard (active === false) never reach guests.
+    const availableSlots = experience.timeSlots.filter(slot => slot.active !== false).map(slot => {
       const bookingsForSlot = bookingsOnDate.filter(
         booking => booking.timeSlot === slot.time
       );
@@ -257,6 +259,9 @@ export const createExperienceBookingGuest = async (req, res) => {
     });
     const bookedGuests = existingOnSlot.reduce((sum, b) => sum + b.numberOfGuests, 0);
     const slot = experience.timeSlots.find(s => s.time === timeSlot);
+    if (slot && slot.active === false) {
+      return res.status(400).json({ success: false, message: 'This time slot is no longer available.' });
+    }
     if (slot && slot.capacity > 0 && bookedGuests + (numberOfGuests || 1) > slot.capacity) {
       return res.status(400).json({ success: false, message: 'This time slot is full.' });
     }
@@ -264,7 +269,15 @@ export const createExperienceBookingGuest = async (req, res) => {
     // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
     // It drives both the stored mainStayBookingId and the <stayId>-EXP-<n> reference (see utils/hubRef.js).
     const stayId = await resolveGuestStayId({ guestId, claimedStayId: mainStayBookingId });
-    const unitPrice = price ?? experience.pricing.basePrice;
+    // Client sends the undiscounted per-person price; any live Experience Hub discount tagged to this
+    // activity is applied here so the charged amount always matches what the dashboard configured.
+    const listPrice = price ?? experience.pricing.basePrice;
+    const eligible = await loadEligibleDiscounts({
+      propertyId: experience.propertyId || propertyId,
+      checkInDay: await arrivalDayForGuest(guestId),
+    });
+    const applied = bestDiscountFor(eligible, 'experience', experienceId, listPrice);
+    const unitPrice = listPrice - (applied?.amount ?? 0);
     const qty = numberOfGuests || 1;
     const isFree = unitPrice * qty === 0;
 
@@ -283,6 +296,8 @@ export const createExperienceBookingGuest = async (req, res) => {
         numberOfGuests: qty,
         unitPrice,
         totalAmount: unitPrice * qty,
+        discountName: applied?.discount.name,
+        discountAmount: applied ? applied.amount * qty : undefined,
         mainBookingId: mainBookingId || null,
         mainStayBookingId: stayId,
         propertyId: propertyId || experience.propertyId,

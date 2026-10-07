@@ -21,8 +21,17 @@ export const getPropertySettings = async (req, res) => {
         gallery: settings?.gallery || [],
         wifi: settings?.wifi || [],
         directory: settings?.directory || [],
+        mapsLink: settings?.mapsLink || '',
+        address: settings?.address || '',
         // Requests price sheet configured in the dashboard Guest App builder
         reqCategories: settings?.guestApp?.reqCategories || [],
+        // The whole Guest App builder document (page visibility, home toggles, quick actions, hero
+        // images, spotlight/events, curated experience + dining sections, request intro). The guest app
+        // re-reads this every few seconds so a dashboard toggle shows up without a reload. Empty `{}`
+        // until a property saves from the builder — the app falls back to its defaults.
+        guestApp: settings?.guestApp || {},
+        infantCategory: settings?.infantCategory || null,
+        childCategory: settings?.childCategory || null,
       }
     });
   } catch (error) {

@@ -53,6 +53,9 @@ const experienceBookingSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  // Experience Hub discount applied at booking time (unitPrice/totalAmount are already net of it).
+  discountName: { type: String },
+  discountAmount: { type: Number },
   totalAmount: {
     type: Number,
     required: true

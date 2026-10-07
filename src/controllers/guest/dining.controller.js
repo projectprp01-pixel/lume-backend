@@ -3,6 +3,7 @@ import DiningReservation from '../../models/DiningReservation.model.js';
 import Guest from '../../models/Guest.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
+import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
 /**
  * Get restaurants for guest app
@@ -91,8 +92,10 @@ export const createDiningReservation = async (req, res) => {
     if (!facility) {
       return res.status(404).json({ success: false, message: 'Facility not found' });
     }
-    if (facility.facilityType !== 'intimate_dining') {
-      return res.status(400).json({ success: false, message: 'Only intimate dining facilities can be booked' });
+    // Intimate dining is always bookable; a restaurant only when the property switched it to
+    // table reservations (bookingMode) instead of info-only.
+    if (facility.facilityType !== 'intimate_dining' && facility.bookingMode !== 'reservations') {
+      return res.status(400).json({ success: false, message: 'This facility does not take reservations' });
     }
 
     // Check blocked dates
@@ -129,7 +132,10 @@ export const createDiningReservation = async (req, res) => {
     const selectedAddons = Array.isArray(addonNames)
       ? (facility.addons || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price }))
       : [];
-    const amount = (facility.price || 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
+    // Dining Hub discounts tagged to this facility apply to its own price (not add-ons).
+    const eligible = await loadEligibleDiscounts({ propertyId: facility.propertyId || propertyId, checkInDay: await arrivalDayForGuest(guestId) });
+    const applied = bestDiscountFor(eligible, 'dining', facilityId, facility.price || 0);
+    const amount = (facility.price || 0) - (applied?.amount ?? 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
 
     // Derived from the stay loaded above (never from a client-sent mainStayBookingId); it drives both the
     // stored mainStayBookingId and the <stayId>-DIN-<n> reference (see utils/hubRef.js).
@@ -151,6 +157,8 @@ export const createDiningReservation = async (req, res) => {
         propertyId,
         status: 'pending',
         amount,
+        discountName: applied?.discount.name,
+        discountAmount: applied?.amount,
         paymentStatus: 'pending',
         source: 'app',
         addons: selectedAddons,

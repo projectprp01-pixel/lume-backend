@@ -22,6 +22,9 @@ const diningReservationSchema = new mongoose.Schema({
   propertyId:     { type: String, required: true },
   // Payment fields (intimate dining)
   amount:            { type: Number },
+  // Dining Hub discount applied at booking time (amount is already net of it).
+  discountName:      { type: String },
+  discountAmount:    { type: Number },
   razorpayOrderId:   { type: String },
   razorpayPaymentId: { type: String },
   razorpaySignature: { type: String },

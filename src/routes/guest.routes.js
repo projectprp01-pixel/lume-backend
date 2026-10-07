@@ -22,6 +22,8 @@ import {
   getGuestDiningReservations,
   cancelDiningReservation,
 } from '../controllers/guest/dining.controller.js';
+import { getInRoomMenu, createInRoomOrder, getGuestInRoomOrders } from '../controllers/guest/inRoomDining.controller.js';
+import { getGuestDiscounts } from '../controllers/guest/discount.controller.js';
 import { getActiveBanners } from '../controllers/guest/banner.controller.js';
 import { chatWithConcierge } from '../controllers/guest/chat.controller.js';
 import { getGuestNotifications, markNotificationRead, markAllNotificationsRead } from '../controllers/guest/notification.controller.js';
@@ -42,10 +44,16 @@ router.get('/transport', getGuestTransport);
 
 // Must be defined before /:id to prevent Express matching "property-settings" as an ObjectId
 router.get('/property-settings', getPropertySettings);
+router.get('/discounts', getGuestDiscounts);
 
 // Must be defined before /:id — otherwise GET /requests is shadowed by GET /:id and 500s
 router.post('/requests', createGuestRequest);
 router.get('/requests', getGuestRequests);
+
+// In-room dining (guest side). Declared before /:id like the routes above.
+router.get('/in-room-dining/menu', getInRoomMenu);
+router.post('/in-room-dining/orders', createInRoomOrder);
+router.get('/in-room-dining/orders', getGuestInRoomOrders);
 
 router.get('/:id', getGuestById);
 router.put('/:id/preferences', updateGuestPreferences);
