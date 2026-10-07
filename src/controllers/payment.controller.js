@@ -54,7 +54,7 @@ const getRazorpayInstance = () => {
  */
 export const createOrder = async (req, res) => {
   try {
-    const { bookingId, amount } = req.body;
+    const { bookingId } = req.body;
 
     // Validate booking exists (experience or spa)
     const found = await findBookingById(bookingId);
@@ -66,6 +66,20 @@ export const createOrder = async (req, res) => {
     }
     const booking = found.booking;
     const bookingType = found.type;
+
+    if (booking.paymentStatus === 'paid') {
+      return res.status(400).json({ success: false, message: 'This booking is already paid' });
+    }
+
+    // The amount always comes from the booking the server created (which already includes any
+    // dashboard discount and add-ons) — never from the client, so it can't be tampered with.
+    const amount =
+      bookingType === 'experience' ? booking.totalAmount
+      : bookingType === 'spa' ? booking.price
+      : booking.amount;
+    if (!(amount > 0)) {
+      return res.status(400).json({ success: false, message: 'Nothing to pay for this booking' });
+    }
 
     const receiptId = (booking.bookingId || booking._id).toString();
     const bookingName = bookingType === 'transport'

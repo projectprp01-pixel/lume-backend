@@ -135,7 +135,9 @@ export const createDiningReservation = async (req, res) => {
     // Dining Hub discounts tagged to this facility apply to its own price (not add-ons).
     const eligible = await loadEligibleDiscounts({ propertyId: facility.propertyId || propertyId, checkInDay: await arrivalDayForGuest(guestId) });
     const applied = bestDiscountFor(eligible, 'dining', facilityId, facility.price || 0);
-    const amount = (facility.price || 0) - (applied?.amount ?? 0) + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
+    // Per-person facilities (guest chooses the group size) charge per head; the rest per booking.
+    const heads = facility.guestCanChooseGroupSize ? Math.max(1, Number(numberOfGuests) || 1) : 1;
+    const amount = ((facility.price || 0) - (applied?.amount ?? 0)) * heads + selectedAddons.reduce((sum, a) => sum + (a.price || 0), 0);
 
     // Derived from the stay loaded above (never from a client-sent mainStayBookingId); it drives both the
     // stored mainStayBookingId and the <stayId>-DIN-<n> reference (see utils/hubRef.js).
@@ -158,7 +160,7 @@ export const createDiningReservation = async (req, res) => {
         status: 'pending',
         amount,
         discountName: applied?.discount.name,
-        discountAmount: applied?.amount,
+        discountAmount: applied ? applied.amount * heads : undefined,
         paymentStatus: 'pending',
         source: 'app',
         addons: selectedAddons,

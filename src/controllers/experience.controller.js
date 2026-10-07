@@ -228,7 +228,7 @@ export const createExperienceBookingGuest = async (req, res) => {
   try {
     const {
       experienceId, guestId, guestName, guestEmail, guestPhone,
-      date, timeSlot, numberOfGuests, mainBookingId, mainStayBookingId, price, propertyId, specialRequests
+      date, timeSlot, numberOfGuests, mainBookingId, mainStayBookingId, price, propertyId, specialRequests, addonNames
     } = req.body;
 
     if (!experienceId || !guestName || !date || !timeSlot) {
@@ -279,7 +279,12 @@ export const createExperienceBookingGuest = async (req, res) => {
     const applied = bestDiscountFor(eligible, 'experience', experienceId, listPrice);
     const unitPrice = listPrice - (applied?.amount ?? 0);
     const qty = numberOfGuests || 1;
-    const isFree = unitPrice * qty === 0;
+    // Add-ons are priced from the experience itself (flat per booking), never from the client.
+    const selectedAddons = Array.isArray(addonNames)
+      ? (experience.addOns || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }))
+      : [];
+    const totalAmount = unitPrice * qty + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+    const isFree = totalAmount === 0;
 
     const booking = await createWithHubRef({
       Model: ExperienceBookingModel, field: 'bookingId', kind: 'exp',
@@ -295,7 +300,8 @@ export const createExperienceBookingGuest = async (req, res) => {
         timeSlot,
         numberOfGuests: qty,
         unitPrice,
-        totalAmount: unitPrice * qty,
+        totalAmount,
+        addons: selectedAddons,
         discountName: applied?.discount.name,
         discountAmount: applied ? applied.amount * qty : undefined,
         mainBookingId: mainBookingId || null,
