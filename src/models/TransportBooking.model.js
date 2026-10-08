@@ -42,6 +42,22 @@ const transportBookingSchema = new mongoose.Schema({
   room: { type: String, default: '' }, // dashboard-assignable override, separate from roomNumber
   source: { type: String, enum: ['app', 'staff'], default: 'app' },
   addons: { type: [{ name: String, price: Number }], default: [] },
+  // What the guest picked in the app (see guest/transport.controller.js createTransportBooking):
+  // one line per car type, the sightseeing day(s) (YYYY-MM-DD), and the pickup/drop city.
+  items: {
+    type: [{
+      vehicleId: mongoose.Schema.Types.ObjectId,
+      vehicleName: String,
+      quantity: Number,
+      days: [String],
+      city: String,
+      pickupAddon: Boolean,
+      amount: Number,
+    }],
+    default: [],
+  },
+  days: { type: [String], default: [] },
+  city: { type: String, default: "" },
 }, { timestamps: true });
 
 transportBookingSchema.index({ propertyId: 1 });

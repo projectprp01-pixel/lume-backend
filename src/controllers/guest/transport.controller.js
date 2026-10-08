@@ -72,13 +72,110 @@ export const getGuestTransport = async (req, res) => {
   }
 };
 
+const dayKey = (d) => {
+  const x = new Date(d);
+  return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+};
+
+/**
+ * Prices what the guest picked from the property's own settings (the client's numbers are never
+ * trusted) and snapshots it. Returns { error } or { offering, items, days, city, amount, vehicleName, addons }.
+ *   - daily    : price x quantity x number of days, plus the optional pickup/drop add-on
+ *   - flat     : the offering's flat price x quantity (pickup/drop city is part of the package)
+ *   - p2p      : the chosen city's fare for the vehicle (falls back to the base price) x quantity
+ */
+function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) {
+  const offerings = (settings.offerings || []).filter((o) => o.published && o.structure !== 'custom');
+  const offering = offerings.find((o) => o.slot === Number(offeringSlot));
+  if (!offering) return { error: 'This transport option is not available' };
+  if (!Array.isArray(rawItems) || rawItems.length === 0) return { error: 'Choose at least one vehicle' };
+
+  const vehicles = new Map((settings.vehicles || []).map((v) => [String(v._id), v]));
+  const isP2P = offering.structure === 'p2p';
+  const isFlat = offering.structure === 'daily' && offering.flatRate;
+  const pickupOffering = offerings.find((o) => o.structure === 'p2p');
+  const cities = offering.cities?.length ? offering.cities : (pickupOffering?.cities || []);
+  const addonAvailable = !isP2P && !isFlat && (offering.addons || []).some((slot) => offerings.some((o) => o.slot === slot));
+  const stayStart = dayKey(booking.arrivalDate);
+  const stayEnd = dayKey(booking.checkoutDate);
+
+  const items = [];
+  const addons = [];
+  let amount = 0;
+  const allDays = new Set();
+  const cityNames = new Set();
+
+  for (const raw of rawItems) {
+    const vehicleId = String(raw.vehicleId || '');
+    const pricing = (offering.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
+    const eligible = !offering.eligibleVehicles?.length || offering.eligibleVehicles.map(String).includes(vehicleId);
+    const vehicle = vehicles.get(vehicleId);
+    if (!vehicle || !pricing || !(pricing.price > 0) || !eligible) return { error: 'That vehicle is not available for this option' };
+
+    const quantity = Math.floor(Number(raw.quantity));
+    if (!(quantity >= 1 && quantity <= 10)) return { error: 'Invalid number of vehicles' };
+
+    const cityName = String(raw.city || '');
+    const city = cities.find((c) => c.name === cityName);
+    const cityFare = city?.vehiclePrices?.find((vp) => String(vp.vehicleId) === vehicleId)?.price;
+    if ((isP2P || isFlat) && !city) return { error: 'Choose a pickup & drop off city' };
+
+    let days = [];
+    let line;
+    let pickupAddon = false;
+    if (isP2P) {
+      line = (cityFare ?? pricing.price) * quantity;
+    } else if (isFlat) {
+      line = pricing.price * quantity;
+    } else {
+      days = [...new Set((raw.days || []).map(String))].sort();
+      if (days.length === 0) return { error: 'Select at least one day' };
+      if (days.some((d) => !/^\d{4}-\d{2}-\d{2}$/.test(d) || d < stayStart || d > stayEnd)) {
+        return { error: 'Selected days must fall within your stay' };
+      }
+      line = pricing.price * quantity * days.length;
+      if (raw.pickupAddon && addonAvailable) {
+        if (!city) return { error: 'Choose a pickup & drop off city' };
+        const addonPrice = (cityFare ?? 0) * quantity;
+        pickupAddon = true;
+        line += addonPrice;
+        addons.push({ name: `Pickup & drop off from city (${city.name})`, price: addonPrice });
+      }
+    }
+
+    days.forEach((d) => allDays.add(d));
+    if (city && (isP2P || isFlat || pickupAddon)) cityNames.add(city.name);
+    items.push({
+      vehicleId,
+      vehicleName: [vehicle.type, vehicle.name && vehicle.type ? `(${vehicle.name})` : vehicle.name].filter(Boolean).join(' '),
+      quantity,
+      days,
+      city: city && (isP2P || isFlat || pickupAddon) ? city.name : '',
+      pickupAddon,
+      amount: line,
+    });
+    amount += line;
+  }
+
+  return {
+    offering,
+    items,
+    addons,
+    amount,
+    days: [...allDays].sort(),
+    city: [...cityNames].join(', '),
+    vehicleName: items.map((i) => `${i.vehicleName}${i.quantity > 1 ? ` x${i.quantity}` : ''}`).join(', '),
+  };
+}
+
 /**
  * Create a transport booking (guest-side)
- * Body: { guestId, bookingId, nights, amount, propertyId }
+ * Body: { guestId, bookingId, offeringSlot, items: [{ vehicleId, quantity, days?, city?, pickupAddon? }], propertyId }
+ * (The older { nights, amount } whole-stay form still works when no offeringSlot/items are sent.)
  */
 export const createTransportBooking = async (req, res) => {
   try {
-    const { guestId, bookingId, nights, amount, propertyId = 'default' } = req.body;
+    const { guestId, bookingId, nights, amount, propertyId = 'default', offeringSlot, items: rawItems } = req.body;
 
     if (!guestId || !bookingId) {
       return res.status(400).json({ success: false, message: 'guestId and bookingId are required' });
@@ -91,6 +188,17 @@ export const createTransportBooking = async (req, res) => {
 
     const guest = await Guest.findById(guestId);
 
+    // New flow: price + snapshot the guest's actual selection from the property's settings.
+    let selection = null;
+    if (offeringSlot != null) {
+      const settings = await Transport.findOne({ propertyId });
+      if (!settings) return res.status(404).json({ success: false, message: 'Transport is not set up' });
+      selection = priceTransportSelection({ settings, offeringSlot, rawItems, booking });
+      if (selection.error) return res.status(400).json({ success: false, message: selection.error });
+    }
+
+    const stayNights = nights ?? Math.max(0, Math.round((new Date(booking.checkoutDate) - new Date(booking.arrivalDate)) / 86400000));
+
     const transportBooking = await createWithHubRef({
       Model: TransportBooking, field: 'ref', kind: 'trn',
       stayId: booking.bookingId,
@@ -102,12 +210,24 @@ export const createTransportBooking = async (req, res) => {
         mainStayBookingId: booking.bookingId,
         guestName: guest ? guest.fullName : '',
         roomNumber: booking.roomNumber || guest?.roomNumber || '',
-        checkInDate: booking.arrivalDate,
+        checkInDate: selection?.days[0] ? new Date(selection.days[0]) : booking.arrivalDate,
         checkOutDate: booking.checkoutDate,
-        nights,
-        amount,
+        nights: stayNights,
+        amount: selection ? selection.amount : amount,
         propertyId,
-        status: 'pending'
+        status: 'pending',
+        ...(selection && {
+          // hubBooking makes it appear in the dashboard Transport Hub next to staff-added bookings.
+          hubBooking: true,
+          source: 'app',
+          offeringSlot: selection.offering.slot,
+          vehicleId: selection.items[0].vehicleId,
+          vehicleName: selection.vehicleName,
+          addons: selection.addons,
+          items: selection.items,
+          days: selection.days,
+          city: selection.city,
+        }),
       },
     });
 
@@ -115,7 +235,9 @@ export const createTransportBooking = async (req, res) => {
       await Notification.create({
         guestId,
         title: 'Transfer Booking Pending',
-        message: `Your private transfer for ${nights} night(s) is pending payment.`,
+        message: selection
+          ? `Your booking for ${selection.offering.name} is pending payment.`
+          : `Your private transfer for ${stayNights} night(s) is pending payment.`,
         type: 'success',
         relatedId: transportBooking._id.toString(),
         relatedType: 'transport-booking'
