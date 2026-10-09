@@ -107,10 +107,16 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
 
   for (const raw of rawItems) {
     const vehicleId = String(raw.vehicleId || '');
-    const pricing = (offering.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
+    const listed = (offering.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
+    // Pickup & drop is priced per city, so a vehicle with no listed price is sold at its lowest city fare.
+    const lowestCityFare = isP2P
+      ? Math.min(...cities.flatMap((c) => (c.vehiclePrices || []).filter((vp) => String(vp.vehicleId) === vehicleId && vp.price > 0).map((vp) => vp.price)))
+      : Infinity;
+    const basePrice = listed?.price > 0 ? listed.price : (Number.isFinite(lowestCityFare) ? lowestCityFare : 0);
+    const pricing = { price: basePrice };
     const eligible = !offering.eligibleVehicles?.length || offering.eligibleVehicles.map(String).includes(vehicleId);
     const vehicle = vehicles.get(vehicleId);
-    if (!vehicle || !pricing || !(pricing.price > 0) || !eligible) return { error: 'That vehicle is not available for this option' };
+    if (!vehicle || !(pricing.price > 0) || !eligible) return { error: 'That vehicle is not available for this option' };
 
     const quantity = Math.floor(Number(raw.quantity));
     if (!(quantity >= 1 && quantity <= 10)) return { error: 'Invalid number of vehicles' };
