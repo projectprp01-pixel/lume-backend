@@ -8,6 +8,15 @@ import { createWithHubRef } from '../utils/hubRef.js';
 import { resolveGuestStayId } from '../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../utils/discounts.js';
 
+// Staff block dates in the dashboard as inclusive YYYY-MM-DD ranges (blockedRanges); the older
+// blackoutDates list is still honoured. `date` is whatever the client sent (YYYY-MM-DD or ISO).
+const isDateBlocked = (experience, date) => {
+  const day = String(date).slice(0, 10);
+  const inRange = (experience.blockedRanges || []).some((r) => r.start && day >= r.start && day <= (r.end || r.start));
+  const legacy = (experience.blackoutDates || []).some((d) => new Date(d).toDateString() === new Date(date).toDateString());
+  return inRange || legacy;
+};
+
 /**
  * Get all experiences with optional filters
  */
@@ -181,6 +190,7 @@ export const getAvailableSlots = async (req, res) => {
 
     // Calculate availability for each slot
     // Slots staff have hidden in the dashboard (active === false) never reach guests.
+    const blocked = isDateBlocked(experience, date);
     const availableSlots = experience.timeSlots.filter(slot => slot.active !== false).map(slot => {
       const bookingsForSlot = bookingsOnDate.filter(
         booking => booking.timeSlot === slot.time
@@ -193,10 +203,12 @@ export const getAvailableSlots = async (req, res) => {
 
       return {
         time: slot.time,
+        endTime: slot.endTime,
+        label: slot.label,
         capacity: slot.capacity,
-        available: slot.capacity - bookedGuests,
+        available: blocked ? 0 : slot.capacity - bookedGuests,
         priceModifier: slot.priceModifier,
-        isAvailable: (slot.capacity - bookedGuests) > 0
+        isAvailable: !blocked && (slot.capacity - bookedGuests) > 0
       };
     });
 
@@ -208,6 +220,7 @@ export const getAvailableSlots = async (req, res) => {
         date: date,
         basePrice: experience.pricing.basePrice,
         currency: experience.pricing.currency,
+        blocked,
         slots: availableSlots
       }
     });
@@ -244,9 +257,7 @@ export const createExperienceBookingGuest = async (req, res) => {
     }
 
     // Reject bookings on blackout/blocked dates
-    const bookingDateStr = new Date(date).toDateString();
-    const isBlocked = experience.blackoutDates?.some(d => new Date(d).toDateString() === bookingDateStr);
-    if (isBlocked) {
+    if (isDateBlocked(experience, date)) {
       return res.status(400).json({ success: false, message: 'This date is unavailable for booking.' });
     }
 

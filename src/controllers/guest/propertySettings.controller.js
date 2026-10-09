@@ -23,6 +23,8 @@ export const getPropertySettings = async (req, res) => {
         directory: settings?.directory || [],
         mapsLink: settings?.mapsLink || '',
         address: settings?.address || '',
+        footerHeading: settings?.footerHeading || '',
+        footerSubtext: settings?.footerSubtext || '',
         // Requests price sheet configured in the dashboard Guest App builder
         reqCategories: settings?.guestApp?.reqCategories || [],
         // The whole Guest App builder document (page visibility, home toggles, quick actions, hero

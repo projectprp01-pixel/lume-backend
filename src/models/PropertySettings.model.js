@@ -79,6 +79,9 @@ const propertySettingsSchema = new mongoose.Schema({
   // Comms Hub — pre/in/post-stay Email & WhatsApp templates (each stage/channel keyed to a list of
   // templates; some emails carry a rich "personalised web app" card instead of plain body text).
   // Same flexible-blob convention as guestApp above, plus the "From" name shown on outgoing email.
+  // Sign-off shown at the bottom of the guest app's pages (Property Settings > Footer).
+  footerHeading: { type: String, default: '' },
+  footerSubtext: { type: String, default: '' },
   commsFromName: { type: String, default: '' },
   comms: { type: mongoose.Schema.Types.Mixed, default: {} },
 }, { timestamps: true });
