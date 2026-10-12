@@ -21,6 +21,8 @@ export const getPropertySettings = async (req, res) => {
         gallery: settings?.gallery || [],
         wifi: settings?.wifi || [],
         directory: settings?.directory || [],
+        // Check-in Hub's "Check-in Instructions" text, shown on the guest app's Online Check-in screen
+        checkInInstructions: settings?.checkInInstructions || '',
         mapsLink: settings?.mapsLink || '',
         address: settings?.address || '',
         footerHeading: settings?.footerHeading || '',

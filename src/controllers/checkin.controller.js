@@ -202,14 +202,7 @@ export const uploadGuestID = async (req, res) => {
       return res.status(400).json({ success: false, message: sizeErr });
     }
 
-    // Upload to Cloudflare R2 in parallel — guest IDs are PDFs (or images), so the content type
-    // must ride along with the buffer rather than being inferred, unlike the image-only routes.
-    const [idFrontUrl, idBackUrl] = await Promise.all([
-      uploadToR2(idFront.buffer, `checkin-ids/${checkInId}`, idFront.mimetype),
-      idBack ? uploadToR2(idBack.buffer, `checkin-ids/${checkInId}`, idBack.mimetype) : Promise.resolve(null),
-    ]);
-
-    // Find check-in and update
+    // Find the check-in first: an approved guest's details are locked, so nothing is uploaded for them.
     const checkIn = await CheckIn.findById(checkInId);
     if (!checkIn) {
       return res.status(404).json({
@@ -217,6 +210,22 @@ export const uploadGuestID = async (req, res) => {
         message: 'Check-in session not found'
       });
     }
+    const approvedDoc = checkIn.guestDocuments.find(
+      (doc) => doc.guestNumber === parseInt(guestNumber) && doc.verified
+    );
+    if (approvedDoc) {
+      return res.status(409).json({
+        success: false,
+        message: 'This check-in has already been approved and can no longer be changed.'
+      });
+    }
+
+    // Upload to Cloudflare R2 in parallel — guest IDs are PDFs (or images), so the content type
+    // must ride along with the buffer rather than being inferred, unlike the image-only routes.
+    const [idFrontUrl, idBackUrl] = await Promise.all([
+      uploadToR2(idFront.buffer, `checkin-ids/${checkInId}`, idFront.mimetype),
+      idBack ? uploadToR2(idBack.buffer, `checkin-ids/${checkInId}`, idBack.mimetype) : Promise.resolve(null),
+    ]);
 
     // Check if document already exists for this guest
     const existingDocIndex = checkIn.guestDocuments.findIndex(
