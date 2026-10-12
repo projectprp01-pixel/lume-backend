@@ -131,6 +131,8 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
     const city = cities.find((c) => c.name === cityName);
     const cityFare = city?.vehiclePrices?.find((vp) => String(vp.vehicleId) === vehicleId)?.price;
     if ((isP2P || isFlat) && !city) return { error: 'Choose a pickup & drop off city' };
+    // Full trip is only sold for a car with a pickup & drop-off fare from the chosen city.
+    if (isFlat && !(cityFare > 0)) return { error: 'That vehicle is not available from this city' };
 
     let days = [];
     let line;
