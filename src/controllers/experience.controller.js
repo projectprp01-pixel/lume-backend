@@ -290,11 +290,13 @@ export const createExperienceBookingGuest = async (req, res) => {
     const applied = bestDiscountFor(eligible, 'experience', experienceId, listPrice);
     const unitPrice = listPrice - (applied?.amount ?? 0);
     const qty = numberOfGuests || 1;
+    // Priced per group: the party size doesn't change the price (pricePerPerson is false in the dashboard).
+    const priceQty = experience.pricing?.pricePerPerson === false ? 1 : qty;
     // Add-ons are priced from the experience itself (flat per booking), never from the client.
     const selectedAddons = Array.isArray(addonNames)
       ? (experience.addOns || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }))
       : [];
-    const totalAmount = unitPrice * qty + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+    const totalAmount = unitPrice * priceQty + selectedAddons.reduce((sum, a) => sum + a.price, 0);
     const isFree = totalAmount === 0;
 
     const booking = await createWithHubRef({

@@ -50,14 +50,16 @@ export const getSpaTimeSlots = async (req, res) => {
       status: { $in: ['Upcoming', 'In Progress'] }
     });
 
+    // Every guest takes one place in the slot (the spa's therapists), so a booking for 3 guests uses up 3.
     const slotCounts = {};
-    bookings.forEach(b => { slotCounts[b.timeSlot] = (slotCounts[b.timeSlot] || 0) + 1; });
+    bookings.forEach(b => { slotCounts[b.timeSlot] = (slotCounts[b.timeSlot] || 0) + (b.numberOfGuests || 1); });
 
-    const result = slots.map(time => ({
-      time,
-      available: (slotCounts[time] || 0) < maxPerSlot,
-      remaining: Math.max(0, maxPerSlot - (slotCounts[time] || 0))
-    }));
+    // `guests` (optional): the party size being booked, so a slot with fewer places left than that reads as full.
+    const wanted = Math.max(1, parseInt(req.query.guests, 10) || 1);
+    const result = slots.map(time => {
+      const remaining = Math.max(0, maxPerSlot - (slotCounts[time] || 0));
+      return { time, available: remaining >= wanted, remaining };
+    });
 
     res.status(200).json({ success: true, data: result });
   } catch (error) {
@@ -76,22 +78,33 @@ export const createSpaBooking = async (req, res) => {
       return res.status(400).json({ success: false, message: 'treatmentName, date, and timeSlot are required' });
     }
 
-    // Validate slot capacity before creating booking
-    if (spaFacilityId && treatmentId) {
+    // Validate slot capacity before creating the booking. Capacity is the spa's therapists per slot and every
+    // guest takes one place, so a booking for 3 guests needs 3 free places (same rule as the time-slot list).
+    if (spaFacilityId) {
       const facility = await SpaFacility.findById(spaFacilityId);
-      const treatment = facility?.categories
-        ?.flatMap(c => c.treatments || [])
-        .find(t => t._id?.toString() === treatmentId);
-      const capacityMax = treatment?.capacityMax ?? 2;
-      const existingCount = await SpaBooking.countDocuments({
-        spaFacilityId,
-        treatmentId,
-        date,
-        timeSlot,
-        status: { $ne: 'Cancelled' },
-      });
-      if (existingCount >= capacityMax) {
-        return res.status(400).json({ success: false, message: 'This time slot is fully booked. Please choose another slot.' });
+      if (facility) {
+        const maxPerSlot = facility.therapistsAvailable ?? facility.maxBookingsPerSlot ?? 1;
+        const wanted = Math.max(1, parseInt(req.body.numberOfGuests, 10) || 1);
+        const start = new Date(date);
+        start.setHours(0, 0, 0, 0);
+        const end = new Date(date);
+        end.setHours(23, 59, 59, 999);
+        const existing = await SpaBooking.find({
+          spaFacilityId,
+          date: { $gte: start, $lte: end },
+          timeSlot,
+          status: { $in: ['Upcoming', 'In Progress'] },
+        }).select('numberOfGuests');
+        const taken = existing.reduce((sum, b) => sum + (b.numberOfGuests || 1), 0);
+        if (taken + wanted > maxPerSlot) {
+          const left = Math.max(0, maxPerSlot - taken);
+          return res.status(400).json({
+            success: false,
+            message: left === 0
+              ? 'This time slot is fully booked. Please choose another slot.'
+              : `Only ${left} place${left === 1 ? '' : 's'} left in this time slot. Please reduce the number of guests or choose another slot.`,
+          });
+        }
       }
     }
 
