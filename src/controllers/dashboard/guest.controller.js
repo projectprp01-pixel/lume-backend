@@ -67,6 +67,8 @@ export const getAllGuests = async (req, res) => {
       const b = bookingMap[String(g._id)];
       return {
         ...g.toObject(),
+        // The guest's personal app link, built from this instance's GUEST_APP_URL.
+        guestLink: g.bookingToken && GUEST_APP_URL ? `${GUEST_APP_URL.replace(/\/+$/, '')}/?token=${g.bookingToken}` : null,
         arrivalDate: b?.arrivalDate ?? null,
         checkoutDate: b?.checkoutDate ?? null,
         roomType: b?.roomType ?? null,
