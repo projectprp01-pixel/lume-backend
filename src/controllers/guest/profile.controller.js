@@ -72,8 +72,12 @@ export const updateGuestPreferences = async (req, res) => {
  */
 export const updateGuestContact = async (req, res) => {
   try {
-    const { mobileNumber, email, fullName } = req.body;
+    const { mobileNumber, email, fullName, countryCode } = req.body;
     const updateData = {};
+    if (countryCode !== undefined) {
+      const digits = String(countryCode).replace(/[^\d]/g, '');
+      if (digits) updateData.countryCode = `+${digits}`;
+    }
     if (mobileNumber !== undefined) updateData.mobileNumber = mobileNumber;
     if (email !== undefined) updateData.email = email.toLowerCase().trim();
     if (fullName !== undefined) updateData.fullName = fullName.trim();
