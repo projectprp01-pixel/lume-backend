@@ -81,7 +81,8 @@ const dayKey = (d) => {
  * Prices what the guest picked from the property's own settings (the client's numbers are never
  * trusted) and snapshots it. Returns { error } or { offering, items, days, city, amount, vehicleName, addons }.
  *   - daily    : price x quantity x number of days, plus the optional pickup/drop add-on
- *   - flat     : the offering's flat price x quantity (pickup/drop city is part of the package)
+ *   - flat     : full trip cab — the car's per-day sightseeing rate x days of the stay (nights + 1), plus the chosen
+ *                city's pickup/drop fare for that car, all x quantity
  *   - p2p      : the chosen city's fare for the vehicle (falls back to the base price) x quantity
  */
 function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) {
@@ -98,6 +99,11 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
   const addonAvailable = !isP2P && !isFlat && (offering.addons || []).some((slot) => offerings.some((o) => o.slot === slot));
   const stayStart = dayKey(booking.arrivalDate);
   const stayEnd = dayKey(booking.checkoutDate);
+  // Full trip has no prices of its own: each car it offers is charged at its per-day sightseeing rate.
+  const sightseeing = offerings.find((o) => o.structure === 'daily' && !o.flatRate);
+  const rateSource = isFlat ? sightseeing : offering;
+  const stayNights = Math.max(1, Math.round((new Date(booking.checkoutDate) - new Date(booking.arrivalDate)) / 86400000));
+  const tripDays = stayNights + 1; // the arrival day counts: "3 nights and 4 days"
 
   const items = [];
   const addons = [];
@@ -107,7 +113,7 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
 
   for (const raw of rawItems) {
     const vehicleId = String(raw.vehicleId || '');
-    const listed = (offering.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
+    const listed = (rateSource?.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
     // Pickup & drop is priced per city, so a vehicle with no listed price is sold at its lowest city fare.
     const lowestCityFare = isP2P
       ? Math.min(...cities.flatMap((c) => (c.vehiclePrices || []).filter((vp) => String(vp.vehicleId) === vehicleId && vp.price > 0).map((vp) => vp.price)))
@@ -132,7 +138,7 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
     if (isP2P) {
       line = (cityFare ?? pricing.price) * quantity;
     } else if (isFlat) {
-      line = pricing.price * quantity;
+      line = (pricing.price * tripDays + (cityFare ?? 0)) * quantity;
     } else {
       days = [...new Set((raw.days || []).map(String))].sort();
       if (days.length === 0) return { error: 'Select at least one day' };
