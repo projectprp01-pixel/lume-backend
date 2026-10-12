@@ -293,7 +293,7 @@ export const getGuestTransportBookings = async (req, res) => {
     const { guestId } = req.params;
     const bookings = await TransportBooking.find({ guestId, status: 'confirmed' })
       .sort({ createdAt: -1 })
-      .select('_id bookingId guestName checkInDate checkOutDate nights amount status paymentStatus');
+      .select('_id bookingId guestName checkInDate checkOutDate nights amount status paymentStatus offeringSlot vehicleId vehicleName items days city ref');
     res.status(200).json({ success: true, data: bookings });
   } catch (error) {
     console.error('Get guest transport bookings error:', error);
