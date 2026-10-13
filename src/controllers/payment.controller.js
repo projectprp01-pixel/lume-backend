@@ -49,62 +49,70 @@ const getRazorpayInstance = () => {
   return razorpay;
 };
 
+const amountOf = (found) =>
+  found.type === 'experience' ? found.booking.totalAmount
+  : found.type === 'spa' ? found.booking.price
+  : found.booking.amount;
+
 /**
- * Create Razorpay order
+ * Create Razorpay order — for one booking (`bookingId`) or a whole cart (`bookingIds`): one order
+ * whose amount is the sum of the bookings, so the guest pays once.
  */
 export const createOrder = async (req, res) => {
   try {
-    const { bookingId } = req.body;
-
-    // Validate booking exists (experience or spa)
-    const found = await findBookingById(bookingId);
-    if (!found) {
-      return res.status(404).json({
-        success: false,
-        message: 'Booking not found'
-      });
-    }
-    const booking = found.booking;
-    const bookingType = found.type;
-
-    if (booking.paymentStatus === 'paid') {
-      return res.status(400).json({ success: false, message: 'This booking is already paid' });
+    const { bookingId, bookingIds } = req.body;
+    const ids = [...new Set((Array.isArray(bookingIds) && bookingIds.length ? bookingIds : [bookingId]).filter(Boolean).map(String))];
+    if (!ids.length) {
+      return res.status(400).json({ success: false, message: 'No booking to pay for' });
     }
 
-    // The amount always comes from the booking the server created (which already includes any
+    const items = [];
+    for (const id of ids) {
+      const found = await findBookingById(id);
+      if (!found) {
+        return res.status(404).json({ success: false, message: 'Booking not found' });
+      }
+      if (found.booking.paymentStatus === 'paid') {
+        return res.status(400).json({ success: false, message: 'This booking is already paid' });
+      }
+      items.push(found);
+    }
+
+    // The amount always comes from the bookings the server created (which already include any
     // dashboard discount and add-ons) — never from the client, so it can't be tampered with.
-    const amount =
-      bookingType === 'experience' ? booking.totalAmount
-      : bookingType === 'spa' ? booking.price
-      : booking.amount;
-    if (!(amount > 0)) {
+    const total = items.reduce((sum, f) => sum + (amountOf(f) > 0 ? amountOf(f) : 0), 0);
+    if (!(total > 0)) {
       return res.status(400).json({ success: false, message: 'Nothing to pay for this booking' });
     }
 
-    const receiptId = (booking.bookingId || booking._id).toString();
-    const bookingName = bookingType === 'transport'
-      ? `Private Transfer – ${booking.guestName || ''}`
-      : bookingType === 'dining'
-      ? `${booking.facilityName || 'Dining'} – ${booking.guestName || ''}`
-      : (booking.experienceName || booking.treatmentName);
+    const first = items[0].booking;
+    const bookingName = items.length > 1
+      ? `${items.length} bookings`
+      : items[0].type === 'transport'
+      ? `Private Transfer – ${first.guestName || ''}`
+      : items[0].type === 'dining'
+      ? `${first.facilityName || 'Dining'} – ${first.guestName || ''}`
+      : (first.experienceName || first.treatmentName);
     const options = {
-      amount: Math.round(amount * 100), // Convert rupees to paise
-      currency: booking.currency || 'INR',
-      receipt: receiptId,
+      amount: Math.round(total * 100), // Convert rupees to paise
+      currency: first.currency || 'INR',
+      receipt: (first.bookingId || first._id).toString().slice(0, 40),
       notes: {
-        bookingId: booking._id.toString(),
+        bookingId: items.map((f) => f.booking._id.toString()).join(',').slice(0, 250),
         name: bookingName,
-        guestEmail: booking.guestEmail || '',
+        guestEmail: first.guestEmail || '',
       }
     };
 
     const razorpayInstance = getRazorpayInstance();
     const order = await razorpayInstance.orders.create(options);
 
-    // Update booking with order ID
-    booking.razorpayOrderId = order.id;
-    booking.paymentStatus = 'processing';
-    await booking.save();
+    // Every booking in the order points at it; verify marks them all paid together.
+    for (const f of items) {
+      f.booking.razorpayOrderId = order.id;
+      f.booking.paymentStatus = 'processing';
+      await f.booking.save();
+    }
 
     res.status(200).json({
       success: true,
@@ -112,7 +120,8 @@ export const createOrder = async (req, res) => {
         orderId: order.id,
         amount: order.amount,
         currency: order.currency,
-        bookingId: booking._id,
+        bookingId: first._id,
+        bookingIds: items.map((f) => f.booking._id),
         key: RAZORPAY_KEY_ID
       }
     });
@@ -127,7 +136,7 @@ export const createOrder = async (req, res) => {
 };
 
 /**
- * Verify Razorpay payment signature
+ * Verify Razorpay payment signature (one booking, or every booking of a cart order)
  */
 export const verifyPayment = async (req, res) => {
   try {
@@ -135,8 +144,10 @@ export const verifyPayment = async (req, res) => {
       razorpay_order_id,
       razorpay_payment_id,
       razorpay_signature,
-      bookingId
+      bookingId,
+      bookingIds
     } = req.body;
+    const ids = [...new Set((Array.isArray(bookingIds) && bookingIds.length ? bookingIds : [bookingId]).filter(Boolean).map(String))];
 
     // Verify HMAC signature
     const text = razorpay_order_id + '|' + razorpay_payment_id;
@@ -163,14 +174,45 @@ export const verifyPayment = async (req, res) => {
       });
     }
 
-    // Update booking (experience or spa)
-    const found = await findBookingById(bookingId);
-    if (!found) {
-      return res.status(404).json({
-        success: false,
-        message: 'Booking not found'
-      });
+    // Find every booking this payment covers; each must belong to the order that was paid.
+    const founds = [];
+    for (const id of ids) {
+      const f = await findBookingById(id);
+      if (!f) {
+        return res.status(404).json({
+          success: false,
+          message: 'Booking not found'
+        });
+      }
+      if (f.booking.razorpayOrderId && f.booking.razorpayOrderId !== razorpay_order_id) {
+        return res.status(400).json({ success: false, message: 'Payment does not match this booking' });
+      }
+      founds.push(f);
     }
+    if (!founds.length) {
+      return res.status(404).json({ success: false, message: 'Booking not found' });
+    }
+
+    const bookings = [];
+    for (const f of founds) bookings.push(await confirmPaid(f, razorpay_payment_id, razorpay_signature));
+
+    res.status(200).json({
+      success: true,
+      message: 'Payment verified successfully',
+      data: bookings.length === 1 ? bookings[0] : bookings
+    });
+  } catch (error) {
+    console.error('Verify payment error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to verify payment',
+      error: error.message
+    });
+  }
+};
+
+// Marks one booking paid + confirmed, then notifies the guest (notification + email).
+async function confirmPaid(found, razorpay_payment_id, razorpay_signature) {
     const booking = found.booking;
 
     booking.paymentStatus = 'paid';
@@ -268,20 +310,8 @@ export const verifyPayment = async (req, res) => {
       }
     }).catch(emailErr => console.error('Failed to send booking confirmation email:', emailErr));
 
-    res.status(200).json({
-      success: true,
-      message: 'Payment verified successfully',
-      data: booking
-    });
-  } catch (error) {
-    console.error('Verify payment error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to verify payment',
-      error: error.message
-    });
-  }
-};
+    return booking;
+}
 
 /**
  * Razorpay webhook handler
