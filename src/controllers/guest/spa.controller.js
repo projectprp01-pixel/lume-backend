@@ -2,6 +2,7 @@ import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 import { resolveGuestStayId } from '../../utils/mainStay.js';
+import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
 /**
  * Get spa facilities for guest portal
@@ -111,9 +112,37 @@ export const createSpaBooking = async (req, res) => {
     // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
     // It drives both the stored mainStayBookingId and the <stayId>-SPA-<n> reference (see utils/hubRef.js).
     const stayId = await resolveGuestStayId({ guestId: req.body.guestId, claimedStayId: req.body.mainStayBookingId });
+
+    // Price the booking from the treatment itself so a Spa Hub discount tagged to it always applies and the
+    // charged amount (which payment reads from `price`) can't be set by the client. Falls back to the
+    // client-sent price only when the treatment can't be found.
+    let pricing = {};
+    const facility = spaFacilityId ? await SpaFacility.findById(spaFacilityId).catch(() => null) : null;
+    const treatment = facility && treatmentId
+      ? (facility.categories || []).flatMap((c) => c.treatments || []).find((t) => String(t._id) === String(treatmentId))
+      : null;
+    if (treatment) {
+      const wantedMin = Number(req.body.duration) || 0;
+      const picked = (treatment.durations || []).find((d) => d.minutes === wantedMin) || (treatment.durations || [])[0];
+      const listPrice = picked?.price ?? treatment.price ?? 0;
+      const eligible = await loadEligibleDiscounts({
+        propertyId: facility.propertyId || req.body.propertyId,
+        checkInDay: await arrivalDayForGuest(req.body.guestId),
+      });
+      const applied = bestDiscountFor(eligible, 'spa', treatmentId, listPrice);
+      const guests = Math.max(1, parseInt(req.body.numberOfGuests, 10) || 1);
+      const addonNames = (Array.isArray(req.body.addons) ? req.body.addons : []).map((a) => a?.name);
+      const addons = (treatment.addons || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }));
+      pricing = {
+        price: (listPrice - (applied?.amount ?? 0)) * guests + addons.reduce((sum, a) => sum + a.price, 0),
+        addons,
+        discountName: applied?.discount.name,
+        discountAmount: applied ? applied.amount * guests : undefined,
+      };
+    }
     const booking = await createWithHubRef({
       Model: SpaBooking, field: 'bookingId', kind: 'spa', stayId,
-      data: { ...req.body, mainStayBookingId: stayId ?? undefined, status: 'Pending', paymentStatus: 'pending' },
+      data: { ...req.body, ...pricing, mainStayBookingId: stayId ?? undefined, status: 'Pending', paymentStatus: 'pending' },
     });
 
     res.status(201).json({ success: true, data: booking });

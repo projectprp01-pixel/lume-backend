@@ -22,6 +22,9 @@ const spaBookingSchema = new mongoose.Schema({
   timeSlot: { type: String, required: true },
   duration: { type: Number },
   price: { type: Number, required: true },
+  // Spa Hub discount applied to `price` (already deducted), if any
+  discountName: { type: String },
+  discountAmount: { type: Number },
   propertyId: { type: String, required: true },
   status: {
     type: String,
