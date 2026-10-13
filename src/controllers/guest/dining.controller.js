@@ -5,6 +5,11 @@ import Restaurant from '../../models/Restaurant.model.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
+// A date (YYYY-MM-DD) is blocked if listed in blockedDates or inside a dashboard-set blockedRanges entry.
+const isBlockedDate = (facility, date) =>
+  (facility.blockedDates || []).includes(date) ||
+  (facility.blockedRanges || []).some((r) => r.start && r.end && date >= r.start && date <= r.end);
+
 /**
  * Get restaurants for guest app
  */
@@ -55,7 +60,7 @@ export const getDiningAvailability = async (req, res) => {
     }
 
     // Check if date is blocked
-    if (facility.blockedDates && facility.blockedDates.includes(date)) {
+    if (isBlockedDate(facility, date)) {
       return res.status(200).json({ success: true, data: { available: false, remaining: 0, tablesPerNight: facility.tablesPerNight, reason: 'blocked' } });
     }
 
@@ -99,7 +104,7 @@ export const createDiningReservation = async (req, res) => {
     }
 
     // Check blocked dates
-    if (facility.blockedDates && facility.blockedDates.includes(date)) {
+    if (isBlockedDate(facility, date)) {
       return res.status(400).json({ success: false, message: `${date} is not available for bookings` });
     }
 
