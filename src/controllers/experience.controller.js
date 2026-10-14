@@ -273,7 +273,7 @@ export const createExperienceBookingGuest = async (req, res) => {
     if (slot && slot.active === false) {
       return res.status(400).json({ success: false, message: 'This time slot is no longer available.' });
     }
-    if (slot && slot.capacity > 0 && bookedGuests + (numberOfGuests || 1) > slot.capacity) {
+    if (slot && slot.capacity > 0 && bookedGuests + (experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1)) > slot.capacity) {
       return res.status(400).json({ success: false, message: 'This time slot is full.' });
     }
 
@@ -289,7 +289,8 @@ export const createExperienceBookingGuest = async (req, res) => {
     });
     const applied = bestDiscountFor(eligible, 'experience', experienceId, listPrice);
     const unitPrice = listPrice - (applied?.amount ?? 0);
-    const qty = numberOfGuests || 1;
+    // Group activities (guestCanChooseGroupSize: false) are one unit whatever the client sends.
+    const qty = experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1);
     // Priced per group: the party size doesn't change the price (pricePerPerson is false in the dashboard).
     const priceQty = experience.pricing?.pricePerPerson === false ? 1 : qty;
     // Add-ons are priced from the experience itself (flat per booking), never from the client.
