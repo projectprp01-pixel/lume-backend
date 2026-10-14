@@ -152,6 +152,8 @@ const experienceSchema = new mongoose.Schema({
   // Extended scheduling & display fields
   propertyScheduled: { type: Boolean, default: false },
   guestCanChooseGroupSize: { type: Boolean, default: true },
+  // Show the min-max guest count to guests (read-only on group activities where they cannot choose a count)
+  guestsEnabled: { type: Boolean, default: true },
   capacityUnit: { type: String, default: '' },
   blackoutDates: [Date],
   // Date-range blocking used by the Experience Hub dashboard (distinct from the single-date

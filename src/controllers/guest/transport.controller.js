@@ -81,7 +81,7 @@ const dayKey = (d) => {
  * Prices what the guest picked from the property's own settings (the client's numbers are never
  * trusted) and snapshots it. Returns { error } or { offering, items, days, city, amount, vehicleName, addons }.
  *   - daily    : price x quantity x number of days, plus the optional pickup/drop add-on
- *   - flat     : full trip cab — the car's per-day sightseeing rate x days of the stay (nights + 1), plus the chosen
+ *   - flat     : full trip cab — the car's per-day sightseeing rate x nights of the stay, plus the chosen
  *                city's pickup/drop fare for that car, all x quantity
  *   - p2p      : the chosen city's fare for the vehicle (falls back to the base price) x quantity
  */
@@ -107,7 +107,7 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
   const sightseeing = sources.find((o) => o.structure === 'daily' && !o.flatRate);
   const rateSource = isFlat ? sightseeing : offering;
   const stayNights = Math.max(1, Math.round((new Date(booking.checkoutDate) - new Date(booking.arrivalDate)) / 86400000));
-  const tripDays = stayNights + 1; // the arrival day counts: "3 nights and 4 days"
+  const tripNights = stayNights; // charged per night of the stay
 
   const items = [];
   const addons = [];
@@ -144,7 +144,7 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
     if (isP2P) {
       line = (cityFare ?? pricing.price) * quantity;
     } else if (isFlat) {
-      line = (pricing.price * tripDays + (cityFare ?? 0)) * quantity;
+      line = (pricing.price * tripNights + (cityFare ?? 0)) * quantity;
     } else {
       days = [...new Set((raw.days || []).map(String))].sort();
       if (days.length === 0) return { error: 'Select at least one day' };
