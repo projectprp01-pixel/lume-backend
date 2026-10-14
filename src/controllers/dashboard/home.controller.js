@@ -122,21 +122,26 @@ async function negativeReviewsThisWeek(propertyId) {
   return Feedback.countDocuments(filter);
 }
 
-// Each hub's own bookings query, minus cancelled. These four hubs each hold their own
-// illustrative dates, so this is real-but-not-strictly-same-day by design (PRD, Step 2).
-async function activitiesSummary(propertyId) {
+// Bookings for activities taking place on `date` (the property's local day), minus cancelled — the same day
+// the arrivals/departures tiles use. Experience and spa dates are stored as UTC midnight of the booked day, dining
+// as "YYYY-MM-DD", and a transport booking is on every day it lists (or its pickup/check-in day).
+async function activitiesSummary(propertyId, date) {
+  const start = new Date(`${date}T00:00:00.000Z`);
+  const end = new Date(start.getTime() + DAY_MS);
+  const onDay = { $gte: start, $lt: end };
   const [experiences, spa, fb, transport] = await Promise.all([
-    ExperienceBooking.find({ bookingStatus: { $ne: 'cancelled' } }, 'experienceId')
+    ExperienceBooking.find({ bookingStatus: { $ne: 'cancelled' }, date: onDay }, 'experienceId')
       .populate('experienceId', 'propertyId')
       .lean()
       .then((rows) => rows.filter((r) => r.experienceId?.propertyId === propertyId).length),
-    SpaBooking.countDocuments({ propertyId, status: { $ne: 'Cancelled' }, paymentStatus: { $ne: 'refunded' } }),
-    DiningReservation.countDocuments({ propertyId, status: { $ne: 'cancelled' } }),
+    SpaBooking.countDocuments({ propertyId, date: onDay, status: { $ne: 'Cancelled' }, paymentStatus: { $ne: 'refunded' } }),
+    DiningReservation.countDocuments({ propertyId, date, status: { $ne: 'cancelled' } }),
     TransportBooking.countDocuments({
       propertyId,
       hubBooking: true,
       offeringSlot: { $in: [1, 2, 3] },
       status: { $ne: 'cancelled' },
+      $or: [{ days: date }, { 'items.days': date }, { checkInDate: onDay }],
     }),
   ]);
   return { experiences, spa, fb, transport };
@@ -155,7 +160,7 @@ export const getHomeSummary = async (req, res) => {
       departuresSummary(propertyId, date),
       requestsSummary(req.staff, propertyId),
       negativeReviewsThisWeek(propertyId),
-      activitiesSummary(propertyId),
+      activitiesSummary(propertyId, date),
     ]);
 
     res.status(200).json({
