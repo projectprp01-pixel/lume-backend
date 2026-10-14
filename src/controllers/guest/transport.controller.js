@@ -86,7 +86,11 @@ const dayKey = (d) => {
  *   - p2p      : the chosen city's fare for the vehicle (falls back to the base price) x quantity
  */
 function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) {
+  // Only switched-on offerings can be booked...
   const offerings = (settings.offerings || []).filter((o) => o.published && o.structure !== 'custom');
+  // ...but full trip is priced from the sightseeing rates and pickup & drop-off fares, which keep applying when
+  // those tiles are switched off — so the price sources come from every offering, published or not.
+  const sources = (settings.offerings || []).filter((o) => o.structure !== 'custom');
   const offering = offerings.find((o) => o.slot === Number(offeringSlot));
   if (!offering) return { error: 'This transport option is not available' };
   if (!Array.isArray(rawItems) || rawItems.length === 0) return { error: 'Choose at least one vehicle' };
@@ -94,13 +98,13 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
   const vehicles = new Map((settings.vehicles || []).map((v) => [String(v._id), v]));
   const isP2P = offering.structure === 'p2p';
   const isFlat = offering.structure === 'daily' && offering.flatRate;
-  const pickupOffering = offerings.find((o) => o.structure === 'p2p');
+  const pickupOffering = sources.find((o) => o.structure === 'p2p');
   const cities = offering.cities?.length ? offering.cities : (pickupOffering?.cities || []);
   const addonAvailable = !isP2P && !isFlat && (offering.addons || []).some((slot) => offerings.some((o) => o.slot === slot));
   const stayStart = dayKey(booking.arrivalDate);
   const stayEnd = dayKey(booking.checkoutDate);
   // Full trip has no prices of its own: each car it offers is charged at its per-day sightseeing rate.
-  const sightseeing = offerings.find((o) => o.structure === 'daily' && !o.flatRate);
+  const sightseeing = sources.find((o) => o.structure === 'daily' && !o.flatRate);
   const rateSource = isFlat ? sightseeing : offering;
   const stayNights = Math.max(1, Math.round((new Date(booking.checkoutDate) - new Date(booking.arrivalDate)) / 86400000));
   const tripDays = stayNights + 1; // the arrival day counts: "3 nights and 4 days"
