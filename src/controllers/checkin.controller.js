@@ -202,7 +202,8 @@ export const uploadGuestID = async (req, res) => {
       return res.status(400).json({ success: false, message: sizeErr });
     }
 
-    // Find the check-in first: an approved guest's details are locked, so nothing is uploaded for them.
+    // Find the check-in first: a guest's ID is locked once submitted, until the front desk rejects it
+    // (a rejected doc carries rejectionReason and may be re-uploaded). Approved IDs stay locked for good.
     const checkIn = await CheckIn.findById(checkInId);
     if (!checkIn) {
       return res.status(404).json({
@@ -210,13 +211,15 @@ export const uploadGuestID = async (req, res) => {
         message: 'Check-in session not found'
       });
     }
-    const approvedDoc = checkIn.guestDocuments.find(
-      (doc) => doc.guestNumber === parseInt(guestNumber) && doc.verified
+    const lockedDoc = checkIn.guestDocuments.find(
+      (doc) => doc.guestNumber === parseInt(guestNumber) && (doc.verified || !doc.rejectionReason)
     );
-    if (approvedDoc) {
+    if (lockedDoc) {
       return res.status(409).json({
         success: false,
-        message: 'This check-in has already been approved and can no longer be changed.'
+        message: lockedDoc.verified
+          ? 'This check-in has already been approved and can no longer be changed.'
+          : 'This ID has been submitted and is awaiting review. It can be changed only if the front desk rejects it.'
       });
     }
 
