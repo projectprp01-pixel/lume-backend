@@ -1,0 +1,3812 @@
+[
+  {
+    "_id": {
+      "$oid": "69ed1449458e83c3e4206a2f"
+    },
+    "bookingId": "SPA-1777144905329-S5NR",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "69ec8eb6458e83c3e4205123"
+    },
+    "mainBookingId": "BK-1777110710336-ITNR6C",
+    "guestName": "Test Test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1777161600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777144905330"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777144919304"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Shq5tkwtdIEWDY"
+  },
+  {
+    "_id": {
+      "$oid": "69f8c7f945703492664e3a5c"
+    },
+    "bookingId": "SPA-1777911801753-LQ99",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "mainBookingId": "77555130",
+    "guestName": "Sanmay Dasgupta",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779840000000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777911801754"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777911833303"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SlLrWqd5v743Cq"
+  },
+  {
+    "_id": {
+      "$oid": "6a086212060279b17f71bbea"
+    },
+    "bookingId": "SPA-1778934290995-FHK4",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "mainBookingId": "77555130",
+    "guestName": "Sanmay Dasgupta",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779840000000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778934291004"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778934307379"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Sq2D2ejenogWYB"
+  },
+  {
+    "_id": {
+      "$oid": "6a08674b060279b17f71c9b3"
+    },
+    "bookingId": "SPA-1778935627432-NJGR",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "69fd8f67f36fbebf27592b76"
+    },
+    "mainBookingId": "BK-1778224999177-MDH2BW",
+    "guestName": "Mithran S",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778935627433"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778935663949"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Sq2aZt6cfYpsY3"
+  },
+  {
+    "_id": {
+      "$oid": "6a12a114e3234bbd99ebdca9"
+    },
+    "bookingId": "SPA-1779605780596-K2XD",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "69fc6388385accb497329fae"
+    },
+    "mainBookingId": "76994528",
+    "guestName": "Sanchit Jain NA",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780444800000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779605780598"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779605801604"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_St6t45cqXSDPrf"
+  },
+  {
+    "_id": {
+      "$oid": "6a12b92de3234bbd99ebe43b"
+    },
+    "bookingId": "SPA-1779611949177-96CB",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "69fc6388385accb497329fb2"
+    },
+    "mainBookingId": "78042089",
+    "guestName": "Shailaja Thavi",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780358400000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779611949178"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_St8daOaypBYut0"
+  },
+  {
+    "_id": {
+      "$oid": "6a12b9c2e3234bbd99ebe626"
+    },
+    "bookingId": "SPA-1779612098539-RI8K",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a11660ce3234bbd99ebcadf"
+    },
+    "mainBookingId": "78950449",
+    "guestName": "Ritesh Agrawal",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779840000000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779612098540"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_St8gCqO8hGGRE6"
+  },
+  {
+    "_id": {
+      "$oid": "6a14405c42e40fd0d6757760"
+    },
+    "bookingId": "SPA-1779712092233-OJSZ",
+    "spaFacilityId": {
+      "$oid": "6a143b4d42e40fd0d6756b8c"
+    },
+    "treatmentId": "6a14404542e40fd0d6757619",
+    "treatmentName": "UDVARTHANA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779667200000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "6800"
+    },
+    "propertyId": "kabini",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779712092234"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779712097421"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Stb4eOtzsMuw3J"
+  },
+  {
+    "_id": {
+      "$oid": "6a15487c386d07ead3e25ec6"
+    },
+    "bookingId": "SPA-1779779708048-XVWD",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9f7",
+    "treatmentName": "Soundharya Vardhini",
+    "categoryName": "Beauty Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "3422"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779708049"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779731719"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_StuH4rowVGxVpq"
+  },
+  {
+    "_id": {
+      "$oid": "6a154975386d07ead3e26375"
+    },
+    "bookingId": "SPA-1779779957605-ZSMR",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9ba",
+    "treatmentName": "Kati Basti",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780012800000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779957606"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779978064"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_StuLSaNK5qWVn2"
+  },
+  {
+    "_id": {
+      "$oid": "6a168d5c25bfd8d911c5c53a"
+    },
+    "bookingId": "SPA-1779862876007-TLMI",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9b4",
+    "treatmentName": "Abhangya",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780012800000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862876008"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862887956"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuHtHIViMgOQvl"
+  },
+  {
+    "_id": {
+      "$oid": "6a168d6a25bfd8d911c5c652"
+    },
+    "bookingId": "SPA-1779862890518-9YRA",
+    "spaFacilityId": {
+      "$oid": "6a143b4d42e40fd0d6756b8c"
+    },
+    "treatmentId": "6a143db642e40fd0d6756f44",
+    "treatmentName": "ABHYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a153ccb386d07ead3e24e07"
+    },
+    "mainBookingId": "BK-1779776716029-649KXI",
+    "guestName": "Test 2",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779840000000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "kabini",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862890519"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862926358"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuHtXRYy60SaJS"
+  },
+  {
+    "_id": {
+      "$oid": "6a168d6c25bfd8d911c5c6b5"
+    },
+    "bookingId": "SPA-1779862892615-5DAJ",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9b4",
+    "treatmentName": "Abhangya",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780012800000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862892615"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862919653"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuHtZGYRbWybfE"
+  },
+  {
+    "_id": {
+      "$oid": "6a16a02325bfd8d911c5d6d8"
+    },
+    "bookingId": "SPA-1779867683779-0Q82",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9b4",
+    "treatmentName": "Abhangya",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779867683780"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779867702326"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuJFvCUQ1v7Pz0"
+  },
+  {
+    "_id": {
+      "$oid": "6a171e3225bfd8d911c5e24e"
+    },
+    "bookingId": "SPA-1779899954142-E1V3",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9c6",
+    "treatmentName": "Janu Basti",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780099200000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "hampi",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779899954143"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779899986778"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuSQ3lTSJzkNzB"
+  },
+  {
+    "_id": {
+      "$oid": "6a171ed625bfd8d911c5e564"
+    },
+    "bookingId": "SPA-1779900118477-EX8I",
+    "spaFacilityId": {
+      "$oid": "6a1491f70b1644683afba62e"
+    },
+    "treatmentId": "6a1496a30b1644683afbb9b4",
+    "treatmentName": "Abhangya",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "mainBookingId": "BK-1779773551021-0640CF",
+    "guestName": "Test test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "1"
+    },
+    "propertyId": "hampi",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779900118478"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779900152055"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuSSxLAIomc4Rg",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1779900152055"
+      }
+    },
+    "razorpayPaymentId": "pay_SuST0LHU9mSXl3",
+    "razorpaySignature": "01df6b6c294754ebde897aa3cbfb4d74d951783390e8e23f9d7ec845f16f11c6"
+  },
+  {
+    "_id": {
+      "$oid": "6a17cfeb25bfd8d911c5ffea"
+    },
+    "bookingId": "SPA-1779945451406-O5VF",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99fd",
+    "treatmentName": "SHIRODHARA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a127790e3234bbd99ebdaa3"
+    },
+    "mainBookingId": "78878433",
+    "guestName": "Akshatha Shetty",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780012800000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "3800"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779945451407"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779945490204"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SufL4sSbdexyH2"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a6d7a25bfd8d911c61fea"
+    },
+    "bookingId": "SPA-1780116858424-PSSA",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "mainBookingId": "79166761",
+    "guestName": "Ranganath Rao",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780099200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780116858431"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780116867927"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SvS0nQeabgiyo6"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a6df925bfd8d911c621d0"
+    },
+    "bookingId": "SPA-1780116985318-PDAI",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "mainBookingId": "79166761",
+    "guestName": "Ranganath Rao",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780099200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780116985319"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780116993759"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SvS315YeJCMBuZ"
+  },
+  {
+    "_id": {
+      "$oid": "6a1e3ffadc7715a0263d400f"
+    },
+    "bookingId": "SPA-1780367354841-HRF6",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d3",
+    "treatmentName": "KATI BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "mainBookingId": "BK-1780224649359-VNUKZR",
+    "guestName": "Test",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780617600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780367354842"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Swb8uhfi4nTOnY"
+  },
+  {
+    "_id": {
+      "$oid": "6a205f6e30adfb06d20fcd5f"
+    },
+    "bookingId": "SPA-1780506478117-YS7R",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a1fbac030adfb06d20fb0a0"
+    },
+    "mainBookingId": "79026560",
+    "guestName": "Karthik Bethi",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1780790400000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780506478118"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780506503610"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SxEeGTOH3bJoCH"
+  },
+  {
+    "_id": {
+      "$oid": "6a27adf030adfb06d210120a"
+    },
+    "bookingId": "SPA-1780985328568-GJQT",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a23860230adfb06d20fdc44"
+    },
+    "mainBookingId": "79698824",
+    "guestName": "Nikita Vora",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781136000000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780985328569"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780985338901"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SzQcjBgw3eoX0p"
+  },
+  {
+    "_id": {
+      "$oid": "6a27e58830adfb06d2101aae"
+    },
+    "bookingId": "SPA-1780999560371-4M96",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "mainBookingId": "79663684",
+    "guestName": "Radha Kesarwani",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781049600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780999560372"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780999577970"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SzUfGXjYZ4xXzq"
+  },
+  {
+    "_id": {
+      "$oid": "6a27e5ba30adfb06d2101c04"
+    },
+    "bookingId": "SPA-1780999610503-GK76",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "mainBookingId": "79663684",
+    "guestName": "Radha Kesarwani",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781049600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780999610504"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780999676431"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SzUg92QC9E4Mdz",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1780999676431"
+      }
+    },
+    "razorpayPaymentId": "pay_SzUgM53vynZhfc",
+    "razorpaySignature": "8315fb44b1ad852e66a44d7038d4088f42ccd2b733808d1a69af505b03f76bec"
+  },
+  {
+    "_id": {
+      "$oid": "6a27ead430adfb06d2102975"
+    },
+    "bookingId": "SPA-1781000916719-IC8Y",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "mainBookingId": "79663684",
+    "guestName": "Radha Kesarwani",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781049600000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781000916720"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SzV39H6Rx8aJi3"
+  },
+  {
+    "_id": {
+      "$oid": "6a282e3d30adfb06d2103d3a"
+    },
+    "bookingId": "SPA-1781018173036-JZ8P",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781222400000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781018173038"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SzZwxxvg2XUs0c"
+  },
+  {
+    "_id": {
+      "$oid": "6a2b908c30adfb06d2105ae5"
+    },
+    "bookingId": "SPA-1781239948850-7N5Z",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc9a03",
+    "treatmentName": "GREEVA BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a263bf230adfb06d20ff6db"
+    },
+    "mainBookingId": "79607895",
+    "guestName": "Param Vaswani",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781222400000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781239948851"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781239996748"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T0avQ4P4KJbg2c",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1781239996748"
+      }
+    },
+    "razorpayPaymentId": "pay_T0avjtHKaOWGsP",
+    "razorpaySignature": "b66db152c10be59904201aab360edd2e4bcd98a04690df42d5f615b720c6cf62"
+  },
+  {
+    "_id": {
+      "$oid": "6a2f63a530adfb06d210850b"
+    },
+    "bookingId": "SPA-1781490597998-KOZ1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a0461cd060279b17f71518b"
+    },
+    "mainBookingId": "77708016",
+    "guestName": "Preeti Tammineedi",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781913600000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781490597999"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781490616623"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T1k6Gyxc2rrT6F"
+  },
+  {
+    "_id": {
+      "$oid": "6a2fa36c30adfb06d2108b96"
+    },
+    "bookingId": "SPA-1781506924726-CADF",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a2f7c6630adfb06d2108581"
+    },
+    "mainBookingId": "80305922",
+    "guestName": "Brian Leslie",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781913600000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781506924728"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781507229376"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T1ojgmxoc0RQt8",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1781507229375"
+      }
+    },
+    "razorpayPaymentId": "pay_T1onzUXgfTZUyW",
+    "razorpaySignature": "72c5cec6c9d663bf0a45ae4374f9f52976c74a3112c2a6588359954db10dc815"
+  },
+  {
+    "_id": {
+      "$oid": "6a30b58830adfb06d2109b8b"
+    },
+    "bookingId": "SPA-1781577096979-A1WU",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d9",
+    "treatmentName": "SHIROABHYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a043a7a060279b17f714242"
+    },
+    "mainBookingId": "77299171",
+    "guestName": "Amol Kanitkar",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781827200000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "2800"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "pending",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781577096980"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a35037c30adfb06d210ceb0"
+    },
+    "bookingId": "SPA-1781859196363-YI66",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99eb",
+    "treatmentName": "HRID BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1781913600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781859196364"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781859273340"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T3QliOzkwl4NXL"
+  },
+  {
+    "_id": {
+      "$oid": "6a36500330adfb06d210e7a9"
+    },
+    "bookingId": "SPA-1781944323341-V4VD",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a3647a730adfb06d210e54a"
+    },
+    "mainBookingId": "79076159",
+    "guestName": "Aparajita Jamwal",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782345600000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781944323341"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781944332208"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T3owLxdbKM4ZD2"
+  },
+  {
+    "_id": {
+      "$oid": "6a390b8b30adfb06d2110a55"
+    },
+    "bookingId": "SPA-1782123403601-RQ92",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a32038630adfb06d210a60b"
+    },
+    "mainBookingId": "79011353",
+    "guestName": "Vinoth Perkinian",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782172800000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782123403602"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T4dnKWvuG2UweU"
+  },
+  {
+    "_id": {
+      "$oid": "6a3b625f30adfb06d211213b"
+    },
+    "bookingId": "SPA-1782276703667-DV0A",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782345600000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782276703668"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T5LK50uEKZ60SG"
+  },
+  {
+    "_id": {
+      "$oid": "6a3e89fb30adfb06d2117406"
+    },
+    "bookingId": "SPA-1782483451593-0LVE",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782864000000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782483451594"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782483465510"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T6I1zccHKmtSy2"
+  },
+  {
+    "_id": {
+      "$oid": "6a41d9ae30adfb06d211bbd4"
+    },
+    "bookingId": "SPA-1782700462755-FTKC",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782777600000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782700462756"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782700473578"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7HeanUI82UBJI"
+  },
+  {
+    "_id": {
+      "$oid": "6a4228dab399dd062ef6edfe"
+    },
+    "bookingId": "SPA-1782720730414-OQYR",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d3",
+    "treatmentName": "KATI BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1782950400000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782720730452"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782720766480"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7NPPfPBG7SLsR",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1782720766478"
+      }
+    },
+    "razorpayPaymentId": "pay_T7NPgb27jgr1IO",
+    "razorpaySignature": "57688268176430c9f4eea1ff5f0bece45e6aa0b26b7bf7ecab86828d249d639e"
+  },
+  {
+    "_id": {
+      "$oid": "6a55cd36c281e5bb3d7e323d"
+    },
+    "bookingId": "SPA-1784007990453-6KGG",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a55a7d3c281e5bb3d7e2a30"
+    },
+    "mainBookingId": "78744653",
+    "guestName": "Ankit Pandey",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784419200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784007990455"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784008001133"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TDGwLQE3KV05Ck"
+  },
+  {
+    "_id": {
+      "$oid": "6a56840b756970a0a22cc715"
+    },
+    "bookingId": "SPA-1784054795683-VUY8",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a55a7d3c281e5bb3d7e2a30"
+    },
+    "mainBookingId": "78744653",
+    "guestName": "Ankit Pandey",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784419200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784054795694"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784054864746"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TDUENUUNg2Iivb",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1784054864746"
+      }
+    },
+    "razorpayPaymentId": "pay_TDUEvu6HZZJdLn",
+    "razorpaySignature": "d67412d7aac1419e06dd34728335636adf4e474dadd361281cd15172aea9a6ac"
+  },
+  {
+    "_id": {
+      "$oid": "6a58c3cf756970a0a22ce193"
+    },
+    "bookingId": "SPA-1784202191463-YQZN",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d9",
+    "treatmentName": "SHIROABHYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a559b4bc281e5bb3d7e2a0d"
+    },
+    "mainBookingId": "81147209",
+    "guestName": "Smita Katti",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784419200000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "2800"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784202191466"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784204400012"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TEA5NigrwdCtQH"
+  },
+  {
+    "_id": {
+      "$oid": "6a5dca21756970a0a22d11de"
+    },
+    "bookingId": "SPA-1784531489150-N1CT",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a5db965756970a0a22d0b60"
+    },
+    "mainBookingId": "81562630",
+    "guestName": "Bharath Hegde",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784851200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784531489152"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784531519530"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TFfaqqiIedXRzJ"
+  },
+  {
+    "_id": {
+      "$oid": "6a5f1899756970a0a22d3bf3"
+    },
+    "bookingId": "SPA-1784617113931-6H01",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a5dab87756970a0a22d0b13"
+    },
+    "mainBookingId": "81332522",
+    "guestName": "Bhavana Kumar",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784937600000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784617113932"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784617253310"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TG3uJCd4iwrALS",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1784617253309"
+      }
+    },
+    "razorpayPaymentId": "pay_TG3vERjRzMhEL4",
+    "razorpaySignature": "14d5abf2ee7ebc764c2c4a810845e0c62ea3e93bca0693f268f3774176beec07"
+  },
+  {
+    "_id": {
+      "$oid": "6a5f196b756970a0a22d40c0"
+    },
+    "bookingId": "SPA-1784617323225-N4X2",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a5dab87756970a0a22d0b13"
+    },
+    "mainBookingId": "81332522",
+    "guestName": "Bhavana Kumar",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1784937600000"
+      }
+    },
+    "timeSlot": "10:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784617323226"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788846943132"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TG3xzOP8G55e4h",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1784617365489"
+      }
+    },
+    "razorpayPaymentId": "pay_TG3yBd0j2mwtF8",
+    "razorpaySignature": "0e9991fc0651eac8e6c9c457c4b08aeb317155c85e87e61078796ed3a41d79c5",
+    "room": "Cottage 1"
+  },
+  {
+    "_id": {
+      "$oid": "6a631392756970a0a22d7a94"
+    },
+    "bookingId": "SPA-1784877970831-GD2X",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a62fa1a756970a0a22d746b"
+    },
+    "mainBookingId": "300082061650",
+    "guestName": "Pooja Kabra",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1785283200000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784877970832"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784880000014"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_THFyqDT9V4lDB4"
+  },
+  {
+    "_id": {
+      "$oid": "6a7d69d1756970a0a22e667b"
+    },
+    "bookingId": "SPA-1786603985390-6WVM",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d9",
+    "treatmentName": "SHIROABHYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "mainBookingId": "300082826793",
+    "guestName": "Kumar Krishnan",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1787011200000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "2800"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786603985392"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788846951021"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TPA6IISQM1weBC",
+    "room": "Cottage 2"
+  },
+  {
+    "_id": {
+      "$oid": "6a8be197756970a0a22edf4f"
+    },
+    "bookingId": "SPA-1787552151954-DHKH",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1787529600000"
+      }
+    },
+    "timeSlot": "15:15",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787552151955"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787552159747"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TTVLJW3I7IHrUv"
+  },
+  {
+    "_id": {
+      "$oid": "6a8be2bc756970a0a22ee1ae"
+    },
+    "bookingId": "SPA-1787552444304-OPJS",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "Guest",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1787529600000"
+      }
+    },
+    "timeSlot": "14:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787552444305"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787554800015"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TTVQSfeyQ6ltBm"
+  },
+  {
+    "_id": {
+      "$oid": "6a93f0c6756970a0a22f21a2"
+    },
+    "bookingId": "SPA-1788080326968-HZV8",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6a923cd0756970a0a22f1597"
+    },
+    "mainBookingId": "300082646669",
+    "guestName": "Kavita Behal",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1788393600000"
+      }
+    },
+    "timeSlot": "11:30",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788080326971"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788080354177"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TVvK7n0V3N96Mw"
+  },
+  {
+    "_id": {
+      "$oid": "6a9fa3c56b99a95c6d3d2cec"
+    },
+    "bookingId": "SPA-1788847045322-CXBK",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestName": "LUME CXM",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1788912000000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Cancelled",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788847045351"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788853440665"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa12078b9f2c51068a0d0df"
+    },
+    "bookingId": "SPA-1788944504438-VY9S",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "6aa12025b9f2c51068a0cfc0",
+    "treatmentName": "hand massage",
+    "categoryName": "Beauty Treatment",
+    "guestName": "uj",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1789171200000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "3000"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788944504440"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788944635136"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b046c"
+    },
+    "bookingId": "SEEDCO-2",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "couples massage",
+    "guestId": {
+      "$oid": "6ab554388a325795d1e6ccf8"
+    },
+    "mainStayBookingId": "EB-2026-78432",
+    "guestName": "Rohit & Meera Sharma",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 112",
+    "date": {
+      "$date": {
+        "$numberLong": "1789885800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "4500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405654"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269562044"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b046d"
+    },
+    "bookingId": "SEEDCO-4",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Wellness therapy session",
+    "guestId": {
+      "$oid": "6ab554398a325795d1e6cd03"
+    },
+    "mainStayBookingId": "EB-2026-78511",
+    "guestName": "Neha Kapoor",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Villa 4",
+    "date": {
+      "$date": {
+        "$numberLong": "1790058600000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "5100"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405590"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b046e"
+    },
+    "bookingId": "SEEDCO-10",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Ayurveda session",
+    "guestId": {
+      "$oid": "6ab5543b8a325795d1e6cd14"
+    },
+    "mainStayBookingId": "EB-2026-78467",
+    "guestName": "Divya Reddy",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 105",
+    "date": {
+      "$date": {
+        "$numberLong": "1790058600000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "6300"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405590"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b046f"
+    },
+    "bookingId": "SEEDCO-15",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Ayurvedic Duo",
+    "guestId": {
+      "$oid": "6ab5543e8a325795d1e6cd20"
+    },
+    "mainStayBookingId": "EB-2026-78601",
+    "guestName": "Pooja & Aman Bhatia",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Pool Villa 2",
+    "date": {
+      "$date": {
+        "$numberLong": "1790058600000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "9400"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "pending",
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0470"
+    },
+    "bookingId": "SEEDCO-21",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554408a325795d1e6cd2c"
+    },
+    "mainStayBookingId": "EB-2026-77801",
+    "guestName": "Arjun & Sneha Nair",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Pool Villa 1",
+    "date": {
+      "$date": {
+        "$numberLong": "1789885800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "3000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405656"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0471"
+    },
+    "bookingId": "SEEDCO-23",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554418a325795d1e6cd30"
+    },
+    "mainStayBookingId": "EB-2026-77812",
+    "guestName": "Helena Rossi",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 103",
+    "date": {
+      "$date": {
+        "$numberLong": "1789972200000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "3500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0472"
+    },
+    "bookingId": "SEEDCO-25",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554418a325795d1e6cd34"
+    },
+    "mainStayBookingId": "EB-2026-77823",
+    "guestName": "The Kulkarni Family",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 109",
+    "date": {
+      "$date": {
+        "$numberLong": "1789799400000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "4000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0473"
+    },
+    "bookingId": "SEEDCO-27",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554428a325795d1e6cd38"
+    },
+    "mainStayBookingId": "EB-2026-77834",
+    "guestName": "Imran & Zoya Sheikh",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Villa 5",
+    "date": {
+      "$date": {
+        "$numberLong": "1789972200000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "4500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0474"
+    },
+    "bookingId": "SEEDCO-29",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554438a325795d1e6cd3c"
+    },
+    "mainStayBookingId": "EB-2026-77845",
+    "guestName": "David Cohen",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 104",
+    "date": {
+      "$date": {
+        "$numberLong": "1789885800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "5000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0475"
+    },
+    "bookingId": "SEEDCO-31",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554448a325795d1e6cd40"
+    },
+    "mainStayBookingId": "EB-2026-77701",
+    "guestName": "Lakshmi & Ravi Iyengar",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Pool Villa 3",
+    "date": {
+      "$date": {
+        "$numberLong": "1789713000000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405657"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0476"
+    },
+    "bookingId": "SEEDCO-33",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554458a325795d1e6cd44"
+    },
+    "mainStayBookingId": "EB-2026-77712",
+    "guestName": "Priya Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Villa 1",
+    "date": {
+      "$date": {
+        "$numberLong": "1789713000000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "6000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0477"
+    },
+    "bookingId": "SEEDCO-35",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554458a325795d1e6cd48"
+    },
+    "mainStayBookingId": "EB-2026-77723",
+    "guestName": "The Gupta Family",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 111",
+    "date": {
+      "$date": {
+        "$numberLong": "1789281000000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "6500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0478"
+    },
+    "bookingId": "SEEDCO-37",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554468a325795d1e6cd4c"
+    },
+    "mainStayBookingId": "EB-2026-77601",
+    "guestName": "Ethan & Chloe Marshall",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Pool Villa 2",
+    "date": {
+      "$date": {
+        "$numberLong": "1789108200000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "7000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0479"
+    },
+    "bookingId": "SEEDCO-39",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554478a325795d1e6cd50"
+    },
+    "mainStayBookingId": "EB-2026-77612",
+    "guestName": "Sunita Bansal",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 102",
+    "date": {
+      "$date": {
+        "$numberLong": "1789021800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "7500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b047a"
+    },
+    "bookingId": "SEEDCO-41",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554488a325795d1e6cd54"
+    },
+    "mainStayBookingId": "EB-2026-77623",
+    "guestName": "Rahul & Ananya Sethi",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Villa 6",
+    "date": {
+      "$date": {
+        "$numberLong": "1788589800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "8000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b047b"
+    },
+    "bookingId": "SEEDCO-43",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554488a325795d1e6cd58"
+    },
+    "mainStayBookingId": "EB-2026-77501",
+    "guestName": "Marta Kowalski",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Cottage 106",
+    "date": {
+      "$date": {
+        "$numberLong": "1788157800000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "8500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b047c"
+    },
+    "bookingId": "SEEDCO-45",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab554498a325795d1e6cd5c"
+    },
+    "mainStayBookingId": "EB-2026-77512",
+    "guestName": "The Pillai Family",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Machaan 1",
+    "date": {
+      "$date": {
+        "$numberLong": "1787553000000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "9000"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b047d"
+    },
+    "bookingId": "SEEDCO-47",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Massage",
+    "guestId": {
+      "$oid": "6ab5544a8a325795d1e6cd60"
+    },
+    "mainStayBookingId": "EB-2026-77523",
+    "guestName": "Yusuf Khan",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "room": "Villa 3",
+    "date": {
+      "$date": {
+        "$numberLong": "1787121000000"
+      }
+    },
+    "timeSlot": "11:00",
+    "price": {
+      "$numberInt": "9500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "source": "staff",
+    "paymentStatus": "paid",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1790269405591"
+      }
+    },
+    "currency": "INR",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405658"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac7920898cb914c6a6b17d9"
+    },
+    "bookingId": "BK-71202-SPA-1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "mainStayBookingId": "BK-71202",
+    "guestName": "Nikhil Joseph",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794355200000"
+      }
+    },
+    "timeSlot": "09:00",
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "source": "app",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791463944614"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791463946208"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TlQ8cAi2WdvYWA"
+  },
+  {
+    "_id": {
+      "$oid": "6accd53dc7b69617d18ecc63"
+    },
+    "bookingId": "EB-30459-SPA-1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "Abhayanga",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6accce5d93ad408683a7fd3e"
+    },
+    "mainStayBookingId": "EB-30459",
+    "guestName": "15th Oct",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1791936000000"
+      }
+    },
+    "timeSlot": "10:15",
+    "duration": {
+      "$numberInt": "75"
+    },
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791808829769"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791808873930"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Tn04oahySODced",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1791808873929"
+      }
+    },
+    "razorpayPaymentId": "pay_Tn04xO7Lj0MKIN",
+    "razorpaySignature": "b7dda3da9335b44edfb87bf440582ad48a862f277bb4562603dff137482a387c"
+  },
+  {
+    "_id": {
+      "$oid": "6acd0d5cc7b69617d1901c59"
+    },
+    "bookingId": "123456-SPA-1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d3",
+    "treatmentName": "KATI BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "mainStayBookingId": "123456",
+    "guestName": "Prachet Kulkarni",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1791936000000"
+      }
+    },
+    "timeSlot": "15:15",
+    "duration": {
+      "$numberInt": "30"
+    },
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791823196482"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791823197885"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Tn49RSjs7iJ9wO"
+  },
+  {
+    "_id": {
+      "$oid": "6ace16599d2f10e3ed59fd63"
+    },
+    "bookingId": "BK-86581-SPA-1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "ABHAYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "mainStayBookingId": "BK-86581",
+    "guestName": "Aditi Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "2"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794441600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "duration": {
+      "$numberInt": "90"
+    },
+    "price": {
+      "$numberInt": "8360"
+    },
+    "discountName": "Prachets Birthday Discount",
+    "discountAmount": {
+      "$numberInt": "2640"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891033848"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891325670"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnNUQM9Ub1EZoW",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1791891325666"
+      }
+    },
+    "razorpayPaymentId": "pay_TnNUZLrDY9nKP1",
+    "razorpaySignature": "243d0be89faff2607d8174794aca7e67346359d3b1acafc0186047fcd86afed6"
+  },
+  {
+    "_id": {
+      "$oid": "6ace16a99d2f10e3ed5a0fde"
+    },
+    "bookingId": "BK-86581-SPA-2",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d3",
+    "treatmentName": "KATI BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "mainStayBookingId": "BK-86581",
+    "guestName": "Aditi Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794441600000"
+      }
+    },
+    "timeSlot": "09:00",
+    "duration": {
+      "$numberInt": "30"
+    },
+    "price": {
+      "$numberInt": "2584"
+    },
+    "discountName": "Prachets Birthday Discount",
+    "discountAmount": {
+      "$numberInt": "816"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891113864"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891325953"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnNUQM9Ub1EZoW",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1791891325951"
+      }
+    },
+    "razorpayPaymentId": "pay_TnNUZLrDY9nKP1",
+    "razorpaySignature": "243d0be89faff2607d8174794aca7e67346359d3b1acafc0186047fcd86afed6"
+  },
+  {
+    "_id": {
+      "$oid": "6ace180e9d2f10e3ed5a4976"
+    },
+    "bookingId": "BK-86581-SPA-3",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99d3",
+    "treatmentName": "KATI BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "mainStayBookingId": "BK-86581",
+    "guestName": "Aditi Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794441600000"
+      }
+    },
+    "timeSlot": "10:15",
+    "duration": {
+      "$numberInt": "30"
+    },
+    "price": {
+      "$numberInt": "3400"
+    },
+    "propertyId": "default",
+    "status": "Upcoming",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "paid",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891470951"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891494648"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnNXS4k4C2S1LU",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1791891494602"
+      }
+    },
+    "razorpayPaymentId": "pay_TnNXYIGajTYUkb",
+    "razorpaySignature": "ed9cf9817eed800b4981ebb5b5c846398af0e3d4170a0e483062d478c6a6ba69"
+  },
+  {
+    "_id": {
+      "$oid": "6ace4aa59d2f10e3ed5c7d8d"
+    },
+    "bookingId": "EB-69570-SPA-1",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99df",
+    "treatmentName": "JANU BASTI",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "mainStayBookingId": "EB-69570",
+    "guestName": "Donald Trumpet",
+    "numberOfGuests": {
+      "$numberInt": "2"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1792195200000"
+      }
+    },
+    "timeSlot": "09:00",
+    "duration": {
+      "$numberInt": "30"
+    },
+    "price": {
+      "$numberInt": "6800"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791904421537"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791904423411"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnRDSkz2XmhF6d"
+  },
+  {
+    "_id": {
+      "$oid": "6ace63d39d2f10e3ed5d5af3"
+    },
+    "bookingId": "BK-86581-SPA-4",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "ABHAYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "mainStayBookingId": "BK-86581",
+    "guestName": "Aditi Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "2"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794528000000"
+      }
+    },
+    "timeSlot": "10:15",
+    "duration": {
+      "$numberInt": "90"
+    },
+    "price": {
+      "$numberInt": "11000"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791910867565"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791910869299"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnT2wj3mk9atYB"
+  },
+  {
+    "_id": {
+      "$oid": "6ace656f9d2f10e3ed5db733"
+    },
+    "bookingId": "BK-86581-SPA-5",
+    "spaFacilityId": {
+      "$oid": "69d3862cd6f157c092f732ae"
+    },
+    "treatmentId": "69e36ca6612b102e6cdc99cd",
+    "treatmentName": "ABHAYANGA",
+    "categoryName": "Ayurvedic Treatment",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "mainStayBookingId": "BK-86581",
+    "guestName": "Aditi Deshmukh",
+    "numberOfGuests": {
+      "$numberInt": "1"
+    },
+    "date": {
+      "$date": {
+        "$numberLong": "1794441600000"
+      }
+    },
+    "timeSlot": "10:15",
+    "duration": {
+      "$numberInt": "90"
+    },
+    "price": {
+      "$numberInt": "5500"
+    },
+    "propertyId": "default",
+    "status": "Pending",
+    "addons": [],
+    "source": "app",
+    "paymentStatus": "processing",
+    "currency": "INR",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791911279413"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791911280923"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TnTAC1sbdNZrBZ"
+  }
+]

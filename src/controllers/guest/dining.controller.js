@@ -2,7 +2,7 @@ import Booking from '../../models/Booking.model.js';
 import DiningReservation from '../../models/DiningReservation.model.js';
 import Guest from '../../models/Guest.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
-import { createWithHubRef } from '../../utils/hubRef.js';
+import { persistPrepared } from '../../services/guestCheckout.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
 // A date (YYYY-MM-DD) is blocked if listed in blockedDates or inside a dashboard-set blockedRanges entry.
@@ -82,37 +82,39 @@ export const getDiningAvailability = async (req, res) => {
 };
 
 /**
- * Create a dining reservation (guest-side, intimate dining only)
- * Body: { facilityId, guestId, bookingId, date, numberOfGuests, propertyId }
+ * Validate + price a guest dining reservation WITHOUT saving anything. Shared by the direct endpoint
+ * below (free reservations only) and the paid checkout (services/guestCheckout.js).
+ * Returns { ok:false, status, message } or { ok:true, kind, amount, doc }.
  */
-export const createDiningReservation = async (req, res) => {
-  try {
-    const { facilityId, guestId, bookingId, date, numberOfGuests, propertyId = 'default', addonNames } = req.body;
+export async function prepareDiningReservation(body) {
+  const fail = (status, message) => ({ ok: false, status, message });
+  {
+    const { facilityId, guestId, bookingId, date, numberOfGuests, propertyId = 'default', addonNames } = body;
 
     if (!facilityId || !date || !numberOfGuests) {
-      return res.status(400).json({ success: false, message: 'facilityId, date, and numberOfGuests are required' });
+      return fail(400, 'facilityId, date, and numberOfGuests are required');
     }
 
     const facility = await Restaurant.findById(facilityId);
     if (!facility) {
-      return res.status(404).json({ success: false, message: 'Facility not found' });
+      return fail(404, 'Facility not found');
     }
     // Intimate dining is always bookable; a restaurant only when the property switched it to
     // table reservations (bookingMode) instead of info-only.
     if (facility.facilityType !== 'intimate_dining' && facility.bookingMode !== 'reservations') {
-      return res.status(400).json({ success: false, message: 'This facility does not take reservations' });
+      return fail(400, 'This facility does not take reservations');
     }
 
     // Check blocked dates
     if (isBlockedDate(facility, date)) {
-      return res.status(400).json({ success: false, message: `${date} is not available for bookings` });
+      return fail(400, `${date} is not available for bookings`);
     }
 
     // Check capacity
     if (facility.tablesPerNight) {
       const confirmedCount = await DiningReservation.countDocuments({ facilityId, date, status: 'confirmed' });
       if (confirmedCount >= facility.tablesPerNight) {
-        return res.status(400).json({ success: false, message: 'All tables are booked for this date' });
+        return fail(400, 'All tables are booked for this date');
       }
     }
 
@@ -147,38 +149,55 @@ export const createDiningReservation = async (req, res) => {
     // Derived from the stay loaded above (never from a client-sent mainStayBookingId); it drives both the
     // stored mainStayBookingId and the <stayId>-DIN-<n> reference (see utils/hubRef.js).
     const stayId = mainStayBooking?.bookingId ?? null;
-    const reservation = await createWithHubRef({
-      Model: DiningReservation, field: 'reservationRef', kind: 'din',
-      stayId,
-      data: {
-        facilityId,
-        facilityName: facility.name,
-        facilityType: facility.facilityType,
-        guestId: guestId || undefined,
-        bookingId: bookingId || undefined,
-        mainStayBookingId: stayId ?? undefined,
-        guestName,
-        roomNumber,
-        date,
-        numberOfGuests,
-        propertyId,
-        status: 'pending',
-        amount,
-        discountName: applied?.discount.name,
-        discountAmount: applied ? applied.amount * heads : undefined,
-        paymentStatus: 'pending',
-        source: 'app',
-        addons: selectedAddons,
+    return {
+      ok: true,
+      kind: 'dining',
+      amount: amount > 0 ? amount : 0,
+      doc: {
+        Model: DiningReservation, field: 'reservationRef', hubKind: 'din', stayId,
+        data: {
+          facilityId,
+          facilityName: facility.name,
+          facilityType: facility.facilityType,
+          guestId: guestId || undefined,
+          bookingId: bookingId || undefined,
+          mainStayBookingId: stayId ?? undefined,
+          guestName,
+          roomNumber,
+          date,
+          numberOfGuests,
+          propertyId,
+          amount,
+          discountName: applied?.discount.name,
+          discountAmount: applied ? applied.amount * heads : undefined,
+          source: 'app',
+          addons: selectedAddons,
+        },
       },
-    });
+    };
+  }
+}
 
+/**
+ * Create a dining reservation (guest-side). Only complimentary reservations are created here: a paid
+ * one exists only after its payment has come through, via POST /payments/checkout.
+ * Body: { facilityId, guestId, bookingId, date, numberOfGuests, propertyId }
+ */
+export const createDiningReservation = async (req, res) => {
+  try {
+    const prepared = await prepareDiningReservation(req.body);
+    if (!prepared.ok) return res.status(prepared.status).json({ success: false, message: prepared.message });
+    if (prepared.amount > 0) {
+      return res.status(402).json({ success: false, message: 'Payment is required: book paid reservations through checkout.' });
+    }
+    const reservation = await persistPrepared(prepared);
     res.status(201).json({
       success: true,
       data: {
         _id: reservation._id,
-        facilityName: facility.name,
+        facilityName: reservation.facilityName,
         date: reservation.date,
-        amount,
+        amount: reservation.amount,
       },
     });
   } catch (error) {

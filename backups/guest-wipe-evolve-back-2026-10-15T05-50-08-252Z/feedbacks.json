@@ -1,0 +1,444 @@
+[
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04a8"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78432",
+    "rating": {
+      "$numberInt": "5"
+    },
+    "review": "The lakeside dinner on our anniversary was the highlight of the trip — the staff remembered without us asking twice. Would come back purely for that evening.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04a9"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78455",
+    "rating": {
+      "$numberInt": "3"
+    },
+    "review": "Room was lovely but the spa booking process felt disorganised — had to follow up twice to confirm my slot.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04aa"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78390",
+    "rating": {
+      "$numberInt": "2"
+    },
+    "review": "Kids' activity was cancelled with no notice and no alternative offered. Disappointing for a trip we'd built around it.",
+    "recoveryResponse": "A heads-up the evening before and a swap to the pottery workshop would have saved the day for the kids.",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790235000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04ab"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77801",
+    "rating": {
+      "$numberInt": "5"
+    },
+    "review": "Absolutely stunning property. The pool villa was private and quiet, and the team went out of their way for our honeymoon dinner.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04ac"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77812",
+    "rating": {
+      "$numberInt": "4"
+    },
+    "review": "Great coffee plantation views and a lovely cottage. Breakfast could have more variety.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790155800000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790155800000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04ad"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77823",
+    "rating": {
+      "$numberInt": "1"
+    },
+    "review": "Room was not ready at check-in despite confirmation and we waited almost two hours in the lobby with tired kids.",
+    "recoveryResponse": "Having the room ready at the confirmed time, or at least a welcome drink and a quiet place to wait, would have changed the whole start of our stay.",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04ae"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77834",
+    "rating": {
+      "$numberInt": "4"
+    },
+    "review": "Peaceful stay, loved the nature trail experience. Wifi was a bit patchy in the room.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790159400000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790159400000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04af"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77845",
+    "rating": {
+      "$numberInt": "3"
+    },
+    "review": "Good food and a beautiful setting, but the in-room dining took over an hour to arrive both nights.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790152200000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b0"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77701",
+    "rating": {
+      "$numberInt": "5"
+    },
+    "review": "Best resort we have stayed at in India. The spa couple's ritual was unforgettable.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789983000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789983000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b1"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77712",
+    "rating": {
+      "$numberInt": "4"
+    },
+    "review": "Wonderful experience overall, the transport desk was very responsive for our Coorg tour.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789889400000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789889400000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b2"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77723",
+    "rating": {
+      "$numberInt": "3"
+    },
+    "review": "The kids enjoyed the property but the pool water was quite cold in the mornings.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789731000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789731000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b3"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77601",
+    "rating": {
+      "$numberInt": "5"
+    },
+    "review": "Exceptional hospitality from the front desk team, especially during our late arrival.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789461000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789461000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b4"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77612",
+    "rating": {
+      "$numberInt": "2"
+    },
+    "review": "Billing dispute at checkout — we were charged for a spa session we had cancelled. Still unresolved.",
+    "recoveryResponse": "Cancelled sessions should be removed from the bill automatically, and someone should have called back the same day.",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789209000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789209000000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b5"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77623",
+    "rating": {
+      "$numberInt": "4"
+    },
+    "review": "Lovely cottage, attentive staff. The plantation walk with the naturalist was a highlight.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788859800000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788859800000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b6"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77501",
+    "rating": {
+      "$numberInt": "5"
+    },
+    "review": "A perfect solo retreat. Quiet, beautiful and the food was outstanding.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788424200000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788424200000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b7"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77512",
+    "rating": {
+      "$numberInt": "3"
+    },
+    "review": "Nice property, but our machaan had a lot of insects and the housekeeping was slow to respond.",
+    "recoveryResponse": "",
+    "googleClicked": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787920200000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787920200000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557defa1d089fc61b04b8"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-77523",
+    "rating": {
+      "$numberInt": "4"
+    },
+    "review": "Great value stay with wonderful staff. Would have loved a later checkout.",
+    "recoveryResponse": "",
+    "googleClicked": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787304600000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787304600000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  }
+]

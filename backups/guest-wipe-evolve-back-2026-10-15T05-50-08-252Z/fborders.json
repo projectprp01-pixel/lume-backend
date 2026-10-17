@@ -1,0 +1,2310 @@
+[
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aac5"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9e1dac756970a0a22f56c4"
+    },
+    "bookingId": {
+      "$oid": "6a9e1dac756970a0a22f56c6"
+    },
+    "guestName": "Vivek Chawla",
+    "room": "Villa 1",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122648d2203527873cc2"
+        },
+        "name": "Fresh Fruit Bowl",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "280"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "notes": "No onion, no garlic in this order — allergy.",
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789095900000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789096140000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789097160000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789097940000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789095900000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789097940000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aac6"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9e1d15756970a0a22f56b9"
+    },
+    "bookingId": {
+      "$oid": "6a9e1d15756970a0a22f56bb"
+    },
+    "guestName": "Karthik Kumar B S",
+    "room": "Villa 2",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122948d2203527873cce"
+        },
+        "name": "Akki Roti with Chutney",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "260"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d04"
+        },
+        "name": "Masala Chai",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "130"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789099500000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789099620000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789100460000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789100940000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789099500000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789100940000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aac7"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9e1c59756970a0a22f56a2"
+    },
+    "bookingId": {
+      "$oid": "6a9e1c59756970a0a22f56a4"
+    },
+    "guestName": "Simin Khan",
+    "room": "Villa 3",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122e48d2203527873cef"
+        },
+        "name": "Veg Spring Rolls",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "300"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123448d2203527873d0d"
+        },
+        "name": "Watermelon Cooler",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "200"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789111800000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789111920000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789112940000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789113720000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789111800000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789113720000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aac8"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9a20a9756970a0a22f4099"
+    },
+    "bookingId": {
+      "$oid": "6a9a20aa756970a0a22f409b"
+    },
+    "guestName": "Akshay M B",
+    "room": "Villa 4",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6123648d2203527873d16"
+        },
+        "name": "Honey & Coffee Panna Cotta",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "280"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d04"
+        },
+        "name": "Masala Chai",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "130"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789127700000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789127820000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789129320000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789129980000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789127700000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789129980000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aac9"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9a2005756970a0a22f4090"
+    },
+    "bookingId": {
+      "$oid": "6a9a2005756970a0a22f4092"
+    },
+    "guestName": "Omkar Manjunath",
+    "room": "Villa 5",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122b48d2203527873cda"
+        },
+        "name": "Paneer Butter Masala",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "480"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6122c48d2203527873ce3"
+        },
+        "name": "Vegetable Biryani",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "400"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789138500000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789138620000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789139880000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789140660000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789138500000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789140660000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aaca"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a9a1e05756970a0a22f407b"
+    },
+    "bookingId": {
+      "$oid": "6a9a1e06756970a0a22f407d"
+    },
+    "guestName": "Siddhartha Tiku",
+    "room": "Villa 6",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122f48d2203527873cf2"
+        },
+        "name": "Chicken Sukka Skewers",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "420"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123448d2203527873d0a"
+        },
+        "name": "Fresh Orange Juice",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "220"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789142100000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789142340000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789143180000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789143780000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789142100000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789143780000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aacb"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a98df98756970a0a22f39ed"
+    },
+    "bookingId": {
+      "$oid": "6a98df98756970a0a22f39ef"
+    },
+    "guestName": "Rashmi Singh",
+    "room": "Cottage 1",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122948d2203527873cd1"
+        },
+        "name": "Idli Sambar",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "260"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d01"
+        },
+        "name": "Estate Filter Coffee",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "150"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789181700000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789181820000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789182720000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789183560000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789181700000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789183560000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aacc"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a97a596756970a0a22f36af"
+    },
+    "bookingId": {
+      "$oid": "6a97a596756970a0a22f36b1"
+    },
+    "guestName": "Pranjul Agarwal",
+    "room": "Cottage 2",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122748d2203527873cc8"
+        },
+        "name": "Classic Omelette",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "300"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d01"
+        },
+        "name": "Estate Filter Coffee",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "150"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789183800000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789184040000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789185240000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789185660000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789183800000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789185660000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aacd"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a94ff75756970a0a22f2727"
+    },
+    "bookingId": {
+      "$oid": "6a94ff75756970a0a22f2729"
+    },
+    "guestName": "Vivin Lithesh V G",
+    "room": "Cottage 3",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6123048d2203527873cf8"
+        },
+        "name": "Paneer Tikka",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "360"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123148d2203527873cfb"
+        },
+        "name": "Tomato Basil Soup",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "240"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "notes": "Less spicy than usual, and no coriander garnish please.",
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789199100000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789199220000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789200720000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789201140000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789199100000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789201140000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aace"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a96391a756970a0a22f2f3e"
+    },
+    "bookingId": {
+      "$oid": "6a96391a756970a0a22f2f40"
+    },
+    "guestName": "Santhosh Kumar",
+    "room": "Cottage 4",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6123448d2203527873d0d"
+        },
+        "name": "Watermelon Cooler",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "200"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789215000000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789215240000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789216140000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789216800000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789215000000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789216800000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aacf"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a96388b756970a0a22f2f2f"
+    },
+    "bookingId": {
+      "$oid": "6a96388b756970a0a22f2f31"
+    },
+    "guestName": "Reshma Maradugu",
+    "room": "Suite 1",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6123048d2203527873cf8"
+        },
+        "name": "Paneer Tikka",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "360"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123148d2203527873cfb"
+        },
+        "name": "Tomato Basil Soup",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "240"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789226400000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789226640000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789227960000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789228680000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789226400000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789228680000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad0"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a950d02756970a0a22f2797"
+    },
+    "bookingId": {
+      "$oid": "6a950d02756970a0a22f2799"
+    },
+    "guestName": "Karthik Joshi",
+    "room": "Suite 2",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122b48d2203527873cdd"
+        },
+        "name": "Kori Gassi",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "560"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6122c48d2203527873ce3"
+        },
+        "name": "Vegetable Biryani",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "400"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789229100000"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789229280000"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789230600000"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789231320000"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789229100000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789231320000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad1"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a95095e756970a0a22f2752"
+    },
+    "bookingId": {
+      "$oid": "6a95095e756970a0a22f2754"
+    },
+    "guestName": "Dishit Parsana",
+    "room": "Suite 3",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122648d2203527873cc2"
+        },
+        "name": "Fresh Fruit Bowl",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "280"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789263148661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789263328661"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789264348661"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789265128661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789263148661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789265128661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad2"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a950021756970a0a22f2732"
+    },
+    "bookingId": {
+      "$oid": "6a950021756970a0a22f2734"
+    },
+    "guestName": "Yash Tantia",
+    "room": "Pool Villa 2",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122948d2203527873cce"
+        },
+        "name": "Akki Roti with Chutney",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "260"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d04"
+        },
+        "name": "Masala Chai",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "130"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789264648661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789264768661"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789266148661"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789267048661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789264648661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789267048661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad3"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a923cd0756970a0a22f1597"
+    },
+    "bookingId": {
+      "$oid": "6a923cd0756970a0a22f1599"
+    },
+    "guestName": "Kavita Behal",
+    "room": "Pool Villa 5",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122a48d2203527873cd4"
+        },
+        "name": "Paratha with Curd & Pickle",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "300"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d04"
+        },
+        "name": "Masala Chai",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "130"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "delivered",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789266148661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789266388661"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789267588661"
+        }
+      },
+      "delivered": {
+        "$date": {
+          "$numberLong": "1789268188661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789266148661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789268188661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad4"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a923c3a756970a0a22f158a"
+    },
+    "bookingId": {
+      "$oid": "6a923c3a756970a0a22f158c"
+    },
+    "guestName": "Vishal Amin",
+    "room": "Pool Villa 7",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122948d2203527873cce"
+        },
+        "name": "Akki Roti with Chutney",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "260"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123248d2203527873d04"
+        },
+        "name": "Masala Chai",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "130"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "prepared",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789267348661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789267468661"
+        }
+      },
+      "prepared": {
+        "$date": {
+          "$numberLong": "1789268788661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789267348661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789268788661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad5"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a8fa026756970a0a22f09c9"
+    },
+    "bookingId": {
+      "$oid": "6a8fa026756970a0a22f09cb"
+    },
+    "guestName": "Harini Paranthaman",
+    "room": "Luxury Pool Villa 1",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122748d2203527873cc5"
+        },
+        "name": "Buttermilk Pancakes",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "340"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123348d2203527873d07"
+        },
+        "name": "Hot Chocolate",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "200"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "accepted",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789268128661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789268308661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789268128661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789268308661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aa61370f525354c2d37aad6"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6a8f9f77756970a0a22f09be"
+    },
+    "bookingId": {
+      "$oid": "6a8f9f77756970a0a22f09c0"
+    },
+    "guestName": "Sudhakar Reddy Papadasu",
+    "room": "Luxury Pool Villa 3",
+    "items": [
+      {
+        "dishId": {
+          "$oid": "6aa6122648d2203527873cbf"
+        },
+        "name": "Classic Eggs Benedict",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "450"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "dishId": {
+          "$oid": "6aa6123448d2203527873d0a"
+        },
+        "name": "Fresh Orange Juice",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "220"
+        },
+        "gstPercent": {
+          "$numberInt": "5"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "30"
+    },
+    "stage": "accepted",
+    "timestamps": {
+      "placed": {
+        "$date": {
+          "$numberLong": "1789268548661"
+        }
+      },
+      "accepted": {
+        "$date": {
+          "$numberLong": "1789268728661"
+        }
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789268548661"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789268728661"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0488"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554388a325795d1e6ccf8"
+    },
+    "room": "Cottage 112",
+    "bookingId": {
+      "$oid": "6ab55439916ab8ec31d28969"
+    },
+    "guestName": "Rohit & Meera Sharma",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "2000"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-3",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405668"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269619179"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0489"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab5543b8a325795d1e6cd10"
+    },
+    "room": "Villa 7",
+    "bookingId": {
+      "$oid": "6ab5543b916ab8ec31d28970"
+    },
+    "guestName": "Karan Malhotra",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "2200"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-8",
+    "stage": "delivered",
+    "paymentStatus": "pending",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048a"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab5543d8a325795d1e6cd1c"
+    },
+    "room": "Cottage 101",
+    "bookingId": {
+      "$oid": "6ab5543d916ab8ec31d28976"
+    },
+    "guestName": "Sanjay Kumar",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "1500"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-14",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048b"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab5543e8a325795d1e6cd24"
+    },
+    "room": "Cottage 110",
+    "bookingId": {
+      "$oid": "6ab5543f916ab8ec31d28978"
+    },
+    "guestName": "Thomas Weber",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "3200"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-17",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048c"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554408a325795d1e6cd2c"
+    },
+    "room": "Pool Villa 1",
+    "bookingId": {
+      "$oid": "6ab55440916ab8ec31d2897c"
+    },
+    "guestName": "Arjun & Sneha Nair",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "2400"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-20",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048d"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554418a325795d1e6cd30"
+    },
+    "room": "Cottage 103",
+    "bookingId": {
+      "$oid": "6ab55441916ab8ec31d2897e"
+    },
+    "guestName": "Helena Rossi",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "2750"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-22",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048e"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554418a325795d1e6cd34"
+    },
+    "room": "Cottage 109",
+    "bookingId": {
+      "$oid": "6ab55442916ab8ec31d28980"
+    },
+    "guestName": "The Kulkarni Family",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "3100"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-24",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b048f"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554428a325795d1e6cd38"
+    },
+    "room": "Villa 5",
+    "bookingId": {
+      "$oid": "6ab55443916ab8ec31d28981"
+    },
+    "guestName": "Imran & Zoya Sheikh",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "3450"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-26",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405669"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0490"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554438a325795d1e6cd3c"
+    },
+    "room": "Cottage 104",
+    "bookingId": {
+      "$oid": "6ab55443916ab8ec31d28982"
+    },
+    "guestName": "David Cohen",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "3800"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-28",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0491"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554448a325795d1e6cd40"
+    },
+    "room": "Pool Villa 3",
+    "bookingId": {
+      "$oid": "6ab55444916ab8ec31d28983"
+    },
+    "guestName": "Lakshmi & Ravi Iyengar",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "4150"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-30",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0492"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554458a325795d1e6cd44"
+    },
+    "room": "Villa 1",
+    "bookingId": {
+      "$oid": "6ab55445916ab8ec31d28985"
+    },
+    "guestName": "Priya Deshmukh",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "4500"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-32",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0493"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554458a325795d1e6cd48"
+    },
+    "room": "Cottage 111",
+    "bookingId": {
+      "$oid": "6ab55446916ab8ec31d28987"
+    },
+    "guestName": "The Gupta Family",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "4850"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-34",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0494"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554468a325795d1e6cd4c"
+    },
+    "room": "Pool Villa 2",
+    "bookingId": {
+      "$oid": "6ab55446916ab8ec31d28989"
+    },
+    "guestName": "Ethan & Chloe Marshall",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "5200"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-36",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0495"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554478a325795d1e6cd50"
+    },
+    "room": "Cottage 102",
+    "bookingId": {
+      "$oid": "6ab55447916ab8ec31d2898a"
+    },
+    "guestName": "Sunita Bansal",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "5550"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-38",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0496"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554488a325795d1e6cd54"
+    },
+    "room": "Villa 6",
+    "bookingId": {
+      "$oid": "6ab55448916ab8ec31d2898b"
+    },
+    "guestName": "Rahul & Ananya Sethi",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "5900"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-40",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0497"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554488a325795d1e6cd58"
+    },
+    "room": "Cottage 106",
+    "bookingId": {
+      "$oid": "6ab55449916ab8ec31d2898c"
+    },
+    "guestName": "Marta Kowalski",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "6250"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-42",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0498"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab554498a325795d1e6cd5c"
+    },
+    "room": "Machaan 1",
+    "bookingId": {
+      "$oid": "6ab5544a916ab8ec31d2898f"
+    },
+    "guestName": "The Pillai Family",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "6600"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-44",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0499"
+    },
+    "propertyId": "default",
+    "guestId": {
+      "$oid": "6ab5544a8a325795d1e6cd60"
+    },
+    "room": "Villa 3",
+    "bookingId": {
+      "$oid": "6ab5544a916ab8ec31d28990"
+    },
+    "guestName": "Yusuf Khan",
+    "items": [
+      {
+        "name": "Room service",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "6950"
+        },
+        "gstPercent": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "packagingCharge": {
+      "$numberInt": "0"
+    },
+    "notes": "SEEDCO-46",
+    "stage": "delivered",
+    "paymentStatus": "paid",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405670"
+      }
+    }
+  }
+]

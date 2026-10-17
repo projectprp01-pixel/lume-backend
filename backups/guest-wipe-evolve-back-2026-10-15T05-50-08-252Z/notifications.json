@@ -1,0 +1,7076 @@
+[
+  {
+    "_id": {
+      "$oid": "69ec8f3c458e83c3e42052a2"
+    },
+    "guestId": {
+      "$oid": "69ec8eb6458e83c3e4205123"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Sat Apr 25 2026 at 15:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ec8f3c458e83c3e42052a0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777110844554"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777110844554"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ec91ae458e83c3e4205404"
+    },
+    "guestId": {
+      "$oid": "69ec8acb458e83c3e420470d"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Mon Apr 27 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ec91ae458e83c3e4205402",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777111470282"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777111470282"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ec91b3458e83c3e420541f"
+    },
+    "guestId": {
+      "$oid": "69ec8acb458e83c3e420470d"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Sun Apr 26 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ec91b3458e83c3e420541d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777111475501"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777111475501"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ec91d7458e83c3e42054c7"
+    },
+    "guestId": {
+      "$oid": "69ec8acb458e83c3e420470d"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Sun Apr 26 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ec91d7458e83c3e42054c5",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777111511992"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777111511992"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ec9204458e83c3e420557a"
+    },
+    "guestId": {
+      "$oid": "69ec8acb458e83c3e420470d"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Sun Apr 26 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ec9204458e83c3e4205574",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777111556600"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777111556600"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ed1449458e83c3e4206a31"
+    },
+    "guestId": {
+      "$oid": "69ec8eb6458e83c3e4205123"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Sun Apr 26 2026 at 09:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "69ed1449458e83c3e4206a2f",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777144905486"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777144905486"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69edbd09458e83c3e4206d6e"
+    },
+    "guestId": {
+      "$oid": "69edbbce458e83c3e4206bf3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Sun Apr 26 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69edbd08458e83c3e4206d6c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777188105152"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777188105152"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef3dee458e83c3e4208ba5"
+    },
+    "guestId": {
+      "$oid": "69ef3d03458e83c3e4208b04"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: ID 1 is Okay. Please redo ID 2",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef3dad458e83c3e4208b73",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777286638808"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777286638808"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef3def458e83c3e4208baa"
+    },
+    "guestId": {
+      "$oid": "69ef3d03458e83c3e4208b04"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: ID 1 is Okay. Please redo ID 2. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef3dad458e83c3e4208b73",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777286639208"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777286639208"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef3f5f458e83c3e4208dc2"
+    },
+    "guestId": {
+      "$oid": "69ef3b28458e83c3e420869a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Tue Apr 28 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ef3f5f458e83c3e4208dc0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777287007721"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777287007721"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef3f67458e83c3e4208dd2"
+    },
+    "guestId": {
+      "$oid": "69ef3d03458e83c3e4208b04"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Tue Apr 28 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ef3f66458e83c3e4208dd0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777287015086"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777287015086"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef43d7458e83c3e4209a4b"
+    },
+    "guestId": {
+      "$oid": "69ef3b28458e83c3e420869a"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Hi, this is a test\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ef43b7458e83c3e4209a36",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777288151394"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777288151394"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef5108458e83c3e420a4cc"
+    },
+    "guestId": {
+      "$oid": "69ef5073458e83c3e420a386"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: Document Incorrect",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef50d9458e83c3e420a4a6",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777291528000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777291528000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef5108458e83c3e420a4d3"
+    },
+    "guestId": {
+      "$oid": "69ef5073458e83c3e420a386"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: Document Incorrect. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef50d9458e83c3e420a4a6",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777291528598"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777291528598"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef515e458e83c3e420a52d"
+    },
+    "guestId": {
+      "$oid": "69ef5073458e83c3e420a386"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: reject",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef50d9458e83c3e420a4a6",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777291614973"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777291614973"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef515f458e83c3e420a534"
+    },
+    "guestId": {
+      "$oid": "69ef5073458e83c3e420a386"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: reject. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "69ef50d9458e83c3e420a4a6",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777291615467"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777291615467"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef6056458e83c3e420a6e6"
+    },
+    "guestId": {
+      "$oid": "69ef3b28458e83c3e420869a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Mon Apr 27 2026 at 15:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69ef6055458e83c3e420a6e4",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777295446110"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777295446110"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f1d696458e83c3e420b5e4"
+    },
+    "guestId": {
+      "$oid": "69f1c283458e83c3e420b38a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Tue May 19 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f1d696458e83c3e420b5e2",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777456790613"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777456790613"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c7f945703492664e3a5e"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Wed May 27 2026 at 15:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "69f8c7f945703492664e3a5c",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777911801836"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777911801836"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c89c45703492664e3b62"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon May 25 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c89c45703492664e3b60",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777911964208"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777911964208"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c8c245703492664e3b6f"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Cultural Show\" on Sun May 24 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c8c245703492664e3b6d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912002499"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912002499"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c8dd45703492664e3b7e"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Story Corner\" on Wed May 27 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c8dd45703492664e3b7c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912029140"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912029140"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c8fc45703492664e3b90"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Tue May 26 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c8fc45703492664e3b8e",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912060707"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912060707"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c95345703492664e3bb2"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coffeeology\" on Wed May 27 2026 at 12:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c95245703492664e3bb0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912147022"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912147022"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c9b145703492664e3c43"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coffeeology\" on Wed May 27 2026 at 12:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c9b145703492664e3c41",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912241077"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912241077"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8c9f145703492664e3c52"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon May 25 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8c9f145703492664e3c50",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912305088"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912305088"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8ca0445703492664e3c5f"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Cultural Show\" on Sun May 24 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8ca0445703492664e3c5d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912324104"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912324104"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8ca1645703492664e3c6e"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Story Corner\" on Wed May 27 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8ca1645703492664e3c6c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912342440"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912342440"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8ca2545703492664e3c7d"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Tue May 26 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8ca2545703492664e3c7b",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912357103"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912357103"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f8cac245703492664e3d1d"
+    },
+    "guestId": {
+      "$oid": "69f8623245703492664e2773"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coffeeology\" on Wed May 27 2026 at 12:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f8cac245703492664e3d1b",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777912514191"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777912514191"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69f991bdaadaeecaad2cedc3"
+    },
+    "guestId": {
+      "$oid": "69f89d1b45703492664e3397"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on Thu May 28 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "69f991bdaadaeecaad2cedc1",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777963453352"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777963453352"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a01c9f2060279b17f712e7a"
+    },
+    "guestId": {
+      "$oid": "69fd8f67f36fbebf27592b76"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a01c9f2060279b17f712e78",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778502130463"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778502130463"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a05b054060279b17f716926"
+    },
+    "guestId": {
+      "$oid": "6a046773060279b17f7151ea"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon May 18 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a05b054060279b17f716924",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778757716548"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778757716548"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a05b080060279b17f71694c"
+    },
+    "guestId": {
+      "$oid": "6a046773060279b17f7151ea"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Cultural Show\" on Mon May 18 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a05b080060279b17f71694a",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778757760858"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778757760858"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a05b109060279b17f71697e"
+    },
+    "guestId": {
+      "$oid": "6a046773060279b17f7151ea"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Tue May 19 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a05b108060279b17f71697c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778757897037"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778757897037"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a05b128060279b17f716992"
+    },
+    "guestId": {
+      "$oid": "6a046773060279b17f7151ea"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Dubare Elephant Camp\" on Tue May 19 2026 at 08:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a05b128060279b17f716990",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778757928682"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778757928682"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a086213060279b17f71bbec"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Wed May 27 2026 at 14:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a086212060279b17f71bbea",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778934291171"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778934291171"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a08674b060279b17f71c9b5"
+    },
+    "guestId": {
+      "$oid": "69fd8f67f36fbebf27592b76"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Thu May 28 2026 at 09:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a08674b060279b17f71c9b3",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778935627586"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1778935627586"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0ac368060279b17f720315"
+    },
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"I see it says one child but I have actually booked it for 2. One is 10 years old and other is 4. Is there any issue with that?\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a0a9edb060279b17f71f537",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779090280452"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779090280452"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1168d6e3234bbd99ebcce4"
+    },
+    "guestId": {
+      "$oid": "6a1160bde3234bbd99ebc993"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Thu May 28 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1168d6e3234bbd99ebcce2",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779525846826"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779525846826"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a116956e3234bbd99ebccf6"
+    },
+    "guestId": {
+      "$oid": "6a1160bde3234bbd99ebc993"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Thu May 28 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a116956e3234bbd99ebccf4",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779525974354"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779525974354"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a116982e3234bbd99ebcd10"
+    },
+    "guestId": {
+      "$oid": "6a1160bde3234bbd99ebc993"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coffeeology\" on Thu May 28 2026 at 12:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a116982e3234bbd99ebcd0e",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779526018996"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779526018996"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a116999e3234bbd99ebcd1f"
+    },
+    "guestId": {
+      "$oid": "6a1160bde3234bbd99ebc993"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Fri May 29 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a116999e3234bbd99ebcd1d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779526041419"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779526041419"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1169cae3234bbd99ebcdc2"
+    },
+    "guestId": {
+      "$oid": "6a1160bde3234bbd99ebc993"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Wed May 27 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1169cae3234bbd99ebcdc0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779526090655"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779526090655"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a11afa0e3234bbd99ebd4ec"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Cultural Show\" on Sun May 24 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a11afa0e3234bbd99ebd4ea",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779543968681"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779543968681"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a11afe3e3234bbd99ebd500"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon May 25 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a11afe3e3234bbd99ebd4fe",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779544035145"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779544035145"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a11b001e3234bbd99ebd50f"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Story Corner\" on Wed May 27 2026 at 19:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a11b001e3234bbd99ebd50d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779544065922"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779544065922"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a11b00fe3234bbd99ebd51e"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Bird Watching\" on Tue May 26 2026 at 07:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a11b00fe3234bbd99ebd51c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779544079799"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779544079799"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a11b0bfe3234bbd99ebd54e"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coffeeology\" on Wed May 27 2026 at 12:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a11b0bfe3234bbd99ebd54c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779544255653"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779544255653"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a14367542e40fd0d67567b5"
+    },
+    "guestId": {
+      "$oid": "6a0748e6060279b17f71a2e3"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Tue May 26 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a14367542e40fd0d67567b3",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779709557183"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779709557183"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a149b0b0b1644683afbbd8c"
+    },
+    "guestId": {
+      "$oid": "69fc6388385accb497329fb2"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Wed Jun 03 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a149b0b0b1644683afbbd8a",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779735307893"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779735307893"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a151f2e0b1644683afbc172"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Thu Jul 09 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a151f2e0b1644683afbc170",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779769134732"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779769134732"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1536110b1644683afbcb16"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1536110b1644683afbcb14",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779774993080"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779774993080"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153b3a386d07ead3e24b19"
+    },
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"CORACLE RIDE\" on Sat May 30 2026 at 09:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a153b3a386d07ead3e24b17",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776314868"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776314868"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153b8c386d07ead3e24bbf"
+    },
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"BULLOCK CART RIDE\" on Fri May 29 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a153b8b386d07ead3e24bbd",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776396107"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776396107"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153c83386d07ead3e24dd5"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"STORY CORNER\" on Thu May 28 2026 at 19:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a153c83386d07ead3e24dd3",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776643431"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776643431"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153ce2386d07ead3e24e72"
+    },
+    "guestId": {
+      "$oid": "6a153ccb386d07ead3e24e07"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"JUNGLE TALES\" on Wed May 27 2026 at 20:15 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a153ce2386d07ead3e24e70",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776738465"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776738465"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1548b8386d07ead3e2602f"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \" ETERNAL MOMENTS\" on Thu May 28 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1548b8386d07ead3e2602d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779768948"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779768948"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1548e0386d07ead3e260c7"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"ANEGUNDI TRAIL\" on Fri May 29 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1548df386d07ead3e260c5",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779808027"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779808027"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1548e6386d07ead3e260d0"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"VIRUPAKSHA TRAIL\" on Fri May 29 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1548e6386d07ead3e260ce",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779814637"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779814637"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1548ff386d07ead3e26137"
+    },
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"BULLOCK CART RIDE\" on Fri May 29 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1548ff386d07ead3e26135",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779839430"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779839430"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a154926386d07ead3e26153"
+    },
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a154926386d07ead3e26151",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779878585"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779878585"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a15493d386d07ead3e26170"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a15493c386d07ead3e2616e",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779901030"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779901030"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a154954386d07ead3e2618a"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"NATURE TRAIL\" on Sat May 30 2026 at 17:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a154954386d07ead3e26188",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779924442"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779779924442"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1552ce386d07ead3e27128"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: Reject",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a153c68386d07ead3e24d51",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779782350878"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779782350878"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1552cf386d07ead3e2712e"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: Reject. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a153c68386d07ead3e24d51",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779782351389"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779782351389"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a15a04d386d07ead3e28347"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"RAYA TRAIL\" on Fri May 29 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a15a04d386d07ead3e28345",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779802189140"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779802189140"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a168d5425bfd8d911c5c41c"
+    },
+    "guestId": {
+      "$oid": "6a153ccb386d07ead3e24e07"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"NIGHT TRAILS\" on Wed May 27 2026 at 20:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a168d5425bfd8d911c5c41a",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862868709"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862868709"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a168dbc25bfd8d911c5c7ba"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"STORY CORNER\" on Fri May 29 2026 at 19:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a168dbc25bfd8d911c5c7b8",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862972510"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862972510"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a168dd125bfd8d911c5c80a"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"RAYA TRAIL\" on Thu May 28 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a168dd125bfd8d911c5c808",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779862993679"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779862993679"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a168e0325bfd8d911c5c823"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a168e0325bfd8d911c5c821",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779863043677"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779863043677"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a171ef825bfd8d911c5e56c"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhangya is booked for Thu May 28 2026 at 15:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a171ed625bfd8d911c5e564",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779900152120"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779900152120"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a17ced325bfd8d911c5f8bf"
+    },
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Fri May 29 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a17ced325bfd8d911c5f8bd",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779945171908"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779945171908"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a17ceec25bfd8d911c5f93e"
+    },
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Sat May 30 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a17ceec25bfd8d911c5f93c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779945196281"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779945196281"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a17cef925bfd8d911c5f9bd"
+    },
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Sat May 30 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a17cef925bfd8d911c5f9bb",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779945209089"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779945209089"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a17cf0c25bfd8d911c5fa39"
+    },
+    "guestId": {
+      "$oid": "6a141eae42e40fd0d6755efe"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Fri May 29 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a17cf0c25bfd8d911c5fa37",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779945228821"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779945228821"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a19256c25bfd8d911c61032"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Testing\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a151f760b1644683afbc17b",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780032876771"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780032876771"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a19609525bfd8d911c6161a"
+    },
+    "guestId": {
+      "$oid": "6a195fbf25bfd8d911c615a8"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"JUNGLE TALES\" on Wed Jun 03 2026 at 20:15 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a19609525bfd8d911c61618",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780048021432"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780048021432"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1960d725bfd8d911c61636"
+    },
+    "guestId": {
+      "$oid": "6a195fbf25bfd8d911c615a8"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"CORACLE RIDE\" on Thu Jun 04 2026 at 09:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1960d725bfd8d911c61634",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780048087537"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780048087537"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a19611925bfd8d911c616d3"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Wed Jul 08 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a19611925bfd8d911c616d1",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780048153528"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780048153528"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1a8b4025bfd8d911c62fad"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Mail test\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a19618525bfd8d911c616e5",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780124480685"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780124480685"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1aa43725bfd8d911c635a9"
+    },
+    "guestId": {
+      "$oid": "6a13b39cd921889ca9886c3e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Sat May 30 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1aa43725bfd8d911c635a7",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780130871955"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780130871955"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1b130125bfd8d911c63f4a"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1b130125bfd8d911c63f48",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780159233301"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780159233301"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1c01ee25bfd8d911c643f8"
+    },
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Mon Jun 01 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1c01ee25bfd8d911c643f6",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780220398867"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780220398867"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1c023325bfd8d911c64407"
+    },
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon Jun 01 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1c023325bfd8d911c64405",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780220467500"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780220467500"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1c12e2dc7715a0263d289f"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Mon Jun 01 2026 at 15:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1c12e2dc7715a0263d289d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780224739000"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780224739000"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1c1314dc7715a0263d293e"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on Tue Jun 02 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1c1314dc7715a0263d293c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780224788234"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780224788234"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1db8f0dc7715a0263d375b"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Mon Jun 01 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1db8f0dc7715a0263d3759",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780332784476"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780332784476"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1db902dc7715a0263d3765"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Mon Jun 01 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1db902dc7715a0263d3763",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780332802864"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780332802864"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e3eb5dc7715a0263d3d50"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coracle Ride\" on Fri Jun 05 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e3eb5dc7715a0263d3d4e",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780367029777"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780367029777"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e3ef7dc7715a0263d3d62"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Tue Jun 02 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e3ef7dc7715a0263d3d60",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780367095444"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780367095444"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e3f47dc7715a0263d3e19"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coracle Ride\" on Thu Jun 04 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e3f47dc7715a0263d3e17",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780367175676"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780367175676"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e42d930adfb06d20f9f17"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Thu Jun 04 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e42d930adfb06d20f9f15",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780368089148"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780368089148"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e7ea030adfb06d20fa35a"
+    },
+    "guestId": {
+      "$oid": "6a1c1289dc7715a0263d27cb"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Wed Jun 03 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e7ea030adfb06d20fa358",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780383392128"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780383392128"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1e83e830adfb06d20fa456"
+    },
+    "guestId": {
+      "$oid": "6a1e829730adfb06d20fa3aa"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon Jun 08 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1e83e830adfb06d20fa454",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780384744738"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780384744738"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a20057130adfb06d20fb921"
+    },
+    "guestId": {
+      "$oid": "6a1e919430adfb06d20fa61c"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Sun Jun 07 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a20057130adfb06d20fb91f",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780483441643"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780483441643"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a25846c30adfb06d20ff191"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Tue Jun 09 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a25846c30adfb06d20ff18f",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780843628267"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780843628267"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a25850630adfb06d20ff1aa"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Tue Jun 09 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a25850530adfb06d20ff1a8",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780843782045"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780843782045"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a25851e30adfb06d20ff1ba"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Wed Jun 10 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a25851e30adfb06d20ff1b8",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780843806276"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780843806276"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a268efa30adfb06d20ffdaa"
+    },
+    "guestId": {
+      "$oid": "6a195fbf25bfd8d911c615a8"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: NOT CLEAR",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a268eb730adfb06d20ffd72",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780911866719"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780911866719"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a268efc30adfb06d20ffdb3"
+    },
+    "guestId": {
+      "$oid": "6a195fbf25bfd8d911c615a8"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: NOT CLEAR. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a268eb730adfb06d20ffd72",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780911868730"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780911868730"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a27e5fc30adfb06d2101c10"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Wed Jun 10 2026 at 09:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a27e5ba30adfb06d2101c04",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780999676496"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780999676496"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2b90bc30adfb06d2105aed"
+    },
+    "guestId": {
+      "$oid": "6a263bf230adfb06d20ff6db"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your GREEVA BASTI is booked for Fri Jun 12 2026 at 14:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a2b908c30adfb06d2105ae5",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781239996815"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781239996815"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2ba14130adfb06d2105ff6"
+    },
+    "guestId": {
+      "$oid": "6a28f19530adfb06d2104211"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Can you just provide drop facility only from coorg to banglore. I don't need the pick up facility.  It would be great if u can do it.\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a290cc730adfb06d21042f1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781244225460"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244225460"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2ba14330adfb06d2105ffe"
+    },
+    "guestId": {
+      "$oid": "6a23860230adfb06d20fdc44"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"I’d like to book a spa for tmr evening for 2 guests\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a27c7bc30adfb06d210144c",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781244227463"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244227463"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2ba14530adfb06d2106006"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"We want to do coffeeology on 09-06-26 at 12.00 to 12.45 P. M. As we don’t have time next day to do it \nWe want to see cultural show on 09-06-26 at 7.00 P. M. to 7.30 P. M. \nWe want to do plantation 4x4 for 2 adults on sharing basis on 09-06-26 from 3.30 P. M. to 5.15 P. M.\nMay be I will do bird watching on 10/06-26\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a2583f630adfb06d20fedc6",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781244229337"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244229337"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2ba14630adfb06d210600e"
+    },
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"We want to do coffeeology on 09-06-26 at 12.00 to 12.45 P. M. As we don’t have time next day to do it \nWe want to see cultural show on 09-06-26 at 7.00 P. M. to 7.30 P. M. \nWe want to do plantation 4x4 for 2 adults on sharing basis on 09-06-26 from 3.30 P. M. to 5.15 P. M.\nMay be I will do bird watching on 10/06-26\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a2583f630adfb06d20fedc6",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781244230599"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244230599"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2ba14930adfb06d2106016"
+    },
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Hi there, just writing here to share my disappointment that even after reaching the Resort, the checkin formalities have not been completed and seems the room was checked-in in someone else’s name. This blocks the WiFi access and even led to the lunch time being over. This is really disappointing when your moto says Service that money can’t buy. It is 3:30 pm now and I have called reception thrice but still no update.\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a1c06c025bfd8d911c64608",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781244233263"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244233263"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2fa49d30adfb06d2108b9e"
+    },
+    "guestId": {
+      "$oid": "6a2f7c6630adfb06d2108581"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Sat Jun 20 2026 at 14:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a2fa36c30adfb06d2108b96",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781507229456"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781507229456"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a30f24230adfb06d210a171"
+    },
+    "guestId": {
+      "$oid": "6a30f14030adfb06d210a134"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: L",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a30f16030adfb06d210a147",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781592642911"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781592642911"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a30f24430adfb06d210a178"
+    },
+    "guestId": {
+      "$oid": "6a30f14030adfb06d210a134"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: L. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a30f16030adfb06d210a147",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781592644308"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781592644308"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a336f8230adfb06d210b730"
+    },
+    "guestId": {
+      "$oid": "6a30f06d30adfb06d210a0e9"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Wed Jun 24 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a336f8230adfb06d210b72e",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781755778635"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781755778635"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a36272b30adfb06d210e0fa"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 7 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a36272b30adfb06d210e0f8",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781933867551"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781933867551"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a38c21530adfb06d211028e"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a38c21530adfb06d211028c",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782104597790"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782104597790"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bc72c30adfb06d21137c3"
+    },
+    "guestId": {
+      "$oid": "6a3647a730adfb06d210e54a"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3bc72c30adfb06d21137c1",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782302508883"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782302508883"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfcbf30adfb06d2113954"
+    },
+    "guestId": {
+      "$oid": "6a3bfc8c30adfb06d21138d5"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"BULLOCK CART RIDE\" on Wed Jun 24 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3bfcbf30adfb06d2113952",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316223803"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782316223803"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfd2830adfb06d21139ba"
+    },
+    "guestId": {
+      "$oid": "6a3bfc8c30adfb06d21138d5"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"NIGHT TRAILS\" on Wed Jun 24 2026 at 20:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3bfd2830adfb06d21139b8",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316328637"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782316328637"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfddb30adfb06d2113a82"
+    },
+    "guestId": {
+      "$oid": "6a2d253930adfb06d2107420"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 1 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3bfddb30adfb06d2113a80",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316507184"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782316507184"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3c2f4130adfb06d2113b1e"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3c2f4130adfb06d2113b1c",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782329153276"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782329153276"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e4d3b30adfb06d21163ad"
+    },
+    "guestId": {
+      "$oid": "6a3e4bd530adfb06d211628a"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: not clear",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a3e4ca230adfb06d21162ef",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782467899834"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782467899834"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e4d3d30adfb06d21163b5"
+    },
+    "guestId": {
+      "$oid": "6a3e4bd530adfb06d211628a"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: not clear. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a3e4ca230adfb06d21162ef",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782467901537"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782467901537"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e86e230adfb06d2116fc9"
+    },
+    "guestId": {
+      "$oid": "6a39ee5430adfb06d2110f0a"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Sat Jun 27 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3e86e230adfb06d2116fc7",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782482658683"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782482658683"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e870d30adfb06d2116fd6"
+    },
+    "guestId": {
+      "$oid": "6a39ee5430adfb06d2110f0a"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Sat Jun 27 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3e870d30adfb06d2116fd4",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782482701613"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782482701613"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e873b30adfb06d2116ff8"
+    },
+    "guestId": {
+      "$oid": "6a39ee5430adfb06d2110f0a"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Sun Jun 28 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3e873a30adfb06d2116ff6",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782482747038"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782482747038"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3e87e630adfb06d2117037"
+    },
+    "guestId": {
+      "$oid": "6a39ee5430adfb06d2110f0a"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Sun Jun 28 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3e87e630adfb06d2117035",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782482918577"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782482918577"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3ea5c130adfb06d2117631"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Thu Jul 23 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3ea5c130adfb06d211762f",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782490561343"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782490561343"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3f8abf30adfb06d2118df4"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3f8abf30adfb06d2118df2",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782549183443"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782549183443"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3f9ab030adfb06d21193d2"
+    },
+    "guestId": {
+      "$oid": "6a3c8c5630adfb06d2114663"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Mon Jun 29 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3f9ab030adfb06d21193d0",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782553264247"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782553264247"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41012030adfb06d211af01"
+    },
+    "guestId": {
+      "$oid": "6a3c8c5630adfb06d2114663"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon Jun 29 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41012030adfb06d211aeff",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782645024085"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782645024085"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41014230adfb06d211af0e"
+    },
+    "guestId": {
+      "$oid": "6a3c8c5630adfb06d2114663"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Mon Jun 29 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41014230adfb06d211af0c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782645058260"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782645058260"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41f95230adfb06d211bd1a"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41f95230adfb06d211bd18",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708562307"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782708562307"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41f9f330adfb06d211be4b"
+    },
+    "guestId": {
+      "$oid": "6a3c8d9b30adfb06d2114db5"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41f9f330adfb06d211be49",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708723400"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782708723400"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41fa0e30adfb06d211be76"
+    },
+    "guestId": {
+      "$oid": "6a3c912730adfb06d2114e55"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41fa0e30adfb06d211be74",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708750735"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782708750735"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a41fbb730adfb06d211bf7f"
+    },
+    "guestId": {
+      "$oid": "6a4099cd30adfb06d211a3ee"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Sat Jul 04 2026 at 15:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a41fbb730adfb06d211bf7d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782709175622"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782709175622"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4239b330adfb06d211cb59"
+    },
+    "guestId": {
+      "$oid": "6a3c912730adfb06d2114e55"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4239b330adfb06d211cb57",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782725043218"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782725043218"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a42433130adfb06d211ccb6"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 8 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a42433130adfb06d211ccb4",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782727473092"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782727473092"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4381b630adfb06d211e15b"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"qwre3wre\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a3bfc5730adfb06d21138be",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782809014742"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782809014742"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4381ba30adfb06d211e16d"
+    },
+    "guestId": {
+      "$oid": "6a3e4bd530adfb06d211628a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"BULLOCK CART RIDE\" on Tue Jun 30 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4381ba30adfb06d211e16b",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782809018393"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782809018393"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a43909630adfb06d211e930"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Wed Jul 22 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a43909630adfb06d211e92e",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782812822467"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782812822467"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a43b6ef30adfb06d211f27f"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: wrong document",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a43b6ad30adfb06d211f255",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782822639092"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782822639092"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a43b6ef30adfb06d211f286"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: wrong document. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a43b6ad30adfb06d211f255",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782822639404"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782822639404"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a44596130adfb06d211f9b9"
+    },
+    "guestId": {
+      "$oid": "6a435dfa30adfb06d211d4fa"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 2 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a44596130adfb06d211f9b7",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782864225270"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782864225270"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a44be6e30adfb06d211ff95"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Hey bro rachit\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a43b5a330adfb06d211f1ad",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782890094837"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782890094837"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a44f162c281e5bb3d7d434d"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 8 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a44f162c281e5bb3d7d434b",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782903138910"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782903138910"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4565adc281e5bb3d7d5359"
+    },
+    "guestId": {
+      "$oid": "6a4215ba30adfb06d211c2d7"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4565adc281e5bb3d7d5357",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782932909415"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782932909415"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f195c281e5bb3d7d5504"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 6 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a45f195c281e5bb3d7d5502",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782968725640"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782968725640"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f58ac281e5bb3d7d563e"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"BULLOCK CART RIDE\" on Thu Jul 09 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a45f58ac281e5bb3d7d563c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782969738526"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782969738526"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f597c281e5bb3d7d564d"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"NIGHT TRAILS\" on Wed Jul 08 2026 at 20:30 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a45f597c281e5bb3d7d564b",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782969751513"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782969751513"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f634c281e5bb3d7d56ac"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: not clear",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a45f510c281e5bb3d7d551a",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782969908281"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782969908281"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f634c281e5bb3d7d56b4"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: not clear. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a45f510c281e5bb3d7d551a",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782969908638"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782969908638"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a473c20c281e5bb3d7d705a"
+    },
+    "guestId": {
+      "$oid": "6a471918c281e5bb3d7d6e30"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Tue Jul 07 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a473c20c281e5bb3d7d7058",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783053344088"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783053344088"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a473cf2c281e5bb3d7d70ed"
+    },
+    "guestId": {
+      "$oid": "6a471918c281e5bb3d7d6e30"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coracle Ride\" on Tue Jul 07 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a473cf2c281e5bb3d7d70eb",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783053554685"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783053554685"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a48f4f7c281e5bb3d7d8319"
+    },
+    "guestId": {
+      "$oid": "6a486f02c281e5bb3d7d7a2e"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 1 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a48f4f7c281e5bb3d7d8317",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783166199198"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783166199198"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a48f527c281e5bb3d7d8329"
+    },
+    "guestId": {
+      "$oid": "6a486f02c281e5bb3d7d7a2e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Wed Jul 08 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a48f527c281e5bb3d7d8327",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783166247751"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783166247751"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a48f576c281e5bb3d7d8346"
+    },
+    "guestId": {
+      "$oid": "6a486f02c281e5bb3d7d7a2e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Wed Jul 08 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a48f576c281e5bb3d7d8344",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783166326165"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783166326165"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a48f5afc281e5bb3d7d83d9"
+    },
+    "guestId": {
+      "$oid": "6a486f02c281e5bb3d7d7a2e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Wed Jul 08 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a48f5afc281e5bb3d7d83d7",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783166383421"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783166383421"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4b3f9dc281e5bb3d7d9942"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 6 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4b3f9dc281e5bb3d7d9940",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783316381795"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783316381795"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4b7619c281e5bb3d7d9d75"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your check-in was not approved. Reason: Test",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a45f510c281e5bb3d7d551a",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783330329319"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783330329319"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4b7619c281e5bb3d7d9d7b"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "title": "Check-in Requires Attention",
+    "message": "Your online check-in could not be approved. Reason: Test. Please visit the front desk for assistance.",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6a45f510c281e5bb3d7d551a",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783330329711"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783330329711"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4cd8c0c281e5bb3d7daf73"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on Thu Jul 23 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4cd8c0c281e5bb3d7daf71",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783421120493"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783421120493"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4d024dc281e5bb3d7db364"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Wed Jul 22 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4d024cc281e5bb3d7db362",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783431757063"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783431757063"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4d1433c281e5bb3d7db889"
+    },
+    "guestId": {
+      "$oid": "6a4c9137c281e5bb3d7da9e4"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 2 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4d1433c281e5bb3d7db887",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783436339653"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783436339653"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e119ec281e5bb3d7dc0db"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Sat Jul 11 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e119ec281e5bb3d7dc0d9",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783501214397"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783501214397"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e127bc281e5bb3d7dc18a"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Fri Jul 10 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e127bc281e5bb3d7dc188",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783501435832"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783501435832"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e1610c281e5bb3d7dc479"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Sat Jul 11 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e1610c281e5bb3d7dc477",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783502352725"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783502352725"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e1639c281e5bb3d7dc47f"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Booking Confirmed!",
+    "message": "Your booking for \"Electric Trails\" on 11 Jul at 10:30 has been confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e1610c281e5bb3d7dc477",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783502393518"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783502393518"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e1644c281e5bb3d7dc494"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Sat Jul 11 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e1644c281e5bb3d7dc492",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783502404640"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783502404640"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e1662c281e5bb3d7dc49a"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Booking Confirmed!",
+    "message": "Your booking for \"Electric Trails\" on 11 Jul at 10:30 has been confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e1644c281e5bb3d7dc492",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783502434686"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783502434686"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e1728c281e5bb3d7dc552"
+    },
+    "guestId": {
+      "$oid": "6a4a373dc281e5bb3d7d8d1f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Sun Jul 12 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e1728c281e5bb3d7dc550",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783502632873"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783502632873"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4e3529c281e5bb3d7dcc38"
+    },
+    "guestId": {
+      "$oid": "6a4dcedbc281e5bb3d7dba2e"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Plantation 4×4\" on Mon Jul 13 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4e3529c281e5bb3d7dcc36",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783510313163"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783510313163"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4f3755c281e5bb3d7dd0f7"
+    },
+    "guestId": {
+      "$oid": "6a4f30d0c281e5bb3d7dd043"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Coracle Ride\" on Wed Jul 15 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4f3755c281e5bb3d7dd0f5",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783576405365"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783576405365"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4f37d0c281e5bb3d7dd103"
+    },
+    "guestId": {
+      "$oid": "6a4f30d0c281e5bb3d7dd043"
+    },
+    "title": "Booking Confirmed!",
+    "message": "Your booking for \"Coracle Ride\" on 15 Jul at 09:00 has been confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a4f3755c281e5bb3d7dd0f5",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783576528376"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783576528376"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a50c89dc281e5bb3d7ddc9e"
+    },
+    "guestId": {
+      "$oid": "6a4c93dbc281e5bb3d7daa28"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a50c89dc281e5bb3d7ddc9c",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783679133262"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783679133262"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a54753ec281e5bb3d7e1d22"
+    },
+    "guestId": {
+      "$oid": "6a54657bc281e5bb3d7e1b5d"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Sat Jul 18 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a54753ec281e5bb3d7e1d20",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783919934298"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783919934298"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a55d93ec281e5bb3d7e3615"
+    },
+    "guestId": {
+      "$oid": "6a55a87fc281e5bb3d7e2a3f"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Sun Jul 19 2026 at 15:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a55d93ec281e5bb3d7e3613",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784011070388"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784011070388"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a568450756970a0a22cc71d"
+    },
+    "guestId": {
+      "$oid": "6a55a7d3c281e5bb3d7e2a30"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Sun Jul 19 2026 at 15:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a56840b756970a0a22cc715",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784054864826"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784054864826"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5dc632756970a0a22d0f88"
+    },
+    "guestId": {
+      "$oid": "6a5dba50756970a0a22d0b6f"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Sun Jul 26 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5dc632756970a0a22d0f86",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784530482150"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784530482150"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5dd1b8756970a0a22d173e"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Fri Jul 24 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5dd1b8756970a0a22d173c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784533432879"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784533432879"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5ddc06756970a0a22d1f88"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Elkhill 4×4\" on Sat Jul 25 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5ddc06756970a0a22d1f86",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784536070872"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784536070872"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f1925756970a0a22d3d05"
+    },
+    "guestId": {
+      "$oid": "6a5dab87756970a0a22d0b13"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Sat Jul 25 2026 at 11:30.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a5f1899756970a0a22d3bf3",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784617253384"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784617253384"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f1995756970a0a22d40c8"
+    },
+    "guestId": {
+      "$oid": "6a5dab87756970a0a22d0b13"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Sat Jul 25 2026 at 10:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a5f196b756970a0a22d40c0",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784617365552"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784617365552"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f1fbb756970a0a22d435f"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Fri Jul 24 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f1fbb756970a0a22d435d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784618939897"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784618939897"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f207b756970a0a22d4425"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Sat Jul 25 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f207b756970a0a22d4423",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784619131503"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784619131503"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f20b4756970a0a22d443a"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Fri Jul 24 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f20b4756970a0a22d4438",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784619188087"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784619188087"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f21ba756970a0a22d456b"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Fri Jul 24 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f21ba756970a0a22d4569",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784619450369"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784619450369"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f3be1756970a0a22d4a8f"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on Fri Jul 24 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f3be1756970a0a22d4a8d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784626145323"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784626145323"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f3c6a756970a0a22d4b34"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on Fri Jul 24 2026 at 10:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f3c6a756970a0a22d4b32",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784626282966"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784626282966"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f3c90756970a0a22d4b3c"
+    },
+    "guestId": {
+      "$oid": "6a5c2e1d756970a0a22cff95"
+    },
+    "title": "Booking Confirmed!",
+    "message": "Your booking for \"Bylakuppe Tibetan Settlement\" on 24 Jul at 10:00 has been confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a5f3c6a756970a0a22d4b32",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784626320385"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784626320385"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a62ddbb756970a0a22d7041"
+    },
+    "guestId": {
+      "$oid": "6a619aa5756970a0a22d636a"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a62ddbb756970a0a22d703f",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784864187650"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784864187650"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a6331f4756970a0a22d7dec"
+    },
+    "guestId": {
+      "$oid": "6a62f58e756970a0a22d724f"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 2 night(s) is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a6331f4756970a0a22d7dea",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784885748832"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784885748832"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a717bb6756970a0a22dfcf3"
+    },
+    "guestId": {
+      "$oid": "6a701b4c756970a0a22decff"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Fri Aug 07 2026 at 15:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a717bb6756970a0a22dfcf1",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1785822134101"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1785822134101"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7c186b756970a0a22e4db6"
+    },
+    "guestId": {
+      "$oid": "6a78016b756970a0a22e2c69"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Fri Aug 14 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7c186b756970a0a22e4db4",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786517611857"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786517611857"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7c18d3756970a0a22e4e74"
+    },
+    "guestId": {
+      "$oid": "6a78016b756970a0a22e2c69"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Thu Aug 13 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7c18d3756970a0a22e4e72",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786517715588"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786517715588"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7c191e756970a0a22e4e8a"
+    },
+    "guestId": {
+      "$oid": "6a78016b756970a0a22e2c69"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Fri Aug 14 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7c191e756970a0a22e4e88",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786517790638"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786517790638"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7c19eb756970a0a22e4fc7"
+    },
+    "guestId": {
+      "$oid": "6a78016b756970a0a22e2c69"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Sat Aug 15 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7c19eb756970a0a22e4fc5",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786517995904"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786517995904"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7d64cf756970a0a22e5d1e"
+    },
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Mon Aug 17 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7d64ce756970a0a22e5d1c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786602703028"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786602703028"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7d6528756970a0a22e5d41"
+    },
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Tue Aug 18 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7d6528756970a0a22e5d3f",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786602792460"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786602792460"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7d6555756970a0a22e5d53"
+    },
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Tue Aug 18 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7d6555756970a0a22e5d51",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786602837655"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786602837655"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7d6566756970a0a22e5d63"
+    },
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Tue Aug 18 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a7d6566756970a0a22e5d61",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786602854411"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786602854411"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a87c302756970a0a22eb7a4"
+    },
+    "guestId": {
+      "$oid": "6a87b20c756970a0a22eb621"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Tue Aug 25 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a87c301756970a0a22eb7a2",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787282178011"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787282178011"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8bee43756970a0a22eed59"
+    },
+    "guestId": {
+      "$oid": "6a8bd4ed756970a0a22ed458"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Fri Aug 28 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8bee43756970a0a22eed57",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787555395140"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787555395140"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8bee5b756970a0a22eed85"
+    },
+    "guestId": {
+      "$oid": "6a8bd4ed756970a0a22ed458"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Fri Aug 28 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8bee5b756970a0a22eed83",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787555419617"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787555419617"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8bee66756970a0a22eed95"
+    },
+    "guestId": {
+      "$oid": "6a8bd4ed756970a0a22ed458"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Sat Aug 29 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8bee66756970a0a22eed93",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787555430729"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787555430729"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8bee8c756970a0a22eeebf"
+    },
+    "guestId": {
+      "$oid": "6a8bd4ed756970a0a22ed458"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Fri Aug 28 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8bee8c756970a0a22eeebd",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787555468920"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1787555468920"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a93f223756970a0a22f223f"
+    },
+    "guestId": {
+      "$oid": "6a923cd0756970a0a22f1597"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Wed Sep 02 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a93f223756970a0a22f223d",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788080675986"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788080675986"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a9a79ee756970a0a22f4551"
+    },
+    "guestId": {
+      "$oid": "6a9a1e05756970a0a22f407b"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Wed Sep 09 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a9a79ee756970a0a22f454f",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788508654510"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788508654510"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a9e5276756970a0a22f588e"
+    },
+    "guestId": {
+      "$oid": "6a9a2005756970a0a22f4090"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Bird Watching\" on Wed Sep 09 2026 at 07:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a9e5276756970a0a22f588c",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788760694313"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788760694313"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a9e52df756970a0a22f58a9"
+    },
+    "guestId": {
+      "$oid": "6a9a2005756970a0a22f4090"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Tue Sep 08 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a9e52df756970a0a22f58a7",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788760799950"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788760799950"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a9e5307756970a0a22f58c8"
+    },
+    "guestId": {
+      "$oid": "6a9a2005756970a0a22f4090"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Wed Sep 09 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a9e5307756970a0a22f58c6",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788760839835"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788760839835"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aae31db38b3b9cc82a98063"
+    },
+    "guestId": {
+      "$oid": "6aae3102c86bc1aa31129dc8"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Passport photo cropped",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6aae3103c86bc1aa31129dcc",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789800923317"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789800923317"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab41c096d632fcce6ecaef8"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"5 year of togetherness \n5 year anniversary\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a8d9923756970a0a22f040d",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790188553800"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188553800"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab41ceaec36e4dbea2c7edc"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"5 year of togetherness \n5 year anniversary\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8d9923756970a0a22f040d",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790188778274"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188778274"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab41d09ec36e4dbea2c7f02"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Is it heavy raining there?\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a8d5a41756970a0a22f0169",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790188809637"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188809637"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab41d7dec36e4dbea2c7f50"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Is it heavy raining there?\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a8d5a41756970a0a22f0169",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790188925068"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188925068"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab4c5585123a7b85501b94c"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Kid pool tube needs \nAnd pool, room hygiene\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a893c99756970a0a22ec8f1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790231896792"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790231896792"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab4c55d5123a7b85501b956"
+    },
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Kid pool tube needs \nAnd pool, room hygiene\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a893c99756970a0a22ec8f1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790231901217"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790231901217"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab4c751694f3ee5a6c641b0"
+    },
+    "guestId": {
+      "$oid": "6a826dca756970a0a22e8ea0"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Hey we are travelling with an infant and a 12 year old kid. Just a request if you can accommodate us in a twin bed room. Thank you in advance.\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a86ec76756970a0a22eb049",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790232401935"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790232401935"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab4c75b694f3ee5a6c641ba"
+    },
+    "guestId": {
+      "$oid": "6a826dca756970a0a22e8ea0"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Hey we are travelling with an infant and a 12 year old kid. Just a request if you can accommodate us in a twin bed room. Thank you in advance.\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6a86ec76756970a0a22eb049",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790232411493"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790232411493"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab4c765694f3ee5a6c641c4"
+    },
+    "guestId": {
+      "$oid": "6a827427756970a0a22e8f78"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Good morning ma'am \nThis is my 8th visit to the resort\nAs iam coming by train from chennai\nI will reach mysore by 7am.\nI request early check in \nAs iam coming with my family. Kindly do the needful. Iam your Ambassador.\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6a8275bb756970a0a22e8f8e",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790232421089"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790232421089"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab531bd05b610f76d5e58d9"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"I would love to have a water bottle and a extra towel in my room\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ab531a13e9cb02a314617d1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259645208"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259645208"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab531fc05b610f76d5e58ef"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"I would like to wash a lot of my clothes\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ab531ea3e9cb02a314617da",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259708614"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259708614"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab5320e05b610f76d5e590a"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"I would like to wash a lot of my clothes\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ab531ea3e9cb02a314617da",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259726421"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259726421"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab5327905b610f76d5e5938"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"I would like to wash a lot of my clothes. Please help me\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ab532643e9cb02a314617e1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259833280"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259833280"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab532b905b610f76d5e5958"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"I would like to wash a lot of my clothes. Please help me\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ab532643e9cb02a314617e1",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259897451"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259897451"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac49eb56a71983542c17068"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"I want to extend my checkout by 2 hours\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ab50fb2149537e1206ea7f5",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791270581711"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791270581711"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac49ec06a71983542c17072"
+    },
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"I want to extend my checkout by 2 hours\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ab50fb2149537e1206ea7f5",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791270592978"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791270592978"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac4eb886a71983542c194d0"
+    },
+    "guestId": {
+      "$oid": "6abcb719acf12672692fb41a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"test\" on Tue Oct 06 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ac4eb886a71983542c194ce",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791290248955"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791290248955"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac4f6c86a71983542c1b1fe"
+    },
+    "guestId": {
+      "$oid": "6abcb719acf12672692fb41a"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Guided Plantation Tour\" on Tue Oct 06 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ac4f6c86a71983542c1b1fc",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791293128849"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791293128849"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac613c898cb914c6a671a9e"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Not Clear",
+    "type": "warning",
+    "read": true,
+    "relatedId": "6ac5e9d698cb914c6a66eefa",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791366088860"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791366570432"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac6159498cb914c6a672300"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Need a guide\" is now being handled by our team.",
+    "type": "info",
+    "read": true,
+    "relatedId": "6ac5ea7998cb914c6a66f8f4",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791366548655"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac6159a98cb914c6a67230a"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Need a guide\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac5ea7998cb914c6a66f8f4",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791366554150"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791366576720"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac61aa898cb914c6a6756d0"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac61aa898cb914c6a67569d",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791367848708"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac61ace98cb914c6a675d14"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your private transfer for 3 night(s) is pending payment.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac61ace98cb914c6a675d12",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791367886953"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac6877f98cb914c6a68dfa6"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Wed Nov 11 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac6877f98cb914c6a68dfa4",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791395711546"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac7085998cb914c6a692d17"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Wed Nov 11 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac7085898cb914c6a692d15",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791428697074"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac7426998cb914c6a697c1b"
+    },
+    "guestId": {
+      "$oid": "6abcb719acf12672692fb41a"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: blurry please re upload",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6ac50495bb37c248a9c0a586",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791443561497"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791443561497"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac7574498cb914c6a69eb59"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Guided Plantation Tour\" on Thu Nov 12 2026 at 16:00 is confirmed.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac7574498cb914c6a69eb57",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791448900902"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac7581198cb914c6a69f775"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"VITHALAPURA WALK\" on Thu Nov 12 2026 at 09:00 is pending payment.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6ac7581098cb914c6a69f773",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791449105234"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791556095841"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acc892f52f0b9757c24b8bb"
+    },
+    "guestId": {
+      "$oid": "6abcb719acf12672692fb41a"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Blurry",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6ac50495bb37c248a9c0a586",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791789359760"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791789359760"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acccbd493ad408683a7e5e9"
+    },
+    "guestId": {
+      "$oid": "6accc9e393ad408683a7d1d1"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Blurry",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6acccb0093ad408683a7dd70",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791806420101"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791806420101"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acccdf593ad408683a7f6b8"
+    },
+    "guestId": {
+      "$oid": "6accc9e393ad408683a7d1d1"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Blurry",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6acccb0093ad408683a7dd70",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791806965644"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791806965644"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accce9093ad408683a8006d"
+    },
+    "guestId": {
+      "$oid": "6accce5d93ad408683a7fd3e"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: nb",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6accce7c93ad408683a7fee2",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791807120376"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791807120376"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accd03993ad408683a83663"
+    },
+    "guestId": {
+      "$oid": "6accce5d93ad408683a7fd3e"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Story Corner\" on Wed Oct 14 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6accd03993ad408683a83661",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791807545576"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791807545576"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accd56ac7b69617d18ed744"
+    },
+    "guestId": {
+      "$oid": "6accce5d93ad408683a7fd3e"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your Abhayanga is booked for Wed Oct 14 2026 at 10:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6accd53dc7b69617d18ecc63",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791808874163"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791808874163"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accdb3dc7b69617d18f1295"
+    },
+    "guestId": {
+      "$oid": "6accc9e393ad408683a7d1d1"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Towel extra\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6accdb25c7b69617d18f1277",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791810365451"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791810365451"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accdb53c7b69617d18f1538"
+    },
+    "guestId": {
+      "$oid": "6accc9e393ad408683a7d1d1"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Towel extra\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6accdb25c7b69617d18f1277",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791810387249"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791810387249"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accde4bc7b69617d18f6765"
+    },
+    "guestId": {
+      "$oid": "6accdc1fc7b69617d18f3f54"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Cultural Show\" on Thu Oct 15 2026 at 19:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6accde4bc7b69617d18f6763",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791811147459"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791811147459"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accdef1c7b69617d18f6a62"
+    },
+    "guestId": {
+      "$oid": "6accdc1fc7b69617d18f3f54"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: blurrypictures",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6accdca1c7b69617d18f4e79",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791811313692"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791811313692"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accec0fc7b69617d18fb9fc"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: I didnt like it. vapis kar",
+    "type": "warning",
+    "read": true,
+    "relatedId": "6accead0c7b69617d18fb097",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791814671122"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791814799747"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acd09d8c7b69617d18fe2ee"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "title": "Request In-progress",
+    "message": "Your request for \"Hi can i get g class\" is now being handled by our team.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6acd09b4c7b69617d18fe2bd",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791822296559"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791822296559"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acd09eac7b69617d18fe354"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "title": "Request Completed",
+    "message": "Your request for \"Hi can i get g class\" has been completed. We hope it met your expectations!",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acd09b4c7b69617d18fe2bd",
+    "relatedType": "request",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791822314373"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791822314373"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acd0aa3c7b69617d18fe749"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your booking for Full Trip Cab is pending payment.",
+    "type": "success",
+    "read": true,
+    "relatedId": "6acd0aa3c7b69617d18fe746",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791822499489"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791822515145"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acda6bac93603211d4e9093"
+    },
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Fri Oct 16 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acda6bac93603211d4e9091",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791862458792"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791862458792"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acdb56f83f52d0857749f58"
+    },
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Electric Trails\" on Fri Oct 16 2026 at 10:30 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acdb56e83f52d0857749f56",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791866223014"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791866223014"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acdb57083f52d0857749f8a"
+    },
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Sat Oct 17 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acdb57083f52d0857749f88",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791866224993"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791866224993"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acdfc735bf1aacf03cc2643"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "title": "Experience Booked",
+    "message": "Your booking for \"Coffeeology\" on Wed Oct 14 2026 at 12:00 is confirmed.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acdfc725bf1aacf03cc2641",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791884403015"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791884403015"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ace177d9d2f10e3ed5a26df"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your ABHAYANGA is booked for Thu Nov 12 2026 at 09:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ace16599d2f10e3ed59fd63",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891325952"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891325952"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ace177e9d2f10e3ed5a26e3"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your KATI BASTI is booked for Thu Nov 12 2026 at 09:00.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ace16a99d2f10e3ed5a0fde",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891326632"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891326632"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ace18279d2f10e3ed5a4df3"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb40a"
+    },
+    "title": "Spa Booking Confirmed",
+    "message": "Your KATI BASTI is booked for Thu Nov 12 2026 at 10:15.",
+    "type": "info",
+    "read": false,
+    "relatedId": "6ace180e9d2f10e3ed5a4976",
+    "relatedType": "spa-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791891495050"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791891495050"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf3e5fd513d74ab186a711"
+    },
+    "guestId": {
+      "$oid": "6acf22ddbeb738b75a2ac90b"
+    },
+    "title": "Transfer Booking Pending",
+    "message": "Your booking for Full Trip Cab is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6acf3e5fd513d74ab186a70e",
+    "relatedType": "transport-booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791966815436"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791966815436"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ad05b691111f651f43ba45a"
+    },
+    "guestId": {
+      "$oid": "6acf183c9d2f10e3ed5ef8a2"
+    },
+    "title": "Experience Booking Pending",
+    "message": "Your booking for \"Eternal Moments\" on Thu Oct 15 2026 at 16:00 is pending payment.",
+    "type": "success",
+    "read": false,
+    "relatedId": "6ad05b681111f651f43ba453",
+    "relatedType": "booking",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1792039785036"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1792039785036"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ad05ea01111f651f43bb11b"
+    },
+    "guestId": {
+      "$oid": "6ad05cfd1111f651f43ba990"
+    },
+    "title": "Check-in Action Required",
+    "message": "Your ID was not approved. Reason: Blurry",
+    "type": "warning",
+    "read": false,
+    "relatedId": "6ad05d771111f651f43bad31",
+    "relatedType": "check-in",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1792040608330"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1792040608330"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  }
+]

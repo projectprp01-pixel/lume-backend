@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 import Booking from '../../models/Booking.model.js';
 import Guest from '../../models/Guest.model.js';
-import Notification from '../../models/Notification.model.js';
 import Transport from '../../models/Transport.model.js';
 import TransportBooking from '../../models/TransportBooking.model.js';
-import { createWithHubRef } from '../../utils/hubRef.js';
+import { persistPrepared } from '../../services/guestCheckout.js';
 
 const TRANSPORT_DEFAULTS = {
   visible: true,
@@ -187,21 +186,22 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
 }
 
 /**
- * Create a transport booking (guest-side)
- * Body: { guestId, bookingId, offeringSlot, items: [{ vehicleId, quantity, days?, city?, pickupAddon? }], propertyId }
- * (The older { nights, amount } whole-stay form still works when no offeringSlot/items are sent.)
+ * Validate + price a guest transport booking WITHOUT saving anything. Shared by the direct endpoint
+ * below (free bookings only) and the paid checkout (services/guestCheckout.js).
+ * Returns { ok:false, status, message } or { ok:true, kind, amount, doc }.
  */
-export const createTransportBooking = async (req, res) => {
-  try {
-    const { guestId, bookingId, nights, amount, propertyId = 'default', offeringSlot, items: rawItems } = req.body;
+export async function prepareTransportBooking(body) {
+  const fail = (status, message) => ({ ok: false, status, message });
+  {
+    const { guestId, bookingId, nights, amount, propertyId = 'default', offeringSlot, items: rawItems } = body;
 
     if (!guestId || !bookingId) {
-      return res.status(400).json({ success: false, message: 'guestId and bookingId are required' });
+      return fail(400, 'guestId and bookingId are required');
     }
 
     const booking = await Booking.findById(bookingId);
     if (!booking) {
-      return res.status(404).json({ success: false, message: 'Booking not found' });
+      return fail(404, 'Booking not found');
     }
 
     const guest = await Guest.findById(guestId);
@@ -210,58 +210,65 @@ export const createTransportBooking = async (req, res) => {
     let selection = null;
     if (offeringSlot != null) {
       const settings = await Transport.findOne({ propertyId });
-      if (!settings) return res.status(404).json({ success: false, message: 'Transport is not set up' });
+      if (!settings) return fail(404, 'Transport is not set up');
       selection = priceTransportSelection({ settings, offeringSlot, rawItems, booking });
-      if (selection.error) return res.status(400).json({ success: false, message: selection.error });
+      if (selection.error) return fail(400, selection.error);
     }
 
     const stayNights = nights ?? Math.max(0, Math.round((new Date(booking.checkoutDate) - new Date(booking.arrivalDate)) / 86400000));
 
-    const transportBooking = await createWithHubRef({
-      Model: TransportBooking, field: 'ref', kind: 'trn',
-      stayId: booking.bookingId,
-      data: {
-        guestId,
-        bookingId,
-        // Derived server-side from the stay we just loaded — never trusted from the client — so this
-        // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
-        mainStayBookingId: booking.bookingId,
-        guestName: guest ? guest.fullName : '',
-        roomNumber: booking.roomNumber || guest?.roomNumber || '',
-        checkInDate: selection?.days[0] ? new Date(selection.days[0]) : booking.arrivalDate,
-        checkOutDate: booking.checkoutDate,
-        nights: stayNights,
-        amount: selection ? selection.amount : amount,
-        propertyId,
-        status: 'pending',
-        ...(selection && {
-          // hubBooking makes it appear in the dashboard Transport Hub next to staff-added bookings.
-          hubBooking: true,
-          source: 'app',
-          offeringSlot: selection.offering.slot,
-          vehicleId: selection.items[0].vehicleId,
-          vehicleName: selection.vehicleName,
-          addons: selection.addons,
-          items: selection.items,
-          days: selection.days,
-          city: selection.city,
-        }),
+    const finalAmount = Number(selection ? selection.amount : amount) || 0;
+    return {
+      ok: true,
+      kind: 'transport',
+      amount: finalAmount > 0 ? finalAmount : 0,
+      doc: {
+        Model: TransportBooking, field: 'ref', hubKind: 'trn', stayId: booking.bookingId,
+        data: {
+          guestId,
+          bookingId,
+          // Derived server-side from the stay we just loaded — never trusted from the client — so this
+          // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
+          mainStayBookingId: booking.bookingId,
+          guestName: guest ? guest.fullName : '',
+          roomNumber: booking.roomNumber || guest?.roomNumber || '',
+          checkInDate: selection?.days[0] ? new Date(selection.days[0]) : booking.arrivalDate,
+          checkOutDate: booking.checkoutDate,
+          nights: stayNights,
+          amount: finalAmount,
+          propertyId,
+          ...(selection && {
+            // hubBooking makes it appear in the dashboard Transport Hub next to staff-added bookings.
+            hubBooking: true,
+            source: 'app',
+            offeringSlot: selection.offering.slot,
+            vehicleId: selection.items[0].vehicleId,
+            vehicleName: selection.vehicleName,
+            addons: selection.addons,
+            items: selection.items,
+            days: selection.days,
+            city: selection.city,
+          }),
+        },
       },
-    });
+    };
+  }
+}
 
-    if (guestId) {
-      await Notification.create({
-        guestId,
-        title: 'Transfer Booking Pending',
-        message: selection
-          ? `Your booking for ${selection.offering.name} is pending payment.`
-          : `Your private transfer for ${stayNights} night(s) is pending payment.`,
-        type: 'success',
-        relatedId: transportBooking._id.toString(),
-        relatedType: 'transport-booking'
-      });
+/**
+ * Create a transport booking (guest-side). Only complimentary bookings are created here: a paid one
+ * exists only after its payment has come through, via POST /payments/checkout.
+ * Body: { guestId, bookingId, offeringSlot, items: [{ vehicleId, quantity, days?, city?, pickupAddon? }], propertyId }
+ * (The older { nights, amount } whole-stay form still works when no offeringSlot/items are sent.)
+ */
+export const createTransportBooking = async (req, res) => {
+  try {
+    const prepared = await prepareTransportBooking(req.body);
+    if (!prepared.ok) return res.status(prepared.status).json({ success: false, message: prepared.message });
+    if (prepared.amount > 0) {
+      return res.status(402).json({ success: false, message: 'Payment is required: book paid transfers through checkout.' });
     }
-
+    const transportBooking = await persistPrepared(prepared);
     res.status(201).json({ success: true, data: transportBooking });
   } catch (error) {
     console.error('Create transport booking error:', error);

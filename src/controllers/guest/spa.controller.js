@@ -1,6 +1,6 @@
 import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
-import { createWithHubRef } from '../../utils/hubRef.js';
+import { persistPrepared } from '../../services/guestCheckout.js';
 import { resolveGuestStayId } from '../../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
@@ -70,13 +70,17 @@ export const getSpaTimeSlots = async (req, res) => {
 };
 
 /**
- * Create a spa booking (guest-side)
+ * Validate + price a guest spa booking WITHOUT saving anything. Shared by the direct endpoint below
+ * (free bookings only) and the paid checkout (services/guestCheckout.js), which creates the booking
+ * only once payment has come through.
+ * Returns { ok:false, status, message } or { ok:true, kind, amount, doc }.
  */
-export const createSpaBooking = async (req, res) => {
-  try {
-    const { treatmentName, date, timeSlot, spaFacilityId, treatmentId } = req.body;
+export async function prepareSpaBooking(body) {
+  const fail = (status, message) => ({ ok: false, status, message });
+  {
+    const { treatmentName, date, timeSlot, spaFacilityId, treatmentId } = body;
     if (!treatmentName || !date || !timeSlot) {
-      return res.status(400).json({ success: false, message: 'treatmentName, date, and timeSlot are required' });
+      return fail(400, 'treatmentName, date, and timeSlot are required');
     }
 
     // Validate slot capacity before creating the booking. Capacity is the spa's therapists per slot and every
@@ -85,7 +89,7 @@ export const createSpaBooking = async (req, res) => {
       const facility = await SpaFacility.findById(spaFacilityId);
       if (facility) {
         const maxPerSlot = facility.therapistsAvailable ?? facility.maxBookingsPerSlot ?? 1;
-        const wanted = Math.max(1, parseInt(req.body.numberOfGuests, 10) || 1);
+        const wanted = Math.max(1, parseInt(body.numberOfGuests, 10) || 1);
         const start = new Date(date);
         start.setHours(0, 0, 0, 0);
         const end = new Date(date);
@@ -99,19 +103,16 @@ export const createSpaBooking = async (req, res) => {
         const taken = existing.reduce((sum, b) => sum + (b.numberOfGuests || 1), 0);
         if (taken + wanted > maxPerSlot) {
           const left = Math.max(0, maxPerSlot - taken);
-          return res.status(400).json({
-            success: false,
-            message: left === 0
-              ? 'This time slot is fully booked. Please choose another slot.'
-              : `Only ${left} place${left === 1 ? '' : 's'} left in this time slot. Please reduce the number of guests or choose another slot.`,
-          });
+          return fail(400, left === 0
+            ? 'This time slot is fully booked. Please choose another slot.'
+            : `Only ${left} place${left === 1 ? '' : 's'} left in this time slot. Please reduce the number of guests or choose another slot.`);
         }
       }
     }
 
     // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
     // It drives both the stored mainStayBookingId and the <stayId>-SPA-<n> reference (see utils/hubRef.js).
-    const stayId = await resolveGuestStayId({ guestId: req.body.guestId, claimedStayId: req.body.mainStayBookingId });
+    const stayId = await resolveGuestStayId({ guestId: body.guestId, claimedStayId: body.mainStayBookingId });
 
     // Price the booking from the treatment itself so a Spa Hub discount tagged to it always applies and the
     // charged amount (which payment reads from `price`) can't be set by the client. Falls back to the
@@ -122,16 +123,16 @@ export const createSpaBooking = async (req, res) => {
       ? (facility.categories || []).flatMap((c) => c.treatments || []).find((t) => String(t._id) === String(treatmentId))
       : null;
     if (treatment) {
-      const wantedMin = Number(req.body.duration) || 0;
+      const wantedMin = Number(body.duration) || 0;
       const picked = (treatment.durations || []).find((d) => d.minutes === wantedMin) || (treatment.durations || [])[0];
       const listPrice = picked?.price ?? treatment.price ?? 0;
       const eligible = await loadEligibleDiscounts({
-        propertyId: facility.propertyId || req.body.propertyId,
-        checkInDay: await arrivalDayForGuest(req.body.guestId),
+        propertyId: facility.propertyId || body.propertyId,
+        checkInDay: await arrivalDayForGuest(body.guestId),
       });
       const applied = bestDiscountFor(eligible, 'spa', treatmentId, listPrice);
-      const guests = Math.max(1, parseInt(req.body.numberOfGuests, 10) || 1);
-      const addonNames = (Array.isArray(req.body.addons) ? req.body.addons : []).map((a) => a?.name);
+      const guests = Math.max(1, parseInt(body.numberOfGuests, 10) || 1);
+      const addonNames = (Array.isArray(body.addons) ? body.addons : []).map((a) => a?.name);
       const addons = (treatment.addons || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }));
       pricing = {
         price: (listPrice - (applied?.amount ?? 0)) * guests + addons.reduce((sum, a) => sum + a.price, 0),
@@ -140,11 +141,30 @@ export const createSpaBooking = async (req, res) => {
         discountAmount: applied ? applied.amount * guests : undefined,
       };
     }
-    const booking = await createWithHubRef({
-      Model: SpaBooking, field: 'bookingId', kind: 'spa', stayId,
-      data: { ...req.body, ...pricing, mainStayBookingId: stayId ?? undefined, status: 'Pending', paymentStatus: 'pending' },
-    });
+    // Never trust client-sent status / payment fields: those are set by the server when the booking is created.
+    const { status: _s, paymentStatus: _p, razorpayOrderId: _o, razorpayPaymentId: _i, razorpaySignature: _g, paidAt: _t, _id: _d, ...safe } = body;
+    const data = { ...safe, ...pricing, mainStayBookingId: stayId ?? undefined };
+    return {
+      ok: true,
+      kind: 'spa',
+      amount: Number(data.price) > 0 ? Number(data.price) : 0,
+      doc: { Model: SpaBooking, field: 'bookingId', hubKind: 'spa', stayId, data },
+    };
+  }
+}
 
+/**
+ * Create a spa booking (guest-side). Only complimentary bookings are created here: a paid booking exists
+ * only after its payment has come through, via POST /payments/checkout.
+ */
+export const createSpaBooking = async (req, res) => {
+  try {
+    const prepared = await prepareSpaBooking(req.body);
+    if (!prepared.ok) return res.status(prepared.status).json({ success: false, message: prepared.message });
+    if (prepared.amount > 0) {
+      return res.status(402).json({ success: false, message: 'Payment is required: book paid treatments through checkout.' });
+    }
+    const booking = await persistPrepared(prepared);
     res.status(201).json({ success: true, data: booking });
   } catch (error) {
     console.error('Create spa booking error:', error);
