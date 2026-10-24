@@ -1,4 +1,5 @@
 import Booking from '../../models/Booking.model.js';
+import Guest from '../../models/Guest.model.js';
 import CheckIn from '../../models/CheckIn.model.js';
 import Feedback from '../../models/Feedback.model.js';
 import FeedbackSettings from '../../models/FeedbackSettings.model.js';
@@ -80,7 +81,8 @@ async function departuresSummary(propertyId, date) {
 }
 
 // Guests currently staying: every non-cancelled, not-yet-checked-out booking whose stay spans
-// today, counted in guests (Booking.numberOfGuests), not bookings.
+// today, counted in guests, not bookings: adults (Booking.numberOfGuests) plus children
+// (Guest.numberOfChildren on the booking's guest record — the Booking itself only stores adults).
 async function inHouseGuests(propertyId, date) {
   const { start, end } = dayRange(parseLocalDate(date));
   const match = {
@@ -91,7 +93,13 @@ async function inHouseGuests(propertyId, date) {
   if (propertyId !== 'default') match.propertyId = propertyId;
   const [row] = await Booking.aggregate([
     { $match: match },
-    { $group: { _id: null, guests: { $sum: '$numberOfGuests' } } },
+    { $lookup: { from: Guest.collection.name, localField: 'guestId', foreignField: '_id', as: 'guest' } },
+    {
+      $group: {
+        _id: null,
+        guests: { $sum: { $add: ['$numberOfGuests', { $ifNull: [{ $arrayElemAt: ['$guest.numberOfChildren', 0] }, 0] }] } },
+      },
+    },
   ]);
   return row?.guests ?? 0;
 }
