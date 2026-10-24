@@ -116,14 +116,15 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
 
   for (const raw of rawItems) {
     const vehicleId = String(raw.vehicleId || '');
-    const listed = (rateSource?.vehiclePricing || []).find((vp) => String(vp.vehicleId) === vehicleId);
+    const isCustom = isFlat && offering.pricingMode === 'custom';
+    const listed = (isCustom ? offering : rateSource)?.vehiclePricing?.find((vp) => String(vp.vehicleId) === vehicleId);
     // Pickup & drop is priced per city, so a vehicle with no listed price is sold at its lowest city fare.
     const lowestCityFare = isP2P
       ? Math.min(...cities.flatMap((c) => (c.vehiclePrices || []).filter((vp) => String(vp.vehicleId) === vehicleId && vp.price > 0).map((vp) => vp.price)))
       : Infinity;
     const basePrice = listed?.price > 0 ? listed.price : (Number.isFinite(lowestCityFare) ? lowestCityFare : 0);
-    const pricing = { price: basePrice };
-    const eligible = !offering.eligibleVehicles?.length || offering.eligibleVehicles.map(String).includes(vehicleId);
+    const pricing = { price: isCustom ? 1 : basePrice }; // custom mode is priced from its own tiers below
+    const eligible = isCustom || !offering.eligibleVehicles?.length || offering.eligibleVehicles.map(String).includes(vehicleId);
     const vehicle = vehicles.get(vehicleId);
     if (!vehicle || !(pricing.price > 0) || !eligible) return { error: 'That vehicle is not available for this option' };
 
@@ -135,13 +136,23 @@ function priceTransportSelection({ settings, offeringSlot, rawItems, booking }) 
     const cityFare = city?.vehiclePrices?.find((vp) => String(vp.vehicleId) === vehicleId)?.price;
     if ((isP2P || isFlat) && !city) return { error: 'Choose a pickup & drop off city' };
     // Full trip is only sold for a car with a pickup & drop-off fare from the chosen city.
-    if (isFlat && !(cityFare > 0)) return { error: 'That vehicle is not available from this city' };
+    let customPrice = 0;
+    if (isCustom) {
+      // Fixed price for this car + city + length of stay. Never falls back to the formula.
+      const cityTiers = (listed?.cities || []).find((c) => c.city === cityName);
+      if (!cityTiers) return { error: 'That vehicle is not available from this city' };
+      const tier = (cityTiers.tiers || []).find((t) => t.nights === stayNights);
+      if (!(tier?.price > 0)) return { error: 'No fixed price for your stay length — please contact the property' };
+      customPrice = tier.price;
+    } else if (isFlat && !(cityFare > 0)) return { error: 'That vehicle is not available from this city' };
 
     let days = [];
     let line;
     let pickupAddon = false;
     if (isP2P) {
       line = (cityFare ?? pricing.price) * quantity;
+    } else if (isCustom) {
+      line = customPrice * quantity;
     } else if (isFlat) {
       line = (pricing.price * tripNights + (cityFare ?? 0)) * quantity;
     } else {
