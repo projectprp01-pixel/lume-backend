@@ -1,10 +1,6 @@
 import Experience from '../models/Experience.model.js';
 import ExperienceBookingModel from '../models/ExperienceBooking.model.js';
-import Notification from '../models/Notification.model.js';
-import Guest from '../models/Guest.model.js';
-import Booking from '../models/Booking.model.js';
-import { sendGuestBookingEmail, toISTDate } from '../utils/emailService.js';
-import { createWithHubRef } from '../utils/hubRef.js';
+import { persistPrepared } from '../services/guestCheckout.js';
 import { resolveGuestStayId } from '../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../utils/discounts.js';
 
@@ -235,74 +231,70 @@ export const getAvailableSlots = async (req, res) => {
 };
 
 /**
- * Create an experience booking (guest-side)
+ * Validate + price a guest experience booking WITHOUT saving anything. Shared by the direct endpoint
+ * below (free bookings only) and the paid checkout (services/guestCheckout.js), which creates the
+ * booking only once payment has come through.
+ * Returns { ok:false, status, message } or { ok:true, kind, amount, doc } (doc = what createWithHubRef needs).
  */
-export const createExperienceBookingGuest = async (req, res) => {
-  try {
-    const {
-      experienceId, guestId, guestName, guestEmail, guestPhone,
-      date, timeSlot, numberOfGuests, mainBookingId, mainStayBookingId, price, propertyId, specialRequests, addonNames
-    } = req.body;
+export async function prepareExperienceBooking(body) {
+  const {
+    experienceId, guestId, guestName, guestEmail, guestPhone,
+    date, timeSlot, numberOfGuests, mainBookingId, mainStayBookingId, price, propertyId, specialRequests, addonNames
+  } = body;
+  const fail = (status, message) => ({ ok: false, status, message });
 
-    if (!experienceId || !guestName || !date || !timeSlot) {
-      return res.status(400).json({
-        success: false,
-        message: 'experienceId, guestName, date, and timeSlot are required'
-      });
-    }
+  if (!experienceId || !guestName || !date || !timeSlot) {
+    return fail(400, "experienceId, guestName, date, and timeSlot are required");
+  }
 
-    const experience = await Experience.findById(experienceId);
-    if (!experience) {
-      return res.status(404).json({ success: false, message: 'Experience not found' });
-    }
+  const experience = await Experience.findById(experienceId);
+  if (!experience) return fail(404, "Experience not found");
 
-    // Reject bookings on blackout/blocked dates
-    if (isDateBlocked(experience, date)) {
-      return res.status(400).json({ success: false, message: 'This date is unavailable for booking.' });
-    }
+  // Reject bookings on blackout/blocked dates
+  if (isDateBlocked(experience, date)) return fail(400, "This date is unavailable for booking.");
 
-    // Check slot capacity
-    const existingOnSlot = await ExperienceBookingModel.find({
-      experienceId,
-      date: new Date(date),
-      timeSlot,
-      bookingStatus: { $in: ['confirmed', 'completed'] },
-    });
-    const bookedGuests = existingOnSlot.reduce((sum, b) => sum + b.numberOfGuests, 0);
-    const slot = experience.timeSlots.find(s => s.time === timeSlot);
-    if (slot && slot.active === false) {
-      return res.status(400).json({ success: false, message: 'This time slot is no longer available.' });
-    }
-    if (slot && slot.capacity > 0 && bookedGuests + (experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1)) > slot.capacity) {
-      return res.status(400).json({ success: false, message: 'This time slot is full.' });
-    }
+  // Check slot capacity
+  const existingOnSlot = await ExperienceBookingModel.find({
+    experienceId,
+    date: new Date(date),
+    timeSlot,
+    bookingStatus: { $in: ["confirmed", "completed"] },
+  });
+  const bookedGuests = existingOnSlot.reduce((sum, b) => sum + b.numberOfGuests, 0);
+  const slot = experience.timeSlots.find(s => s.time === timeSlot);
+  if (slot && slot.active === false) return fail(400, "This time slot is no longer available.");
+  if (slot && slot.capacity > 0 && bookedGuests + (experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1)) > slot.capacity) {
+    return fail(400, "This time slot is full.");
+  }
 
-    // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
-    // It drives both the stored mainStayBookingId and the <stayId>-EXP-<n> reference (see utils/hubRef.js).
-    const stayId = await resolveGuestStayId({ guestId, claimedStayId: mainStayBookingId });
-    // Client sends the undiscounted per-person price; any live Experience Hub discount tagged to this
-    // activity is applied here so the charged amount always matches what the dashboard configured.
-    const listPrice = price ?? experience.pricing.basePrice;
-    const eligible = await loadEligibleDiscounts({
-      propertyId: experience.propertyId || propertyId,
-      checkInDay: await arrivalDayForGuest(guestId),
-    });
-    const applied = bestDiscountFor(eligible, 'experience', experienceId, listPrice);
-    const unitPrice = listPrice - (applied?.amount ?? 0);
-    // Group activities (guestCanChooseGroupSize: false) are one unit whatever the client sends.
-    const qty = experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1);
-    // Priced per group: the party size doesn't change the price (pricePerPerson is false in the dashboard).
-    const priceQty = experience.pricing?.pricePerPerson === false ? 1 : qty;
-    // Add-ons are priced from the experience itself (flat per booking), never from the client.
-    const selectedAddons = Array.isArray(addonNames)
-      ? (experience.addOns || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }))
-      : [];
-    const totalAmount = unitPrice * priceQty + selectedAddons.reduce((sum, a) => sum + a.price, 0);
-    const isFree = totalAmount === 0;
+  // The stay is derived server-side; a client-sent mainStayBookingId only counts if it is this guest's own.
+  // It drives both the stored mainStayBookingId and the <stayId>-EXP-<n> reference (see utils/hubRef.js).
+  const stayId = await resolveGuestStayId({ guestId, claimedStayId: mainStayBookingId });
+  // Client sends the undiscounted per-person price; any live Experience Hub discount tagged to this
+  // activity is applied here so the charged amount always matches what the dashboard configured.
+  const listPrice = price ?? experience.pricing.basePrice;
+  const eligible = await loadEligibleDiscounts({
+    propertyId: experience.propertyId || propertyId,
+    checkInDay: await arrivalDayForGuest(guestId),
+  });
+  const applied = bestDiscountFor(eligible, "experience", experienceId, listPrice);
+  const unitPrice = listPrice - (applied?.amount ?? 0);
+  // Group activities (guestCanChooseGroupSize: false) are one unit whatever the client sends.
+  const qty = experience.guestCanChooseGroupSize === false ? 1 : (numberOfGuests || 1);
+  // Priced per group: the party size doesn't change the price (pricePerPerson is false in the dashboard).
+  const priceQty = experience.pricing?.pricePerPerson === false ? 1 : qty;
+  // Add-ons are priced from the experience itself (flat per booking), never from the client.
+  const selectedAddons = Array.isArray(addonNames)
+    ? (experience.addOns || []).filter((a) => addonNames.includes(a.name)).map((a) => ({ name: a.name, price: a.price || 0 }))
+    : [];
+  const totalAmount = unitPrice * priceQty + selectedAddons.reduce((sum, a) => sum + a.price, 0);
 
-    const booking = await createWithHubRef({
-      Model: ExperienceBookingModel, field: 'bookingId', kind: 'exp',
-      stayId,
+  return {
+    ok: true,
+    kind: "experience",
+    amount: totalAmount,
+    doc: {
+      Model: ExperienceBookingModel, field: "bookingId", hubKind: "exp", stayId,
       data: {
         experienceId,
         guestId: guestId || undefined,
@@ -322,50 +314,29 @@ export const createExperienceBookingGuest = async (req, res) => {
         mainStayBookingId: stayId,
         propertyId: propertyId || experience.propertyId,
         specialRequests: specialRequests || null,
-        bookingStatus: isFree ? 'confirmed' : 'pending',
-        paymentStatus: isFree ? 'paid' : 'pending',
       },
-    });
+    },
+  };
+}
 
-    if (guestId) {
-      await Notification.create({
-        guestId,
-        title: isFree ? 'Experience Booked' : 'Experience Booking Pending',
-        message: isFree
-          ? `Your booking for "${experience.title}" on ${new Date(date).toDateString()} at ${timeSlot} is confirmed.`
-          : `Your booking for "${experience.title}" on ${new Date(date).toDateString()} at ${timeSlot} is pending payment.`,
-        type: 'success',
-        relatedId: booking._id.toString(),
-        relatedType: 'booking'
-      });
+/**
+ * Create an experience booking (guest-side). Only complimentary bookings are created here: a paid
+ * booking exists only after its payment has come through, via POST /payments/checkout.
+ */
+export const createExperienceBookingGuest = async (req, res) => {
+  try {
+    const prepared = await prepareExperienceBooking(req.body);
+    if (!prepared.ok) return res.status(prepared.status).json({ success: false, message: prepared.message });
+    if (prepared.amount > 0) {
+      return res.status(402).json({ success: false, message: "Payment is required: book paid activities through checkout." });
     }
-
-    // Send confirmation email for complimentary bookings (fire-and-forget)
-    if (isFree) {
-      const mainStayPromise = guestId
-        ? Booking.findOne({ guestId }).sort({ createdAt: -1 }).lean()
-        : Promise.resolve(null);
-
-      mainStayPromise.then(mainStay => {
-        return sendGuestBookingEmail({
-          mainBookingId: mainStay?.bookingId || null,
-          bookingType: 'Experience',
-          guestName: guestName || 'Guest',
-          activityName: experience.title,
-          bookingDateTime: `${new Date(date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} at ${timeSlot}`,
-          checkInDate: mainStay ? toISTDate(mainStay.arrivalDate) : 'N/A',
-          propertyName: mainStay?.propertyName || 'Evolve Back',
-        });
-      }).catch(emailErr => console.error('Failed to send complimentary booking email:', emailErr));
-    }
-
+    const booking = await persistPrepared(prepared);
     res.status(201).json({ success: true, data: booking });
-
   } catch (error) {
-    console.error('Create experience booking error:', error);
+    console.error("Create experience booking error:", error);
     res.status(500).json({
       success: false,
-      message: 'Failed to create experience booking',
+      message: "Failed to create experience booking",
       error: error.message
     });
   }

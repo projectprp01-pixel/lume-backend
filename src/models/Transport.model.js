@@ -25,9 +25,21 @@ const vehicleSchema = new mongoose.Schema({
   photoUrl: { type: String, default: '' }
 }, { _id: true });
 
+// Full Trip Cab "custom" pricing: fixed price per car, per pickup city, per length of stay (nights)
+const customTierSchema = new mongoose.Schema({
+  nights: { type: Number, required: true },
+  price: { type: Number, required: true }
+}, { _id: false });
+
+const customCitySchema = new mongoose.Schema({
+  city: { type: String, required: true },
+  tiers: { type: [customTierSchema], default: [] }
+}, { _id: false });
+
 const vehiclePriceSchema = new mongoose.Schema({
   vehicleId: { type: mongoose.Schema.Types.ObjectId, required: true },
-  price: { type: Number, default: 0 }
+  price: { type: Number, default: 0 },
+  cities: { type: [customCitySchema], default: undefined } // only used by Full Trip Cab in custom pricing mode
 }, { _id: false });
 
 const cityPricingSchema = new mongoose.Schema({
@@ -46,6 +58,7 @@ const offeringSchema = new mongoose.Schema({
   desc: { type: String, default: '' },
   structure: { type: String, enum: ['daily', 'p2p', 'custom'], required: true },
   flatRate: { type: Boolean, default: false },
+  pricingMode: { type: String, enum: ['calculated', 'custom'], default: 'calculated' }, // Full Trip Cab only
   published: { type: Boolean, default: true },
   included: { type: [String], default: [] },
   vehiclePricing: { type: [vehiclePriceSchema], default: [] },

@@ -7,6 +7,8 @@ import DiningReservation from '../models/DiningReservation.model.js';
 import Notification from '../models/Notification.model.js';
 import Booking from '../models/Booking.model.js';
 import { sendGuestBookingEmail, toISTDate } from '../utils/emailService.js';
+import PendingCheckout from '../models/PendingCheckout.model.js';
+import { CHECKOUT_KINDS, bookAll, loadBookingsByRefs, prepareItem } from '../services/guestCheckout.js';
 import { RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET } from '../config/env.js';
 
 // Find a booking by ID across all booking types
@@ -53,6 +55,135 @@ const amountOf = (found) =>
   found.type === 'experience' ? found.booking.totalAmount
   : found.type === 'spa' ? found.booking.price
   : found.booking.amount;
+
+/**
+ * Start a guest checkout: one or many booking requests (a cart). NOTHING is booked yet unless the whole
+ * cart is free.
+ *   - everything free  -> booked and confirmed right away          -> { status: 'booked', bookings }
+ *   - anything paid    -> a Razorpay order for the cart's total is created and the requests are parked
+ *                         in a PendingCheckout; bookings (free and paid together) are created only when
+ *                         the payment comes through (verify / webhook) -> { status: 'payment_required', ... }
+ * So a guest who closes the payment pop-up leaves no booking behind, and a cart is never half-booked.
+ * Body: { guestId, items: [{ kind: 'experience'|'spa'|'dining'|'transport', req: <that hub's booking body> }] }
+ */
+export const startCheckout = async (req, res) => {
+  try {
+    const { guestId, items } = req.body;
+    if (!guestId) return res.status(400).json({ success: false, message: 'guestId is required' });
+    if (!Array.isArray(items) || items.length === 0 || items.length > 25) {
+      return res.status(400).json({ success: false, message: 'Nothing to book' });
+    }
+    const queue = [];
+    for (const item of items) {
+      if (!item || !CHECKOUT_KINDS.includes(item.kind) || typeof item.req !== 'object' || !item.req) {
+        return res.status(400).json({ success: false, message: 'Invalid booking request' });
+      }
+      queue.push({ kind: item.kind, req: { ...item.req, guestId } });
+    }
+
+    // Validate + price every item (saves nothing).
+    let total = 0;
+    for (const item of queue) {
+      const prepared = await prepareItem(item.kind, item.req);
+      if (!prepared.ok) return res.status(prepared.status || 400).json({ success: false, message: prepared.message });
+      total += prepared.amount;
+    }
+
+    if (!(total > 0)) {
+      const result = await bookAll(queue, null, undefined);
+      if (!result.ok) return res.status(result.status).json({ success: false, message: result.message });
+      return res.status(201).json({ success: true, data: { status: 'booked', bookings: result.bookings } });
+    }
+
+    const rzp = getRazorpayInstance(); // throws first if Razorpay isn't configured, before anything is saved
+    const pending = await PendingCheckout.create({ guestId, items: queue, amount: total });
+    let order;
+    try {
+      order = await rzp.orders.create({
+        amount: Math.round(total * 100), // rupees -> paise
+        currency: 'INR',
+        receipt: pending._id.toString(),
+        notes: { pendingCheckout: pending._id.toString(), guestId: String(guestId), items: String(queue.length) },
+      });
+    } catch (orderError) {
+      await PendingCheckout.deleteOne({ _id: pending._id }).catch(() => {});
+      throw orderError;
+    }
+    pending.razorpayOrderId = order.id;
+    await pending.save();
+
+    res.status(200).json({
+      success: true,
+      data: {
+        status: 'payment_required',
+        orderId: order.id,
+        amount: order.amount,
+        currency: order.currency,
+        key: RAZORPAY_KEY_ID,
+      },
+    });
+  } catch (error) {
+    console.error('Start checkout error:', error);
+    res.status(500).json({ success: false, message: 'Failed to start checkout', error: error.message });
+  }
+};
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * A payment for a checkout order has come through: create every booking in the cart as paid + confirmed.
+ * Safe to call twice (verify + webhook race): only one caller does the work, the other gets the same result.
+ * If the cart can no longer be booked (slot filled meanwhile, price changed) nothing is booked and the
+ * payment is refunded in full.
+ * Returns { found:false } when the order isn't a checkout order, else { found:true, ok, bookings | message }.
+ */
+export async function fulfillCheckout(orderId, { paymentId, signature }) {
+  const claimed = await PendingCheckout.findOneAndUpdate(
+    { razorpayOrderId: orderId, status: 'created' },
+    { status: 'processing', razorpayPaymentId: paymentId },
+    { new: true },
+  );
+  if (!claimed) {
+    let existing = await PendingCheckout.findOne({ razorpayOrderId: orderId });
+    if (!existing) return { found: false };
+    for (let i = 0; i < 20 && existing.status === 'processing'; i++) {
+      await sleep(750); // the other caller is mid-way; wait for it to finish
+      existing = await PendingCheckout.findOne({ razorpayOrderId: orderId });
+    }
+    if (existing.status === 'fulfilled') {
+      return { found: true, ok: true, bookings: await loadBookingsByRefs(existing.bookingRefs) };
+    }
+    return { found: true, ok: false, message: existing.failureReason || 'This payment could not be completed.' };
+  }
+
+  const result = await bookAll(claimed.items, { orderId, paymentId, signature }, claimed.amount);
+  if (result.ok) {
+    claimed.status = 'fulfilled';
+    claimed.bookingRefs = result.bookings.map((b) => ({ kind: b.__kind, id: b._id }));
+    await claimed.save();
+    return { found: true, ok: true, bookings: result.bookings };
+  }
+
+  // Could not book after taking the money: give it all back.
+  let refunded = false;
+  try {
+    await getRazorpayInstance().payments.refund(paymentId, {
+      amount: Math.round(claimed.amount * 100),
+      speed: 'normal',
+      notes: { reason: result.message.slice(0, 200), pendingCheckout: claimed._id.toString() },
+    });
+    refunded = true;
+  } catch (refundError) {
+    console.error('REFUND FAILED - refund this payment manually in Razorpay:', paymentId, refundError);
+  }
+  claimed.status = 'failed';
+  claimed.refunded = refunded;
+  claimed.failureReason = refunded
+    ? `${result.message} Your payment has been refunded.`
+    : `${result.message} Please contact the front desk about your payment.`;
+  await claimed.save();
+  return { found: true, ok: false, message: claimed.failureReason };
+}
 
 /**
  * Create Razorpay order — for one booking (`bookingId`) or a whole cart (`bookingIds`): one order
@@ -172,6 +303,13 @@ export const verifyPayment = async (req, res) => {
         success: false,
         message: `Payment not completed (status: ${rzpPayment.status})`
       });
+    }
+
+    // A guest checkout (cart): this is the moment its bookings are actually created.
+    const fulfilled = await fulfillCheckout(razorpay_order_id, { paymentId: razorpay_payment_id, signature: razorpay_signature });
+    if (fulfilled.found) {
+      if (!fulfilled.ok) return res.status(409).json({ success: false, message: fulfilled.message });
+      return res.status(200).json({ success: true, message: 'Payment verified successfully', data: fulfilled.bookings });
     }
 
     // Find every booking this payment covers; each must belong to the order that was paid.
@@ -341,6 +479,14 @@ export const handleWebhook = async (req, res) => {
     if (event === 'payment.captured') {
       const orderId = payload.order_id;
       const paymentId = payload.id;
+
+      // A guest checkout whose guest never made it back to the app (closed the tab after paying):
+      // the bookings are created here instead.
+      const fulfilled = await fulfillCheckout(orderId, { paymentId, signature: null });
+      if (fulfilled.found) {
+        console.log(`Checkout ${orderId}: ${fulfilled.ok ? 'booked' : 'not booked - ' + fulfilled.message}`);
+        return res.status(200).json({ success: true });
+      }
 
       // Find booking by order ID
       const booking = await findBookingByOrderId(orderId);

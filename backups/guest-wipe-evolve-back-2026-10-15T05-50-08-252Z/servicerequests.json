@@ -1,0 +1,3014 @@
+[
+  {
+    "_id": {
+      "$oid": "69ef43b7458e83c3e4209a36"
+    },
+    "item": "Hi, this is a test",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "69ef3b28458e83c3e420869a"
+    },
+    "guestName": "Nandhini Y",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1777288151101"
+      }
+    },
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777288119470"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777288151101"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef43e2458e83c3e4209ad4"
+    },
+    "item": "Hii this is test",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "69ef3d03458e83c3e4208b04"
+    },
+    "guestName": "Prajod Patteri",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1777892739058"
+      }
+    },
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777288162253"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777892739058"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "69ef6076458e83c3e420a6ec"
+    },
+    "item": "Testing",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "69ef3b28458e83c3e420869a"
+    },
+    "guestName": "Nandhini Y",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1777892736673"
+      }
+    },
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1777295478042"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1777892736674"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0a9edb060279b17f71f537"
+    },
+    "item": "I see it says one child but I have actually booked it for 2. One is 10 years old and other is 4. Is there any issue with that?",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "guestName": "Ankit Jain",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1779090280119"
+      }
+    },
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779080923606"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779090280119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a151f760b1644683afbc17b"
+    },
+    "item": "Testing",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "guestName": "test768 Test",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1780032876619"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779769206389"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780032876619"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153b45386d07ead3e24b1d"
+    },
+    "item": "test email",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "guestName": "test",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776325539"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776325539"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153c78386d07ead3e24d62"
+    },
+    "item": "trigger check",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "guestName": "Test test",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "hampi",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776632063"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776632063"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a153cd7386d07ead3e24e15"
+    },
+    "item": "test mail",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a153ccb386d07ead3e24e07"
+    },
+    "guestName": "Test 2",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779776727874"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1779776727874"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a19618525bfd8d911c616e5"
+    },
+    "item": "Mail test",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "guestName": "test768 Test",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1780124480553"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780048261176"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780124480553"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1961ab25bfd8d911c616eb"
+    },
+    "item": "test",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a195fbf25bfd8d911c615a8"
+    },
+    "guestName": "Prajod",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780048299376"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1780048299376"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a1c06c025bfd8d911c64608"
+    },
+    "item": "Hi there, just writing here to share my disappointment that even after reaching the Resort, the checkin formalities have not been completed and seems the room was checked-in in someone else’s name. This blocks the WiFi access and even led to the lunch time being over. This is really disappointing when your moto says Service that money can’t buy. It is 3:30 pm now and I have called reception thrice but still no update.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "69fc5aa3385accb497329c7f"
+    },
+    "guestName": "Ankit Jain",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1781244233135"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780221632039"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244233136"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2583f630adfb06d20fedc6"
+    },
+    "item": "We want to do coffeeology on 09-06-26 at 12.00 to 12.45 P. M. As we don’t have time next day to do it \nWe want to see cultural show on 09-06-26 at 7.00 P. M. to 7.30 P. M. \nWe want to do plantation 4x4 for 2 adults on sharing basis on 09-06-26 from 3.30 P. M. to 5.15 P. M.\nMay be I will do bird watching on 10/06-26",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a225ad030adfb06d20fd4b4"
+    },
+    "guestName": "Radha Kesarwani",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1781244230472"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780843510798"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244230473"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a27c7bc30adfb06d210144c"
+    },
+    "item": "I’d like to book a spa for tmr evening for 2 guests",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a23860230adfb06d20fdc44"
+    },
+    "guestName": "Nikita Vora",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1781244227335"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780991932066"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244227335"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a290cc730adfb06d21042f1"
+    },
+    "item": "Can you just provide drop facility only from coorg to banglore. I don't need the pick up facility.  It would be great if u can do it.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a28f19530adfb06d2104211"
+    },
+    "guestName": "Preeti Jhawar",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1781244225316"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781075143600"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781244225317"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a2fa95e30adfb06d2108d53"
+    },
+    "item": "Hello. I am Mrs Gautham Pai. We are checking in on 19 June. Could you share the Spa menu with me please? You can share to my email: vanitajainpai@gmail.com",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a2f975230adfb06d210863c"
+    },
+    "guestName": "Gautham Pai",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781508446718"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1781508446718"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfc5730adfb06d21138be"
+    },
+    "item": "qwre3wre",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "guestName": "test-rejo",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1782809014593"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316119261"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782809014593"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfcad30adfb06d21138f5"
+    },
+    "item": "wedwd",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3bfc8c30adfb06d21138d5"
+    },
+    "guestName": "Test",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316205960"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782316205960"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3ca73030adfb06d2114f24"
+    },
+    "item": "Hi, am looking for transfer option from mangalore airport. Can you provide any option?",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3c8eaf30adfb06d2114dc2"
+    },
+    "guestName": "Sankaranarayanan Krishnan",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782359856567"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782359856567"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3f46d130adfb06d211818f"
+    },
+    "item": "I am travelling for my wifes 1st birthday after marriage! Its on 2nd July! Want to make it special!\n\nLooking for peppercorn restaurant reservation for lunch on 2nd July! \n\nMade few spa reservations offline with your team! Could you confirm if they are reserved! \n\nThank you!",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3f33eb30adfb06d2117eb5"
+    },
+    "guestName": "Sridatta Sai Polisetty",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782531793298"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782531793298"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a3f9a5a30adfb06d2119340"
+    },
+    "item": "Hi i would like to upgrage my room to Heritage pool villa can u pls help me with this",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3c8c5630adfb06d2114663"
+    },
+    "guestName": "Shikha Tandon",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782553178626"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782553178626"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a40a0ee30adfb06d211a78b"
+    },
+    "item": "Hi we will be celebrating my mother's 50th birthday on July 3 and have specially selected this property for her birthday",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a4099cd30adfb06d211a3ee"
+    },
+    "guestName": "Rohan Parekh",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782620398040"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782620398040"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a43612430adfb06d211d52e"
+    },
+    "item": "Hi\nWe have a 1 year old traveling with us. Would like to know food options and facilities available for him. \n\nAlso, we are celebrating his belated birthday. If we can have some decoration in the room for the occasion, that would be great.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a433fbc30adfb06d211d41b"
+    },
+    "guestName": "Deepika Mathur",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782800676237"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782800676237"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a43b5a330adfb06d211f1ad"
+    },
+    "item": "Hey bro rachit",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "guestName": "test-rejo",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1782890094686"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782822307485"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782890094686"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a45f5fbc281e5bb3d7d5691"
+    },
+    "item": "Trial",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "guestName": "Arun Chandran",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782969851829"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782969851829"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a48727cc281e5bb3d7d7a55"
+    },
+    "item": "Coming here to celebrate my birthday(8th July). Please decorate the room nicely, and add complementary cake and whatever else is possible",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a471af9c281e5bb3d7d6e53"
+    },
+    "guestName": "Shubham Goel",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783132796282"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783132796282"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a4b446fc281e5bb3d7d9a39"
+    },
+    "item": "Test",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "guestName": "Arun Chandran",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "kabini",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783317615792"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783317615792"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a59983e756970a0a22ceb4c"
+    },
+    "item": "19th of July is my friend’s Varsha’s birthday. Making that day special would be much appreciated",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a55a87fc281e5bb3d7e2a3f"
+    },
+    "guestName": "Uttara Rao",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784256574980"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784256574980"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5ae3d6756970a0a22cf539"
+    },
+    "item": "Hi. A couple of things i wanted to highlight ..\n1. It’s my daughter Trisha’s birthday on the 23rd. Any help with the celebrations is welcome.\n2. In the second bedroom (not master bedroom), I’d like separate beds instead of a king bed. \nAppreciate if you can make this happen for me.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a5ae222756970a0a22cf512"
+    },
+    "guestName": "Shubhadeep B",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784341462701"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784341462701"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a5f11bf756970a0a22d3237"
+    },
+    "item": "Its my husband’s birthday. So is it possible to arrange for a pool breakfast and a small decor corner (more like a cute crib with lights and balloons) where we can have the birthday dinner (outside the room in balcony or patio)",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a5dab87756970a0a22d0b13"
+    },
+    "guestName": "Bhavana Kumar",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784615359518"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784615359518"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a61e29c756970a0a22d6a1f"
+    },
+    "item": "Hi, We would be celebrating our son’s first birthday at your property on the second day. We would want to have a nice decoration done preferably outdoors to make the celebrations memorable. Please let me know if it’s feasible. I understand there are infant food options available which we would like to discuss during check in. Thanks",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a6199ca756970a0a22d635f"
+    },
+    "guestName": "Ashish Menon",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784799900874"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784799900874"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a632837756970a0a22d7b48"
+    },
+    "item": "We’re visiting the property during my birthday and we’re recently married so I request you to arrange things that can surprise my wife",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a5ef0d6756970a0a22d2fd5"
+    },
+    "guestName": "Yashwanth Cr",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784883255556"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784883255556"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a734484756970a0a22e1306"
+    },
+    "item": "Hi \nCan u pls decorate the room for us as its my birthday on the ninth and our first trip after our marriage",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a714af0756970a0a22df961"
+    },
+    "guestName": "Ayush V",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1785939076420"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1785939076420"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a780352756970a0a22e2c81"
+    },
+    "item": "Is there driver accommodation available",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a7800cf756970a0a22e2c5d"
+    },
+    "guestName": "Mahesh Manan Gupta",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786250066694"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786250066694"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7c6d36756970a0a22e54ba"
+    },
+    "item": "Hi it is my dad's birthday on the 14th. We will come on 15th.\nNo need for decor, but could you please arrange a small cake in the room or at dinner?",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a7a8426756970a0a22e3dec"
+    },
+    "guestName": "Aditi Nadamani",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786539318299"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786539318299"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7d6622756970a0a22e5e17"
+    },
+    "item": "Hi! I’m interested in the Guided Plantation Tour on Aug 17, but I’m not able to book this for 3 guests. Is it still available?",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a7d2dab756970a0a22e580f"
+    },
+    "guestName": "Kumar Krishnan",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786603042746"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786603042746"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a7e28f2756970a0a22e7ade"
+    },
+    "item": "Please also keep a potty seat for my baby in the room.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a7a8426756970a0a22e3dec"
+    },
+    "guestName": "Aditi Nadamani",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786652914930"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786652914930"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8164cf756970a0a22e89b6"
+    },
+    "item": "Can you please arrange lactose free milk for our stay since my wife is lactose intolerant?\n\nKindly let us know.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a813dcf756970a0a22e8960"
+    },
+    "guestName": "Aaditya Mittal",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786864847314"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1786864847314"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8275bb756970a0a22e8f8e"
+    },
+    "item": "Good morning ma'am \nThis is my 8th visit to the resort\nAs iam coming by train from chennai\nI will reach mysore by 7am.\nI request early check in \nAs iam coming with my family. Kindly do the needful. Iam your Ambassador.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a827427756970a0a22e8f78"
+    },
+    "guestName": "Sam R Rajesswaran",
+    "roomNumber": "",
+    "status": "In-progress",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1786934715693"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790232420633"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790232420632"
+        }
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a86ec76756970a0a22eb049"
+    },
+    "item": "Hey we are travelling with an infant and a 12 year old kid. Just a request if you can accommodate us in a twin bed room. Thank you in advance.",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a826dca756970a0a22e8ea0"
+    },
+    "guestName": "Rahul Upadhyay",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790232411024"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787227254157"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790232411024"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790232401451"
+        }
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a893c99756970a0a22ec8f1"
+    },
+    "item": "Kid pool tube needs \nAnd pool, room hygiene",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "guestName": "Niha Gowda",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790231900755"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787378841196"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790231900756"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790231896281"
+        }
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8d5a41756970a0a22f0169"
+    },
+    "item": "Is it heavy raining there?",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "guestName": "Niha Gowda",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790188924519"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787648577501"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188924519"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790188809061"
+        }
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8d9923756970a0a22f040d"
+    },
+    "item": "5 year of togetherness \n5 year anniversary",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6a890011756970a0a22ec5e6"
+    },
+    "guestName": "Niha Gowda",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790188777690"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1787664675846"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790188777694"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790188553087"
+        }
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab50f98149537e1206ea7ee"
+    },
+    "item": "My son's bday is tmrw. Could you decorate the room with Balloons",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790250904547"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790250904547"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab50fb2149537e1206ea7f5"
+    },
+    "item": "I want to extend my checkout by 2 hours",
+    "category": "Guest Services",
+    "department": "Front Desk",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1791270581238"
+        }
+      }
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1791270592527"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790250930967"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791270592527"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab50fd8149537e1206ea7fc"
+    },
+    "item": "I wanna bifercate the payment in two installments instead on one department",
+    "category": "Guest Services",
+    "department": "Front Desk",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790250968639"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790250968639"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab531a13e9cb02a314617d1"
+    },
+    "item": "I would love to have a water bottle and a extra towel in my room",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "In-progress",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790259644739"
+        }
+      }
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259617511"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259644739"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab531ea3e9cb02a314617da"
+    },
+    "item": "I would like to wash a lot of my clothes",
+    "category": "Guest Services",
+    "department": "Laundry",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "employee_10",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "6ab52fbd05b610f76d5e584d"
+      },
+      "name": "employee_10",
+      "department": "Laundry",
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790259708149"
+        }
+      }
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790259725957"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259690655"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259725958"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab532643e9cb02a314617e1"
+    },
+    "item": "I would like to wash a lot of my clothes. Please help me",
+    "category": "Guest Services",
+    "department": "Laundry",
+    "guestId": {
+      "$oid": "69f9bd4faadaeecaad2d0355"
+    },
+    "guestName": "Sudheer Narayan",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1790259832819"
+        }
+      }
+    },
+    "bookingId": "78098073",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1790259896988"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790259812696"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790259896989"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac5ea5598cb914c6a66f7f4"
+    },
+    "item": "Need Room to be decorated",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "BK-71202",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791355477653"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791355477653"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac5ea7098cb914c6a66f8de"
+    },
+    "item": "Need transport",
+    "category": "Guest Services",
+    "department": "Transport",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "BK-71202",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791355504538"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791355504538"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac5ea7998cb914c6a66f8f4"
+    },
+    "item": "Need a guide",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1791366548169"
+        }
+      }
+    },
+    "bookingId": "BK-71202",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1791366553682"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791355513156"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791366553683"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac708dd98cb914c6a692e1b"
+    },
+    "item": "I need some help with my bed, it's wobbly",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "BK-71202",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791428829691"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791428829691"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acccab993ad408683a7d8e2"
+    },
+    "item": "Need to decorate room",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6abcb718acf12672692fb40e"
+    },
+    "guestName": "Siddharth Rao",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "BK-66333",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "70"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791806137452"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791806137452"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acccc9493ad408683a7ed62"
+    },
+    "item": "Towel",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acc8c0c52f0b9757c24d5d6"
+    },
+    "guestName": "Test",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-83698",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791806612561"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791806612561"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accdb02c7b69617d18f0d1d"
+    },
+    "item": "Request",
+    "category": "Guest Services",
+    "department": "Front Desk",
+    "guestId": {
+      "$oid": "6accce5d93ad408683a7fd3e"
+    },
+    "guestName": "15th Oct",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-30459",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "70"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791810306019"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791810306019"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6accdb25c7b69617d18f1277"
+    },
+    "item": "Towel extra",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6accc9e393ad408683a7d1d1"
+    },
+    "guestName": "14th Oct",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1791810364979"
+        }
+      }
+    },
+    "bookingId": "EB-50753",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1791810386787"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791810341153"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791810386787"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acd09b4c7b69617d18fe2bd"
+    },
+    "item": "Hi can i get g class",
+    "category": "Guest Services",
+    "department": "Transport",
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "guestName": "Prachet Kulkarni",
+    "roomNumber": "",
+    "status": "Completed",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "Prachet Kulkarni",
+    "acceptedBy": {
+      "staffId": {
+        "$oid": "69eaf21ed58506da95238210"
+      },
+      "name": "Prachet Kulkarni",
+      "department": null,
+      "acceptedAt": {
+        "$date": {
+          "$numberLong": "1791822296097"
+        }
+      }
+    },
+    "bookingId": "123456",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": {
+      "$date": {
+        "$numberLong": "1791822313871"
+      }
+    },
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791822260927"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791822313872"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acda5ccc93603211d4e7f8a"
+    },
+    "item": "Need extra towels in my room do",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "guestName": "donald",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-69570",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791862220195"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791862220195"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acdcb6183f52d08577586c0"
+    },
+    "item": "Tea",
+    "category": "Guest Services",
+    "department": "F & B",
+    "guestId": {
+      "$oid": "6acdc6b183f52d0857751e63"
+    },
+    "guestName": "Paul",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-53998",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791871841725"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791871841725"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ace64e69d2f10e3ed5d9ce8"
+    },
+    "item": "need pillows too, with a 5 litre water bottle",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acd2880c93603211d4e3300"
+    },
+    "guestName": "Donald Trumpet",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-69570",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "95"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791911142325"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791911142325"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf06809d2f10e3ed5e0105"
+    },
+    "item": "Towel",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acdc6b183f52d0857751e63"
+    },
+    "guestName": "Paul",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-53998",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791952512289"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791952512289"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf689cd513d74ab186ef60"
+    },
+    "item": "bring me some milk",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acd11fec7b69617d1905f69"
+    },
+    "guestName": "tushi test",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-87322",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791977628228"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791977628228"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf75fbd513d74ab187309b"
+    },
+    "item": "Towel",
+    "category": "Guest Services",
+    "department": "Housekeeping",
+    "guestId": {
+      "$oid": "6acf22ddbeb738b75a2ac90b"
+    },
+    "guestName": "PPPP",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-42310",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "85"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791981051837"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791981051837"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf7609d513d74ab18730d0"
+    },
+    "item": "Wedding",
+    "category": "Guest Services",
+    "department": "Concierge",
+    "guestId": {
+      "$oid": "6acf22ddbeb738b75a2ac90b"
+    },
+    "guestName": "PPPP",
+    "roomNumber": "",
+    "status": "Pending",
+    "priority": "Normal",
+    "source": "App",
+    "guestComment": "",
+    "aiSummary": "",
+    "actionables": [],
+    "notes": "",
+    "assignee": "",
+    "acceptedBy": {
+      "staffId": null,
+      "name": "",
+      "department": null,
+      "acceptedAt": null
+    },
+    "bookingId": "EB-42310",
+    "routing": {
+      "source": "ai",
+      "confidencePct": {
+        "$numberInt": "70"
+      },
+      "reason": "",
+      "routedBy": ""
+    },
+    "eta": "TBD",
+    "completedAt": null,
+    "propertyId": "default",
+    "alertEmailFailed": false,
+    "replies": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791981065524"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791981065524"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  }
+]

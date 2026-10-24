@@ -1,0 +1,145 @@
+[
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b049a"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78478",
+    "folio": [
+      {
+        "name": "Late check-out fee",
+        "price": {
+          "$numberInt": "4200"
+        },
+        "paid": false,
+        "_id": {
+          "$oid": "6ab557ddfa1d089fc61b049b"
+        }
+      }
+    ],
+    "checkoutTimeOverride": "09:30",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b049c"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78511",
+    "folio": [],
+    "checkoutTimeOverride": "10:30",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b049d"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78390",
+    "folio": [],
+    "checkoutTimeOverride": "12:00",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b049e"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78455",
+    "folio": [],
+    "checkoutTimeOverride": "13:30",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b049f"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78467",
+    "folio": [],
+    "checkoutTimeOverride": "11:30",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405671"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b04a0"
+    },
+    "propertyId": "default",
+    "bookingId": "EB-2026-78489",
+    "folio": [],
+    "checkoutTimeOverride": "09:00",
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405672"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405672"
+      }
+    }
+  }
+]

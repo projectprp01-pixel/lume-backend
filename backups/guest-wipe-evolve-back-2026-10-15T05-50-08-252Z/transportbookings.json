@@ -1,0 +1,1776 @@
+[
+  {
+    "_id": {
+      "$oid": "6a01c9f2060279b17f712e78"
+    },
+    "guestId": {
+      "$oid": "69fd8f67f36fbebf27592b76"
+    },
+    "bookingId": {
+      "$oid": "69fd8f67f36fbebf27592b78"
+    },
+    "guestName": "Mithran S",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1779840000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780099200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1778502130319"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_So3UbIMThbscR1"
+  },
+  {
+    "_id": {
+      "$oid": "6a1536110b1644683afbcb14"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "bookingId": {
+      "$oid": "6a15306f0b1644683afbc342"
+    },
+    "guestName": "Test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780185600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "15000"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779774993009"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Stsw3JAaIeD8Pk"
+  },
+  {
+    "_id": {
+      "$oid": "6a154926386d07ead3e26151"
+    },
+    "guestId": {
+      "$oid": "6a1530a80b1644683afbc367"
+    },
+    "bookingId": {
+      "$oid": "6a1530a80b1644683afbc369"
+    },
+    "guestName": "test t",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1780012800000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780272000000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779878453"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_StuK4RKicINQLp"
+  },
+  {
+    "_id": {
+      "$oid": "6a15493c386d07ead3e2616e"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "bookingId": {
+      "$oid": "6a15306f0b1644683afbc342"
+    },
+    "guestName": "Test test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780185600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779779900899"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_StuKSwG7QElAGl"
+  },
+  {
+    "_id": {
+      "$oid": "6a168e0325bfd8d911c5c821"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "bookingId": {
+      "$oid": "6a15306f0b1644683afbc342"
+    },
+    "guestName": "Test test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780185600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1779863043611"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_SuHwENdg38OZhE"
+  },
+  {
+    "_id": {
+      "$oid": "6a1b130125bfd8d911c63f48"
+    },
+    "guestId": {
+      "$oid": "6a15306e0b1644683afbc340"
+    },
+    "bookingId": {
+      "$oid": "6a15306f0b1644683afbc342"
+    },
+    "guestName": "Test test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1779926400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1780185600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "hampi",
+    "paymentStatus": "processing",
+    "staffSeen": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1780159233236"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_Sve2olBzrPpMsR"
+  },
+  {
+    "_id": {
+      "$oid": "6a36272b30adfb06d210e0f8"
+    },
+    "guestId": {
+      "$oid": "6a141554de08f70a9f90037e"
+    },
+    "bookingId": {
+      "$oid": "6a141555de08f70a9f900380"
+    },
+    "guestName": "test768 Test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783468800000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1784073600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "7"
+    },
+    "amount": {
+      "$numberInt": "54500"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1781933867467"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T3lyFYvQVszSIV"
+  },
+  {
+    "_id": {
+      "$oid": "6a38c21530adfb06d211028c"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "bookingId": {
+      "$oid": "6a3897ed30adfb06d21100c6"
+    },
+    "guestName": "Rahul Gairola",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782432000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782104597710"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T4YS3NjYcmEpUA"
+  },
+  {
+    "_id": {
+      "$oid": "6a3bc72c30adfb06d21137c1"
+    },
+    "guestId": {
+      "$oid": "6a3647a730adfb06d210e54a"
+    },
+    "bookingId": {
+      "$oid": "6a3647a730adfb06d210e54c"
+    },
+    "guestName": "Aparajita Jamwal",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782259200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782518400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782302508812"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T5SeOnDHX4kdSN"
+  },
+  {
+    "_id": {
+      "$oid": "6a3bfddb30adfb06d2113a80"
+    },
+    "guestId": {
+      "$oid": "6a2d253930adfb06d2107420"
+    },
+    "bookingId": {
+      "$oid": "6a2d253930adfb06d2107422"
+    },
+    "guestName": "Mithran",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782259200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782345600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "1"
+    },
+    "amount": {
+      "$numberInt": "19300"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782316507105"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T5Wcr28Lkqs477"
+  },
+  {
+    "_id": {
+      "$oid": "6a3c2f4130adfb06d2113b1c"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "bookingId": {
+      "$oid": "6a3897ed30adfb06d21100c6"
+    },
+    "guestName": "Rahul Gairola",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782432000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "paid",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782329153209"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1782352383989"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T5aDTlREzyUKi1",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1782329185125"
+      }
+    },
+    "razorpayPaymentId": "pay_T5aDcqUb3mAYuG",
+    "razorpaySignature": "c9b8d79202ba6c5ed22f500392a4ec2dc634099a7e01f50a38c3d3901c058f64"
+  },
+  {
+    "_id": {
+      "$oid": "6a3f8abf30adfb06d2118df2"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "bookingId": {
+      "$oid": "6a3897ed30adfb06d21100c6"
+    },
+    "guestName": "Rahul Gairola",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782432000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782549183374"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T6ahEPl1IUkdM1"
+  },
+  {
+    "_id": {
+      "$oid": "6a41f95230adfb06d211bd18"
+    },
+    "guestId": {
+      "$oid": "6a3897ed30adfb06d21100c4"
+    },
+    "bookingId": {
+      "$oid": "6a3897ed30adfb06d21100c6"
+    },
+    "guestName": "Rahul Gairola",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782432000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708562234"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7JxBSyVUJhBPX"
+  },
+  {
+    "_id": {
+      "$oid": "6a41f9f330adfb06d211be49"
+    },
+    "guestId": {
+      "$oid": "6a3c8d9b30adfb06d2114db5"
+    },
+    "bookingId": {
+      "$oid": "6a3c8d9b30adfb06d2114db7"
+    },
+    "guestName": "Sriram Putta",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782950400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708723327"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7K01eZZRbeJPg"
+  },
+  {
+    "_id": {
+      "$oid": "6a41fa0e30adfb06d211be74"
+    },
+    "guestId": {
+      "$oid": "6a3c912730adfb06d2114e55"
+    },
+    "bookingId": {
+      "$oid": "6a3c912730adfb06d2114e57"
+    },
+    "guestName": "Abhijeet P",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782950400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782708750669"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7K0V5KiqX1Jjk"
+  },
+  {
+    "_id": {
+      "$oid": "6a4239b330adfb06d211cb57"
+    },
+    "guestId": {
+      "$oid": "6a3c912730adfb06d2114e55"
+    },
+    "bookingId": {
+      "$oid": "6a3c912730adfb06d2114e57"
+    },
+    "guestName": "Abhijeet P",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1782691200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1782950400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782725043149"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7OdM83WSounvl"
+  },
+  {
+    "_id": {
+      "$oid": "6a42433130adfb06d211ccb4"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "bookingId": {
+      "$oid": "6a3a492f30adfb06d2111bd3"
+    },
+    "guestName": "test-rejo",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1784678400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1785369600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "8"
+    },
+    "amount": {
+      "$numberInt": "15000"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782727473023"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T7PK91OwdmDL9r"
+  },
+  {
+    "_id": {
+      "$oid": "6a44596130adfb06d211f9b7"
+    },
+    "guestId": {
+      "$oid": "6a435dfa30adfb06d211d4fa"
+    },
+    "bookingId": {
+      "$oid": "6a435dfa30adfb06d211d4fc"
+    },
+    "guestName": "Prakash Khandelwal",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783123200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783296000000"
+      }
+    },
+    "nights": {
+      "$numberInt": "2"
+    },
+    "amount": {
+      "$numberInt": "23700"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782864225200"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T829iaK0oSjBko"
+  },
+  {
+    "_id": {
+      "$oid": "6a44f162c281e5bb3d7d434b"
+    },
+    "guestId": {
+      "$oid": "6a3a492f30adfb06d2111bd1"
+    },
+    "bookingId": {
+      "$oid": "6a3a492f30adfb06d2111bd3"
+    },
+    "guestName": "test-rejo joseph",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1784678400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1785369600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "8"
+    },
+    "amount": {
+      "$numberInt": "15000"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782903138833"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T8DCp2sXy3sAzA"
+  },
+  {
+    "_id": {
+      "$oid": "6a4565adc281e5bb3d7d5357"
+    },
+    "guestId": {
+      "$oid": "6a4215ba30adfb06d211c2d7"
+    },
+    "bookingId": {
+      "$oid": "6a4215ba30adfb06d211c2d9"
+    },
+    "guestName": "Saket Modi",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783036800000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783296000000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782932909350"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T8LewWXgelyn7k"
+  },
+  {
+    "_id": {
+      "$oid": "6a45f195c281e5bb3d7d5502"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "bookingId": {
+      "$oid": "6a45ed68c281e5bb3d7d54d7"
+    },
+    "guestName": "Arun Chandran",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783382400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783900800000"
+      }
+    },
+    "nights": {
+      "$numberInt": "6"
+    },
+    "amount": {
+      "$numberInt": "47900"
+    },
+    "status": "cancelled",
+    "propertyId": "kabini",
+    "paymentStatus": "processing",
+    "staffSeen": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1782968725572"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T8VpVLk1XCK5I3"
+  },
+  {
+    "_id": {
+      "$oid": "6a48f4f7c281e5bb3d7d8317"
+    },
+    "guestId": {
+      "$oid": "6a486f02c281e5bb3d7d7a2e"
+    },
+    "bookingId": {
+      "$oid": "6a486f02c281e5bb3d7d7a30"
+    },
+    "guestName": "Sweena Sareen",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783468800000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783555200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "1"
+    },
+    "amount": {
+      "$numberInt": "19300"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783166199127"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_T9Pu8gvFOvxRza"
+  },
+  {
+    "_id": {
+      "$oid": "6a4b3f9dc281e5bb3d7d9940"
+    },
+    "guestId": {
+      "$oid": "6a45ed67c281e5bb3d7d54d5"
+    },
+    "bookingId": {
+      "$oid": "6a45ed68c281e5bb3d7d54d7"
+    },
+    "guestName": "Arun Chandran",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783382400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783900800000"
+      }
+    },
+    "nights": {
+      "$numberInt": "6"
+    },
+    "amount": {
+      "$numberInt": "47900"
+    },
+    "status": "cancelled",
+    "propertyId": "kabini",
+    "paymentStatus": "processing",
+    "staffSeen": false,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783316381711"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TA6YBfbhpjTnim"
+  },
+  {
+    "_id": {
+      "$oid": "6a4d1433c281e5bb3d7db887"
+    },
+    "guestId": {
+      "$oid": "6a4c9137c281e5bb3d7da9e4"
+    },
+    "bookingId": {
+      "$oid": "6a4c9137c281e5bb3d7da9e6"
+    },
+    "guestName": "Karthik Masalchi",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783728000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783900800000"
+      }
+    },
+    "nights": {
+      "$numberInt": "2"
+    },
+    "amount": {
+      "$numberInt": "23700"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783436339585"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784024353119"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TAec7yOwq5b3hu"
+  },
+  {
+    "_id": {
+      "$oid": "6a50c89dc281e5bb3d7ddc9c"
+    },
+    "guestId": {
+      "$oid": "6a4c93dbc281e5bb3d7daa28"
+    },
+    "bookingId": {
+      "$oid": "6a4c93dbc281e5bb3d7daa2a"
+    },
+    "guestName": "Prarthana S Mudkavi",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1783728000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1783987200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "paid",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1783679133180"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1783680990823"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_TBlYd7dYMy2iFf",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1783679279219"
+      }
+    },
+    "razorpayPaymentId": "pay_TBlYuF2Tra718M",
+    "razorpaySignature": "d7b88445a1465db95082453dfc599b81f216368d27e365d41abe9692fadf5b4a"
+  },
+  {
+    "_id": {
+      "$oid": "6a62ddbb756970a0a22d703f"
+    },
+    "guestId": {
+      "$oid": "6a619aa5756970a0a22d636a"
+    },
+    "bookingId": {
+      "$oid": "6a619aa5756970a0a22d636c"
+    },
+    "guestName": "Lakshmi Biradar",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1785110400000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1785369600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "28100"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "paid",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784864187577"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784867441443"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_THC4AwQDfq9GMv",
+    "paidAt": {
+      "$date": {
+        "$numberLong": "1784864631277"
+      }
+    },
+    "razorpayPaymentId": "pay_THC96mRmtLIxbx",
+    "razorpaySignature": "4262ece016518b1c4d2becddd4b582ba444fa464f4b120bf6936ea0e0e033b56"
+  },
+  {
+    "_id": {
+      "$oid": "6a6331f4756970a0a22d7dea"
+    },
+    "guestId": {
+      "$oid": "6a62f58e756970a0a22d724f"
+    },
+    "bookingId": {
+      "$oid": "6a62f58e756970a0a22d7251"
+    },
+    "guestName": "Deepak Reddy",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1785196800000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1785369600000"
+      }
+    },
+    "nights": {
+      "$numberInt": "2"
+    },
+    "amount": {
+      "$numberInt": "23700"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "processing",
+    "staffSeen": true,
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1784885748763"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1784887800014"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "razorpayOrderId": "order_THIBmC3QxMg8qx"
+  },
+  {
+    "_id": {
+      "$oid": "6aa03bbb1e0f9c79cab96ed1"
+    },
+    "guestName": "LUME CXM",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1788825600000"
+      }
+    },
+    "amount": {
+      "$numberInt": "3200"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": true,
+    "hubBooking": true,
+    "ref": "EB-2026-78016",
+    "offeringSlot": {
+      "$numberInt": "1"
+    },
+    "vehicleId": {
+      "$oid": "6aa03a3484d40cb4140f4acd"
+    },
+    "vehicleName": "Sedan",
+    "room": "",
+    "source": "staff",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1788885947304"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1788885947304"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aae855eaaaec002ea1d6957"
+    },
+    "guestName": "Prachet Test",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1789862400000"
+      }
+    },
+    "amount": {
+      "$numberInt": "999"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "paid",
+    "staffSeen": true,
+    "hubBooking": true,
+    "ref": "EB-2026-79505",
+    "offeringSlot": {
+      "$numberInt": "2"
+    },
+    "vehicleId": {
+      "$oid": "6aa03a3484d40cb4140f4ad0"
+    },
+    "vehicleName": "G Wagon",
+    "room": "Coffee Cottage 101",
+    "source": "staff",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789822302289"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789822319090"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aae86d8aaaec002ea1d6a18"
+    },
+    "guestName": "Prachet Test 2",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1789822680676"
+      }
+    },
+    "amount": {
+      "$numberInt": "53"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": true,
+    "hubBooking": true,
+    "ref": "EB-2026-79129",
+    "offeringSlot": {
+      "$numberInt": "1"
+    },
+    "vehicleId": {
+      "$oid": "6aa03a3484d40cb4140f4acd"
+    },
+    "vehicleName": "Audi A4",
+    "room": "",
+    "source": "staff",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1789822680678"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1789822680678"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0483"
+    },
+    "guestId": {
+      "$oid": "6ab5543a8a325795d1e6cd0a"
+    },
+    "guestName": "The Iyer Family",
+    "roomNumber": "Cottage 108",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1789799400000"
+      }
+    },
+    "amount": {
+      "$numberInt": "3700"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": true,
+    "ref": "SEEDCO-7",
+    "mainStayBookingId": "EB-2026-78390",
+    "vehicleName": "Airport transfer",
+    "room": "Cottage 108",
+    "source": "staff",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405666"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405666"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab557ddfa1d089fc61b0484"
+    },
+    "guestId": {
+      "$oid": "6ab5543b8a325795d1e6cd10"
+    },
+    "guestName": "Karan Malhotra",
+    "roomNumber": "Villa 7",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1789972200000"
+      }
+    },
+    "amount": {
+      "$numberInt": "2000"
+    },
+    "status": "confirmed",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": true,
+    "ref": "SEEDCO-9",
+    "mainStayBookingId": "EB-2026-78455",
+    "vehicleName": "Airport transfer",
+    "room": "Villa 7",
+    "source": "staff",
+    "addons": [],
+    "__v": {
+      "$numberInt": "0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790269405667"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790269405667"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac61aa898cb914c6a67569d"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "bookingId": {
+      "$oid": "6abcb717acf12672692fb408"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1794355200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1794614400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "2800"
+    },
+    "status": "pending",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": false,
+    "ref": "BK-71202-TRN-1",
+    "mainStayBookingId": "BK-71202",
+    "vehicleName": "",
+    "room": "",
+    "source": "app",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791367848450"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791367848450"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ac61ace98cb914c6a675d12"
+    },
+    "guestId": {
+      "$oid": "6abcb717acf12672692fb406"
+    },
+    "bookingId": {
+      "$oid": "6abcb717acf12672692fb408"
+    },
+    "guestName": "Nikhil Joseph",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1794355200000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1794614400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "12000"
+    },
+    "status": "pending",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": false,
+    "ref": "BK-71202-TRN-2",
+    "mainStayBookingId": "BK-71202",
+    "vehicleName": "",
+    "room": "",
+    "source": "app",
+    "addons": [],
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791367886706"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791367886706"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acd0aa3c7b69617d18fe746"
+    },
+    "guestId": {
+      "$oid": "6accea06c7b69617d18fafbb"
+    },
+    "bookingId": {
+      "$oid": "6accea06c7b69617d18fafbd"
+    },
+    "guestName": "Prachet Kulkarni",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1791936000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1792195200000"
+      }
+    },
+    "nights": {
+      "$numberInt": "3"
+    },
+    "amount": {
+      "$numberInt": "42000"
+    },
+    "status": "cancelled",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": true,
+    "ref": "123456-TRN-1",
+    "mainStayBookingId": "123456",
+    "offeringSlot": {
+      "$numberInt": "3"
+    },
+    "vehicleId": {
+      "$oid": "6ac8eb4d97789c2618b3cbb2"
+    },
+    "vehicleName": "Sedan (Mercedes E Class)",
+    "room": "",
+    "source": "app",
+    "addons": [],
+    "items": [
+      {
+        "vehicleId": {
+          "$oid": "6ac8eb4d97789c2618b3cbb2"
+        },
+        "vehicleName": "Sedan (Mercedes E Class)",
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "days": [],
+        "city": "Bengaluru",
+        "pickupAddon": false,
+        "amount": {
+          "$numberInt": "42000"
+        },
+        "_id": {
+          "$oid": "6acd0aa3c7b69617d18fe747"
+        }
+      }
+    ],
+    "days": [],
+    "city": "Bengaluru",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791822499230"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791888817753"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6acf3e5fd513d74ab186a70e"
+    },
+    "guestId": {
+      "$oid": "6acf22ddbeb738b75a2ac90b"
+    },
+    "bookingId": {
+      "$oid": "6acf22debeb738b75a2ac90d"
+    },
+    "guestName": "PPPP",
+    "roomNumber": "",
+    "checkInDate": {
+      "$date": {
+        "$numberLong": "1791936000000"
+      }
+    },
+    "checkOutDate": {
+      "$date": {
+        "$numberLong": "1792022400000"
+      }
+    },
+    "nights": {
+      "$numberInt": "1"
+    },
+    "amount": {
+      "$numberInt": "17000"
+    },
+    "status": "pending",
+    "propertyId": "default",
+    "paymentStatus": "pending",
+    "staffSeen": false,
+    "hubBooking": true,
+    "ref": "EB-42310-TRN-1",
+    "mainStayBookingId": "EB-42310",
+    "offeringSlot": {
+      "$numberInt": "3"
+    },
+    "vehicleId": {
+      "$oid": "6ac8ead297789c2618b3cb44"
+    },
+    "vehicleName": "SUV (Innova Crysta)",
+    "room": "",
+    "source": "app",
+    "addons": [],
+    "items": [
+      {
+        "vehicleId": {
+          "$oid": "6ac8ead297789c2618b3cb44"
+        },
+        "vehicleName": "SUV (Innova Crysta)",
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "days": [],
+        "city": "Bengaluru",
+        "pickupAddon": false,
+        "amount": {
+          "$numberInt": "17000"
+        },
+        "_id": {
+          "$oid": "6acf3e5fd513d74ab186a70f"
+        }
+      }
+    ],
+    "days": [],
+    "city": "Bengaluru",
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1791966815180"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791966815180"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  }
+]

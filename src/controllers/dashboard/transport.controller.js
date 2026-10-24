@@ -269,7 +269,7 @@ export const deleteTransportVehicle = async (req, res) => {
   }
 };
 
-const OFFERING_EDITABLE_FIELDS = ['name', 'desc', 'published', 'flatRate', 'included', 'vehiclePricing', 'eligibleVehicles', 'cities', 'addons'];
+const OFFERING_EDITABLE_FIELDS = ['name', 'desc', 'published', 'flatRate', 'pricingMode', 'included', 'vehiclePricing', 'eligibleVehicles', 'cities', 'addons'];
 
 export const updateTransportOffering = async (req, res) => {
   try {
