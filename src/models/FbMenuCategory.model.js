@@ -7,6 +7,8 @@ const fbMenuCategorySchema = new mongoose.Schema({
   openTime: { type: String, default: '07:00' },
   closeTime: { type: String, default: '22:00' },
   imageUrl: { type: String, default: '' },
+  // Estimated prep/delivery time shown to guests beside the category hours, free text e.g. "25-30 min".
+  prepTime: { type: String, default: '' },
 }, { timestamps: true });
 
 fbMenuCategorySchema.index({ propertyId: 1 });
