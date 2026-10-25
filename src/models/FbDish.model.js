@@ -1,5 +1,12 @@
 import mongoose from 'mongoose';
 
+// Optional paid add-ons a guest can tick before adding the dish to their order, e.g. "Extra toast".
+const fbDishExtraSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  note: { type: String, default: '' },
+  price: { type: Number, default: 0 },
+}, { _id: false });
+
 const fbDishSchema = new mongoose.Schema({
   subcategoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'FbMenuSubcategory', required: true },
   name: { type: String, required: true },
@@ -10,6 +17,7 @@ const fbDishSchema = new mongoose.Schema({
   serves: { type: String, default: '1' },
   tags: { type: [String], default: [] },
   imageUrl: { type: String, default: '' },
+  extras: { type: [fbDishExtraSchema], default: [] },
   // No separate "published" flag — deliberately removed in product, see App Flow doc §9.
   inStock: { type: Boolean, default: true },
 }, { timestamps: true });

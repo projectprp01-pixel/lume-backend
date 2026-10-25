@@ -128,23 +128,35 @@ export const createInRoomOrder = async (req, res) => {
     if (!guest) return res.status(404).json({ success: false, message: 'Guest not found' });
     const booking = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).lean().catch(() => null);
 
+    // One line per dish + set of extras: the same dish with different extras is a different line.
     const wanted = new Map();
     for (const it of items) {
       const qty = Math.floor(Number(it?.qty));
       if (!it?.dishId || !(qty >= 1 && qty <= 20)) {
         return res.status(400).json({ success: false, message: 'Each item needs a dish and a quantity from 1 to 20' });
       }
-      wanted.set(String(it.dishId), (wanted.get(String(it.dishId)) ?? 0) + qty);
+      const extraNames = [...new Set((Array.isArray(it.extras) ? it.extras : []).map(String))].sort();
+      const key = `${it.dishId}|${extraNames.join('|')}`;
+      const hit = wanted.get(key);
+      wanted.set(key, { dishId: String(it.dishId), extraNames, qty: (hit?.qty ?? 0) + qty });
     }
 
-    const dishes = await FbDish.find({ _id: { $in: [...wanted.keys()] } }).lean();
+    const dishIds = [...new Set([...wanted.values()].map((l) => l.dishId))];
+    const dishes = await FbDish.find({ _id: { $in: dishIds } }).lean();
     const orderItems = [];
-    for (const [dishId, qty] of wanted) {
+    for (const { dishId, extraNames, qty } of wanted.values()) {
       const dish = dishes.find((d) => String(d._id) === dishId);
       if (!dish || !dish.inStock) {
         return res.status(400).json({ success: false, message: 'An item in your cart is no longer available' });
       }
-      orderItems.push({ dishId: dish._id, name: dish.name, qty, price: dish.price, gstPercent: dish.gstPercent ?? 0 });
+      // Extras are priced from the dish's own list, never from the client.
+      const chosen = extraNames.map((n) => (dish.extras ?? []).find((e) => e.name === n));
+      if (chosen.some((e) => !e)) {
+        return res.status(400).json({ success: false, message: 'An extra in your cart is no longer available' });
+      }
+      const extras = chosen.map((e) => ({ name: e.name, price: e.price ?? 0 }));
+      const price = dish.price + extras.reduce((sum, e) => sum + e.price, 0);
+      orderItems.push({ dishId: dish._id, name: dish.name, qty, price, extras, gstPercent: dish.gstPercent ?? 0 });
     }
 
     const order = await FbOrder.create({

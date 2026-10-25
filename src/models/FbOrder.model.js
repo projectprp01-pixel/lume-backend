@@ -1,10 +1,18 @@
 import mongoose from 'mongoose';
 
+const fbOrderItemExtraSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  price: { type: Number, default: 0 },
+}, { _id: false });
+
 const fbOrderItemSchema = new mongoose.Schema({
   dishId: { type: mongoose.Schema.Types.ObjectId, ref: 'FbDish' },
   name: { type: String, required: true },
   qty: { type: Number, required: true },
+  // Per-unit price: the dish price plus any extras the guest ticked, so qty * price is always the line value.
   price: { type: Number, required: true },
+  // Snapshot of the extras behind that price (display only).
+  extras: { type: [fbOrderItemExtraSchema], default: [] },
   gstPercent: { type: Number, default: 0 },
 }, { _id: false });
 
