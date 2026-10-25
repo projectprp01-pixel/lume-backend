@@ -51,6 +51,19 @@ const bookingSchema = new mongoose.Schema({
   checkInCompletedAt: Date,
   // From PMS - populated automatically
   pmsBookingId: String,
+  // 'manual' = staff-entered (Add Guest / bulk import); 'pms' = created by the Opera sync, which only ever writes these rows.
+  source: {
+    type: String,
+    enum: ['manual', 'pms'],
+    default: 'manual'
+  },
+  pmsLastSyncedAt: Date,
+  // Opera's own lastModifyDateTime for the reservation, used to skip unchanged rows.
+  pmsModifiedAt: String,
+  pmsSyncStatus: {
+    type: String,
+    enum: ['ok', 'stale', 'error']
+  },
   totalAmount: Number,
   specialRequests: String,
   metadata: mongoose.Schema.Types.Mixed
@@ -64,6 +77,11 @@ bookingSchema.index({ guestId: 1 });
 bookingSchema.index({ arrivalDate: 1 });
 bookingSchema.index({ checkInStatus: 1 });
 bookingSchema.index({ propertyId: 1, arrivalDate: 1 });
+// One row per Opera reservation per property; manual rows (no pmsBookingId) are excluded.
+bookingSchema.index(
+  { propertyId: 1, pmsBookingId: 1 },
+  { unique: true, partialFilterExpression: { pmsBookingId: { $type: 'string' } } }
+);
 
 const Booking = mongoose.model('Booking', bookingSchema);
 

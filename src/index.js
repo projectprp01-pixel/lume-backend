@@ -13,6 +13,7 @@ import bookingRoutes from './routes/booking.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
 import authRoutes from './routes/auth.routes.js';
+import { startPmsSync } from './services/opera/scheduler.js';
 // Connect to MongoDB
 connectDB();
 
@@ -91,4 +92,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${NODE_ENV}`);
+  startPmsSync();
 });

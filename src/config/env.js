@@ -74,6 +74,27 @@ export const LSQ_SECRET_KEY = process.env.LSQ_SECRET_KEY;
 // Exact dropdown label for this property in LeadSquared's mx_Custom_2 field.
 export const LSQ_PROPERTY_NAME = process.env.LSQ_PROPERTY_NAME;
 
+// ---- Opera Cloud PMS (optional integration — read-only reservation sync) ----
+// The poller only starts when OPERA_SYNC_ENABLED=true. The hotel ID is per deployment, never hardcoded.
+const int = (value, fallback) => (Number.isFinite(parseInt(value)) ? parseInt(value) : fallback);
+export const OPERA_SYNC_ENABLED = process.env.OPERA_SYNC_ENABLED === 'true';
+export const OPERA_BASE_URL = (process.env.OPERA_BASE_URL || '').replace(/\/+$/, '');
+export const OPERA_HOTEL_ID = process.env.OPERA_HOTEL_ID;
+export const OPERA_ENTERPRISE_ID = process.env.OPERA_ENTERPRISE_ID;
+export const OPERA_SCOPE = process.env.OPERA_SCOPE;
+export const OPERA_CLIENT_ID = process.env.OPERA_CLIENT_ID;
+export const OPERA_CLIENT_SECRET = process.env.OPERA_CLIENT_SECRET;
+export const OPERA_APP_KEY = process.env.OPERA_APP_KEY;
+// Timezone the sync windows ("today") are computed in — the property's, not the server's.
+export const OPERA_TIMEZONE = process.env.OPERA_TIMEZONE || 'Asia/Kolkata';
+// Fast tier: in-house + arrivals in the next N days + departures in the last M days. Nightly tier: arrivals in the next W days.
+export const OPERA_SYNC_ARRIVAL_DAYS = int(process.env.OPERA_SYNC_ARRIVAL_DAYS, 14);
+export const OPERA_SYNC_DEPARTURE_DAYS = int(process.env.OPERA_SYNC_DEPARTURE_DAYS, 2);
+export const OPERA_SYNC_NIGHTLY_DAYS = int(process.env.OPERA_SYNC_NIGHTLY_DAYS, 90);
+export const OPERA_SYNC_FAST_MINUTES = int(process.env.OPERA_SYNC_FAST_MINUTES, 5);
+// A synced booking not refreshed within this many minutes is flagged stale.
+export const OPERA_SYNC_STALE_MINUTES = int(process.env.OPERA_SYNC_STALE_MINUTES, 30);
+
 // ---- Startup validation ----
 const REQUIRED = {
   [NODE_ENV === 'production' ? 'MONGODB_URI' : 'MONGODB_URI_DEV']: MONGODB_URI,
