@@ -59,7 +59,7 @@ export const getAllGuests = async (req, res) => {
     // Enrich each guest with booking data (arrivalDate, checkoutDate, roomType)
     const guestIds = guests.map(g => g._id);
     const bookings = await Booking.find({ guestId: { $in: guestIds } })
-      .select('guestId arrivalDate checkoutDate roomType bookingId propertyName')
+      .select('guestId arrivalDate checkoutDate roomType bookingId propertyName source pmsSyncStatus pmsLastSyncedAt')
       .lean();
     const bookingMap = {};
     for (const b of bookings) bookingMap[String(b.guestId)] = b;
@@ -74,6 +74,10 @@ export const getAllGuests = async (req, res) => {
         roomType: b?.roomType ?? null,
         bookingId: b?.bookingId ?? null,
         propertyName: b?.propertyName ?? null,
+        // Where the stay came from: 'pms' (Opera sync) or 'manual'. Bookings from before the field existed are manual.
+        source: b?.source ?? 'manual',
+        pmsSyncStatus: b?.pmsSyncStatus ?? null,
+        pmsLastSyncedAt: b?.pmsLastSyncedAt ?? null,
       };
     });
 
