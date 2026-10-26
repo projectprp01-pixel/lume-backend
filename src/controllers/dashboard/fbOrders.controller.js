@@ -1,5 +1,6 @@
 import FbOrder from '../../models/FbOrder.model.js';
 import FbOrderingSettings from '../../models/FbOrderingSettings.model.js';
+import { notifyFbOrderStage } from '../../utils/fbOrderNotifier.js';
 
 const ORDER_STAGES = ['placed', 'accepted', 'prepared', 'delivered'];
 
@@ -44,6 +45,7 @@ export const updateFbOrderStage = async (req, res) => {
     order.stage = nextStage;
     order.timestamps = { ...order.timestamps, [nextStage]: new Date() };
     await order.save();
+    await notifyFbOrderStage(order);
 
     res.status(200).json({ success: true, data: order });
   } catch (error) {

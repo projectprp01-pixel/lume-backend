@@ -11,7 +11,7 @@ const notificationSchema = new mongoose.Schema({
   },
   read: { type: Boolean, default: false },
   relatedId: { type: String },
-  relatedType: { type: String, enum: ['booking', 'request', 'general', 'spa-booking', 'check-in', 'transport-booking'] }
+  relatedType: { type: String, enum: ['booking', 'request', 'general', 'spa-booking', 'check-in', 'transport-booking', 'fb-order'] }
 }, { timestamps: true });
 
 notificationSchema.index({ guestId: 1 });

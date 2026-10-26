@@ -6,6 +6,7 @@ import FbDish from '../../models/FbDish.model.js';
 import FbOrder from '../../models/FbOrder.model.js';
 import FbOrderingSettings from '../../models/FbOrderingSettings.model.js';
 import PropertySettings from '../../models/PropertySettings.model.js';
+import { notifyFbOrderStage } from '../../utils/fbOrderNotifier.js';
 
 // The property runs on one clock; "kitchen open" must not depend on the server's timezone.
 const PROPERTY_TZ = 'Asia/Kolkata';
@@ -172,6 +173,7 @@ export const createInRoomOrder = async (req, res) => {
       paymentStatus: 'pending',
       timestamps: { placed: new Date() },
     });
+    await notifyFbOrderStage(order);
 
     res.status(201).json({ success: true, data: order });
   } catch (error) {
