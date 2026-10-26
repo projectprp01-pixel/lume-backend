@@ -39,11 +39,32 @@ export async function resolveGuestStayId({ guestId, claimedStayId } = {}) {
 }
 
 /**
+ * The one room a stay's roomNumber string names, or '' when the stay has no room yet or several
+ * ("101, 102" — a multi-room stay). Hub bookings are tagged automatically only for a single room;
+ * for a multi-room guest staff pick which room the booking belongs to.
+ */
+export function singleRoomOf(roomNumber) {
+  const rooms = String(roomNumber ?? '').split(',').map((r) => r.trim());
+  return rooms.length === 1 ? rooms[0] : '';
+}
+
+/** The single room of a stay (by its human Booking ID), or '' — see singleRoomOf. */
+export async function singleRoomForStay(stayId) {
+  if (!stayId) return '';
+  const stay = await Booking.findOne({ bookingId: stayId }).select('roomNumber').lean().catch(() => null);
+  return singleRoomOf(stay?.roomNumber);
+}
+
+/**
  * Pushes a Booking's current room number to every active (not cancelled/completed) hub booking
  * linked to it via mainStayBookingId, so reassigning a room in Check-in Hub doesn't leave Spa/
  * Transport/Experience/Dining bookings pointing at a stale room. Called from assignCheckInRoom.
  */
 export async function propagateRoomToLinkedBookings(bookingId, roomNumber) {
+  // A multi-room stay can't say which room each booking belongs to: leave what staff assigned alone.
+  if (String(roomNumber ?? '').includes(',')) return;
+  roomNumber = String(roomNumber ?? '').trim();
+
   const [{ default: SpaBooking }, { default: TransportBooking }, { default: ExperienceBooking }, { default: DiningReservation }] =
     await Promise.all([
       import('../models/SpaBooking.model.js'),

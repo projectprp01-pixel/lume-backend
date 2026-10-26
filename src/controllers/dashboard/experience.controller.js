@@ -5,7 +5,7 @@ import Guest from '../../models/Guest.model.js';
 import { uploadToR2 } from '../../utils/r2Upload.js';
 import { remuxForFaststart } from '../../utils/videoProcessing.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
-import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { resolveMainStayBooking, singleRoomOf } from '../../utils/mainStay.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== EXPERIENCE HUB ====================
@@ -159,7 +159,7 @@ export const createManualBooking = async (req, res) => {
       adminNotes,
       mainStayBookingId: mainStay.bookingId,
       guestId: mainStay.guestId,
-      room: mainStay.roomNumber || '',
+      room: singleRoomOf(mainStay.roomNumber),
       source: 'staff',
       addons: Array.isArray(addons) ? addons : [],
     };

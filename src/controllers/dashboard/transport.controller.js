@@ -3,7 +3,7 @@ import TransportBooking from '../../models/TransportBooking.model.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
 import { toISTDate } from '../../utils/emailService.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
-import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { resolveMainStayBooking, singleRoomOf } from '../../utils/mainStay.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== TRANSPORT HUB ====================
@@ -355,7 +355,7 @@ export const createTransportHubBooking = async (req, res) => {
         guestId: mainStay.guestId,
         mainStayBookingId: mainStay.bookingId,
         guestName: mainStay.primaryGuestName,
-        room: mainStay.roomNumber || '',
+        room: singleRoomOf(mainStay.roomNumber),
         checkInDate,
         amount: Number(price),
         status: 'confirmed',

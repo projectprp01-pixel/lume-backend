@@ -1,7 +1,7 @@
 import Experience from '../models/Experience.model.js';
 import ExperienceBookingModel from '../models/ExperienceBooking.model.js';
 import { persistPrepared } from '../services/guestCheckout.js';
-import { resolveGuestStayId } from '../utils/mainStay.js';
+import { resolveGuestStayId, singleRoomForStay } from '../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../utils/discounts.js';
 
 // Staff block dates in the dashboard as inclusive YYYY-MM-DD ranges (blockedRanges); the older
@@ -312,6 +312,8 @@ export async function prepareExperienceBooking(body) {
         discountAmount: applied ? applied.amount * qty : undefined,
         mainBookingId: mainBookingId || null,
         mainStayBookingId: stayId,
+        // The guest's room when the stay has exactly one; a multi-room guest's booking is assigned by staff.
+        room: await singleRoomForStay(stayId),
         propertyId: propertyId || experience.propertyId,
         specialRequests: specialRequests || null,
       },

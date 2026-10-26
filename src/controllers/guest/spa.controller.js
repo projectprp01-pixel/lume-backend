@@ -1,7 +1,7 @@
 import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
 import { persistPrepared } from '../../services/guestCheckout.js';
-import { resolveGuestStayId } from '../../utils/mainStay.js';
+import { resolveGuestStayId, singleRoomForStay } from '../../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
 /**
@@ -143,7 +143,8 @@ export async function prepareSpaBooking(body) {
     }
     // Never trust client-sent status / payment fields: those are set by the server when the booking is created.
     const { status: _s, paymentStatus: _p, razorpayOrderId: _o, razorpayPaymentId: _i, razorpaySignature: _g, paidAt: _t, _id: _d, ...safe } = body;
-    const data = { ...safe, ...pricing, mainStayBookingId: stayId ?? undefined };
+    // Tagged with the guest's room when the stay has exactly one; a multi-room guest's booking is assigned by staff.
+    const data = { ...safe, ...pricing, mainStayBookingId: stayId ?? undefined, room: (await singleRoomForStay(stayId)) || undefined };
     return {
       ok: true,
       kind: 'spa',

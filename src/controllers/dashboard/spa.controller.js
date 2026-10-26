@@ -2,7 +2,7 @@ import SpaFacility from '../../models/Spa.model.js';
 import SpaBooking from '../../models/SpaBooking.model.js';
 import { uploadToCloudinary } from '../../utils/cloudinaryUpload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
-import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { resolveMainStayBooking, singleRoomOf } from '../../utils/mainStay.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== SPA HUB ====================
@@ -212,7 +212,7 @@ export const createManualSpaBooking = async (req, res) => {
         mainStayBookingId: mainStay.bookingId,
         guestId: mainStay.guestId,
         guestName: mainStay.primaryGuestName,
-        room: mainStay.roomNumber || '',
+        room: singleRoomOf(mainStay.roomNumber),
         source: 'staff',
         // Staff can mark a manual booking as already paid (e.g. collected at the desk);
         // otherwise it defaults to the schema's 'pending'.

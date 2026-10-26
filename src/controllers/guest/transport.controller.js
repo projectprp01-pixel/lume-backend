@@ -4,6 +4,7 @@ import Guest from '../../models/Guest.model.js';
 import Transport from '../../models/Transport.model.js';
 import TransportBooking from '../../models/TransportBooking.model.js';
 import { persistPrepared } from '../../services/guestCheckout.js';
+import { singleRoomOf } from '../../utils/mainStay.js';
 
 const TRANSPORT_DEFAULTS = {
   visible: true,
@@ -242,7 +243,7 @@ export async function prepareTransportBooking(body) {
           // booking shows up in Stay Activity and the Checkout folio like every other hub booking.
           mainStayBookingId: booking.bookingId,
           guestName: guest ? guest.fullName : '',
-          roomNumber: booking.roomNumber || guest?.roomNumber || '',
+          roomNumber: singleRoomOf(booking.roomNumber) || singleRoomOf(guest?.roomNumber),
           checkInDate: selection?.days[0] ? new Date(selection.days[0]) : booking.arrivalDate,
           checkOutDate: booking.checkoutDate,
           nights: stayNights,

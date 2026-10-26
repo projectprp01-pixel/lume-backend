@@ -3,6 +3,7 @@ import DiningReservation from '../../models/DiningReservation.model.js';
 import Guest from '../../models/Guest.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
 import { persistPrepared } from '../../services/guestCheckout.js';
+import { singleRoomOf } from '../../utils/mainStay.js';
 import { arrivalDayForGuest, bestDiscountFor, loadEligibleDiscounts } from '../../utils/discounts.js';
 
 // A date (YYYY-MM-DD) is blocked if listed in blockedDates or inside a dashboard-set blockedRanges entry.
@@ -128,7 +129,7 @@ export async function prepareDiningReservation(body) {
     }
     if (bookingId) {
       mainStayBooking = await Booking.findById(bookingId).catch(() => null);
-      if (mainStayBooking) roomNumber = mainStayBooking.roomNumber || '';
+      if (mainStayBooking) roomNumber = singleRoomOf(mainStayBooking.roomNumber);
     }
     if (!mainStayBooking && guestId) {
       mainStayBooking = await Booking.findOne({ guestId }).sort({ createdAt: -1 }).lean().catch(() => null);

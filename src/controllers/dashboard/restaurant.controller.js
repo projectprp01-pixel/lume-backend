@@ -2,7 +2,7 @@ import DiningReservation from '../../models/DiningReservation.model.js';
 import Restaurant from '../../models/Restaurant.model.js';
 import { uploadToR2 } from '../../utils/r2Upload.js';
 import { notifyStaffCancellation } from '../../utils/staffCancellationNotifier.js';
-import { resolveMainStayBooking } from '../../utils/mainStay.js';
+import { resolveMainStayBooking, singleRoomOf } from '../../utils/mainStay.js';
 import { createWithHubRef } from '../../utils/hubRef.js';
 
 // ==================== RESTAURANT/DINING HUB ====================
@@ -257,7 +257,7 @@ export const createManualDiningReservation = async (req, res) => {
       date,
       numberOfGuests,
       propertyId: propertyId || 'default',
-      roomNumber: mainStay.roomNumber || '',
+      roomNumber: singleRoomOf(mainStay.roomNumber),
       status: 'confirmed',
       paymentStatus: paymentStatus === 'paid' ? 'paid' : 'pending',
       mainStayBookingId: mainStay.bookingId,
