@@ -202,10 +202,14 @@ import { sendCommsTestEmail } from '../controllers/dashboard/comms.controller.js
 // ==================== GUEST NOTIFICATIONS ====================
 import { createGuestNotification } from '../controllers/dashboard/notification.controller.js';
 
+import { activityLogger } from '../middleware/activityLog.js';
+
 const router = express.Router();
 
 // All dashboard routes require a valid JWT
 router.use(authenticate);
+// Every successful write below lands in the Staff Log (see middleware/activityLog.js).
+router.use(activityLogger);
 
 // ==================== HOME ====================
 // Aggregation only — read fresh from the hubs on every call, nothing stored.
