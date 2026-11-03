@@ -14,6 +14,7 @@ import dashboardRoutes from './routes/dashboard.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { startPmsSync } from './services/opera/scheduler.js';
+import { startCommsScheduler } from './services/comms/commsScheduler.js';
 // Connect to MongoDB
 connectDB();
 
@@ -93,4 +94,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${NODE_ENV}`);
   startPmsSync();
+  startCommsScheduler();
 });

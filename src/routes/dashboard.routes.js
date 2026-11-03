@@ -197,7 +197,16 @@ import {
 } from '../controllers/dashboard/propertySettings.controller.js';
 
 // ==================== COMMS HUB ====================
-import { sendCommsTestEmail } from '../controllers/dashboard/comms.controller.js';
+import {
+  getComms,
+  updateComms,
+  getCommsStatus,
+  getCommsLog,
+  submitWhatsappTemplate,
+  refreshWhatsappTemplate,
+  sendWhatsappTest,
+  sendCommsTestEmail,
+} from '../controllers/dashboard/comms.controller.js';
 
 // ==================== GUEST NOTIFICATIONS ====================
 import { createGuestNotification } from '../controllers/dashboard/notification.controller.js';
@@ -403,7 +412,14 @@ router.get('/property-settings/guest-app', getGuestAppSettings);
 router.put('/property-settings/guest-app', updateGuestAppSettings);
 
 // ==================== COMMS HUB ====================
+router.get('/comms', getComms);
+router.put('/comms', updateComms);
+router.get('/comms/status', getCommsStatus);
+router.get('/comms/log', getCommsLog);
 router.post('/comms/send-test', sendCommsTestEmail);
+router.post('/comms/whatsapp/:templateId/submit', submitWhatsappTemplate);
+router.post('/comms/whatsapp/:templateId/refresh', refreshWhatsappTemplate);
+router.post('/comms/whatsapp/:templateId/test', sendWhatsappTest);
 
 // ==================== GUEST NOTIFICATIONS ====================
 router.post('/notifications', createGuestNotification);

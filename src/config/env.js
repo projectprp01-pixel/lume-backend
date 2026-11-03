@@ -45,6 +45,29 @@ export const EMAIL_FROM = process.env.EMAIL_FROM;
 // Comma-separated staff inbox(es) that receive booking/cancellation notification emails.
 export const NOTIFY_EMAILS = list(process.env.NOTIFY_EMAILS);
 
+// ---- Guest comms (Comms Hub automations) ----
+// The sender identities live here on purpose: the property edits WHAT is sent and WHEN, never the
+// WhatsApp number, API credentials or sending domain.
+// Display name on guest emails. EMAIL_FROM may already be "Name <addr>", which wins over this.
+export const COMMS_FROM_NAME = process.env.COMMS_FROM_NAME || PROPERTY_NAME;
+// The scheduler only runs when COMMS_SCHEDULER_ENABLED=true, so a fresh/dev deployment never mails guests.
+export const COMMS_SCHEDULER_ENABLED = process.env.COMMS_SCHEDULER_ENABLED === 'true';
+// Timezone every "10:00" send time and every check-in date is read in — the property's, not the server's.
+export const COMMS_TIMEZONE = process.env.COMMS_TIMEZONE || 'Asia/Kolkata';
+export const COMMS_TICK_MINUTES = Math.min(Math.max(parseInt(process.env.COMMS_TICK_MINUTES) || 5, 1), 59);
+
+// ---- WhatsApp Business (Meta Cloud API) ----
+export const WHATSAPP_ENABLED = process.env.WHATSAPP_ENABLED === 'true';
+export const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
+// The sending number's id from Meta (not the phone number itself).
+export const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
+// The WhatsApp Business Account that owns the message templates.
+export const WHATSAPP_WABA_ID = process.env.WHATSAPP_WABA_ID;
+export const WHATSAPP_API_VERSION = process.env.WHATSAPP_API_VERSION || 'v21.0';
+// Shown read-only in the dashboard so staff can see which number guests hear from.
+export const WHATSAPP_DISPLAY_NUMBER = process.env.WHATSAPP_DISPLAY_NUMBER || '';
+export const WHATSAPP_DISPLAY_NAME = process.env.WHATSAPP_DISPLAY_NAME || PROPERTY_NAME;
+
 // ---- AI concierge ----
 export const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 export const AI_CONCIERGE_NAME = process.env.AI_CONCIERGE_NAME || 'Eva';

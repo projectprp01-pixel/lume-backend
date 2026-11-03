@@ -92,6 +92,21 @@ const guestSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  // profile.controller already accepted this field but the schema silently dropped it.
+  whatsappOptIn: {
+    type: Boolean,
+    default: false
+  },
+  // Hard stops that beat everything else: set when a guest unsubscribes / replies STOP. Comms
+  // automations never message a guest on a channel they've opted out of, utility or marketing.
+  commsOptOutEmail: {
+    type: Boolean,
+    default: false
+  },
+  commsOptOutWhatsapp: {
+    type: Boolean,
+    default: false
+  },
   // Guest type
   guestType: {
     type: String,

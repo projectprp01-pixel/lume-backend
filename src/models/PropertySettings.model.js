@@ -84,6 +84,13 @@ const propertySettingsSchema = new mongoose.Schema({
   footerSubtext: { type: String, default: '' },
   commsFromName: { type: String, default: '' },
   comms: { type: mongoose.Schema.Types.Mixed, default: {} },
+  // Comms Hub sending rules the property controls: a no-messages window in the property's
+  // timezone. Anything that comes due inside it is deferred to the end of the window.
+  commsSettings: {
+    quietHoursEnabled: { type: Boolean, default: true },
+    quietStart: { type: String, default: '21:00' },
+    quietEnd: { type: String, default: '08:00' },
+  },
 }, { timestamps: true });
 
 export default mongoose.model('PropertySettings', propertySettingsSchema);

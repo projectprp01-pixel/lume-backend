@@ -93,6 +93,9 @@ const ACTIONS = {
   'PUT /transport/hub/bookings/:id/room': 'Assigned a room to a transport booking',
   'PUT /transport/hub/bookings/:id/cancel': 'Cancelled a transport booking',
 
+  'PUT /comms': 'Updated Comms Hub messages or sending rules',
+  'POST /comms/whatsapp/:templateId/submit': 'Submitted a WhatsApp message to Meta for approval',
+
   'PUT /property-settings': 'Updated property settings',
   'PUT /property-settings/guest-app': 'Updated guest app settings',
   'POST /notifications': 'Sent a guest notification',
