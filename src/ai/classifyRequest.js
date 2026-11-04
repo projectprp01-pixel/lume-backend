@@ -11,10 +11,12 @@ import { getDepartmentRegistry, resolveDepartment } from './departmentRegistry.j
 // anyway. A new department created in Staff Management is in the enum on the very next
 // request. Anything that goes wrong (no key, timeout, refusal, bad output) → fallback.
 //
-// Model: gpt-4.1-nano — the cheapest non-reasoning OpenAI model that supports strict
-// structured outputs. A reasoning model (gpt-5-nano etc.) would only add latency and
-// billed reasoning tokens to what is a one-of-N label pick.
-const MODEL = 'gpt-4.1-nano';
+// Model: gpt-4.1-mini — a cheap non-reasoning OpenAI model that supports strict structured
+// outputs. (gpt-4.1-nano was used until OpenAI deprecated it: every call then 404'd, was caught
+// below, and every request silently fell back to the first department.) A reasoning model
+// (gpt-5-nano etc.) would only add latency and billed reasoning tokens to a one-of-N label pick,
+// and rejects max_tokens/temperature.
+const MODEL = 'gpt-4.1-mini';
 const MAX_INPUT_CHARS = 1000;
 const TIMEOUT_MS = 8000;
 
