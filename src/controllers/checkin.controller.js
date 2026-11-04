@@ -1,6 +1,7 @@
 import CheckIn from '../models/CheckIn.model.js';
 import Booking from '../models/Booking.model.js';
 import Guest from '../models/Guest.model.js';
+import CheckoutFolio from '../models/CheckoutFolio.model.js';
 import { uploadToR2 } from '../utils/r2Upload.js';
 import { sendCheckInSubmittedEmail, toISTDate } from '../utils/emailService.js';
 
@@ -23,6 +24,12 @@ export const getBookingByToken = async (req, res) => {
     // Look up real booking for this guest
     const booking = await Booking.findOne({ guestId: guest._id }).sort({ createdAt: -1 });
 
+    // A late checkout staff recorded for this guest in the dashboard (Checkout & Feedback). It replaces the
+    // property's standard checkout time for this stay only.
+    const folio = booking
+      ? await CheckoutFolio.findOne({ bookingId: booking.bookingId }, 'checkoutTimeOverride').lean()
+      : null;
+
     const today = new Date();
     const defaultCheckout = new Date(today);
     defaultCheckout.setDate(defaultCheckout.getDate() + 2);
@@ -41,7 +48,8 @@ export const getBookingByToken = async (req, res) => {
           checkoutDate: booking ? booking.checkoutDate : defaultCheckout,
           propertyName: booking ? booking.propertyName : 'The Lume Stay',
           roomType: booking ? booking.roomType : null,
-          checkInStatus: booking ? booking.checkInStatus : 'pending'
+          checkInStatus: booking ? booking.checkInStatus : 'pending',
+          checkOutTimeOverride: folio?.checkoutTimeOverride || null
         },
         guest: {
           id: guest._id,
