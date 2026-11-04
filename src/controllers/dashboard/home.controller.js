@@ -3,6 +3,7 @@ import Guest from '../../models/Guest.model.js';
 import CheckIn from '../../models/CheckIn.model.js';
 import Feedback from '../../models/Feedback.model.js';
 import FeedbackSettings from '../../models/FeedbackSettings.model.js';
+import { resolveFeedbackSettings } from '../../utils/feedbackSettings.js';
 import ServiceRequest from '../../models/ServiceRequest.model.js';
 import Experience from '../../models/Experience.model.js'; // registers the schema populate() needs
 import ExperienceBooking from '../../models/ExperienceBooking.model.js';
@@ -120,12 +121,11 @@ async function requestsSummary(staff, propertyId) {
   };
 }
 
-// Negative = rating at or under the property's own Negative threshold (the Feedback tab's
-// computeSentiment), over the same "this week" window that tab uses.
+// Low = rating at or under the property's own low-rating threshold (the Feedback tab's lowMax), over the
+// same "this week" window that tab uses.
 async function negativeReviewsThisWeek(propertyId) {
-  const settings = await FeedbackSettings.findOne({ propertyId }).lean();
-  const negMax = settings?.negMax ?? 2;
-  const filter = { rating: { $lte: negMax }, createdAt: { $gt: new Date(Date.now() - 7 * DAY_MS) } };
+  const { lowMax } = resolveFeedbackSettings(await FeedbackSettings.findOne({ propertyId }).lean());
+  const filter = { rating: { $lte: lowMax }, createdAt: { $gt: new Date(Date.now() - 7 * DAY_MS) } };
   if (propertyId !== 'default') filter.propertyId = propertyId;
   return Feedback.countDocuments(filter);
 }

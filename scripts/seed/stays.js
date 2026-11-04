@@ -467,7 +467,7 @@ export async function seedStays({ catalog, people }) {
   await insertMany(FbOrder, clean(out.fb));
   await insertMany(CheckoutFolio, clean(out.folio));
   await insertMany(Feedback, clean(out.feedback));
-  await FeedbackSettings.create({ propertyId: PROPERTY_ID, negMax: 2, posMin: 4 });
+  await FeedbackSettings.create({ propertyId: PROPERTY_ID, lowMax: 3 });
   await insertMany(ServiceRequest, clean(out.requests));
 
   // ---- Guest notifications (each states the stay's Booking ID in its text) -----------------

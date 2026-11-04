@@ -322,7 +322,7 @@ console.log(`Reset ${REVIEWS.length} reviews`);
 
 await FeedbackSettings.findOneAndUpdate(
   { propertyId: PROPERTY_ID },
-  { $setOnInsert: { propertyId: PROPERTY_ID, negMax: 2, posMin: 4 } },
+  { $setOnInsert: { propertyId: PROPERTY_ID, lowMax: 3 } },
   { upsert: true }
 );
 console.log('Ensured default sentiment thresholds (Negative <= 2 stars, Positive >= 4 stars)');

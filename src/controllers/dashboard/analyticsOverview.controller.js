@@ -2,6 +2,7 @@ import Booking from '../../models/Booking.model.js';
 import CheckIn from '../../models/CheckIn.model.js';
 import Feedback from '../../models/Feedback.model.js';
 import FeedbackSettings from '../../models/FeedbackSettings.model.js';
+import { resolveFeedbackSettings } from '../../utils/feedbackSettings.js';
 import ServiceRequest from '../../models/ServiceRequest.model.js';
 import Experience from '../../models/Experience.model.js'; // registers the schema populate() needs
 import ExperienceBooking from '../../models/ExperienceBooking.model.js';
@@ -138,38 +139,38 @@ async function checkinFor(propertyId, from, to) {
 }
 
 // ---------- 4. Feedback ----------
-// Average rating and count of feedback submitted, sentiment from the property's live thresholds.
+// Average rating and count of feedback submitted, split low / high by the property's live lowMax.
 async function feedbackFor(propertyId, from, to) {
   const { start, end } = istBounds(from, to);
   const filter = { createdAt: { $gte: start, $lte: end } };
   if (propertyId !== 'default') filter.propertyId = propertyId;
   const [reviews, settings] = await Promise.all([
-    Feedback.find(filter, 'rating createdAt googleClicked').lean(),
+    Feedback.find(filter, 'rating createdAt redirectedTo googleClicked').lean(),
     FeedbackSettings.findOne({ propertyId }).lean(),
   ]);
-  const negMax = settings?.negMax ?? 2;
-  const posMin = settings?.posMin ?? 4;
+  const { lowMax } = resolveFeedbackSettings(settings);
 
   const byDay = Object.fromEntries(eachDay(from, to).map((d) => [d, { date: d, count: 0, sum: 0 }]));
   const distribution = [1, 2, 3, 4, 5].map((stars) => ({ stars, count: 0 }));
-  const sentiment = { positive: 0, neutral: 0, negative: 0 };
-  let googleClicks = 0;
+  const sentiment = { low: 0, high: 0 };
+  let redirects = 0;
   for (const r of reviews) {
     const day = byDay[istDay(r.createdAt)];
     if (day) {
       day.count += 1;
       day.sum += r.rating;
     }
-    distribution[r.rating - 1].count += 1;
-    sentiment[r.rating <= negMax ? 'negative' : r.rating >= posMin ? 'positive' : 'neutral'] += 1;
-    if (r.googleClicked) googleClicks += 1;
+    // Ratings come in half-star steps; the breakdown is per whole star, so a half rounds up (4.5 -> 5).
+    distribution[Math.min(5, Math.max(1, Math.round(r.rating))) - 1].count += 1;
+    sentiment[r.rating <= lowMax ? 'low' : 'high'] += 1;
+    if (r.redirectedTo || r.googleClicked) redirects += 1;
   }
   const count = reviews.length;
   return {
     count,
     avg: count ? round1(reviews.reduce((s, r) => s + r.rating, 0) / count) : null,
-    googleClicks,
-    thresholds: { negMax, posMin },
+    redirects,
+    lowMax,
     distribution,
     sentiment,
     series: Object.values(byDay).map((d) => ({

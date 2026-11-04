@@ -28,6 +28,7 @@ import { getActiveBanners } from '../controllers/guest/banner.controller.js';
 import { chatWithConcierge } from '../controllers/guest/chat.controller.js';
 import { getGuestNotifications, markNotificationRead, markAllNotificationsRead } from '../controllers/guest/notification.controller.js';
 import { createGuestRequest, getGuestRequests } from '../controllers/guest/request.controller.js';
+import { getFeedbackConfig, submitFeedback } from '../controllers/guest/feedback.controller.js';
 
 const router = express.Router();
 
@@ -49,6 +50,10 @@ router.get('/discounts', getGuestDiscounts);
 // Must be defined before /:id — otherwise GET /requests is shadowed by GET /:id and 500s
 router.post('/requests', createGuestRequest);
 router.get('/requests', getGuestRequests);
+
+// Post-checkout feedback (rating screen). Declared before /:id like the routes above.
+router.get('/feedback/config', getFeedbackConfig);
+router.post('/feedback', submitFeedback);
 
 // In-room dining (guest side). Declared before /:id like the routes above.
 router.get('/in-room-dining/menu', getInRoomMenu);

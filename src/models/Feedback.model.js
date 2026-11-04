@@ -8,13 +8,22 @@ const feedbackSchema = new mongoose.Schema({
   // Booking.bookingId of the stay this review is for; guest name / room / stay dates are read
   // off that booking rather than duplicated here.
   bookingId: { type: String, required: true, unique: true },
-  rating: { type: Number, required: true, min: 1, max: 5 },
+  // Stars in half steps (0.5 to 5) — the guest app's rating control fills half a star at a time.
+  rating: {
+    type: Number,
+    required: true,
+    min: 0.5,
+    max: 5,
+    validate: { validator: (v) => Number.isInteger(v * 2), message: 'rating must be in steps of 0.5' },
+  },
   review: { type: String, default: '' },
-  // Private "how could we have made this better" answer a guest gives after a low rating.
-  // Only ever surfaced in the dashboard's Feedback tab — never linked or pushed externally.
+  // Private "how could we improve your stay" answer a guest gives after a low rating (at or below the
+  // property's lowMax). Only ever surfaced in the dashboard's Feedback tab — never pushed externally.
   recoveryResponse: { type: String, default: '' },
-  // Set by the guest app when the guest taps the Google Reviews link. Only the click is
-  // knowable — never whether they went on to post anything.
+  // Name of the review site (Google Reviews, Booking.com, ...) the guest was sent to after rating above
+  // the threshold. Only the redirect is knowable — never whether they went on to post anything.
+  redirectedTo: { type: String, default: '' },
+  // Legacy: set by the old guest app when a guest tapped the Google Reviews link. No longer written.
   googleClicked: { type: Boolean, default: false },
 }, { timestamps: true });
 
